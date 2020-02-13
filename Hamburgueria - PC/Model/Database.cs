@@ -6,7 +6,7 @@ using System.Text;
 using System.Data;
 using System.Data.SQLite;
 
-namespace Hamburgueria
+namespace Hamburgueria.Model
 {
     public class Database
     {

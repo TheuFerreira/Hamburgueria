@@ -12,6 +12,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using Hamburgueria.View;
+
 namespace Hamburgueria
 {
     /// <summary>
@@ -22,6 +24,11 @@ namespace Hamburgueria
         public MainWindow()
         {
             InitializeComponent();
+
+            BtnVendas.Click += delegate { new Vendas().ShowDialog(); };
+            BtnClientes.Click += delegate { new Clientes().ShowDialog(); };
+            BtnProdutos.Click += delegate { new Produtos().ShowDialog(); };
+            BtnRelatorios.Click += delegate { new Relatorios().ShowDialog(); };
         }
     }
 }

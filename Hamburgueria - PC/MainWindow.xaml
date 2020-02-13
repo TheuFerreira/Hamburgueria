@@ -5,8 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria___PC"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid>
-        
+        <Button x:Name="BtnVendas" Content="VENDAS" Margin="23,0,0,136" HorizontalAlignment="Left" Width="166" Height="75" VerticalAlignment="Bottom"/>
+        <Button x:Name="BtnClientes" Content="CLIENTES" Margin="23,0,0,20" Height="75" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="166"/>
+        <Button x:Name="BtnProdutos" Content="PRODUTOS" Margin="0,0,28,136" Height="75" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="166"/>
+        <Button x:Name="BtnRelatorios" Content="RELATORIOS" Margin="0,0,28,20" HorizontalAlignment="Right" Width="166" Height="75" VerticalAlignment="Bottom"/>
     </Grid>
 </Window>

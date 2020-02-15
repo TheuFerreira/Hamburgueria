@@ -10,27 +10,38 @@ namespace Hamburgueria.Model
 {
     public class Cliente : Database
     {
-        public static DataTable GetAll()
+        public class Item
+        { 
+            public int ID { get; set; }
+            public string NAME { get; set; }
+            public decimal PRICE { get; set; }
+        }
+
+        public static List<Item> GetAll()
         {
             try
             {
-                DataTable dt = new DataTable("Cliente");
+                List<Item> items = new List<Item>();
 
                 connection.Open();
 
                 SQLiteCommand command = new SQLiteCommand(connection);
                 command.CommandText = "SELECT * FROM Cliente";
 
-                var r = new SQLiteDataAdapter(command);
-                r.Fill(dt);
+                var r = command.ExecuteReader();
+                while (r.Read())
+                {
+                    int id = Convert.ToInt32(r[0].ToString());
+                    string name = r[1].ToString();
+                    decimal price = Convert.ToDecimal(r[2].ToString());
+
+                    items.Add(new Item() { ID = id, NAME = name, PRICE = price });
+                }
+                r.Close();
 
                 connection.Close();
 
-                return dt;
-            }
-            catch (SQLiteException ex)
-            {
-                throw ex;
+                return items;
             }
             catch (Exception ex)
             {

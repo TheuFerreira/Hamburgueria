@@ -21,6 +21,13 @@ namespace Hamburgueria.View
         public Clientes()
         {
             InitializeComponent();
+
+            this.Loaded += Clientes_Loaded;
+        }
+
+        private void Clientes_Loaded(object sender, RoutedEventArgs e)
+        {
+            GridClientes.ItemsSource = Model.Cliente.GetAll();
         }
     }
 }

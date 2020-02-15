@@ -12,7 +12,7 @@
                 <ImageBrush ImageSource="Resources/Botao_vendas.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnClientes" Content="" Margin="23,0,0,85" Height="176" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="357" BorderBrush="{x:Null}">
+        <Button x:Name="BtnClientes" Content="" Margin="23,0,0,51" Height="176" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="357" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_cliente.png"/>
             </Button.Background>
@@ -22,15 +22,16 @@
                 <ImageBrush ImageSource="Resources/Botao_Caixa.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnRelatorios" Content="" Margin="0,0,34,85" HorizontalAlignment="Right" Width="357" Height="176" VerticalAlignment="Bottom" BorderBrush="{x:Null}">
+        <Button x:Name="BtnRelatorios" Content="" Margin="0,0,34,51" HorizontalAlignment="Right" Width="357" Height="176" VerticalAlignment="Bottom" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_relatorios.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnRelatorios_Copy" Content="" Margin="521,0,0,85" HorizontalAlignment="Left" Width="357" Height="176" VerticalAlignment="Bottom" BorderBrush="{x:Null}">
+        <Button x:Name="BtnRelatorios_Copy" Content="" Margin="519,0,0,51" HorizontalAlignment="Left" Width="357" Height="176" VerticalAlignment="Bottom" BorderBrush="{x:Null}">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_Produtos.png"/>
             </Button.Background>
         </Button>
+        <Image HorizontalAlignment="Left" Height="300" VerticalAlignment="Top" Width="378" Margin="498,52,0,0" RenderTransformOrigin="0.519,0.469"/>
     </Grid>
 </Window>

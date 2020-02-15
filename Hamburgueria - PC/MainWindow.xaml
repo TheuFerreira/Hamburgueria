@@ -7,32 +7,32 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="766.9" Width="1366" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Grid Background="Orange">
-        <Button x:Name="BtnVendas" Content="" Margin="55,0,0,253.6" HorizontalAlignment="Left" Width="301" Height="148" VerticalAlignment="Bottom" BorderBrush="{x:Null}">
+        <Button x:Name="BtnVendas" Content="" Margin="55,0,0,253.6" HorizontalAlignment="Left" Width="301" Height="148" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/Botao_vendas.png"/>
+                <ImageBrush ImageSource="Resources/Botao_vendas.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnClientes" Content="" Margin="55,0,0,28.6" Height="148" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="301" BorderBrush="{x:Null}">
+        <Button x:Name="BtnClientes" Content="" Margin="55,0,0,29" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" HorizontalAlignment="Left" Width="301" Height="148" VerticalAlignment="Bottom">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/Botao_cliente.png"/>
+                <ImageBrush ImageSource="Resources/Botao_cliente.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnProdutos" Content="" Margin="0,0,55,253.6" Height="148" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="301" BorderBrush="{x:Null}">
+        <Button x:Name="BtnProdutos" Content="" Margin="0,0,55,253.6" Height="148" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="301" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/Botao_Caixa.png"/>
+                <ImageBrush ImageSource="Resources/Botao_Caixa.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnRelatorios" Content="" Margin="0,0,55,28.6" HorizontalAlignment="Right" Width="301" Height="148" VerticalAlignment="Bottom" BorderBrush="{x:Null}">
+        <Button x:Name="BtnRelatorios" Content="" Margin="0,0,55,28.6" HorizontalAlignment="Right" Width="301" Height="148" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/Botao_relatorios.png"/>
+                <ImageBrush ImageSource="Resources/Botao_relatorios.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnRelatorios_Copy" Content="" Margin="540,0,0,28.6" HorizontalAlignment="Left" Width="301" Height="148" VerticalAlignment="Bottom" BorderBrush="{x:Null}">
+        <Button x:Name="BtnRelatorios_Copy" Content="" Margin="0,0,0,29" BorderBrush="{x:Null}" Height="148" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="301" Style="{StaticResource MyButtonStyle}">
             <Button.Background>
-                <ImageBrush ImageSource="Resources/Botao_Produtos.png"/>
+                <ImageBrush ImageSource="Resources/Botao_Produtos.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Border BorderThickness="1" HorizontalAlignment="Left" Height="500" Margin="428,30,0,0" VerticalAlignment="Top" Width="524" Opacity="0.65">
+        <Border BorderThickness="1" Margin="0,-200,0,0" Opacity="0.65" Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="524" Style="{StaticResource LogoShadow}">
             <Border.Background>
                 <ImageBrush ImageSource="Resources/logo.png" Stretch="Uniform"/>
             </Border.Background>

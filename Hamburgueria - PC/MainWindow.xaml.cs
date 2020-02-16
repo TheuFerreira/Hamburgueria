@@ -28,6 +28,7 @@ namespace Hamburgueria
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
             BtnVendas.Click += delegate { new Vendas().ShowDialog(); };
+            BtnCaixa.Click += delegate { };
             BtnClientes.Click += delegate { new Clientes().ShowDialog(); };
             BtnProdutos.Click += delegate { new Produtos().ShowDialog(); };
             BtnRelatorios.Click += delegate { new Relatorios().ShowDialog(); };
@@ -39,15 +40,19 @@ namespace Hamburgueria
             {
                 new Vendas().ShowDialog();
             }
-            if (e.Key == Key.F3)
+            else if (e.Key == Key.F2)
+            {
+
+            }
+            else if (e.Key == Key.F3)
             {
                 new Clientes().ShowDialog();
             }
-            if (e.Key == Key.F5)
+            else if (e.Key == Key.F5)
             {
                 new Produtos().ShowDialog();
             }
-            if (e.SystemKey == Key.F10)
+            else if (e.SystemKey == Key.F10)
             {
                 new Relatorios().ShowDialog();
             }

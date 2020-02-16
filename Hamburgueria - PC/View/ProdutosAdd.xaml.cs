@@ -14,15 +14,13 @@ using System.Windows.Shapes;
 namespace Hamburgueria.View
 {
     /// <summary>
-    /// Lógica interna para Clientes.xaml
+    /// Lógica interna para ProdutosAdd.xaml
     /// </summary>
-    public partial class Clientes : Window
+    public partial class ProdutosAdd : Window
     {
-        public Clientes()
+        public ProdutosAdd()
         {
             InitializeComponent();
-
-            AddCliente.Click += delegate { new ClientesAdd().ShowDialog(); };
         }
     }
 }

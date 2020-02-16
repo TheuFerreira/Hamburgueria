@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="Produtos" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <DataGrid Margin="0,0,0,35"/>
+        <Button x:Name="AddProduto" Content="Button" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="20" VerticalAlignment="Bottom"/>
+
     </Grid>
 </Window>

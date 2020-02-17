@@ -50,5 +50,10 @@ namespace Hamburgueria.View
                 this.COMPLEMENTO = complemento;
             }
         }
+
+        private void AddCliente_Copy1_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

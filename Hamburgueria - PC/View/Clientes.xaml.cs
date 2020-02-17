@@ -24,11 +24,11 @@ namespace Hamburgueria.View
 
             AddCliente.Click += delegate { new ClientesAdd().ShowDialog(); };
 
-            Item i = new Item("Matheus", "Avenida 1º de Junho", 162, "Centro", "Casa", "Igreja Matriz");
+            Item i1 = new Item("Matheus", "Avenida 1º de Junho", 162, "Centro", "Casa", "Igreja Matriz");
             Item i2 = new Item("Paulo", "Jao Kisse", 666, "Inferno", "Casa", "Perto da Casa do Karalho");
 
-            List<Item> items = new List<Item>() { i, i2 };
-            GridClientes.ItemsSource = items;
+            List<Item> items = new List<Item>() { i1, i2 };
+            //GridClientes.ItemsSource = items;
         }
 
         public class Item

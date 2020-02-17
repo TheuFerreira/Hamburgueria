@@ -6,8 +6,25 @@
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
         Title="Clientes" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+    <Window.Resources>
+        <SolidColorBrush x:Key="Turquesa" Color="#FFCDF5EA"/>
+        <SolidColorBrush x:Key="TurquesaClaro" Color="#FFE9EBF5"/>
+        <SolidColorBrush x:Key="AzulBruxao" Color="#4472c4"/>
+    </Window.Resources>
     <Grid>
-        <DataGrid x:Name="GridClientes" Margin="0,0,0,35"/>
+        <DataGrid x:Name="GridClientes" Margin="0,0,0,35" 
+                  AutoGenerateColumns="True" 
+                  AlternationCount="2" 
+                  RowBackground="{StaticResource Turquesa}" 
+                  AlternatingRowBackground="{DynamicResource TurquesaClaro}">
+            <DataGridTextColumn Binding="{Binding Path=Item}">
+                <DataGridTextColumn.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Background" Value="{StaticResource AzulBruxao}"/>
+                    </Style>
+                </DataGridTextColumn.CellStyle>
+            </DataGridTextColumn>
+        </DataGrid>
         <Button x:Name="AddCliente" Content="Button" Margin="0,0,10,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
 
     </Grid>

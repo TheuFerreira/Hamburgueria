@@ -162,6 +162,8 @@
     <Content Include="hamburgueria.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\BUTAO_IGOR 1.1.png" />
+    <Resource Include="Resources\butao_igor.png" />
     <Resource Include="Resources\logo.ico" />
     <Resource Include="Resources\logo.png" />
     <Resource Include="Resources\Botao_vendas.png" />

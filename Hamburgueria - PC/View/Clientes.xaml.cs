@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -22,13 +23,33 @@ namespace Hamburgueria.View
         {
             InitializeComponent();
 
+            this.Loaded += Clientes_Loaded;
             AddCliente.Click += delegate { new ClientesAdd().ShowDialog(); };
 
             Item i1 = new Item("Matheus", "Avenida 1º de Junho", 162, "Centro", "Casa", "Igreja Matriz");
             Item i2 = new Item("Paulo", "Jao Kisse", 666, "Inferno", "Casa", "Perto da Casa do Karalho");
 
             List<Item> items = new List<Item>() { i1, i2 };
-            //GridClientes.ItemsSource = items;
+            GridClientes.ItemsSource = items;
+        }
+
+        private void Clientes_Loaded(object sender, RoutedEventArgs e)
+        {
+            GridClientes.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            GridClientes.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            GridClientes.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            GridClientes.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            GridClientes.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
+            GridClientes.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+            GridClientes.Columns[2].MinWidth = 75;
+            GridClientes.Columns[4].MinWidth = 120;
+
+            Style s = new Style(typeof(DataGridColumnHeader));
+            s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush) FindResource("AzulBruxao")));
+            s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
+            for (int i = 0; i < GridClientes.Columns.Count; i++)
+                GridClientes.Columns[i].HeaderStyle = s;
         }
 
         public class Item
@@ -49,11 +70,6 @@ namespace Hamburgueria.View
                 this.BAIRRO = bairro;
                 this.COMPLEMENTO = complemento;
             }
-        }
-
-        private void AddCliente_Copy1_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

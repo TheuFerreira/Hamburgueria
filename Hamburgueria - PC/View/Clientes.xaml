@@ -5,39 +5,77 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="Clientes" Height="450" Width="800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Clientes" 
+        Height="450" 
+        Width="800" 
+        WindowStartupLocation="CenterScreen" 
+        WindowState="Maximized">
     <Window.Resources>
         <SolidColorBrush x:Key="Turquesa" Color="#FFCDF5EA"/>
         <SolidColorBrush x:Key="TurquesaClaro" Color="#FFE9EBF5"/>
         <SolidColorBrush x:Key="AzulBruxao" Color="#4472c4"/>
     </Window.Resources>
     <Grid>
-        <DataGrid x:Name="GridClientes" Margin="0,0,0,60" 
-                  AutoGenerateColumns="True" 
+        <DataGrid x:Name="GridClientes" 
+                  Margin="0,0,0,60" 
+                  AutoGenerateColumns="True"
                   AlternationCount="2" 
+                  RowHeaderWidth="0"
+                  VerticalGridLinesBrush="White"
+                  HorizontalGridLinesBrush="White"
                   RowBackground="{StaticResource Turquesa}" 
-                  AlternatingRowBackground="{DynamicResource TurquesaClaro}">
-            <DataGridTextColumn Binding="{Binding Path=Item}">
-                <DataGridTextColumn.CellStyle>
-                    <Style TargetType="DataGridCell">
-                        <Setter Property="Background" Value="{StaticResource AzulBruxao}"/>
-                    </Style>
-                </DataGridTextColumn.CellStyle>
-            </DataGridTextColumn>
+                  AlternatingRowBackground="{DynamicResource TurquesaClaro}" 
+                  CanUserDeleteRows="False" 
+                  CanUserAddRows="False" 
+                  IsReadOnly="True"
+                  SelectionMode="Single">
+            
         </DataGrid>
-        <Button x:Name="AddCliente" Content="Button" Margin="0,0,10,10" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
-        <Grid Margin="0,359,0,0" Background="#FF4472C4">
-            <Button x:Name="AddCliente" Content="ADICIONAR" Margin="0,0,27,10" BorderBrush="{x:Null}" FontFamily="Arial" FontWeight="Bold" FontSize="10" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom">
+        
+        <Grid Background="#FF4472C4" 
+              Height="60" 
+              VerticalAlignment="Bottom">
+            <Button x:Name="AddCliente" 
+                    Content="ADICIONAR" 
+                    Margin="0,0,27,10" 
+                    BorderBrush="{x:Null}" 
+                    FontFamily="Arial" 
+                    FontWeight="Bold" 
+                    FontSize="10" 
+                    HorizontalAlignment="Right" 
+                    Width="73" Height="36" 
+                    VerticalAlignment="Bottom" 
+                    Style="{StaticResource ButtonShadowAround}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="AddCliente_Copy" Content="EXCLUIR" Margin="0,0,206,10" BorderBrush="{x:Null}" FontFamily="Arial" FontWeight="Bold" FontSize="10" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom">
+            <Button x:Name="DelCliente" 
+                    Content="EXCLUIR" 
+                    Margin="0,0,206,10" 
+                    BorderBrush="{x:Null}" 
+                    FontFamily="Arial" 
+                    FontWeight="Bold" 
+                    FontSize="10" 
+                    HorizontalAlignment="Right" 
+                    Width="73" Height="36" 
+                    VerticalAlignment="Bottom"  
+                    Style="{StaticResource ButtonShadowAround}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="AddCliente_Copy1" Content="EDITAR" Margin="0,0,118,10" BorderBrush="{x:Null}" FontFamily="Arial" FontWeight="Bold" Click="AddCliente_Copy1_Click" FontSize="10" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom">
+            <Button x:Name="EditCliente" 
+                    Content="EDITAR"
+                    Margin="0,0,118,10" 
+                    BorderBrush="{x:Null}" 
+                    FontFamily="Arial"
+                    FontWeight="Bold" 
+                    FontSize="10" 
+                    HorizontalAlignment="Right" 
+                    Width="73" Height="36" 
+                    VerticalAlignment="Bottom"  
+                    Style="{StaticResource ButtonShadowAround}">
                 <Button.Background>
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>

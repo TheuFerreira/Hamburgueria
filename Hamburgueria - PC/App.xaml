@@ -11,7 +11,40 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
+        <Style x:Key="ButtonShadowAround" TargetType="Button">
+            <Setter Property="BorderBrush" Value="DarkGray" />
+            <Setter Property="Foreground" Value="Black" />
+            <Setter Property="Button.Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="20" Opacity=".7" />
+                </Setter.Value>
+            </Setter>
+
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                                BorderThickness="0"
+                                Padding="4,2" 
+                                BorderBrush="DarkGray" 
+                                CornerRadius="3" 
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="BorderBrush" Value="Black" />
+                                <Setter Property="Cursor" Value="Hand"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="MyButtonStyle" TargetType="Button">
             <Setter Property="BorderBrush" Value="DarkGray" />
             <Setter Property="Foreground" Value="Black" />

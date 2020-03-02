@@ -28,10 +28,12 @@
                   CanUserDeleteRows="False" 
                   CanUserAddRows="False" 
                   IsReadOnly="True"
-                  SelectionMode="Single">
-            
-        </DataGrid>
-        
+                  FontSize="18px"
+                  SelectionMode="Single" 
+                  HorizontalScrollBarVisibility="Visible"/>
+
+
+
         <Grid Background="#FF4472C4" 
               Height="60" 
               VerticalAlignment="Bottom">

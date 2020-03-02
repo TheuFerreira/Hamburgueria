@@ -27,7 +27,7 @@ namespace Hamburgueria.View
             AddCliente.Click += delegate { new ClientesAdd().ShowDialog(); };
 
             Item i1 = new Item("Matheus", "Avenida 1º de Junho", 162, "Centro", "Casa", "Igreja Matriz");
-            Item i2 = new Item("Paulo", "Jao Kisse", 666, "Inferno", "Casa", "Perto da Casa do Karalho");
+            Item i2 = new Item("Paulo", "Jao Kisse Sei la das quantas, tenho que testar isso aqui!!!", 666, "Inferno", "Casa", "Perto da Casa do Karalho");
 
             List<Item> items = new List<Item>() { i1, i2 };
             GridClientes.ItemsSource = items;
@@ -35,18 +35,15 @@ namespace Hamburgueria.View
 
         private void Clientes_Loaded(object sender, RoutedEventArgs e)
         {
-            GridClientes.Columns[0].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            GridClientes.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            GridClientes.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            GridClientes.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            GridClientes.Columns[4].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            GridClientes.Columns[5].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-
-            GridClientes.Columns[2].MinWidth = 75;
-            GridClientes.Columns[4].MinWidth = 120;
+            GridClientes.Columns[0].MinWidth = 100;
+            GridClientes.Columns[1].MinWidth = 150;
+            GridClientes.Columns[2].MinWidth = 100;
+            GridClientes.Columns[3].MinWidth = 100;
+            GridClientes.Columns[4].MinWidth = 150;
+            GridClientes.Columns[5].MinWidth = 150;
 
             Style s = new Style(typeof(DataGridColumnHeader));
-            s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush) FindResource("AzulBruxao")));
+            s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush)FindResource("AzulBruxao")));
             s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
             for (int i = 0; i < GridClientes.Columns.Count; i++)
                 GridClientes.Columns[i].HeaderStyle = s;

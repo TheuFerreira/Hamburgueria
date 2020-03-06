@@ -119,5 +119,10 @@ namespace Hamburgueria.View
 
             Name.Focus();
         }
+
+        private void ClearBtn_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -78,8 +78,11 @@
             </Setter>
         </Style>
 
-        <Style x:Key="TextBoxLine" TargetType="TextBox">
-            
+        <Style x:Key="TextBoxUnderline" TargetType="TextBox">
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Background" Value="{x:Null}"/>
         </Style>
     </Application.Resources>
 </Application>

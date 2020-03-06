@@ -18,38 +18,26 @@
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
+
         <Label Content="NOME:*" HorizontalAlignment="Left" Margin="82,50,0,0" VerticalAlignment="Top" Width="52" Foreground="White"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="22" Margin="139,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446" CharacterCasing="Upper" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="Black">
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="22" Margin="139,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}">
         </TextBox>
+
         <Label Content="RUA:*" HorizontalAlignment="Left" Margin="82,105,0,0" VerticalAlignment="Top" Width="43" Foreground="White" RenderTransformOrigin="0.953,0.635"/>
-        <TextBox x:Name="Adress" HorizontalAlignment="Left" Height="22" Margin="125,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="Black">
-        </TextBox>
+        <TextBox x:Name="Adress" HorizontalAlignment="Left" Height="22" Margin="125,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}"/>
+
+
         <Label Content="BAIRRO:*" HorizontalAlignment="Left" Margin="82,166,0,0" VerticalAlignment="Top" Width="58" Foreground="White"/>
-        <TextBox x:Name="District" HorizontalAlignment="Left" Height="22" Margin="139,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="Black"/>
+        <TextBox x:Name="District" HorizontalAlignment="Left" Height="22" Margin="139,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}"/>
+
         <Label Content="NUMERO:*" HorizontalAlignment="Left" Margin="472,108,0,0" VerticalAlignment="Top" Width="68" Foreground="White"/>
-        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="22" Margin="535,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="Black">
-        </TextBox>
+        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="22" Margin="535,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}"/>
+
         <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Margin="379,169,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="Complement" HorizontalAlignment="Left" Height="22" Margin="476,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="Black"/>
-        <Label Content="REFERENCIA:  ________________________________________________________________" HorizontalAlignment="Left" Margin="85,238,0,0" VerticalAlignment="Top" Width="500" Foreground="White" RenderTransformOrigin="0.5,0.5">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="0.588"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="0.656"/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
-        <TextBox x:Name="Reference" HorizontalAlignment="Left" Height="22" Margin="167,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" Background="{x:Null}" Foreground="White">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.008"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
+        <TextBox x:Name="Complement" HorizontalAlignment="Left" Height="22" Margin="476,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}"/>
+      
+        <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="85,236,0,0" VerticalAlignment="Top" Width="75" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="Reference" HorizontalAlignment="Left" Height="22" Margin="167,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" />
+
     </Grid>
 </Window>

@@ -30,22 +30,5 @@
         <TextBox x:Name="Complement" HorizontalAlignment="Left" Height="3" Margin="455,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" CharacterCasing="Upper"/>
         <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="-1,245,0,0" VerticalAlignment="Top" Width="128" Foreground="White"/>
         <TextBox x:Name="Reference" HorizontalAlignment="Left" Height="3" Margin="79,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="562" CharacterCasing="Upper"/>
-
-        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,105,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom"/>
-        <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom"/>
-        <Label Content="NOME:*" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" CharacterCasing="Upper" Style="{DynamicResource TextBoxLine}"/>
-        <Label Content="RUA:*" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="Adress" HorizontalAlignment="Left" Height="23" Margin="10,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" CharacterCasing="Upper"/>
-        <Label Content="BAIRRO:*" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="District" HorizontalAlignment="Left" Height="23" Margin="10,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" CharacterCasing="Upper"/>
-        <Label Content="NUMERO:*" HorizontalAlignment="Left" Margin="216,164,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="23" Margin="216,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" CharacterCasing="Upper"/>
-        <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Margin="10,237,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="Complement" HorizontalAlignment="Left" Height="23" Margin="10,263,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" CharacterCasing="Upper"/>
-        <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="10,327,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="Reference" HorizontalAlignment="Left" Height="23" Margin="10,353,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" CharacterCasing="Upper"/>
-
-
     </Grid>
 </Window>

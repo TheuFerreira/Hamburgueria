@@ -100,15 +100,5 @@ namespace Hamburgueria.View
             c.clients = this;
             c.ShowDialog();
         }
-
-        private void AddCliente_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void EditCliente_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }

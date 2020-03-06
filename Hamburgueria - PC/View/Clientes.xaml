@@ -46,7 +46,7 @@
                     HorizontalAlignment="Right" 
                     Width="73" Height="36" 
                     VerticalAlignment="Bottom" 
-                    Style="{StaticResource ButtonShadowAround}" FontSize="11" AutomationProperties.Name="ADICIONAR" Click="AddCliente_Click_1">
+                    Style="{StaticResource ButtonShadowAround}" FontSize="11" AutomationProperties.Name="ADICIONAR">
                 <Button.Background>
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
@@ -74,7 +74,7 @@
                     HorizontalAlignment="Right" 
                     Width="73" Height="36" 
                     VerticalAlignment="Bottom"  
-                    Style="{StaticResource ButtonShadowAround}" Click="EditCliente_Click" FontSize="11">
+                    Style="{StaticResource ButtonShadowAround}" FontSize="11">
                 <Button.Background>
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>

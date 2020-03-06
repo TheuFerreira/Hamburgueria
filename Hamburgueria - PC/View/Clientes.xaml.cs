@@ -24,17 +24,20 @@ namespace Hamburgueria.View
             InitializeComponent();
 
             this.Loaded += Clientes_Loaded;
-            AddCliente.Click += delegate { new ClientesAdd().ShowDialog(); };
 
-            Item i1 = new Item("Matheus", "Avenida 1º de Junho", 162, "Centro", "Casa", "Igreja Matriz");
-            Item i2 = new Item("Paulo", "Jao Kisse Sei la das quantas, tenho que testar isso aqui!!!", 666, "Inferno", "Casa", "Perto da Casa do Karalho");
-
-            List<Item> items = new List<Item>() { i1, i2 };
-            GridClientes.ItemsSource = items;
+            this.AddCliente.Click += AddCliente_Click;
         }
 
-        private void Clientes_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnKeyDown(KeyEventArgs e)
         {
+            if (e.Key == Key.Escape)
+                this.Close();
+        }
+
+        public void Clientes_Loaded(object sender, RoutedEventArgs e)
+        {
+            GridClientes.ItemsSource = Model.Cliente.GetAll();
+
             GridClientes.Columns[0].MinWidth = 100;
             GridClientes.Columns[1].MinWidth = 150;
             GridClientes.Columns[2].MinWidth = 100;
@@ -49,24 +52,11 @@ namespace Hamburgueria.View
                 GridClientes.Columns[i].HeaderStyle = s;
         }
 
-        public class Item
+        private void AddCliente_Click(object sender, RoutedEventArgs e)
         {
-            public string NOME { get; set; }
-            public string RUA { get; set; }
-            public int NUMERO { get; set; }
-            public string BAIRRO { get; set; }
-            public string COMPLEMENTO { get; set; }
-            public string REFERENCIA { get; set; }
-
-            public Item(string nome, string rua, int numero, string bairro, string complemento, string referencia)
-            {
-                this.NOME = nome;
-                this.RUA = rua;
-                this.REFERENCIA = referencia;
-                this.NUMERO = numero;
-                this.BAIRRO = bairro;
-                this.COMPLEMENTO = complemento;
-            }
+            ClientesAdd c = new ClientesAdd();
+            c.clients = this;
+            c.ShowDialog();
         }
     }
 }

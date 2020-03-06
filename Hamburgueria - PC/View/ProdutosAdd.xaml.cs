@@ -21,6 +21,13 @@ namespace Hamburgueria.View
         public ProdutosAdd()
         {
             InitializeComponent();
+
+            this.Loaded += ProdutosAdd_Loaded;
+        }
+
+        private void ProdutosAdd_Loaded(object sender, RoutedEventArgs e)
+        {
+            TypeProduto.ItemsSource = Model.Produto.GetAllType();
         }
     }
 }

@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="ProdutosAdd" Height="525.77" Width="361.088" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <Label Content="NOME:*" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="106"/>
+        <TextBox x:Name="NameProduto" Height="23" Margin="10,36,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Label Content="PREÇO:*" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="106"/>
+        <TextBox x:Name="PriceProduto" Height="23" Margin="10,106,202,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
+        <Label Content="TIPO:*" HorizontalAlignment="Left" Margin="171,80,0,0" VerticalAlignment="Top" Width="106"/>
+        <ComboBox x:Name="TypeProduto" HorizontalAlignment="Left" Margin="171,106,0,0" VerticalAlignment="Top" Width="172"/>
+
     </Grid>
 </Window>

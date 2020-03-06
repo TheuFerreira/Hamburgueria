@@ -10,7 +10,7 @@
         <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,105,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom"/>
         <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,10,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom"/>
         <Label Content="NOME:*" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" CharacterCasing="Upper"/>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="23" Margin="10,36,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" CharacterCasing="Upper" Style="{DynamicResource TextBoxLine}"/>
         <Label Content="RUA:*" HorizontalAlignment="Left" Margin="10,99,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
         <TextBox x:Name="Adress" HorizontalAlignment="Left" Height="23" Margin="10,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="333" CharacterCasing="Upper"/>
         <Label Content="BAIRRO:*" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>

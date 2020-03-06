@@ -22,6 +22,14 @@ namespace Hamburgueria.View
 
         public Clientes clients;
 
+        public int id = -1;
+        public string name = "";
+        public string address = "";
+        public string number = "";
+        public string district = "";
+        public string complement = "";
+        public string reference = "";
+
         public ClientesAdd()
         {
             InitializeComponent();
@@ -55,7 +63,15 @@ namespace Hamburgueria.View
 
         private void ClientesAdd_Loaded(object sender, RoutedEventArgs e)
         {
+            Name.Text = name;
+            Adress.Text = address;
+            District.Text = district;
+            Number.Text = number;
+            Complement.Text = complement;
+            Reference.Text = reference;
+
             Name.Focus();
+            Name.SelectAll();
         }
 
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -65,20 +81,31 @@ namespace Hamburgueria.View
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(Name.Text) || 
-                string.IsNullOrEmpty(Adress.Text) || 
-                string.IsNullOrEmpty(District.Text) || 
+            if (string.IsNullOrEmpty(Name.Text) ||
+                string.IsNullOrEmpty(Adress.Text) ||
+                string.IsNullOrEmpty(District.Text) ||
                 string.IsNullOrEmpty(Number.Text))
             {
                 MessageBox.Show("Os campos com * não podem estar vazios!!!", "ALERTA", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
 
-            Model.Cliente.Insert(Name.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);
+            if (id == -1)
+            {
+                Model.Cliente.Insert(Name.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);
 
-            MessageBox.Show("Cliente cadastrado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Cliente cadastrado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            ClearBtn_Click(null, null);
+                ClearBtn_Click(null, null);
+            }
+            else
+            {
+                Model.Cliente.Update(id, Name.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);
+
+                MessageBox.Show("Cliente atualizado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                this.Close();
+            }
         }
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)

@@ -12,12 +12,12 @@
 
         <Border BorderBrush="White" BorderThickness="1" Margin="76,63,76,79" CornerRadius="20"/>
 
-        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,145,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">
+        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,163,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,34,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">
+        <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,54,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
             </Button.Background>

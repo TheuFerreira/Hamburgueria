@@ -5,14 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="ProdutosAdd" Height="525.77" Width="361.088" WindowStartupLocation="CenterScreen">
-    <Grid>
-        <Label Content="NOME:*" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="106"/>
-        <TextBox x:Name="NameProduto" Height="23" Margin="10,36,10,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <Label Content="PREÇO:*" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Width="106"/>
-        <TextBox x:Name="PriceProduto" Height="23" Margin="10,106,202,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top"/>
-        <Label Content="TIPO:*" HorizontalAlignment="Left" Margin="171,80,0,0" VerticalAlignment="Top" Width="106"/>
-        <ComboBox x:Name="TypeProduto" HorizontalAlignment="Left" Margin="171,106,0,0" VerticalAlignment="Top" Width="172"/>
+        Title="ProdutosAdd" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF9D0D76">
+
+        <Border BorderBrush="White" BorderThickness="1" Margin="54,44,54,63" CornerRadius="20"/>
+
+        <Border BorderBrush="White" BorderThickness="1" Margin="76,63,76,79" CornerRadius="20"/>
+
+        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,168,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,54,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">
+            <Button.Background>
+                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
+            </Button.Background>
+        </Button>
+
+        <Label Content="NOME:*" HorizontalAlignment="Left" Margin="96,138,0,0" VerticalAlignment="Top" Width="52" Foreground="White"/>
+        <TextBox x:Name="Name" Margin="143,138,308,262" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+
+        <Label Content="PREÇO:*" HorizontalAlignment="Left" Margin="96,240,0,0" VerticalAlignment="Top" Width="86" Foreground="White" RenderTransformOrigin="0.953,0.635" FontFamily="Arial"/>
+        <TextBox x:Name="Adress" Margin="152,240,450,163" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+
+
+        <Label Content="CÓDIGO:*" HorizontalAlignment="Left" Margin="531,138,0,0" VerticalAlignment="Top" Width="70" Foreground="White" RenderTransformOrigin="0.81,0.487" FontFamily="Arial"/>
+        <TextBox x:Name="District" Margin="595,133,111,262" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+
+        <Label Content="TIPO:*" Margin="416,240,308,153" Foreground="White" FontFamily="Arial"/>
+        <Label Content="PREENCHA OS CAMPOS ABAIXO" HorizontalAlignment="Left" Height="29" Margin="54,10,0,0" VerticalAlignment="Top" Width="266" Foreground="White" FontSize="16" FontFamily="Arial"/>
+        <ComboBox HorizontalAlignment="Left" Height="17" Margin="459,240,0,0" VerticalAlignment="Top" Width="222">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
 
     </Grid>
 </Window>

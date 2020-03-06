@@ -22,7 +22,7 @@ namespace Hamburgueria.View
         {
             InitializeComponent();
 
-            AddProduto.Click += delegate { new ProdutosAdd().ShowDialog(); };
+            //AddProduto.Click += delegate { new ProdutosAdd().ShowDialog(); };
         }
     }
 }

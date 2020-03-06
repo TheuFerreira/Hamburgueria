@@ -80,5 +80,43 @@ namespace Hamburgueria.Model
 
             connection.Close();
         }
+
+        public static void Update(int id, string name, string address, string district, string number, string complement, string reference)
+        {
+            connection.Open();
+
+            SQLiteCommand command = new SQLiteCommand(connection);
+            command.CommandText = "UPDATE cliente " +
+                "set " +
+                "nome = @nome, rua = @rua, numero = @numero, bairro = @bairro, complemento = @complemento, referencia = @referencia " +
+                "WHERE " +
+                "id = @id";
+
+            command.Parameters.AddWithValue("@id", id);
+            command.Parameters.AddWithValue("@nome", name);
+            command.Parameters.AddWithValue("@rua", address);
+            command.Parameters.AddWithValue("@numero", number);
+            command.Parameters.AddWithValue("@bairro", district);
+            command.Parameters.AddWithValue("@complemento", complement);
+            command.Parameters.AddWithValue("@referencia", reference);
+
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
+        public static void Delete(int id)
+        {
+            connection.Open();
+
+            SQLiteCommand command = new SQLiteCommand(connection);
+            command.CommandText = "DELETE FROM cliente WHERE id = @id";
+
+            command.Parameters.AddWithValue("@id", id);
+
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
     }
 }

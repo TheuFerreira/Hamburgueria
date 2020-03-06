@@ -25,6 +25,8 @@ namespace Hamburgueria.View
 
             this.Loaded += Clientes_Loaded;
 
+            this.DelCliente.Click += DelCliente_Click;
+            this.EditCliente.Click += EditCliente_Click;
             this.AddCliente.Click += AddCliente_Click;
         }
 
@@ -38,18 +40,58 @@ namespace Hamburgueria.View
         {
             GridClientes.ItemsSource = Model.Cliente.GetAll();
 
-            GridClientes.Columns[0].MinWidth = 100;
-            GridClientes.Columns[1].MinWidth = 150;
-            GridClientes.Columns[2].MinWidth = 100;
+            GridClientes.Columns[0].Visibility = Visibility.Collapsed;
+
+            GridClientes.Columns[1].Header = "NOME";
+            GridClientes.Columns[2].Header = "RUA";
+            GridClientes.Columns[3].Header = "NÚMERO";
+            GridClientes.Columns[4].Header = "BAIRRO";
+            GridClientes.Columns[5].Header = "COMPLEMENTO";
+            GridClientes.Columns[6].Header = "REFERÊNCIA";
+
+            GridClientes.Columns[1].MinWidth = 100;
+            GridClientes.Columns[2].MinWidth = 150;
             GridClientes.Columns[3].MinWidth = 100;
-            GridClientes.Columns[4].MinWidth = 150;
+            GridClientes.Columns[4].MinWidth = 100;
             GridClientes.Columns[5].MinWidth = 150;
+            GridClientes.Columns[6].MinWidth = 150;
 
             Style s = new Style(typeof(DataGridColumnHeader));
             s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush)FindResource("AzulBruxao")));
             s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
             for (int i = 0; i < GridClientes.Columns.Count; i++)
                 GridClientes.Columns[i].HeaderStyle = s;
+        }
+
+        private void DelCliente_Click(object sender, RoutedEventArgs e)
+        {
+            if (GridClientes.SelectedIndex != -1)
+            {
+                var select = (Model.Cliente.Item)GridClientes.SelectedItem;
+                Model.Cliente.Delete(select.ID);
+
+                Clientes_Loaded(null, null);
+            }
+        }
+
+        private void EditCliente_Click(object sender, RoutedEventArgs e)
+        {
+            if (GridClientes.SelectedIndex != -1)
+            {
+                var select = (Model.Cliente.Item)GridClientes.SelectedItem;
+
+                ClientesAdd c = new ClientesAdd();
+                c.clients = this;
+                c.id = select.ID;
+                c.name = select.NAME;
+                c.address = select.ADDRESS;
+                c.number = select.NUMBER;
+                c.district = select.DISTRICT;
+                c.complement = select.COMPLEMENT;
+                c.reference = select.REFERENCE;
+                c.ShowDialog();
+            }
+            
         }
 
         private void AddCliente_Click(object sender, RoutedEventArgs e)

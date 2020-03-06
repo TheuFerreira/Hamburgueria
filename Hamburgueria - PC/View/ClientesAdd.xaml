@@ -27,7 +27,11 @@
         <Label Content="NUMERO:*" HorizontalAlignment="Left" Margin="510,92,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
         <TextBox x:Name="Number" HorizontalAlignment="Left" Height="3" Margin="578,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537"/>
         <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Margin="358,175,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="Complement" HorizontalAlignment="Left" Height="3" Margin="455,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" CharacterCasing="Upper"/>
+        <TextBox x:Name="Complement" HorizontalAlignment="Left" Height="3" Margin="455,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182" CharacterCasing="Upper" SelectionBrush="{x:Null}">
+            <TextBox.Background>
+                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/linha.png" Stretch="Uniform"/>
+            </TextBox.Background>
+        </TextBox>
         <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="-1,245,0,0" VerticalAlignment="Top" Width="128" Foreground="White"/>
         <TextBox x:Name="Reference" HorizontalAlignment="Left" Height="3" Margin="79,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="562" CharacterCasing="Upper"/>
     </Grid>

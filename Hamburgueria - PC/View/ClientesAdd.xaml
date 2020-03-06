@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="ClientesAdd" Height="400" Width="683" WindowStartupLocation="CenterScreen">
+        Title="ClientesAdd" Height="450" Width="800">
     <Grid Background="#FF9D0D76">
 
-        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,145,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Click="ClearBtn_Click_1" Foreground="#FF9D0D76" FontFamily="Arial">
+        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,145,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
             </Button.Background>
@@ -19,44 +19,18 @@
             </Button.Background>
         </Button>
         <Label Content="NOME:*" HorizontalAlignment="Left" Margin="82,50,0,0" VerticalAlignment="Top" Width="52" Foreground="White"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="3" Margin="139,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446" CharacterCasing="Upper" BorderBrush="{x:Null}" SelectionBrush="{x:Null}">
-            <TextBox.Background>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/linha.png" Stretch="Uniform"/>
-            </TextBox.Background>
-            <TextBox.OpacityMask>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/linha.png" Stretch="Uniform"/>
-            </TextBox.OpacityMask>
+        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="3" Margin="139,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="446" CharacterCasing="Upper" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="Black">
         </TextBox>
         <Label Content="RUA:*" HorizontalAlignment="Left" Margin="82,105,0,0" VerticalAlignment="Top" Width="43" Foreground="White" RenderTransformOrigin="0.953,0.635"/>
-        <TextBox x:Name="Adress" HorizontalAlignment="Left" Height="3" Margin="125,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}">
-            <TextBox.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/linha.png" Stretch="Uniform"/>
-            </TextBox.Background>
-            <TextBox.OpacityMask>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/linha.png" Stretch="Uniform"/>
-            </TextBox.OpacityMask>
+        <TextBox x:Name="Adress" HorizontalAlignment="Left" Height="3" Margin="125,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="319" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="Black">
         </TextBox>
         <Label Content="BAIRRO:*" HorizontalAlignment="Left" Margin="82,166,0,0" VerticalAlignment="Top" Width="58" Foreground="White"/>
-        <TextBox x:Name="District" HorizontalAlignment="Left" Height="3" Margin="139,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}">
-            <TextBox.Background>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/linha.png" Stretch="Uniform"/>
-            </TextBox.Background>
-        </TextBox>
+        <TextBox x:Name="District" HorizontalAlignment="Left" Height="3" Margin="139,181,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="225" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="Black"/>
         <Label Content="NUMERO:*" HorizontalAlignment="Left" Margin="472,108,0,0" VerticalAlignment="Top" Width="68" Foreground="White"/>
-        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="3" Margin="535,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" BorderBrush="{x:Null}" SelectionBrush="{x:Null}">
-            <TextBox.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/linha.png"/>
-            </TextBox.Background>
-            <TextBox.OpacityMask>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/linha.png" Stretch="Uniform"/>
-            </TextBox.OpacityMask>
+        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="3" Margin="535,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" Background="Black">
         </TextBox>
         <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Margin="379,169,0,0" VerticalAlignment="Top" Width="127" Foreground="White"/>
-        <TextBox x:Name="Complement" HorizontalAlignment="Left" Height="3" Margin="476,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}">
-            <TextBox.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/linha.png" Stretch="Uniform"/>
-            </TextBox.Background>
-        </TextBox>
+        <TextBox x:Name="Complement" HorizontalAlignment="Left" Height="3" Margin="476,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="109" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" Background="Black"/>
         <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="85,236,0,0" VerticalAlignment="Top" Width="78" Foreground="White" RenderTransformOrigin="0.5,0.5">
             <Label.RenderTransform>
                 <TransformGroup>
@@ -67,7 +41,7 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <TextBox x:Name="Reference" HorizontalAlignment="Left" Height="5" Margin="167,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5">
+        <TextBox x:Name="Reference" HorizontalAlignment="Left" Height="22" Margin="167,242,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="415" CharacterCasing="Upper" SelectionBrush="{x:Null}" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" Background="Black">
             <TextBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -76,9 +50,6 @@
                     <TranslateTransform/>
                 </TransformGroup>
             </TextBox.RenderTransform>
-            <TextBox.Background>
-                <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/linha.png" Stretch="Uniform"/>
-            </TextBox.Background>
         </TextBox>
     </Grid>
 </Window>

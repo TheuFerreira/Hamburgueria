@@ -5,42 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="ClientesAdd" Height="450" Width="800">
+        Title="ClientesAdd" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="#FF9D0D76">
 
-        <Border BorderBrush="White" BorderThickness="1" Margin="54,44,54,63"/>
+        <Border BorderBrush="White" BorderThickness="1" Margin="54,44,54,63" CornerRadius="20"/>
 
-        <Border BorderBrush="White" BorderThickness="1" Height="277" Margin="76,63,76,0" VerticalAlignment="Top"/>
+        <Border BorderBrush="White" BorderThickness="1" Margin="76,63,76,79" CornerRadius="20"/>
 
-        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,145,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial">
+        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,145,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,34,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial">
+        <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,34,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF9D0D76" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
 
         <Label Content="NOME:*" HorizontalAlignment="Left" Margin="115,90,0,0" VerticalAlignment="Top" Width="52" Foreground="White"/>
-        <TextBox x:Name="Name" HorizontalAlignment="Left" Height="22" Margin="163,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="511" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="Name" Margin="163,90,118,307" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="RUA:*" HorizontalAlignment="Left" Margin="115,155,0,0" VerticalAlignment="Top" Width="43" Foreground="White" RenderTransformOrigin="0.953,0.635"/>
-        <TextBox x:Name="Adress" HorizontalAlignment="Left" Height="22" Margin="152,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="375" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="Adress" Margin="152,155,265,242" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
 
         <Label Content="BAIRRO:*" HorizontalAlignment="Left" Margin="115,215,0,0" VerticalAlignment="Top" Width="58" Foreground="White" RenderTransformOrigin="0.81,0.487"/>
-        <TextBox x:Name="District" HorizontalAlignment="Left" Height="22" Margin="171,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="224" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="District" Margin="171,215,397,182" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-        <Label Content="NUMERO:*" HorizontalAlignment="Left" Margin="556,155,0,0" VerticalAlignment="Top" Width="68" Foreground="White"/>
-        <TextBox x:Name="Number" HorizontalAlignment="Left" Height="22" Margin="624,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="50" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Label Content="NUMERO:*" Margin="556,155,168,238" Foreground="White"/>
+        <TextBox x:Name="Number" Margin="624,155,118,242" TextWrapping="Wrap" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-        <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Margin="406,215,0,0" VerticalAlignment="Top" Width="98" Foreground="White"/>
-        <TextBox x:Name="Complement" HorizontalAlignment="Left" Height="22" Margin="504,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="170" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Label Content="COMPLEMENTO:" Margin="406,215,288,178" Foreground="White"/>
+        <TextBox x:Name="Complement" Margin="504,215,118,182" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="115,280,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="Reference" HorizontalAlignment="Left" Height="22" Margin="192,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="482" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
+        <TextBox x:Name="Reference" Margin="192,280,118,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
         <Label Content="PREENCHA OS CAMPOS ABAIXO" HorizontalAlignment="Left" Height="29" Margin="54,10,0,0" VerticalAlignment="Top" Width="266" Foreground="White" FontSize="16" FontFamily="Arial"/>
 
     </Grid>

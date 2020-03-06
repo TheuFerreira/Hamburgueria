@@ -80,9 +80,10 @@
 
         <Style x:Key="TextBoxUnderline" TargetType="TextBox">
             <Setter Property="BorderBrush" Value="White"/>
-            <Setter Property="BorderThickness" Value="0,0,0,2"/>
+            <Setter Property="BorderThickness" Value="0,0,0,1"/>
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Padding" Value="3,7,0,3"/>
         </Style>
     </Application.Resources>
 </Application>

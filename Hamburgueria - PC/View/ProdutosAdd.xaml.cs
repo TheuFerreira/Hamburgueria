@@ -18,11 +18,19 @@ namespace Hamburgueria.View
     /// </summary>
     public partial class ProdutosAdd : Window
     {
+        public Produtos produtos;
+
         public ProdutosAdd()
         {
             InitializeComponent();
 
             this.Loaded += ProdutosAdd_Loaded;
+            this.Closed += ProdutosAdd_Closed;
+        }
+
+        private void ProdutosAdd_Closed(object sender, EventArgs e)
+        {
+            produtos.Produtos_Loaded(null, null);
         }
 
         private void ProdutosAdd_Loaded(object sender, RoutedEventArgs e)

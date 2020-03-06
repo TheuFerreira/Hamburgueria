@@ -12,7 +12,7 @@
         <SolidColorBrush x:Key="AzulBruxao" Color="#4472c4"/>
     </Window.Resources>
     <Grid>
-        <DataGrid x:Name="GridClientes" 
+        <DataGrid x:Name="GridProdutos" 
                   Margin="0,0,0,60" 
                   AutoGenerateColumns="True"
                   AlternationCount="2" 
@@ -33,7 +33,7 @@
         <Grid Background="#FF4472C4" 
               Height="60" 
               VerticalAlignment="Bottom">
-            <Button x:Name="AddCliente" 
+            <Button x:Name="AddProduto" 
                     Content="ADICIONAR" 
                     Margin="0,0,31,10" 
                     BorderBrush="{x:Null}" 
@@ -47,7 +47,7 @@
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="DelCliente" 
+            <Button x:Name="DelProduto" 
                     Content="EXCLUIR" 
                     Margin="0,0,206,10" 
                     BorderBrush="{x:Null}" 
@@ -61,7 +61,7 @@
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
             </Button>
-            <Button x:Name="EditCliente" 
+            <Button x:Name="EditProduto" 
                     Content="EDITAR"
                     Margin="0,0,118,10" 
                     BorderBrush="{x:Null}" 

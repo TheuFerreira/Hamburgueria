@@ -110,7 +110,7 @@ namespace Hamburgueria.Model
             connection.Open();
 
             SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "DELETE FROM cliente WHERE id = @id";
+            command.CommandText = "UPDATE cliente SET excluido = 1 WHERE id = @id";
 
             command.Parameters.AddWithValue("@id", id);
 

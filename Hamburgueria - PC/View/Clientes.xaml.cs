@@ -72,6 +72,10 @@ namespace Hamburgueria.View
 
                 Clientes_Loaded(null, null);
             }
+            else
+            {
+                MessageBox.Show("Selecione um CLIENTE para ser editado!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void EditCliente_Click(object sender, RoutedEventArgs e)
@@ -91,7 +95,10 @@ namespace Hamburgueria.View
                 c.reference = select.REFERENCE;
                 c.ShowDialog();
             }
-            
+            else
+            {
+                MessageBox.Show("Selecione um CLIENTE para ser editado!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void AddCliente_Click(object sender, RoutedEventArgs e)

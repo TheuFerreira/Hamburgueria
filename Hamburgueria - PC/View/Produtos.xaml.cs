@@ -25,8 +25,76 @@ namespace Hamburgueria.View
 
             this.Loaded += Produtos_Loaded;
 
-            AddProduto.Click += AddProduto_Click;
+            this.DelProduto.Click += DelProduto_Click;
+            this.EditProduto.Click += EditProduto_Click;
+            this.AddProduto.Click += AddProduto_Click;
+        }
 
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                this.Close();
+        }
+
+        public void Produtos_Loaded(object sender, RoutedEventArgs e)
+        {
+            GridProdutos.ItemsSource = Model.Produto.Select();
+
+            GridProdutos.Columns[0].Visibility = Visibility.Collapsed;
+
+            GridProdutos.Columns[1].Header = "CÓDIGO";
+            GridProdutos.Columns[2].Header = "NOME";
+            GridProdutos.Columns[3].Header = "PREÇO";
+            GridProdutos.Columns[4].Header = "TIPO";
+
+            GridProdutos.Columns[1].MinWidth = 150;
+            GridProdutos.Columns[2].MinWidth = 150;
+            GridProdutos.Columns[3].MinWidth = 200;
+            GridProdutos.Columns[4].MinWidth = 200;
+
+            GridProdutos.Columns[2].Width = new DataGridLength(1.0, DataGridLengthUnitType.Star);
+
+            Style s = new Style(typeof(DataGridColumnHeader));
+            s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush)FindResource("AzulBruxao")));
+            s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
+            for (int i = 0; i < GridProdutos.Columns.Count; i++)
+                GridProdutos.Columns[i].HeaderStyle = s;
+        }
+
+        private void DelProduto_Click(object sender, RoutedEventArgs e)
+        {
+            if (GridProdutos.SelectedIndex != -1)
+            {
+                int id = ((Model.Produto.Item)GridProdutos.SelectedItem).ID;
+                Model.Produto.Delete(id);
+
+                Produtos_Loaded(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Selecione um PRODUTO para ser editado!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+        }
+
+        private void EditProduto_Click(object sender, RoutedEventArgs e)
+        {
+            if (GridProdutos.SelectedIndex != -1)
+            {
+                var item = (Model.Produto.Item)GridProdutos.SelectedItem;
+
+                ProdutosAdd p = new ProdutosAdd();
+                p.produtos = this;
+                p.id = item.ID;
+                p.cod = item.COD;
+                p.name = item.NAME;
+                p.price = item.PRICE;
+                p.type = item.TYPE;
+                p.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um PRODUTO para ser editado!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void AddProduto_Click(object sender, RoutedEventArgs e)
@@ -34,27 +102,6 @@ namespace Hamburgueria.View
             ProdutosAdd p = new ProdutosAdd();
             p.produtos = this;
             p.ShowDialog();
-        }
-
-        public void Produtos_Loaded(object sender, RoutedEventArgs e)
-        {
-            GridProdutos.ItemsSource = Model.Produto.Select();
-
-            GridProdutos.Columns[0].Header = "CÓDIGO";
-            GridProdutos.Columns[1].Header = "NOME";
-            GridProdutos.Columns[2].Header = "TIPO";
-
-            GridProdutos.Columns[0].MinWidth = 150;
-            GridProdutos.Columns[1].MinWidth = 150;
-            GridProdutos.Columns[2].MinWidth = 200;
-
-            GridProdutos.Columns[1].Width = new DataGridLength(1.0, DataGridLengthUnitType.Star);
-
-            Style s = new Style(typeof(DataGridColumnHeader));
-            s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush)FindResource("AzulBruxao")));
-            s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
-            for (int i = 0; i < GridProdutos.Columns.Count; i++)
-                GridProdutos.Columns[i].HeaderStyle = s;
         }
     }
 }

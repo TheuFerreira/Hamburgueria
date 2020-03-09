@@ -25,7 +25,6 @@ namespace Hamburgueria.View
         public int cod;
         public string name;
         public decimal price;
-        public string type;
 
         public ProdutosAdd()
         {
@@ -36,7 +35,6 @@ namespace Hamburgueria.View
 
             this.Code.PreviewTextInput += Code_PreviewTextInput;
             this.Price.PreviewTextInput += Price_PreviewTextInput;
-            this.TypeProduto.SelectionChanged += TypeProduto_SelectionChanged;
 
             this.ClearBtn.Click += ClearBtn_Click;
             this.SaveBtn.Click += SaveBtn_Click;
@@ -55,18 +53,11 @@ namespace Hamburgueria.View
 
         private void ProdutosAdd_Loaded(object sender, RoutedEventArgs e)
         {
-            TypeProduto.ItemsSource = Model.Produto.GetAllType();
-
             if (id != -1)
             {
                 Name.Text = name;
                 Code.Text = cod.ToString();
                 Price.Text = price.ToString();
-
-                List<string> types = (List<string>)TypeProduto.ItemsSource;
-                for (int i = 0; i < types.Count; i++)
-                    if (types[i] == type)
-                        TypeProduto.SelectedIndex = i;
             }
         }
 
@@ -80,28 +71,16 @@ namespace Hamburgueria.View
             e.Handled = new Regex("[^0-9,.]").IsMatch(e.Text);
         }
 
-        private void TypeProduto_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (TypeProduto.SelectedIndex == -1)
-                return;
-
-            type = TypeProduto.SelectedItem.ToString();
-
-            if (type == "Adicionar...")
-                Console.WriteLine(type);
-        }
-
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
             Name.Text = "";
             Code.Text = "";
             Price.Text = "";
-            TypeProduto.SelectedIndex = -1;
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(type) || string.IsNullOrEmpty(Price.Text) || string.IsNullOrEmpty(Name.Text) || string.IsNullOrEmpty(Code.Text))
+            if (string.IsNullOrEmpty(Price.Text) || string.IsNullOrEmpty(Name.Text) || string.IsNullOrEmpty(Code.Text))
             {
                 MessageBox.Show("Todos os campos precisam serem preenchidos!!!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
@@ -117,12 +96,11 @@ namespace Hamburgueria.View
                 }
                 decimal price = Convert.ToDecimal(Price.Text);
 
-                Model.Produto.Insert(cod, Name.Text, price, type);
+                Model.Produto.Insert(cod, Name.Text, price);
 
                 Name.Text = "";
                 Code.Text = "";
                 Price.Text = "";
-                TypeProduto.SelectedIndex = -1;
             }
             else
             {
@@ -139,7 +117,7 @@ namespace Hamburgueria.View
                     }
                 }
 
-                Model.Produto.Update(id, newCod, name, price, type);
+                Model.Produto.Update(id, newCod, name, price);
 
                 this.Close();
             }

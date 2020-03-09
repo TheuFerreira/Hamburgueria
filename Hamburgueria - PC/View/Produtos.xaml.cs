@@ -45,12 +45,10 @@ namespace Hamburgueria.View
             GridProdutos.Columns[1].Header = "CÓDIGO";
             GridProdutos.Columns[2].Header = "NOME";
             GridProdutos.Columns[3].Header = "PREÇO";
-            GridProdutos.Columns[4].Header = "TIPO";
 
             GridProdutos.Columns[1].MinWidth = 150;
             GridProdutos.Columns[2].MinWidth = 150;
             GridProdutos.Columns[3].MinWidth = 200;
-            GridProdutos.Columns[4].MinWidth = 200;
 
             GridProdutos.Columns[2].Width = new DataGridLength(1.0, DataGridLengthUnitType.Star);
 
@@ -88,7 +86,6 @@ namespace Hamburgueria.View
                 p.cod = item.COD;
                 p.name = item.NAME;
                 p.price = item.PRICE;
-                p.type = item.TYPE;
                 p.ShowDialog();
             }
             else

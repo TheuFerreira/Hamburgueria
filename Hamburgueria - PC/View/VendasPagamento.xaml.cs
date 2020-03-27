@@ -19,8 +19,10 @@ namespace Hamburgueria.View
     public partial class VendasPagamento : Window
     {
         public Vendas sales;
+        public int typeSale = -1;
         public int numTable;
         public DateTime dateSale;
+        public List<View.VendasRapida.Item> items;
 
         private decimal desconto = 0;
         private decimal pago = 0;
@@ -106,9 +108,8 @@ namespace Hamburgueria.View
 
                 change.Text = (pago - Convert.ToDecimal(totalValue.Text)).ToString();
 
-                decimal pay = Convert.ToDecimal(valuePay.Text);
                 decimal total = Convert.ToDecimal(totalValue.Text);
-                if (pay < total)
+                if (pago < total)
                 {
                     confirm.Visibility = Visibility.Hidden;
                     print.Visibility = Visibility.Hidden;
@@ -144,12 +145,22 @@ namespace Hamburgueria.View
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {
-            Model.Venda.Insert(numTable, dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), payment.Text, Sales.Balcao.Products(numTable));
+            // TABLE
+            if (typeSale == 1)
+            {
+                Model.Venda.Insert(numTable, dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), payment.Text, Sales.Balcao.Products(numTable));
 
-            Sales.Balcao.Delete(numTable);
+                Sales.Balcao.Delete(numTable);
 
-            sales.UpdateGrid();
-            this.Close();
+                sales.UpdateGrid();
+                this.Close();
+            }
+            // FAST
+            else
+            {
+                Model.Venda.Insert(dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), payment.Text, items);
+                this.Close();
+            }
         }
 
     }

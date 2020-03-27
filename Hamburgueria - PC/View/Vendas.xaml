@@ -55,5 +55,10 @@
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>
         </Button>
+        <Button x:Name="addFast" HorizontalAlignment="Right" Content="RÁPIDA" FontFamily="Arial" Width="91" Height="35" VerticalAlignment="Bottom" Margin="0,0,213,5" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="Black">
+            <Button.Background>
+                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

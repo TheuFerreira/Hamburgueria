@@ -40,6 +40,7 @@ namespace Hamburgueria.View
 
             this.gridSales.PreviewMouseUp += GridSales_PreviewMouseUp;
 
+            this.addFast.Click += AddFast_Click;
             this.addLocal.Click += AddLocal_Click;
             this.addDelivery.Click += AddDelivery_Click;
         }
@@ -140,12 +141,19 @@ namespace Hamburgueria.View
                     decimal totalSale = Convert.ToDecimal(info[1]);
 
                     VendasPagamento pagamento = new VendasPagamento(totalSale);
+                    pagamento.typeSale = 1;
                     pagamento.sales = this;
                     pagamento.numTable = numTable;
                     pagamento.dateSale = dateSale;
                     pagamento.ShowDialog();
                 }
             }
+        }
+
+        private void AddFast_Click(object sender, RoutedEventArgs e)
+        {
+            VendasRapida rapida = new VendasRapida();
+            rapida.ShowDialog();
         }
 
         private void AddLocal_Click(object sender, RoutedEventArgs e)

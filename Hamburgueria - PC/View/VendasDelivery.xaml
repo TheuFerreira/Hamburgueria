@@ -6,9 +6,77 @@
       xmlns:local="clr-namespace:Hamburgueria.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="VendasDelivery" Background="White">
+      Title="VendasDelivery" Background="White" Height="384" Width="684">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Background="#FF4472C4">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="799*"/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="0*"/>
+            </Grid.ColumnDefinitions>
+            <Rectangle Height="137" VerticalAlignment="Top" Grid.ColumnSpan="2">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF1B3BC6" Offset="0"/>
+                        <GradientStop Color="#FF4472C4" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <TextBox Height="21" Margin="200,25,199,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Pesquisar " Foreground="#FF1F41C6"/>
+            <TextBox Height="21" Margin="53,76,177,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Label Content="NOME" HorizontalAlignment="Left" Height="21" Margin="8,76,0,0" VerticalAlignment="Top" Width="94" FontFamily="Arial" Foreground="White"/>
+            <DataGrid HorizontalAlignment="Left" Margin="1,256,0,0" Width="683" BorderBrush="{x:Null}" Grid.ColumnSpan="2">
+                <DataGrid.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF4472C4" Offset="0"/>
+                        <GradientStop Color="#FF1E40C6" Offset="1"/>
+                    </LinearGradientBrush>
+                </DataGrid.Background>
+            </DataGrid>
+            <Label Content="RUA" HorizontalAlignment="Left" Height="21" Margin="165,130,0,0" VerticalAlignment="Top" Width="42" FontFamily="Arial" Foreground="White"/>
+            <TextBox Height="21" Margin="202,130,6,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Button Content="CONFIRMAR" Margin="0,45,150,357" BorderBrush="{x:Null}" Foreground="#FF2142C6" HorizontalAlignment="Right" Width="51" FontSize="5" Click="Button_Click">
+                <Button.Background>
+                    <ImageBrush Stretch="Uniform" ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+                </Button.Background>
+            </Button>
+            <Button Content="CONFIRMAR" Height="34" Margin="0,217,8,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" HorizontalAlignment="Right" Width="75">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+                </Button.Background>
+            </Button>
+            <Label Content="QUANTIDADE" Height="21" Margin="514,76,81,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.313"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <TextBox Height="21" Margin="601,76,8,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="White" BorderBrush="White"/>
+            <Label Content="NÚMERO" HorizontalAlignment="Left" Height="21" Margin="8,130,0,0" VerticalAlignment="Top" Width="68" FontFamily="Arial" Foreground="White"/>
+            <TextBox Height="21" Margin="71,130,523,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Label Content="COMPLEMENTO" HorizontalAlignment="Left" Height="21" Margin="8,180,0,0" VerticalAlignment="Top" Width="106" FontFamily="Arial" Foreground="White"/>
+            <TextBox Height="21" Margin="112,180,177,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <Label Content="TOTAL" Height="21" Margin="514,180,119,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.313"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <TextBox Height="21" Margin="560,180,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Background="{x:Null}" BorderBrush="White"/>
+        </Grid>
+
     </Grid>
 </Page>

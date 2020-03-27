@@ -128,6 +128,24 @@ namespace Hamburgueria.View
                     delivery.ShowDialog();
                 }
             }
+            // Confirm
+            else if (gridSales.CurrentCell.Column.DisplayIndex == 8)
+            {
+                Item it = (Item)gridSales.SelectedItem;
+                if (it.Type == 0)
+                {
+                    int numTable = Convert.ToInt32(it.File);
+                    string[] info = Sales.Balcao.Info(numTable);
+                    DateTime dateSale = Convert.ToDateTime(info[0]);
+                    decimal totalSale = Convert.ToDecimal(info[1]);
+
+                    VendasPagamento pagamento = new VendasPagamento(totalSale);
+                    pagamento.sales = this;
+                    pagamento.numTable = numTable;
+                    pagamento.dateSale = dateSale;
+                    pagamento.ShowDialog();
+                }
+            }
         }
 
         private void AddLocal_Click(object sender, RoutedEventArgs e)

@@ -52,7 +52,7 @@ namespace Hamburgueria.View
 
         private void Vendas_Loaded(object sender, RoutedEventArgs e)
         {
-            Log.Balcao.Select(gridSales);
+            Sales.Balcao.Select(gridSales);
         }
 
         private void GridSales_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -68,7 +68,7 @@ namespace Hamburgueria.View
                     if (MessageBox.Show("Tem certeza que deseja excluir a venda?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         int numTable = Convert.ToInt32(it.File);
-                        Log.Balcao.Del(numTable);
+                        Sales.Balcao.Del(numTable);
                     }
                 }
             }
@@ -79,13 +79,13 @@ namespace Hamburgueria.View
                 if (it.Type == 0)
                 {
                     int numTable = Convert.ToInt32(it.File);
-                    string[] info = Log.Balcao.Info(numTable);
+                    string[] info = Sales.Balcao.Info(numTable);
 
                     DateTime dateSale = Convert.ToDateTime(info[0]);
                     decimal totalSale = Convert.ToDecimal(info[1]);
 
                     VendasBalcao balcao = new VendasBalcao();
-                    balcao.LoadEditing(numTable, totalSale, dateSale, Log.Balcao.Products(numTable));
+                    balcao.LoadEditing(numTable, totalSale, dateSale, Sales.Balcao.Products(numTable));
                     balcao.ShowDialog();
                 }
             }

@@ -299,7 +299,7 @@ namespace Hamburgueria.View
             if (isEditing == false)
             {
                 int table = Convert.ToInt32(numTable.Text);
-                if (Log.Balcao.Exist(table))
+                if (Sales.Balcao.Exist(table))
                 {
                     MessageBox.Show("Essa mesa já está sendo utilizada!!!");
                     return;
@@ -308,7 +308,7 @@ namespace Hamburgueria.View
                 List<Item> items = new List<Item>();
                 foreach (Item i in gridProduct.Items)
                     items.Add(i);
-                Log.Balcao.Create(table, DateTime.Now, totalSale, items);
+                Sales.Balcao.Create(table, DateTime.Now, totalSale, items);
 
                 searchId = -1;
                 searchCod = 0;
@@ -327,7 +327,7 @@ namespace Hamburgueria.View
                 int table = Convert.ToInt32(numTable.Text);
                 if (oldNumTable != table)
                 {
-                    if (Log.Balcao.Exist(table))
+                    if (Sales.Balcao.Exist(table))
                     {
                         MessageBox.Show("Essa mesa já está sendo utilizada!!!");
                         return;
@@ -337,7 +337,7 @@ namespace Hamburgueria.View
                 List<Item> items = new List<Item>();
                 foreach (Item i in gridProduct.Items)
                     items.Add(i);
-                Log.Balcao.Edit(oldNumTable, table, dateSale, totalSale, items);
+                Sales.Balcao.Edit(oldNumTable, table, dateSale, totalSale, items);
 
                 this.Close();
             }

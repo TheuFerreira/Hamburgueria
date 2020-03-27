@@ -105,6 +105,44 @@ namespace Hamburgueria.Model
             connection.Close();
         }
 
+        public static List<Item> Select(string text)
+        {
+            List<Item> items = new List<Item>();
+
+            connection.Open();
+
+            SQLiteCommand command = new SQLiteCommand(connection);
+            command.CommandText = "SELECT id, nome, rua, numero, bairro, complemento, referencia FROM Cliente WHERE excluido = 0 and nome like '%" + text + "%'";
+
+            var r = command.ExecuteReader();
+            while (r.Read())
+            {
+                int id = Convert.ToInt32(r[0].ToString());
+                string name = r[1].ToString();
+                string address = r[2].ToString();
+                string number = r[3].ToString();
+                string district = r[4].ToString();
+                string complement = r[5].ToString();
+                string reference = r[6].ToString();
+
+                items.Add(new Item()
+                {
+                    ID = id,
+                    NAME = name,
+                    ADDRESS = address,
+                    NUMBER = number,
+                    DISTRICT = district,
+                    COMPLEMENT = complement,
+                    REFERENCE = reference
+                });
+            }
+            r.Close();
+
+            connection.Close();
+
+            return items;
+        }
+
         public static void Delete(int id)
         {
             connection.Open();

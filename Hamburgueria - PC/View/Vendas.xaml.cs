@@ -50,9 +50,18 @@ namespace Hamburgueria.View
                 this.Close();
         }
 
+        public void UpdateGrid()
+        {
+            gridSales.Items.Clear();
+            Sales.Balcao.Select(gridSales);
+            Sales.Delivery.Select(gridSales);
+        }
+
         private void Vendas_Loaded(object sender, RoutedEventArgs e)
         {
+            gridSales.Items.Clear();
             Sales.Balcao.Select(gridSales);
+            Sales.Delivery.Select(gridSales);
         }
 
         private void GridSales_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -60,6 +69,7 @@ namespace Hamburgueria.View
             if (gridSales.HasItems == false)
                 return;
 
+            // Delete
             if (gridSales.CurrentCell.Column.DisplayIndex == 5)
             {
                 Item it = (Item)gridSales.SelectedItem;
@@ -68,7 +78,14 @@ namespace Hamburgueria.View
                     if (MessageBox.Show("Tem certeza que deseja excluir a venda?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
                         int numTable = Convert.ToInt32(it.File);
-                        Sales.Balcao.Del(numTable);
+                        Sales.Balcao.Delete(numTable);
+                    }
+                }
+                else
+                {
+                    if (MessageBox.Show("Tem certeza que deseja excluir a venda?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        Sales.Delivery.Delete(it.File);
                     }
                 }
             }
@@ -85,8 +102,30 @@ namespace Hamburgueria.View
                     decimal totalSale = Convert.ToDecimal(info[1]);
 
                     VendasBalcao balcao = new VendasBalcao();
+                    balcao.sales = this;
                     balcao.LoadEditing(numTable, totalSale, dateSale, Sales.Balcao.Products(numTable));
                     balcao.ShowDialog();
+                }
+                else 
+                {
+                    string nameClient = it.File;
+                    string[] info = Sales.Delivery.Info(nameClient);
+
+                    DateTime dateSale = Convert.ToDateTime(info[0]);
+                    decimal totalSale = Convert.ToDecimal(info[1]);
+                    string[] addressFile = info[2].Split('>');
+                    Model.Cliente.Item address = new Model.Cliente.Item()
+                    { 
+                        NAME = nameClient, 
+                        ADDRESS = addressFile[0], 
+                        NUMBER = addressFile[1], 
+                        COMPLEMENT = addressFile[2] 
+                    };
+
+                    VendasDelivery delivery = new VendasDelivery();
+                    delivery.sales = this;
+                    delivery.LoadEditing(address, totalSale, dateSale, Sales.Delivery.Products(nameClient));
+                    delivery.ShowDialog();
                 }
             }
         }
@@ -94,12 +133,14 @@ namespace Hamburgueria.View
         private void AddLocal_Click(object sender, RoutedEventArgs e)
         {
             VendasBalcao balcao = new VendasBalcao();
+            balcao.sales = this;
             balcao.ShowDialog();
         }
 
         private void AddDelivery_Click(object sender, RoutedEventArgs e)
         {
             VendasDelivery delivery = new VendasDelivery();
+            delivery.sales = this;
             delivery.ShowDialog();
         }
     }

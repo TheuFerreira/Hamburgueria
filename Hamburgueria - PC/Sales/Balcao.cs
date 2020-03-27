@@ -29,7 +29,6 @@ namespace Hamburgueria.Sales
         {
             string[] files = Directory.GetFiles(DefaultPath(), "*.bin", SearchOption.TopDirectoryOnly);
 
-            grid.Items.Clear();
             for (int i = 0; i < files.Length; i++)
             {
                 string[] lines = File.ReadAllLines(files[i]);
@@ -90,7 +89,7 @@ namespace Hamburgueria.Sales
             Create(numTable, dateSale, totalSale, items);
         }
 
-        public static void Del(int numTable)
+        public static void Delete(int numTable)
         {
             File.Delete(DefaultPath() + numTable + ".bin");
         }

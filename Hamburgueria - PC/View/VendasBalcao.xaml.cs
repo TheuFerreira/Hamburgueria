@@ -28,9 +28,10 @@ namespace Hamburgueria.View
             public int Quantity { get; set; }
             public decimal Total { get; set; }
         }
-        
-        private bool isNumber = false;
 
+        public Vendas sales;
+
+        private bool isNumber = false;
         private int searchId = -1;
         private int searchCod = 0;
         private string searchName = "";
@@ -41,11 +42,11 @@ namespace Hamburgueria.View
         private DateTime dateSale;
         private int oldNumTable;
 
-
         public VendasBalcao()
         {
             InitializeComponent();
 
+            this.Closed += VendasBalcao_Closed;
             this.Loaded += VendasBalcao_Loaded;
 
             this.search.PreviewKeyDown += Search_PreviewKeyDown;
@@ -66,6 +67,11 @@ namespace Hamburgueria.View
         {
             if (e.Key == Key.Escape)
                 this.Close();
+        }
+
+        private void VendasBalcao_Closed(object sender, EventArgs e)
+        {
+            sales.UpdateGrid();
         }
 
         public void LoadEditing(int num, decimal totalSale, DateTime dateSale, List<Item> items)
@@ -341,11 +347,6 @@ namespace Hamburgueria.View
 
                 this.Close();
             }
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

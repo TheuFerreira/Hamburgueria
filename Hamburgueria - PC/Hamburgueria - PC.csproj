@@ -76,8 +76,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Log\Balcao.cs" />
+    <Compile Include="Sales\Balcao.cs" />
     <Compile Include="Model\Produto.cs" />
+    <Compile Include="Sales\Delivery.cs" />
     <Compile Include="View\Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>

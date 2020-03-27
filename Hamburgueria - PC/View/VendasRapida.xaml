@@ -39,7 +39,7 @@
                     <ImageBrush Stretch="Uniform" ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
             </Button>
-            <Button Content="CONFIRMAR" Margin="0,45,150,357" BorderBrush="{x:Null}" Foreground="#FF2142C6" HorizontalAlignment="Right" Width="51" FontSize="5" Click="Button_Click">
+            <Button Content="CONFIRMAR" Margin="0,45,150,357" BorderBrush="{x:Null}" Foreground="#FF2142C6" HorizontalAlignment="Right" Width="51" FontSize="5">
                 <Button.Background>
                     <ImageBrush Stretch="Uniform" ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>

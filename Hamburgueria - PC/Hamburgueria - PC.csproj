@@ -76,6 +76,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Log\Balcao.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="View\Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
@@ -184,6 +185,11 @@
     <Content Include="hamburgueria.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\lupa.png" />
+    <Resource Include="Resources\remove.png" />
+    <Resource Include="Resources\print.png" />
+    <Resource Include="Resources\modify.png" />
+    <Resource Include="Resources\confirm.png" />
     <Resource Include="Resources\linha.png" />
     <Resource Include="Resources\BUTAO_IGOR 1.1.png" />
     <Resource Include="Resources\butao_igor.png" />

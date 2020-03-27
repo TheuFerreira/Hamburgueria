@@ -7,6 +7,53 @@
         mc:Ignorable="d"
         Title="Vendas" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Grid>
-        
+        <DataGrid x:Name="gridSales" Margin="0,0,0,45" ItemsSource="{Binding Item}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Path=Type}" Header="TYPE" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding Path=File}" Header="FILE" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding Path=Info}" Header="INFO" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Path=Total}" Header="TOTAL" MinWidth="75"/>
+                <DataGridTextColumn Binding="{Binding Path=Date}" Header="DATE" MinWidth="100"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=Remove}" Height="20" Width="20"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=Modify}" Height="20" Width="20"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=Print}" Height="20" Width="20"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding Path=Confirm}" Height="20" Width="20"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="addDelivery" HorizontalAlignment="Right" Content="DELIVERY" FontFamily="Arial" Width="91" Height="35" VerticalAlignment="Bottom" Margin="0,0,5,5" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="Black">
+            <Button.Background>
+                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+            </Button.Background>
+        </Button>
+        <Button x:Name="addLocal" HorizontalAlignment="Right" Content="BALCÃO" FontFamily="Arial" Width="91" Height="35" VerticalAlignment="Bottom" Margin="0,0,108,5" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="Black">
+            <Button.Background>
+                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+            </Button.Background>
+        </Button>
     </Grid>
 </Window>

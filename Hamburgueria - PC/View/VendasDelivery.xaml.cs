@@ -17,7 +17,7 @@ namespace Hamburgueria.View
     /// <summary>
     /// Interação lógica para VendasDelivery.xam
     /// </summary>
-    public partial class VendasDelivery : Page
+    public partial class VendasDelivery : Window
     {
         public VendasDelivery()
         {

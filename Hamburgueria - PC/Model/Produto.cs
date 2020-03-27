@@ -18,6 +18,28 @@ namespace Hamburgueria.Model
             public decimal PRICE { get; set; }
         }
 
+        public static Item GetProduct(int id)
+        {
+            Item i = new Item();
+
+            connection.Open();
+
+            SQLiteCommand command = new SQLiteCommand(connection);
+            command.CommandText = "SELECT id, cod, nome, preco FROM produto WHERE id = " + id;
+            var r = command.ExecuteReader();
+            while (r.Read())
+            {
+                i.ID = r.GetInt32(0);
+                i.COD = r.GetInt32(1);
+                i.NAME = r.GetString(2);
+                i.PRICE = r.GetDecimal(3);
+            }
+            r.Close();
+
+            connection.Close();
+            return i;
+        }
+
         public static void Insert(int cod, string name, decimal price)
         {
             connection.Open();
@@ -29,7 +51,7 @@ namespace Hamburgueria.Model
             command.Parameters.AddWithValue("@nome", name);
             command.Parameters.AddWithValue("@preco", price);
 
-            int i = command.ExecuteNonQuery();
+            command.ExecuteNonQuery();
 
             connection.Close();
         }
@@ -59,6 +81,58 @@ namespace Hamburgueria.Model
 
             SQLiteCommand command = new SQLiteCommand(connection);
             command.CommandText = "SELECT id, cod, nome, preco FROM produto WHERE excluido = 0";
+
+            var r = command.ExecuteReader();
+            while (r.Read())
+            {
+                int id = r.GetInt32(0);
+                int cod = r.GetInt32(1);
+                string name = r.GetString(2);
+                decimal price = r.GetDecimal(3);
+
+                items.Add(new Item() { ID = id, COD = cod, NAME = name, PRICE = price });
+            }
+            r.Close();
+
+            connection.Close();
+
+            return items;
+        }
+
+        public static List<Item> Select(int codigo)
+        {
+            List<Item> items = new List<Item>();
+
+            connection.Open();
+
+            SQLiteCommand command = new SQLiteCommand(connection);
+            command.CommandText = "SELECT id, cod, nome, preco FROM produto WHERE excluido = 0 AND cod like '%" + codigo + "%'";
+
+            var r = command.ExecuteReader();
+            while (r.Read())
+            {
+                int id = r.GetInt32(0);
+                int cod = r.GetInt32(1);
+                string name = r.GetString(2);
+                decimal price = r.GetDecimal(3);
+
+                items.Add(new Item() { ID = id, COD = cod, NAME = name, PRICE = price });
+            }
+            r.Close();
+
+            connection.Close();
+
+            return items;
+        }
+
+        public static List<Item> Select(string nome)
+        {
+            List<Item> items = new List<Item>();
+
+            connection.Open();
+
+            SQLiteCommand command = new SQLiteCommand(connection);
+            command.CommandText = "SELECT id, cod, nome, preco FROM produto WHERE excluido = 0 AND nome like '%" + nome + "%'";
 
             var r = command.ExecuteReader();
             while (r.Read())

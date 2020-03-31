@@ -21,7 +21,7 @@
         <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="285" Margin="200,65,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible"/>
 
         <Label Content="QUANTIDADE:" HorizontalAlignment="Left" Height="21" Margin="30,114,0,0" VerticalAlignment="Top" Width="94" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="quantity" Height="21" Margin="129,114,390,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="1" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="quantity" Height="21" Margin="120,110,399,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="1" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" Margin="0,0,0,0" BorderBrush="{x:Null}" Height="146" VerticalAlignment="Bottom">
             <DataGrid.Columns>
@@ -40,7 +40,7 @@
             </DataGrid.Background>
         </DataGrid>
         <Label Content="NUM. MESA" HorizontalAlignment="Left" Height="21" Margin="30,180,0,0" VerticalAlignment="Top" Width="98" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="numTable" Height="21" Margin="128,180,389,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" />
+        <TextBox x:Name="numTable" Height="21" Margin="108,176,409,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" />
 
         <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,174,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" HorizontalAlignment="Right" Width="75" Style="{StaticResource ButtonShadowAround}">
             <Button.Background>
@@ -49,6 +49,7 @@
         </Button>
 
         <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Height="21" Margin="490,114,83,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
-        <Image HorizontalAlignment="Left" Height="21" Margin="174,48,0,0" VerticalAlignment="Top" Width="21" Source="/Hamburgueria;component/Resources/lupa.png"/>
+        <Image HorizontalAlignment="Left" Height="13" Margin="493,52,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png"/>
+        <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="142,47,0,0" VerticalAlignment="Top" Width="87" Foreground="White" FontSize="11"/>
     </Grid>
 </Window>

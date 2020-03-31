@@ -26,7 +26,7 @@
 
             <TextBox x:Name="search" Height="21" Margin="200,35,199,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-            <TextBox x:Name="quantity" Height="21" Margin="118,116,450,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
+            <TextBox x:Name="quantity" Height="21" Margin="118,111,450,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
             <Label Content="QUANTIDADE" HorizontalAlignment="Left" Margin="30,114,0,0" Width="94" FontFamily="Arial" Foreground="White" Height="21" VerticalAlignment="Top"/>
             <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" Margin="0,0,0,0" BorderBrush="{x:Null}" Height="171" VerticalAlignment="Bottom">
                 <DataGrid.Columns>
@@ -49,9 +49,11 @@
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
             </Button>
-            <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Height="21" Margin="490,114,51,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
-            <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="285" Margin="198,56,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible"/>
+            <Label x:Name="labelTotalSale" Content="TOTAL: R$0,00" Height="21" Margin="490,114,51,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
+            <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="198,56,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="285"/>
+            <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="142,37,0,0" VerticalAlignment="Top" Width="87" Foreground="White" FontSize="11"/>
         </Grid>
+        <Image Height="13" Margin="494,43,0,0" VerticalAlignment="Top" Source="/Hamburgueria;component/Resources/lupa.png" HorizontalAlignment="Left" Width="15"/>
 
     </Grid>
 </Window>

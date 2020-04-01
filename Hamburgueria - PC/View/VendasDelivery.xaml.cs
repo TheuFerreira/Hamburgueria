@@ -473,5 +473,15 @@ namespace Hamburgueria.View
                 this.Close();
             }
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void quantity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

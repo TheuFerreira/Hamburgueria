@@ -27,7 +27,11 @@
         </ComboBox>
 
         <Label Content="VALOR BRUTO:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="bruteValue" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,50, 10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" FontFamily="Arial" TextAlignment="Right" Background="#FFFDFDFD" BorderBrush="{x:Null}" Foreground="#FF1C3DC6"/>
+        <TextBox x:Name="bruteValue" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,50, 10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" FontFamily="Arial" TextAlignment="Right" BorderBrush="{x:Null}" Foreground="#FF1C3DC6">
+            <TextBox.Background>
+                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="UniformToFill"/>
+            </TextBox.Background>
+        </TextBox>
 
         <Label Content="DESCONTO:" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="discount" HorizontalAlignment="Right" Height="23" Margin="0,90,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" FontFamily="Arial" TextAlignment="Right" Foreground="#FF1C3DC6" BorderBrush="{x:Null}"/>

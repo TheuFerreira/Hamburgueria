@@ -28,7 +28,7 @@
             <ListBoxItem Content="CUSTOMIZADO"/>
         </ComboBox>
 
-        <ComboBox x:Name="typeBox" Margin="746,30,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top">
+        <ComboBox x:Name="typeBox" Margin="746,30,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250">
             <ListBoxItem Content="TODOS"/>
             <ListBoxItem Content="DELIVERY"/>
             <ListBoxItem Content="BALCÃO"/>
@@ -37,7 +37,7 @@
         <DatePicker x:Name="dateOne" Margin="30,131,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250" Height="25" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" Grid.RowSpan="2"/>
         <DatePicker x:Name="dateTwo" Margin="388,131,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" Grid.RowSpan="2" HorizontalAlignment="Left" Width="250"/>
 
-        <Button x:Name="Filter" Content="FILTRAR" HorizontalAlignment="Left" Margin="840,131,0,0" VerticalAlignment="Top" Width="75" Style="{DynamicResource ButtonShadowAround}" Height="25">
+        <Button x:Name="Filter" Content="FILTRAR" Margin="839,131,444,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="25">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>

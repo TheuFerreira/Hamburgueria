@@ -11,7 +11,7 @@
             <RowDefinition Height="73*"/>
             <RowDefinition Height="296*"/>
         </Grid.RowDefinitions>
-        <Rectangle Margin="0,0,0,525" Grid.RowSpan="2">
+        <Rectangle Grid.RowSpan="2" Height="212" VerticalAlignment="Top">
             <Rectangle.Fill>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF1B3BC6" Offset="0"/>
@@ -19,11 +19,11 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <ComboBox Margin="30,30,0,0" VerticalAlignment="Top" Height="25" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" Width="250"/>
-        <ComboBox Margin="0,30,362,0" VerticalAlignment="Top" Height="25" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Right" Width="250"/>
+        <ComboBox Margin="30,30,0,91" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" Width="250"/>
+        <ComboBox Margin="0,30,362,91" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Right" Width="250"/>
         <DatePicker Margin="30,131,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250" Height="35" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" Grid.RowSpan="2"/>
         <DatePicker Margin="0,131,720,0" VerticalAlignment="Top" Height="35" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" Grid.RowSpan="2" HorizontalAlignment="Right" Width="250"/>
-        <ComboBox Margin="0,30,720,0" VerticalAlignment="Top" Height="25" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Right" Width="250"/>
+        <ComboBox Margin="0,30,720,91" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Right" Width="250"/>
 
     </Grid>
 </Window>

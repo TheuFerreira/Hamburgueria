@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="ProdutosAdd" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="ProdutosAdd" Height="450" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False">
     <Grid Background="#FF4472C4">
 
         <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,168,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF4472C4" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">

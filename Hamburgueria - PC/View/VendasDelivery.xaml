@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Hamburgueria.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="VendasDelivery" Background="White" Height="384" Width="684" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+      Title="VendasDelivery" Background="White" Height="384" Width="684" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
 
     <Grid>
         <Grid Background="#FF4472C4">

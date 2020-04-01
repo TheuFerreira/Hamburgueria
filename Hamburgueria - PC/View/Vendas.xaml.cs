@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -63,11 +64,17 @@ namespace Hamburgueria.View
             gridSales.Items.Clear();
             Sales.Balcao.Select(gridSales);
             Sales.Delivery.Select(gridSales);
+
+            Style s = new Style(typeof(DataGridColumnHeader));
+            s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush)FindResource("AzulBruxao")));
+            s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
+            for (int i = 0; i < gridSales.Columns.Count; i++)
+                gridSales.Columns[i].HeaderStyle = s;
         }
 
         private void GridSales_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
-            if (gridSales.HasItems == false)
+            if (gridSales.HasItems == false || gridSales.CurrentCell.IsValid == false)
                 return;
 
             // Delete

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="Produtos" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="Produtos" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Window.Resources>
         <SolidColorBrush x:Key="Turquesa" Color="#FFCDF5EA"/>
         <SolidColorBrush x:Key="TurquesaClaro" Color="#FFE9EBF5"/>

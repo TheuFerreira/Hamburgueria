@@ -5,7 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="Vendas" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="Vendas" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+    <Window.Resources>
+        <SolidColorBrush x:Key="Turquesa" Color="#FFCDF5EA"/>
+        <SolidColorBrush x:Key="TurquesaClaro" Color="#FFE9EBF5"/>
+        <SolidColorBrush x:Key="AzulBruxao" Color="#4472c4"/>
+    </Window.Resources>
     <Grid>
         <Rectangle HorizontalAlignment="Left" Height="45" Margin="0,374,0,0" VerticalAlignment="Top" Width="792">
             <Rectangle.Fill>
@@ -15,7 +20,21 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <DataGrid x:Name="gridSales" Margin="0,0,0,45" ItemsSource="{Binding Item}">
+        <DataGrid x:Name="gridSales" 
+                  Margin="0,0,0,45" 
+                  ItemsSource="{Binding Item}"
+                  AutoGenerateColumns="True"
+                  AlternationCount="2" 
+                  RowHeaderWidth="0"
+                  VerticalGridLinesBrush="{x:Null}"
+                  HorizontalGridLinesBrush="White"
+                  RowBackground="{StaticResource Turquesa}" 
+                  AlternatingRowBackground="{DynamicResource TurquesaClaro}" 
+                  CanUserDeleteRows="False" 
+                  CanUserAddRows="False" 
+                  FontSize="18px"
+                  SelectionMode="Single" 
+                  HorizontalScrollBarVisibility="Visible">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Type}" Header="TYPE" Visibility="Hidden"/>
                 <DataGridTextColumn Binding="{Binding File}" Header="FILE" Visibility="Hidden"/>
@@ -25,28 +44,28 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Remove}" Height="20" Width="20"/>
+                            <Image Source="{Binding Remove}" Height="25" Width="40"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Modify}" Height="20" Width="20"/>
+                            <Image Source="{Binding Modify}" Height="25" Width="40"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Print}" Height="20" Width="20"/>
+                            <Image Source="{Binding Print}" Height="25" Width="40"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Confirm}" Height="20" Width="20"/>
+                            <Image Source="{Binding Confirm}" Height="25" Width="40"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

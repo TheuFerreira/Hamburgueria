@@ -182,7 +182,19 @@ namespace Hamburgueria.View
         {
             if (e.Key == Key.Enter)
             {
-                int q = Convert.ToInt32(quantity.Text);
+                int q;
+                try
+                {
+                    q = Convert.ToInt32(quantity.Text);
+
+                    if (q == 0)
+                        return;
+                }
+                catch
+                {
+                    MessageBox.Show("Valor na quantidade inválido!!!");
+                    return;
+                }
 
                 bool exist = false;
                 for (int i = 0; i < gridProduct.Items.Count; i++)
@@ -327,6 +339,8 @@ namespace Hamburgueria.View
                 quantity.Text = "0";
                 numTable.Text = "";
                 search.Focus();
+
+                MessageBox.Show("Venda adicionada com sucesso!!!");
             }
             else
             {
@@ -344,6 +358,8 @@ namespace Hamburgueria.View
                 foreach (Item i in gridProduct.Items)
                     items.Add(i);
                 Sales.Balcao.Edit(oldNumTable, table, dateSale, totalSale, items);
+
+                MessageBox.Show("Venda alterada com sucesso!!!");
 
                 this.Close();
             }

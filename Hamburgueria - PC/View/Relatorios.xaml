@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="Relatorios" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="Relatorios" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Grid>
         
     </Grid>

@@ -19,22 +19,22 @@
                 </Rectangle.Fill>
             </Rectangle>
 
-            <TextBox x:Name="search" Height="21" Margin="200,25,199,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+            <TextBox x:Name="search" Height="21" Margin="200,28,199,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
             <Label Content="NOME" HorizontalAlignment="Left" Height="21" Margin="8,76,0,0" VerticalAlignment="Top" Width="45" FontFamily="Arial" Foreground="White"/>
-            <TextBox x:Name="nameClient" Height="21" Margin="51,72,179,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" CharacterCasing="Upper"/>
+            <TextBox x:Name="nameClient" Height="21" Margin="51,75,179,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" CharacterCasing="Upper"/>
 
             <Label Content="QUANTIDADE" Height="21" Margin="508,76,75,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-            <TextBox x:Name="quantity" Text="1" Height="21" Margin="596,72,13,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+            <TextBox x:Name="quantity" Text="1" Height="21" Margin="596,75,13,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
             <Label Content="NÚMERO" HorizontalAlignment="Left" Height="21" Margin="8,130,0,0" VerticalAlignment="Top" Width="63" FontFamily="Arial" Foreground="White"/>
-            <TextBox x:Name="number" Height="21" Margin="69,126,525,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+            <TextBox x:Name="number" Height="21" Margin="69,129,525,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
             <Label Content="RUA" HorizontalAlignment="Left" Height="21" Margin="165,130,0,0" VerticalAlignment="Top" Width="37" FontFamily="Arial" Foreground="White"/>
-            <TextBox x:Name="street" CharacterCasing="Upper" Height="21" Margin="198,126,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+            <TextBox x:Name="street" CharacterCasing="Upper" Height="21" Margin="198,129,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
             <Label Content="COMPLEMENTO" HorizontalAlignment="Left" Height="21" Margin="8,180,0,0" VerticalAlignment="Top" Width="104" FontFamily="Arial" Foreground="White"/>
-            <TextBox x:Name="complement" CharacterCasing="Upper" Height="21" Margin="108,176,181,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+            <TextBox x:Name="complement" CharacterCasing="Upper" Height="21" Margin="108,179,181,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
             <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Height="21" Margin="514,180,53,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
 

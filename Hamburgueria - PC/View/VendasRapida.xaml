@@ -24,9 +24,9 @@
                 </Rectangle.Fill>
             </Rectangle>
 
-            <TextBox x:Name="search" Height="21" Margin="200,35,199,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+            <TextBox x:Name="search" Height="21" Margin="200,38,199,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-            <TextBox x:Name="quantity" Height="21" Margin="118,111,450,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
+            <TextBox x:Name="quantity" Height="21" Margin="118,114,450,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
             <Label Content="QUANTIDADE" HorizontalAlignment="Left" Margin="30,114,0,0" Width="94" FontFamily="Arial" Foreground="White" Height="21" VerticalAlignment="Top"/>
             <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" Margin="0,0,0,0" BorderBrush="{x:Null}" Height="171" VerticalAlignment="Bottom">
                 <DataGrid.Columns>

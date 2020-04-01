@@ -7,55 +7,63 @@
         mc:Ignorable="d"
         Title="Vendas" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Rectangle HorizontalAlignment="Left" Height="45" Margin="0,374,0,0" VerticalAlignment="Top" Width="792">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1B3BC6" Offset="0"/>
+                    <GradientStop Color="#FF4472C4" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
         <DataGrid x:Name="gridSales" Margin="0,0,0,45" ItemsSource="{Binding Item}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Type}" Header="TYPE" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding Path=File}" Header="FILE" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding Path=Info}" Header="INFO" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Total}" Header="TOTAL" MinWidth="75"/>
-                <DataGridTextColumn Binding="{Binding Path=Date}" Header="DATE" MinWidth="100"/>
+                <DataGridTextColumn Binding="{Binding Type}" Header="TYPE" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding File}" Header="FILE" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding Info}" Header="INFO" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Total}" Header="TOTAL" MinWidth="75"/>
+                <DataGridTextColumn Binding="{Binding Date}" Header="DATE" MinWidth="100"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Path=Remove}" Height="20" Width="20"/>
+                            <Image Source="{Binding Remove}" Height="20" Width="20"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Path=Modify}" Height="20" Width="20"/>
+                            <Image Source="{Binding Modify}" Height="20" Width="20"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Path=Print}" Height="20" Width="20"/>
+                            <Image Source="{Binding Print}" Height="20" Width="20"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Path=Confirm}" Height="20" Width="20"/>
+                            <Image Source="{Binding Confirm}" Height="20" Width="20"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="addDelivery" HorizontalAlignment="Right" Content="DELIVERY" FontFamily="Arial" Width="91" Height="35" VerticalAlignment="Bottom" Margin="0,0,5,5" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="Black">
+        <Button x:Name="addDelivery" HorizontalAlignment="Right" Content="DELIVERY" FontFamily="Arial" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,5,5" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="Black">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="addLocal" HorizontalAlignment="Right" Content="BALCÃO" FontFamily="Arial" Width="91" Height="35" VerticalAlignment="Bottom" Margin="0,0,108,5" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="Black">
+        <Button x:Name="addLocal" HorizontalAlignment="Right" Content="BALCÃO" FontFamily="Arial" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,108,5" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="Black">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="addFast" HorizontalAlignment="Right" Content="RÁPIDA" FontFamily="Arial" Width="91" Height="35" VerticalAlignment="Bottom" Margin="0,0,213,5" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="Black">
+        <Button x:Name="addFast" HorizontalAlignment="Right" Content="RÁPIDA" FontFamily="Arial" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,213,5" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="Black">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>

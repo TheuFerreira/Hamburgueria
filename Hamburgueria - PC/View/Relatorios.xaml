@@ -5,8 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="Relatorios" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+        Title="Relatorios" Height="768" Width="1366" WindowState="Maximized" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="73*"/>
+            <RowDefinition Height="296*"/>
+        </Grid.RowDefinitions>
+        <Rectangle Margin="0,0,0,525" Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1B3BC6" Offset="0"/>
+                    <GradientStop Color="#FF4472C4" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <ComboBox Margin="30,30,0,0" VerticalAlignment="Top" Height="25" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" SelectionChanged="ComboBox_SelectionChanged" HorizontalAlignment="Left" Width="250"/>
+        <ComboBox Margin="0,30,362,0" VerticalAlignment="Top" Height="25" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Right" Width="250"/>
+        <DatePicker Margin="30,131,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250" Height="35" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" Grid.RowSpan="2"/>
+        <DatePicker Margin="0,131,720,0" VerticalAlignment="Top" Height="35" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" Grid.RowSpan="2" HorizontalAlignment="Right" Width="250"/>
+        <ComboBox Margin="0,30,720,0" VerticalAlignment="Top" Height="25" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Right" Width="250"/>
+
     </Grid>
 </Window>

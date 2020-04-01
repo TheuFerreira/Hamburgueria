@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Hamburgueria.View
 {
@@ -23,6 +15,7 @@ namespace Hamburgueria.View
         public class Item
         {
             public int Type { get; set; }
+            public string Value { get; set; }
             public string File { get; set; }
             public string Info { get; set; }
             public decimal Total { get; set; }
@@ -39,6 +32,7 @@ namespace Hamburgueria.View
 
             this.Loaded += Vendas_Loaded;
 
+            this.gridSales.BeginningEdit += GridSales_BeginningEdit;
             this.gridSales.PreviewMouseUp += GridSales_PreviewMouseUp;
 
             this.addFast.Click += AddFast_Click;
@@ -72,13 +66,18 @@ namespace Hamburgueria.View
                 gridSales.Columns[i].HeaderStyle = s;
         }
 
+        private void GridSales_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
+        {
+            e.Cancel = true;
+        }
+
         private void GridSales_PreviewMouseUp(object sender, MouseButtonEventArgs e)
         {
             if (gridSales.HasItems == false || gridSales.CurrentCell.IsValid == false)
                 return;
 
             // Delete
-            if (gridSales.CurrentCell.Column.DisplayIndex == 5)
+            if (gridSales.CurrentCell.Column.DisplayIndex == 6)
             {
                 Item it = (Item)gridSales.SelectedItem;
                 if (it.Type == 0)
@@ -98,7 +97,7 @@ namespace Hamburgueria.View
                 }
             }
             // Edit
-            else if (gridSales.CurrentCell.Column.DisplayIndex == 6)
+            else if (gridSales.CurrentCell.Column.DisplayIndex == 7)
             {
                 Item it = (Item)gridSales.SelectedItem;
                 if (it.Type == 0)
@@ -114,7 +113,7 @@ namespace Hamburgueria.View
                     balcao.LoadEditing(numTable, totalSale, dateSale, Sales.Balcao.Products(numTable));
                     balcao.ShowDialog();
                 }
-                else 
+                else
                 {
                     string nameClient = it.File;
                     string[] info = Sales.Delivery.Info(nameClient);
@@ -123,11 +122,11 @@ namespace Hamburgueria.View
                     decimal totalSale = Convert.ToDecimal(info[1]);
                     string[] addressFile = info[2].Split('>');
                     Model.Cliente.Item address = new Model.Cliente.Item()
-                    { 
-                        NAME = nameClient, 
-                        ADDRESS = addressFile[0], 
-                        NUMBER = addressFile[1], 
-                        COMPLEMENT = addressFile[2] 
+                    {
+                        NAME = nameClient,
+                        ADDRESS = addressFile[0],
+                        NUMBER = addressFile[1],
+                        COMPLEMENT = addressFile[2]
                     };
 
                     VendasDelivery delivery = new VendasDelivery();
@@ -137,7 +136,7 @@ namespace Hamburgueria.View
                 }
             }
             // Confirm
-            else if (gridSales.CurrentCell.Column.DisplayIndex == 8)
+            else if (gridSales.CurrentCell.Column.DisplayIndex == 9)
             {
                 Item it = (Item)gridSales.SelectedItem;
                 if (it.Type == 0)

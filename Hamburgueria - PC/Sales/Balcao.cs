@@ -50,7 +50,7 @@ namespace Hamburgueria.Sales
                     info += quantity + "x " + p.NAME + "\t\t" + (p.PRICE * quantity).ToString("C2") + "\n";
                 }
 
-                grid.Items.Add(new View.Vendas.Item() { Type = 0, File = numTable.ToString(), Info = info, Date = dateSale, Total = totalSale });
+                grid.Items.Add(new View.Vendas.Item() { Type = 0, Value = "BALCÃO", File = numTable.ToString(), Info = info, Date = dateSale, Total = totalSale });
             }
         }
 

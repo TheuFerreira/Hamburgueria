@@ -25,6 +25,8 @@ namespace Hamburgueria.View
 
             this.Loaded += Produtos_Loaded;
 
+            this.GridProdutos.BeginningEdit += (sender, e) => e.Cancel = true;
+
             this.DelProduto.Click += DelProduto_Click;
             this.EditProduto.Click += EditProduto_Click;
             this.AddProduto.Click += AddProduto_Click;

@@ -76,6 +76,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="LINQExtension.cs" />
+    <Compile Include="Model\Relatorio.cs" />
+    <Compile Include="Model\RelatorioProduto.cs" />
+    <Compile Include="Model\RelatorioVendaDia.cs" />
     <Compile Include="Model\Venda.cs" />
     <Compile Include="Sales\Balcao.cs" />
     <Compile Include="Model\Produto.cs" />

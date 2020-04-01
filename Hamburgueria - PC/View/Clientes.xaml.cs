@@ -25,6 +25,8 @@ namespace Hamburgueria.View
 
             this.Loaded += Clientes_Loaded;
 
+            this.GridClientes.BeginningEdit +=  (sender, e) => e.Cancel = true;
+
             this.DelCliente.Click += DelCliente_Click;
             this.EditCliente.Click += EditCliente_Click;
             this.AddCliente.Click += AddCliente_Click;

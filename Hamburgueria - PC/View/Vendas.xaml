@@ -32,15 +32,17 @@
                   AlternatingRowBackground="{DynamicResource TurquesaClaro}" 
                   CanUserDeleteRows="False" 
                   CanUserAddRows="False" 
-                  FontSize="18px"
+                  FontSize="22px"
                   SelectionMode="Single" 
-                  HorizontalScrollBarVisibility="Visible">
+                  HorizontalScrollBarVisibility="Visible"
+                  ColumnHeaderHeight="50">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Type}" Header="TYPE" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding File}" Header="FILE" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding Info}" Header="INFO" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Total}" Header="TOTAL" MinWidth="75"/>
-                <DataGridTextColumn Binding="{Binding Date}" Header="DATE" MinWidth="100"/>
+                <DataGridTextColumn Binding="{Binding Type}" Header="TYPE" Visibility="Hidden" FontSize="18"/>
+                <DataGridTextColumn Binding="{Binding Value}" Header="TIPO" MinWidth="100" FontSize="18"/>
+                <DataGridTextColumn Binding="{Binding File}" Header="FILE" Visibility="Hidden" FontSize="18"/>
+                <DataGridTextColumn Binding="{Binding Info}" Header="INFO" Width="*" FontSize="18"/>
+                <DataGridTextColumn Binding="{Binding Total}" Header="TOTAL" MinWidth="75" FontSize="18"/>
+                <DataGridTextColumn Binding="{Binding Date}" Header="DATE" MinWidth="100" FontSize="18"/>
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

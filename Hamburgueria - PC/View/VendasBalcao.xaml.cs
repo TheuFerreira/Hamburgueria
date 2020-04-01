@@ -58,6 +58,7 @@ namespace Hamburgueria.View
 
             this.numTable.PreviewTextInput += NumTable_PreviewTextInput;
 
+            this.gridProduct.BeginningEdit += (sender, e) => e.Cancel = true;
             this.gridProduct.PreviewKeyDown += GridProduct_PreviewKeyDown;
 
             this.confirm.Click += Confirm_Click;

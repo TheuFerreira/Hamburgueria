@@ -25,7 +25,7 @@
             <TextBox x:Name="nameClient" Height="21" Margin="65,70,20,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" CharacterCasing="Upper"/>
 
             <Label Content="QUANTIDADE" Height="21" Margin="478,20,105,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-            <TextBox x:Name="quantity" Text="&#xD;&#xA;" Height="21" Margin="564,20,20,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" TextChanged="quantity_TextChanged"/>
+            <TextBox x:Name="quantity" Text="&#xD;&#xA;" Height="21" Margin="564,20,20,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
 
             <Label Content="NÚMERO" HorizontalAlignment="Left" Height="21" Margin="511,110,0,0" VerticalAlignment="Top" Width="63" FontFamily="Arial" Foreground="White"/>
             <TextBox x:Name="number" Height="21" Margin="574,110,20,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
@@ -61,10 +61,14 @@
                 </DataGrid.Background>
             </DataGrid>
 
-            <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="285" Margin="200,46,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True"/>
+            <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="323" Margin="78,41,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True"/>
 
-            <DataGrid x:Name="gridClient" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="448" Margin="53,97,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True"/>
-            <ComboBox Margin="501,155,20,0" VerticalAlignment="Top" SelectionChanged="ComboBox_SelectionChanged"/>
+            <DataGrid x:Name="gridClient" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="593" Margin="65,91,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True"/>
+            <ComboBox Margin="501,155,20,0" VerticalAlignment="Top" SelectedIndex="0" >
+                <ListBoxItem Content="Á VISTA"/>
+                <ListBoxItem Content="CRÉDITO"/>
+                <ListBoxItem Content="DÉBITO"/>
+            </ComboBox>
             <Label Content="DESCONTO" HorizontalAlignment="Left" Height="21" Margin="20,217,0,0" VerticalAlignment="Top" Width="104" FontFamily="Arial" Foreground="White"/>
             <TextBox x:Name="complement_Copy" CharacterCasing="Upper" Height="21" Margin="96,217,446,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 

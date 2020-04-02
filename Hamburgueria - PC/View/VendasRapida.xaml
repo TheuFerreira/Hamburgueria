@@ -50,7 +50,7 @@
                 </Button.Background>
             </Button>
             <Label x:Name="labelTotalSale" Content="TOTAL: R$0,00" Height="34" Margin="30,145,149,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
-            <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="83,55,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="285"/>
+            <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="87,59,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="308"/>
             <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="30,37,0,0" VerticalAlignment="Top" Width="87" Foreground="White" FontSize="11"/>
         </Grid>
         <Image Height="13" Margin="400,45,0,0" VerticalAlignment="Top" Source="/Hamburgueria;component/Resources/lupa.png" HorizontalAlignment="Left" Width="15" RenderTransformOrigin="3.6,0.615"/>

@@ -154,6 +154,8 @@ namespace Hamburgueria.View
                     pagamento.ShowDialog();
                 }
             }
+
+            UpdateGrid();
         }
 
         private void AddFast_Click(object sender, RoutedEventArgs e)

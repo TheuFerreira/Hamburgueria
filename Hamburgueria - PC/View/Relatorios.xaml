@@ -14,7 +14,7 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <ComboBox x:Name="styleBox" Margin="30,30,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top">
+        <ComboBox x:Name="styleBox" Margin="30,30,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top" BorderThickness="0">
             <ListBoxItem Content="VENDAS"/>
             <ListBoxItem Content="PRODUTOS"/>
             <ListBoxItem Content="CLIENTES"/>

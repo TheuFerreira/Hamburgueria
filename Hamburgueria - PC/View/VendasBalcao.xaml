@@ -18,7 +18,7 @@
         </Rectangle>
 
         <TextBox x:Name="search" Height="21" Margin="87,30,312,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
-        <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="285" Margin="86,37,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible"/>
+        <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="278" Margin="87,52,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible"/>
 
         <Label Content="QUANTIDADE" HorizontalAlignment="Left" Height="21" Margin="436,30,0,0" VerticalAlignment="Top" Width="94" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="quantity" Height="21" Margin="525,30,34,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>

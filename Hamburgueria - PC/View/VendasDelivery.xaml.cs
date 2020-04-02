@@ -61,6 +61,8 @@ namespace Hamburgueria.View
             this.search.PreviewTextInput += Search_PreviewTextInput;
             this.search.TextChanged += Search_TextChanged;
 
+            this.gridSearch.MouseDoubleClick += GridSearch_MouseDoubleClick;
+
             this.quantity.PreviewKeyDown += Quantity_PreviewKeyDown;
             this.quantity.PreviewTextInput += Quantity_PreviewTextInput;
 
@@ -213,19 +215,7 @@ namespace Hamburgueria.View
         {
             if (e.Key == Key.Enter)
             {
-                if (gridSearch.HasItems)
-                {
-                    var selected = (Model.Produto.Item)gridSearch.SelectedItem;
-                    searchId = selected.ID;
-                    searchCod = selected.COD;
-                    searchName = selected.NAME;
-                    search.Text = selected.NAME;
-                    searchPrice = selected.PRICE;
-                }
-
-                gridSearch.Visibility = Visibility.Hidden;
-                quantity.Focus();
-                quantity.SelectAll();
+                GridSearch_MouseDoubleClick(null, null);
             }
             else if (e.Key == Key.Down)
             {
@@ -278,6 +268,22 @@ namespace Hamburgueria.View
                 gridSearch.SelectedItem = gridSearch.Items[0];
 
             UpdateProductSearch();
+        }
+
+        private void GridSearch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (gridSearch.HasItems)
+            {
+                var selected = (Model.Produto.Item)gridSearch.SelectedItem;
+                searchId = selected.ID;
+                searchCod = selected.COD;
+                searchName = selected.NAME;
+                search.Text = selected.NAME;
+                searchPrice = selected.PRICE;
+            }
+
+            gridSearch.Visibility = Visibility.Hidden;
+            quantity.Focus();
         }
 
         private void Quantity_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -333,7 +339,7 @@ namespace Hamburgueria.View
                 searchName = "";
                 searchPrice = 0;
 
-                quantity.Text = "1";
+                quantity.Text = "";
                 search.Text = "";
                 gridSearch.Visibility = Visibility.Hidden;
 
@@ -447,7 +453,7 @@ namespace Hamburgueria.View
 
                 gridProduct.Items.Clear();
                 labelTotalSale.Content = "TOTAL:R$0,00";
-                quantity.Text = "0";
+                quantity.Text = "";
                 search.Focus();
 
                 MessageBox.Show("Venda adicionada com sucesso!!!");
@@ -472,16 +478,6 @@ namespace Hamburgueria.View
 
                 this.Close();
             }
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void quantity_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

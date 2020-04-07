@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -152,6 +153,38 @@ namespace Hamburgueria.View
                     pagamento.numTable = numTable;
                     pagamento.dateSale = dateSale;
                     pagamento.ShowDialog();
+                }
+                else
+                {
+
+                    string nameClient = it.File.ToString();
+                    string[] info = Sales.Delivery.Info(nameClient);
+
+                    if (MessageBox.Show("Tem certeza de que deseja FINALIZAR a venda do Cliente " + nameClient + "??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                        return;
+
+                    DateTime dateSale = Convert.ToDateTime(info[0]);
+                    decimal totalSale = Convert.ToDecimal(info[1]);
+                    string[] content = info[2].Split('>');
+                    string payment = info[3];
+                    decimal discount = Convert.ToDecimal(info[4]);
+
+                    Model.Cliente.Item client = new Model.Cliente.Item();
+                    client.NAME = nameClient;
+                    client.ADDRESS = content[0];
+                    client.NUMBER = content[1];
+                    client.DISTRICT = content[2];
+                    client.COMPLEMENT = content[3];
+
+                    List<VendasDelivery.Item>items = Sales.Delivery.Products(nameClient);
+
+                    Model.Venda.Insert(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
+
+                    if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                    }
+
+                    Sales.Delivery.Delete(nameClient);
                 }
             }
 

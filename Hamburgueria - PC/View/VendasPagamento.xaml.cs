@@ -140,7 +140,15 @@ namespace Hamburgueria.View
 
         private void Print_Click(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            if (typeSale == 1)
+            {
+                PDF.Sale(dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Text), payment.Text, Sales.Balcao.Products(numTable));
+            }
+            else
+            {
+                PDF.Sale(dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Text), payment.Text, items);
+            }
+            Confirm_Click(null, null);
         }
 
         private void Confirm_Click(object sender, RoutedEventArgs e)

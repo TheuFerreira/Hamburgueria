@@ -126,12 +126,12 @@ namespace Hamburgueria.View
                         NAME = nameClient,
                         ADDRESS = addressFile[0],
                         NUMBER = addressFile[1],
-                        COMPLEMENT = addressFile[2]
+                        DISTRICT = addressFile[2],
+                        COMPLEMENT = addressFile[3]
                     };
 
-                    VendasDelivery delivery = new VendasDelivery();
-                    delivery.sales = this;
-                    delivery.LoadEditing(address, totalSale, dateSale, Sales.Delivery.Products(nameClient));
+                    VendasDelivery delivery = new VendasDelivery(this);
+                    delivery.LoadEditing(address, totalSale, info[3], info[4], dateSale, Sales.Delivery.Products(nameClient));
                     delivery.ShowDialog();
                 }
             }
@@ -173,8 +173,7 @@ namespace Hamburgueria.View
 
         private void AddDelivery_Click(object sender, RoutedEventArgs e)
         {
-            VendasDelivery delivery = new VendasDelivery();
-            delivery.sales = this;
+            VendasDelivery delivery = new VendasDelivery(this);
             delivery.ShowDialog();
         }
     }

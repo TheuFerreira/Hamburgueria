@@ -25,14 +25,16 @@ namespace Hamburgueria.Sales
             return pathData + "\\";
         }
 
-        public static void Create(Model.Cliente.Item address, DateTime dateSale, decimal totalSale, List<View.VendasDelivery.Item> items)
+        public static void Create(Model.Cliente.Item address, DateTime dateSale, decimal totalSale, string payment, decimal discount, List<View.VendasDelivery.Item> items)
         {
             string path = DefaultPath() + address.NAME + ".bin";
 
             string content = "";
             content += dateSale + "\n";
             content += totalSale + "\n";
-            content += address.ADDRESS + ">" + address.NUMBER + ">" + address.COMPLEMENT + "\n";
+            content += address.ADDRESS + ">" + address.NUMBER + ">" + address.DISTRICT + ">" + address.COMPLEMENT + "\n";
+            content += payment + "\n";
+            content += discount + "\n";
             content += "-\n";
 
             foreach (View.VendasDelivery.Item it in items)
@@ -56,12 +58,17 @@ namespace Hamburgueria.Sales
                 string[] addressFile = lines[2].Split('>');
                 address.ADDRESS = addressFile[0];
                 address.NUMBER = addressFile[1];
-                address.COMPLEMENT = addressFile[2];
+                address.DISTRICT = addressFile[2];
+                address.COMPLEMENT = addressFile[3];
 
                 string info = address.NAME + "\n\n";
-                info += address.ADDRESS + ", Nº" + address.NUMBER + "," + address.COMPLEMENT + "\n\n";
+                info += "ENDEREÇO: " + address.ADDRESS + ", Nº" + address.NUMBER + ", " + address.DISTRICT + ", " + address.COMPLEMENT + "\n";
+                info += "FORMA DE PAGAMENTO: " + lines[3] + "\n";
+                info += "DESCONTO:R$" + lines[4] + "\n";
+                info += "\n";
 
-                for (int j = 4; j < lines.Length; j++)
+                info += "PEDIDOS\n";
+                for (int j = 6; j < lines.Length; j++)
                 {
                     string[] requests = lines[j].Split('>');
 
@@ -79,18 +86,20 @@ namespace Hamburgueria.Sales
         public static string[] Info(string nameClient)
         {
             string[] lines = File.ReadAllLines(DefaultPath() + nameClient + ".bin");
-            string[] info = new string[3];
+            string[] info = new string[5];
 
             info[0] = lines[0];
             info[1] = lines[1];
             info[2] = lines[2];
+            info[3] = lines[3];
+            info[4] = lines[4];
             return info;
         }
 
-        public static void Edit(string oldNameClient, Model.Cliente.Item address, DateTime dateSale, decimal totalSale, List<View.VendasDelivery.Item> items)
+        public static void Edit(string oldNameClient, Model.Cliente.Item address, DateTime dateSale, decimal totalSale, string payment, decimal discount, List<View.VendasDelivery.Item> items)
         {
             File.Delete(DefaultPath() + oldNameClient + ".bin");
-            Create(address, dateSale, totalSale, items);
+            Create(address, dateSale, totalSale, payment, discount, items);
         }
 
         public static bool Exist(string nameClient)
@@ -109,7 +118,7 @@ namespace Hamburgueria.Sales
 
             string[] lines = File.ReadAllLines(DefaultPath() + nameClient + ".bin");
 
-            for (int j = 4; j < lines.Length; j++)
+            for (int j = 6; j < lines.Length; j++)
             {
                 string[] requests = lines[j].Split('>');
 

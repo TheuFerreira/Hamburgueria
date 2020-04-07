@@ -182,6 +182,7 @@ namespace Hamburgueria.View
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
+                        PDF.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
                     }
 
                     Sales.Delivery.Delete(nameClient);

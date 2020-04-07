@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using iText.Kernel.Geom;
 using iText.Kernel.Pdf;
@@ -180,31 +179,14 @@ namespace Hamburgueria
             doc.Close();
         }
 
-        /*
-        public static void Test()
+        public static void Sale(Model.Cliente.Item clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, List<View.VendasDelivery.Item> products)
         {
-            Paragraph title = new Paragraph("PIZZARIA FAMÍLIAS");
+            Paragraph title = new Paragraph("BIG BURGUER LANCHES");
             title.SetMarginTop(15);
             title.SetFontSize(10);
             title.SetTextAlignment(TextAlignment.CENTER);
 
-            PdfDocument pdf = new PdfDocument(new PdfWriter(Path() + "\\test.pdf"));
-            Document doc = new Document(pdf, PageSize.A7);
-            doc.SetMargins(0, 10, 0, 10);
-
-            doc.Add(title);
-
-            doc.Close();
-        }
-        
-        public static void Sale(List<Item.SaleProduct> products, decimal totalBrute, decimal discount, decimal rate, decimal totalValue, string payment, DateTime dateSale, string name, string address, string telephone, string reference)
-        {
-            Paragraph title = new Paragraph("PIZZARIA FAMÍLIAS");
-            title.SetMarginTop(15);
-            title.SetFontSize(10);
-            title.SetTextAlignment(TextAlignment.CENTER);
-
-            Paragraph header = new Paragraph("RUA PALMIRO BIM, Nº 435, PARQUE DOS PINUS\nTELEFONE: (16)98219-0702");
+            Paragraph header = new Paragraph("RUA TOCANTINS, Nº 395, MORRO DAS BICAS\nTELEFONE: ESPERANDO IGOR");
             header.SetFontSize(7);
             header.SetTextAlignment(TextAlignment.CENTER);
 
@@ -219,7 +201,7 @@ namespace Hamburgueria
             table.AddCell(CreateCell("PREÇO", TextAlignment.RIGHT));
             table.AddCell(CreateCell("QTD", TextAlignment.RIGHT));
             table.AddCell(CreateCell("TOTAL", TextAlignment.RIGHT));
-            foreach (Item.SaleProduct p in products)
+            foreach (View.VendasDelivery.Item p in products)
             {
                 table.AddCell(CreateCell(p.Name, TextAlignment.LEFT));
                 table.AddCell(CreateCell(p.Price.ToString(), TextAlignment.RIGHT));
@@ -232,8 +214,6 @@ namespace Hamburgueria
             total.AddCell(CreateCell(totalBrute.ToString("N2"), TextAlignment.RIGHT, 6));
             total.AddCell(CreateCell("DESCONTO: R$", TextAlignment.LEFT, 6));
             total.AddCell(CreateCell(discount.ToString("N2"), TextAlignment.RIGHT, 6));
-            total.AddCell(CreateCell("TAXA: R$", TextAlignment.LEFT, 6));
-            total.AddCell(CreateCell(rate.ToString("N2"), TextAlignment.RIGHT, 6));
             total.AddCell(CreateCell("TOTAL: R$", TextAlignment.LEFT));
             total.AddCell(CreateCell(totalValue.ToString("N2"), TextAlignment.RIGHT));
 
@@ -244,16 +224,10 @@ namespace Hamburgueria
             others.AddCell(CreateCell(dateSale.ToString(), TextAlignment.RIGHT, 6));
 
 
-            Paragraph client = new Paragraph("CLIENTE: " + name + "\nTELEFONE:" + telephone + "\n" + address + "\n" + (string.IsNullOrWhiteSpace(reference) ? "" : reference));
+            Paragraph client = new Paragraph("CLIENTE: " + clientItem.NAME + "\n" + clientItem.ADDRESS + ", Nº" + clientItem.NUMBER + ", " + clientItem.DISTRICT + ", " + clientItem.COMPLEMENT);
             client.SetFontSize(6);
             client.SetTextAlignment(TextAlignment.LEFT);
 
-
-            Paragraph ftech = new Paragraph("FTech - Inovações Tecnológicas\n+55 33 99999-9999");
-            ftech.SetFontSize(6);
-            ftech.SetTextAlignment(TextAlignment.CENTER);
-            ftech.SetMarginTop(5);
-            ftech.SetMarginBottom(5);
 
             LineSeparator l1 = new LineSeparator(new DashedLine(1));
             l1.SetMargins(0, 0, 0, 0);
@@ -265,7 +239,7 @@ namespace Hamburgueria
             l4.SetMargins(0, 0, 5, 0);
 
 
-            PdfDocument pdf = new PdfDocument(new PdfWriter(Path() + "\\sale.pdf"));
+            PdfDocument pdf = new PdfDocument(new PdfWriter(/*Path() + "\\*/"sale.pdf"));
             Document doc = new Document(pdf, PageSize.A7);
             doc.SetMargins(0, 10, 0, 10);
 
@@ -280,8 +254,23 @@ namespace Hamburgueria
             doc.Add(others);
             doc.Add(l3);
             doc.Add(client);
-            doc.Add(l4);
-            doc.Add(ftech);
+
+            doc.Close();
+        }
+
+        /*
+        public static void Test()
+        {
+            Paragraph title = new Paragraph("PIZZARIA FAMÍLIAS");
+            title.SetMarginTop(15);
+            title.SetFontSize(10);
+            title.SetTextAlignment(TextAlignment.CENTER);
+
+            PdfDocument pdf = new PdfDocument(new PdfWriter(Path() + "\\test.pdf"));
+            Document doc = new Document(pdf, PageSize.A7);
+            doc.SetMargins(0, 10, 0, 10);
+
+            doc.Add(title);
 
             doc.Close();
         }

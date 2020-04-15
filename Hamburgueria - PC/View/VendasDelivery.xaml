@@ -19,19 +19,19 @@
         </Rectangle>
 
         <Label Content="NOME:" HorizontalAlignment="Left" Height="21" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="searchName" Height="21" Margin="65,10,10,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" CharacterCasing="Upper"/>
+        <TextBox x:Name="searchName" Height="21" Margin="65,12,10,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" CharacterCasing="Upper"/>
 
         <Label Content="RUA:" HorizontalAlignment="Left" Height="21" Margin="10,36,0,0" VerticalAlignment="Top" Width="50" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="street" CharacterCasing="Upper" Height="21" Margin="65,36,172,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="street" CharacterCasing="Upper" Height="21" Margin="65,38,172,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="NÚMERO:" HorizontalAlignment="Left" Height="21" Margin="511,36,0,0" VerticalAlignment="Top" Width="67" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="number" Height="21" Margin="583,36,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="number" Height="21" Margin="583,38,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="BAIRRO:" HorizontalAlignment="Left" Height="21" Margin="10,65,0,0" VerticalAlignment="Top" Width="63" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="district" CharacterCasing="Upper" Height="21" Margin="78,65,354,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Height="21" Margin="338,65,0,0" VerticalAlignment="Top" Width="107" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="complement" CharacterCasing="Upper" Height="21" Margin="450,65,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="complement" CharacterCasing="Upper" Height="21" Margin="450,67,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="FORMA DE PAGAMENTO:" HorizontalAlignment="Left" Height="21" Margin="10,99,0,0" VerticalAlignment="Top" Width="156" FontFamily="Arial" Foreground="White"/>
         <ComboBox x:Name="payment" Margin="171,99,350,0" VerticalAlignment="Top" SelectedIndex="0" >
@@ -41,21 +41,21 @@
         </ComboBox>
 
         <Label Content="DESCONTO:" HorizontalAlignment="Left" Height="21" Margin="354,99,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="discount" CharacterCasing="Upper" Height="21" Margin="442,100,100,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00"/>
+        <TextBox x:Name="discount" CharacterCasing="Upper" Height="21" Margin="442,102,100,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00"/>
 
         <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="12,137,0,0" VerticalAlignment="Top" Width="73" Foreground="White" FontFamily="Arial"/>
-        <TextBox x:Name="searchProduct" Height="21" Margin="90,137,253,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="searchProduct" Height="21" Margin="90,139,253,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
         <Image HorizontalAlignment="Left" Height="13" Margin="430,145,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>
 
         <Label Content="QUANTIDADE:" Height="21" Margin="450,137,133,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="quantity" Text="&#xA;" Height="21" Margin="550,137,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
+        <TextBox x:Name="quantity" Text="&#xA;" Height="21" Margin="550,139,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
 
-        <Button x:Name="confirm" Content="CONFIRMAR" Height="28" Margin="12,170,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="92">
+        <Button x:Name="confirm" Content="CONFIRMAR" Height="28" Margin="576,184,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="92">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>
         </Button>
-        <Label x:Name="labelTotalSale" Content="TOTAL: R$ 0,00" Margin="116,171,246,0" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5" FontSize="14" Height="26" VerticalAlignment="Top"/>
+        <Label x:Name="labelTotalSale" Content="TOTAL: R$ 0,00" Margin="15,184,347,0" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5" FontSize="14" Height="26" VerticalAlignment="Top"/>
 
         <DataGrid Name="gridProduct" Margin="1,208,0,0" BorderBrush="{x:Null}" d:IsHidden="True">
             <DataGrid.Columns>

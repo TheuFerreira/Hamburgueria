@@ -8,8 +8,8 @@
         Title="Relatorios" Height="768" Width="1366" WindowState="Maximized" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF1B3BC6" Offset="0"/>
+            <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                <GradientStop Color="#FF1B3BC6"/>
                 <GradientStop Color="#FF4472C4" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
@@ -34,7 +34,7 @@
             <ListBoxItem Content="BALCÃO"/>
         </ComboBox>
 
-        <DatePicker x:Name="dateOne" Margin="30,131,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250" Height="25" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" Grid.RowSpan="2"/>
+        <DatePicker x:Name="dateOne" Margin="28,131,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256" Height="30" BorderBrush="{x:Null}" Foreground="#FF1D3DC6"/>
         <DatePicker x:Name="dateTwo" Margin="388,131,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" Grid.RowSpan="2" HorizontalAlignment="Left" Width="250"/>
 
         <Button x:Name="Filter" Content="FILTRAR" Margin="839,131,444,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="25">

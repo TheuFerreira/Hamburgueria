@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="Produtos" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
     <Window.Resources>
-        <SolidColorBrush x:Key="Turquesa" Color="#FFCDF5EA"/>
-        <SolidColorBrush x:Key="TurquesaClaro" Color="#FFE9EBF5"/>
-        <SolidColorBrush x:Key="AzulBruxao" Color="#4472c4"/>
+        <SolidColorBrush x:Key="Turquesa" Color="#4472C4"/>
+        <SolidColorBrush x:Key="TurquesaClaro" Color="#8fAADC"/>
+        <SolidColorBrush x:Key="AzulBruxao" Color="#2f5597"/>
     </Window.Resources>
     <Grid>
         <DataGrid x:Name="GridProdutos" 
@@ -25,6 +25,7 @@
                   CanUserAddRows="False" 
                   IsReadOnly="True"
                   FontSize="18px"
+                  Foreground="White"
                   SelectionMode="Single" 
                   HorizontalScrollBarVisibility="Visible"/>
 

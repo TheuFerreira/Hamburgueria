@@ -20,41 +20,23 @@
         </Button>
 
         <Label Content="NOME:*" HorizontalAlignment="Left" Margin="45,90,0,0" VerticalAlignment="Top" Width="52" Foreground="White"/>
-        <TextBox x:Name="Name" Margin="94,89,45,308" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="Name" CaretBrush="White" Margin="94,89,45,308" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="RUA:*" HorizontalAlignment="Left" Margin="45,155,0,0" VerticalAlignment="Top" Width="43" Foreground="White" RenderTransformOrigin="0.953,0.635"/>
-        <TextBox x:Name="Adress" Margin="81,154,208,243" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" RenderTransformOrigin="0.5,0.5">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.001"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
+        <TextBox x:Name="Adress" CaretBrush="White" Margin="81,154,208,243" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" RenderTransformOrigin="0.5,0.5"/>
 
 
         <Label Content="BAIRRO:*" HorizontalAlignment="Left" Margin="45,215,0,0" VerticalAlignment="Top" Width="58" Foreground="White" RenderTransformOrigin="0.81,0.487"/>
-        <TextBox x:Name="District" Margin="99,212,333,185" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" RenderTransformOrigin="0.5,0.5">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.504"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
+        <TextBox x:Name="District" CaretBrush="White" Margin="99,212,333,185" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" RenderTransformOrigin="0.5,0.5"/>
 
         <Label Content="NUMERO:*" Margin="604,155,120,238" Foreground="White"/>
-        <TextBox x:Name="Number" Margin="665,153,45,244" TextWrapping="Wrap" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="Number" CaretBrush="White" Margin="665,153,45,244" TextWrapping="Wrap" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="COMPLEMENTO:" Margin="480,215,214,178" Foreground="White"/>
-        <TextBox x:Name="Complement" Margin="577,213,45,184" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="Complement" CaretBrush="White" Margin="577,213,45,184" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="45,280,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="Reference" Margin="122,280,45,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
+        <TextBox x:Name="Reference" CaretBrush="White" Margin="122,280,45,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
         <Label Content="PREENCHA OS CAMPOS ABAIXO" HorizontalAlignment="Left" Height="29" Margin="54,35,0,0" VerticalAlignment="Top" Width="266" Foreground="White" FontSize="16" FontFamily="Arial"/>
 
     </Grid>

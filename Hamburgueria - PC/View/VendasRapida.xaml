@@ -24,11 +24,11 @@
                 </Rectangle.Fill>
             </Rectangle>
 
-            <TextBox x:Name="search" Height="21" Margin="87,39,281,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+            <TextBox x:Name="search" CaretBrush="White" Height="21" Margin="87,39,281,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-            <TextBox x:Name="quantity" Height="21" Margin="538,39,30,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
+            <TextBox x:Name="quantity" CaretBrush="White" Height="21" Margin="538,39,30,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
             <Label Content="QUANTIDADE" HorizontalAlignment="Left" Margin="454,37,0,0" Width="94" FontFamily="Arial" Foreground="White" Height="21" VerticalAlignment="Top"/>
-            <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" BorderBrush="{x:Null}" Height="171" VerticalAlignment="Bottom">
+            <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" BorderBrush="{x:Null}" Height="171" VerticalAlignment="Bottom" d:IsHidden="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Visibility="Hidden"/>
                     <DataGridTextColumn Binding="{Binding Path=Cod}" Header="CÓDIGO"/>
@@ -50,7 +50,7 @@
                 </Button.Background>
             </Button>
             <Label x:Name="labelTotalSale" Content="TOTAL: R$0,00" Height="34" Margin="30,145,149,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
-            <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="87,59,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="308"/>
+            <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="87,59,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="308" d:IsHidden="True"/>
             <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="30,37,0,0" VerticalAlignment="Top" Width="87" Foreground="White" FontSize="11"/>
         </Grid>
         <Image Height="13" Margin="400,45,0,0" VerticalAlignment="Top" Source="/Hamburgueria;component/Resources/lupa.png" HorizontalAlignment="Left" Width="15" RenderTransformOrigin="3.6,0.615"/>

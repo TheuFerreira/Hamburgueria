@@ -170,7 +170,7 @@ namespace Hamburgueria.Model
             connection.Open();
 
             SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "SELECT * FROM produto WHERE cod = @cod";
+            command.CommandText = "SELECT * FROM produto WHERE cod = @cod and excluido = 0";
 
             command.Parameters.AddWithValue("@cod", cod);
 

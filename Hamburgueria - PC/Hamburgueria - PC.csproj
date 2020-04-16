@@ -82,6 +82,9 @@
     <Reference Include="itext.svg, Version=7.1.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.1.10\lib\net40\itext.svg.dll</HintPath>
     </Reference>
+    <Reference Include="RawPrint, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RawPrint.0.5.0\lib\net40\RawPrint.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
@@ -235,11 +238,11 @@
     <Content Include="hamburgueria.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Resource Include="Resources\lupa.png" />
     <Resource Include="Resources\remove.png" />
-    <Resource Include="Resources\print.png" />
     <Resource Include="Resources\modify.png" />
+    <Resource Include="Resources\print.png" />
     <Resource Include="Resources\confirm.png" />
+    <Resource Include="Resources\lupa.png" />
     <Resource Include="Resources\linha.png" />
     <Resource Include="Resources\BUTAO_IGOR 1.1.png" />
     <Resource Include="Resources\butao_igor.png" />

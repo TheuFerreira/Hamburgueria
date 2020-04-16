@@ -82,7 +82,7 @@
                     </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Remove}" Height="25" Width="40"/>
+                            <Image Source="{Binding Remove}" Height="25" Width="40" VerticalAlignment="Top"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -94,7 +94,7 @@
                     </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Modify}" Height="25" Width="40"/>
+                            <Image Source="{Binding Modify}" Height="25" Width="40" VerticalAlignment="Top"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -106,7 +106,7 @@
                     </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Print}" Height="25" Width="40"/>
+                            <Image Source="{Binding Print}" Height="25" Width="40" VerticalAlignment="Top"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
@@ -118,7 +118,7 @@
                     </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Confirm}" Height="25" Width="40"/>
+                            <Image Source="{Binding Confirm}" Height="25" Width="40" VerticalAlignment="Top"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

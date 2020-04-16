@@ -130,6 +130,39 @@ namespace Hamburgueria.View
                     delivery.ShowDialog();
                 }
             }
+            // Print
+            else if (gridSales.CurrentCell.Column.DisplayIndex == 8)
+            {
+                Item it = (Item)gridSales.SelectedItem;
+                if (it.Type == 0)
+                {
+                    MessageBox.Show("Somente vendas Deliveries podem ser impressas antes de finalizadas!!!");
+                    return;
+                }
+                else
+                {
+                    string nameClient = it.File.ToString();
+                    string[] info = Sales.Delivery.Info(nameClient);
+
+                    DateTime dateSale = Convert.ToDateTime(info[0]);
+                    decimal totalSale = Convert.ToDecimal(info[1]);
+                    string[] content = info[2].Split('>');
+                    string payment = info[3];
+                    decimal discount = Convert.ToDecimal(info[4]);
+
+                    Model.Cliente.Item client = new Model.Cliente.Item();
+                    client.NAME = nameClient;
+                    client.ADDRESS = content[0];
+                    client.NUMBER = content[1];
+                    client.DISTRICT = content[2];
+                    client.COMPLEMENT = content[3];
+
+                    List<VendasDelivery.Item> items = Sales.Delivery.Products(nameClient);
+
+                    PDF.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
+                    new Impressao().ShowDialog();
+                }
+            }
             // Confirm
             else if (gridSales.CurrentCell.Column.DisplayIndex == 9)
             {
@@ -150,7 +183,6 @@ namespace Hamburgueria.View
                 }
                 else
                 {
-
                     string nameClient = it.File.ToString();
                     string[] info = Sales.Delivery.Info(nameClient);
 
@@ -175,9 +207,7 @@ namespace Hamburgueria.View
                     Model.Venda.Insert(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                    {
                         PDF.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
-                    }
 
                     Sales.Delivery.Delete(nameClient);
                 }

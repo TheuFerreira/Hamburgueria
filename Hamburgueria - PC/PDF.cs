@@ -15,7 +15,7 @@ namespace Hamburgueria
     {
         public static string Path()
         {
-            string pathData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\FTech";
+            string pathData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Necos";
 
             if (Directory.Exists(pathData) == false)
                 pathData = Directory.CreateDirectory(pathData).FullName;
@@ -84,7 +84,7 @@ namespace Hamburgueria
             l3.SetMargins(5, 0, 0, 0);
 
 
-            PdfDocument pdf = new PdfDocument(new PdfWriter(/*Path() + "\\*/"sale.pdf"));
+            PdfDocument pdf = new PdfDocument(new PdfWriter(Path() + "\\sale.pdf"));
             Document doc = new Document(pdf, PageSize.A7);
             doc.SetMargins(0, 10, 0, 10);
 
@@ -162,7 +162,7 @@ namespace Hamburgueria
             l3.SetMargins(5, 0, 0, 0);
 
 
-            PdfDocument pdf = new PdfDocument(new PdfWriter(/*Path() + "\\*/"sale.pdf"));
+            PdfDocument pdf = new PdfDocument(new PdfWriter(Path() + "\\sale.pdf"));
             Document doc = new Document(pdf, PageSize.A7);
             doc.SetMargins(0, 10, 0, 10);
 
@@ -239,7 +239,7 @@ namespace Hamburgueria
             l4.SetMargins(0, 0, 5, 0);
 
 
-            PdfDocument pdf = new PdfDocument(new PdfWriter(/*Path() + "\\*/"sale.pdf"));
+            PdfDocument pdf = new PdfDocument(new PdfWriter(Path() + "\\sale.pdf"));
             Document doc = new Document(pdf, PageSize.A7);
             doc.SetMargins(0, 10, 0, 10);
 

@@ -39,16 +39,16 @@
                 </LinearGradientBrush>
             </DataGrid.Background>
         </DataGrid>
-        <Label Content="NUM. MESA" HorizontalAlignment="Left" Height="21" Margin="30,160,0,0" VerticalAlignment="Top" Width="98" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="numTable" CaretBrush="White" Height="21" Margin="108,162,409,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" />
+        <Label Content="NUM. MESA" HorizontalAlignment="Left" Height="21" Margin="30,110,0,0" VerticalAlignment="Top" Width="98" FontFamily="Arial" Foreground="White"/>
+        <TextBox x:Name="numTable" CaretBrush="White" Height="21" Margin="108,112,409,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" />
 
-        <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,162,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" HorizontalAlignment="Right" Width="75" Style="{StaticResource ButtonShadowAround}">
+        <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,170,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" HorizontalAlignment="Right" Width="75" Style="{StaticResource ButtonShadowAround}">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>
         </Button>
 
-        <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Height="43" Margin="302,160,110,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
+        <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Height="43" Margin="30,170,382,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
         <Image HorizontalAlignment="Left" Height="13" Margin="385,33,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png"/>
         <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="30,30,0,0" VerticalAlignment="Top" Width="87" Foreground="White" FontSize="11"/>
     </Grid>

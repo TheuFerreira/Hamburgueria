@@ -12,9 +12,9 @@
         <SolidColorBrush x:Key="AzulBruxao" Color="#2f5597"/>
     </Window.Resources>
     <Grid>
-        <Rectangle Margin="0,362,0,0" Fill="#FF2F5597"/>
+        <Rectangle Margin="0,362,0,0" Fill="{DynamicResource AzulBruxao}"/>
         <DataGrid x:Name="gridSales" 
-                  Margin="0,-17,0,62" 
+                  Margin="0,0,0,57" 
                   ItemsSource="{Binding Item}"
                   AutoGenerateColumns="True"
                   AlternationCount="2" 
@@ -28,37 +28,94 @@
                   FontSize="22px"
                   Foreground="White"
                   SelectionMode="Single" 
-                  HorizontalScrollBarVisibility="Visible"
+                  HorizontalScrollBarVisibility="Disabled"
                   ColumnHeaderHeight="50">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Type}" Header="TYPE" Visibility="Hidden" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding Value}" Header="TIPO" MinWidth="100" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding File}" Header="FILE" Visibility="Hidden" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding Info}" Header="INFO" Width="*" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding Total}" Header="TOTAL" MinWidth="75" FontSize="18"/>
-                <DataGridTextColumn Binding="{Binding Date}" Header="DATE" MinWidth="100" FontSize="18"/>
-                <DataGridTemplateColumn>
+                <DataGridTextColumn Binding="{Binding Type}" Header="TYPE" Visibility="Hidden" FontSize="18">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Value}" Header="TIPO" MinWidth="100" FontSize="18">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding File}" Header="FILE" Visibility="Hidden" FontSize="18">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Info}" Header="INFO" Width="*" FontSize="18">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Total}" Header="TOTAL" MinWidth="75" FontSize="18">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Date}" Header="DATA" MinWidth="100" FontSize="18">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTemplateColumn MinWidth="40">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding Remove}" Height="25" Width="40"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn MinWidth="40">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding Modify}" Height="25" Width="40"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn MinWidth="40">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding Print}" Height="25" Width="40"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn>
+                <DataGridTemplateColumn MinWidth="40">
+                    <DataGridTemplateColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTemplateColumn.HeaderStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Image Source="{Binding Confirm}" Height="25" Width="40"/>

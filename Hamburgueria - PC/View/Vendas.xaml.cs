@@ -59,12 +59,6 @@ namespace Hamburgueria.View
             gridSales.Items.Clear();
             Sales.Balcao.Select(gridSales);
             Sales.Delivery.Select(gridSales);
-
-            Style s = new Style(typeof(DataGridColumnHeader));
-            s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush)FindResource("AzulBruxao")));
-            s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
-            for (int i = 0; i < gridSales.Columns.Count; i++)
-                gridSales.Columns[i].HeaderStyle = s;
         }
 
         private void GridSales_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)

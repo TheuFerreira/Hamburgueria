@@ -492,5 +492,10 @@ namespace Hamburgueria.View
                 this.Close();
             }
         }
+
+        private void confirm_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

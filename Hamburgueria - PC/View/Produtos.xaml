@@ -31,19 +31,18 @@
 
 
 
-        <Grid Background="#FF4472C4" 
+        <Grid Background="#FF1B3BC6" 
               Height="60" 
               VerticalAlignment="Bottom">
             <Button x:Name="AddProduto" 
                     Content="ADICIONAR" 
                     Margin="0,0,31,10" 
                     BorderBrush="{x:Null}" 
-                    FontFamily="Arial" 
                     FontWeight="Bold" 
                     HorizontalAlignment="Right" 
                     Width="73" Height="36" 
                     VerticalAlignment="Bottom" 
-                    Style="{StaticResource ButtonShadowAround}" FontSize="11" AutomationProperties.Name="ADICIONAR">
+                    Style="{StaticResource ButtonShadowAround}" FontSize="11" AutomationProperties.Name="ADICIONAR" Foreground="#FF1B3BC6">
                 <Button.Background>
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
@@ -52,12 +51,11 @@
                     Content="EXCLUIR" 
                     Margin="0,0,206,10" 
                     BorderBrush="{x:Null}" 
-                    FontFamily="Arial" 
                     FontWeight="Bold" 
                     HorizontalAlignment="Right" 
                     Width="73" Height="36" 
                     VerticalAlignment="Bottom"  
-                    Style="{StaticResource ButtonShadowAround}" FontSize="11">
+                    Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="#FF1B3BC6">
                 <Button.Background>
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
@@ -65,13 +63,12 @@
             <Button x:Name="EditProduto" 
                     Content="EDITAR"
                     Margin="0,0,118,10" 
-                    BorderBrush="{x:Null}" 
-                    FontFamily="Arial"
+                    BorderBrush="{x:Null}"
                     FontWeight="Bold" 
                     HorizontalAlignment="Right" 
                     Width="73" Height="36" 
                     VerticalAlignment="Bottom"  
-                    Style="{StaticResource ButtonShadowAround}" FontSize="11">
+                    Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="#FF1B3BC6">
                 <Button.Background>
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>

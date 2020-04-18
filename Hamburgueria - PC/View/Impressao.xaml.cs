@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using RawPrint;
 using System;
 using System.Drawing.Printing;
+using PdfiumViewer;
 
 namespace Hamburgueria.View
 {
@@ -61,8 +62,11 @@ namespace Hamburgueria.View
             string fileName = "Impressao-Pizzaria.pdf";
             string printerName = printsList.Text;
 
+            RawPrinterHelper.SendFileToPrinter(filePath, printerName);
+
+            /*
             IPrinter printer = new Printer();
-            printer.PrintRawFile(printerName, filePath, fileName);
+            printer.PrintRawFile(printerName, filePath, fileName);*/
 
             this.Close();
         }

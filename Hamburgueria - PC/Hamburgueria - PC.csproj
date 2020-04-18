@@ -82,6 +82,9 @@
     <Reference Include="itext.svg, Version=7.1.10.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext7.7.1.10\lib\net40\itext.svg.dll</HintPath>
     </Reference>
+    <Reference Include="PdfiumViewer, Version=2.13.0.0, Culture=neutral, PublicKeyToken=91e4789cfb0609e0, processorArchitecture=MSIL">
+      <HintPath>..\packages\PdfiumViewer.2.13.0.0\lib\net20\PdfiumViewer.dll</HintPath>
+    </Reference>
     <Reference Include="RawPrint, Version=0.5.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RawPrint.0.5.0\lib\net40\RawPrint.dll</HintPath>
     </Reference>
@@ -121,6 +124,7 @@
     <Compile Include="Model\RelatorioVendaDia.cs" />
     <Compile Include="Model\Venda.cs" />
     <Compile Include="PDF.cs" />
+    <Compile Include="RawPrinterHelper.cs" />
     <Compile Include="Sales\Balcao.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Sales\Delivery.cs" />

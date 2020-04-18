@@ -181,7 +181,26 @@ namespace Hamburgueria
 
         public static void Sale(Model.Cliente.Item clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, List<View.VendasDelivery.Item> products)
         {
-            Paragraph title = new Paragraph("BIG BURGUER LANCHES");
+            string content = "BIG BURGUER LANCHES";
+            content += "\nRUA TOCANTINS, Nº 395, MORRO DAS BICAS\nTELEFONE: ESPERANDO IGOR";
+            content += "\nCUPOM NÃO FISCAL";
+            content += "\nDESC\t\tPREÇO\tQTD\tTOTAL";
+            foreach (View.VendasDelivery.Item p in products)
+                content += "\n" + p.Name + "\t" + p.Price.ToString("N2") + "\t" + p.Quantity + "\t" + p.Total.ToString("N2");
+
+            content += "\nTOTAL BRUTO: R$" + totalBrute.ToString("N2");
+            content += "\nDESCONTO: R$" + discount.ToString("N2");
+            content += "\nTOTAL: R$" + totalValue.ToString("N2");
+
+            content += "\nFORMA DE PAGAMENTO: " + payment;
+            content += "\nDATA DA EMISSÃO: " + dateSale;
+
+            content += "\nCLIENTE: " + clientItem.NAME;
+            content += "\n" + clientItem.ADDRESS + ", Nº" + clientItem.NUMBER + ", " + clientItem.DISTRICT + ", " + clientItem.COMPLEMENT;
+
+            File.WriteAllText(Path() + "\\sale.txt", content);
+
+            /*Paragraph title = new Paragraph("BIG BURGUER LANCHES");
             title.SetMarginTop(15);
             title.SetFontSize(10);
             title.SetTextAlignment(TextAlignment.CENTER);
@@ -255,7 +274,7 @@ namespace Hamburgueria
             doc.Add(l3);
             doc.Add(client);
 
-            doc.Close();
+            doc.Close();*/
         }
 
         /*

@@ -10,9 +10,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using System.Drawing;
+using System.IO;
 using RawPrint;
-using System;
 using System.Drawing.Printing;
 using PdfiumViewer;
 
@@ -23,6 +23,9 @@ namespace Hamburgueria.View
     /// </summary>
     public partial class Impressao : Window
     {
+        private static StreamReader arquivoParaImprimir;
+        private Font _font;
+
         public Impressao()
         {
             InitializeComponent();
@@ -59,16 +62,44 @@ namespace Hamburgueria.View
         private void Print_Click(object sender, EventArgs e)
         {
             string filePath = PDF.Path() + "\\sale.pdf";
-            string fileName = "Impressao-Pizzaria.pdf";
+            string fileName = "Impressao-Hamburgueria.pdf";
             string printerName = printsList.Text;
 
-            RawPrinterHelper.SendFileToPrinter(filePath, printerName);
+            arquivoParaImprimir = new StreamReader(PDF.Path() + "\\sale.txt");
+            var pd = new PrintDocument();
+            _font = new Font("Arial", 10);
+            pd.PrinterSettings.PrinterName = printerName;
+            pd.DocumentName = fileName;
+            pd.PrintPage += pd_PrintPage;
+            pd.Print();
 
-            /*
-            IPrinter printer = new Printer();
-            printer.PrintRawFile(printerName, filePath, fileName);*/
+            //RawPrinterHelper.SendFileToPrinter(filePath, printerName);
+
+            //IPrinter printer = new Printer();
+            //printer.PrintRawFile(printerName, filePath, fileName);
 
             this.Close();
+        }
+
+        private void pd_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            float linhasPorPagina;
+            float PosicaoY = 0;
+            int count = 0;
+            float MargemEsquerda = e.MarginBounds.Left;
+            float MargemTopo = e.MarginBounds.Top;
+            string Linha = null;
+
+            linhasPorPagina = e.MarginBounds.Height / _font.GetHeight(e.Graphics);
+
+            while (count < linhasPorPagina && ((Linha = arquivoParaImprimir.ReadLine()) != null))
+            {
+                PosicaoY = MargemTopo + (count * _font.GetHeight(e.Graphics));
+                e.Graphics.DrawString(Linha, _font, System.Drawing.Brushes.Black, MargemEsquerda, PosicaoY, new StringFormat());
+                count++;
+            }
+
+            e.HasMorePages = Linha != null;
         }
 
         private void PrintsList_SelectedIndexChanged(object sender, EventArgs e)

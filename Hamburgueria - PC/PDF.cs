@@ -182,11 +182,16 @@ namespace Hamburgueria
         public static void Sale(Model.Cliente.Item clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, List<View.VendasDelivery.Item> products)
         {
             string content = "BIG BURGUER LANCHES";
-            content += "\nRUA TOCANTINS, Nº 395, MORRO DAS BICAS\nTELEFONE: ESPERANDO IGOR";
+            content += "\nRUA TOCANTINS, Nº 395, MORRO DAS BICAS";
+            content += "\nTELEFONE: ESPERANDO IGOR";
+            content += "\n--------------------------------------";
             content += "\nCUPOM NÃO FISCAL";
-            content += "\nDESC\t\tPREÇO\tQTD\tTOTAL";
+            content += "\n--------------------------------------";
+            content += "\n" + "PRODUTOS";
             foreach (View.VendasDelivery.Item p in products)
-                content += "\n" + p.Name + "\t" + p.Price.ToString("N2") + "\t" + p.Quantity + "\t" + p.Total.ToString("N2");
+                content += "\n" + p.Quantity + "x " + p.Name + "  " + p.Total.ToString("C2");
+
+            content += "\n--------------------------------------";
 
             content += "\nTOTAL BRUTO: R$" + totalBrute.ToString("N2");
             content += "\nDESCONTO: R$" + discount.ToString("N2");
@@ -195,12 +200,15 @@ namespace Hamburgueria
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
 
+            content += "\n--------------------------------------";
+
             content += "\nCLIENTE: " + clientItem.NAME;
             content += "\n" + clientItem.ADDRESS + ", Nº" + clientItem.NUMBER + ", " + clientItem.DISTRICT + ", " + clientItem.COMPLEMENT;
 
-            File.WriteAllText(Path() + "\\sale.txt", content);
+            File.WriteAllText(Path() + "\\sale.txt", content, System.Text.Encoding.UTF8);
 
-            /*Paragraph title = new Paragraph("BIG BURGUER LANCHES");
+            /*
+            Paragraph title = new Paragraph("BIG BURGUER LANCHES");
             title.SetMarginTop(15);
             title.SetFontSize(10);
             title.SetTextAlignment(TextAlignment.CENTER);

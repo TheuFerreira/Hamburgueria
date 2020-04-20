@@ -12,9 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Drawing;
 using System.IO;
-using RawPrint;
 using System.Drawing.Printing;
-using PdfiumViewer;
 
 namespace Hamburgueria.View
 {
@@ -70,18 +68,13 @@ namespace Hamburgueria.View
             _font = new Font("Arial", 10);
             pd.PrinterSettings.PrinterName = printerName;
             pd.DocumentName = fileName;
-            pd.PrintPage += pd_PrintPage;
+            pd.PrintPage += PD_PrintPage;
             pd.Print();
-
-            //RawPrinterHelper.SendFileToPrinter(filePath, printerName);
-
-            //IPrinter printer = new Printer();
-            //printer.PrintRawFile(printerName, filePath, fileName);
 
             this.Close();
         }
 
-        private void pd_PrintPage(object sender, PrintPageEventArgs e)
+        private void PD_PrintPage(object sender, PrintPageEventArgs e)
         {
             float linhasPorPagina;
             float PosicaoY = 0;

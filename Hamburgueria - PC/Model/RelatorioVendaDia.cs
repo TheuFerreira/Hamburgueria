@@ -10,7 +10,7 @@ namespace Hamburgueria.Model
 {
     partial class Relatorio : Database
     {
-        public class S
+        public class VendaDia
         {
             public string TYPE { get; set; }
             public DateTime Date { get; set; }
@@ -19,7 +19,7 @@ namespace Hamburgueria.Model
             public decimal Total { get; set; }
             public string Payment { get; set; }
 
-            public S(string type, DateTime date, decimal totalBrute, int discount, decimal total, string payment)
+            public VendaDia(string type, DateTime date, decimal totalBrute, int discount, decimal total, string payment)
             {
                 this.TYPE = type;
                 this.Date = date;
@@ -30,9 +30,20 @@ namespace Hamburgueria.Model
             }
         }
 
-        public static List<S> SaleDayLocal(string date)
+        public static List<VendaDia> SaleDay(string date)
         {
-            List<S> s = new List<S>();
+            var dl = SaleDayLocal(date);
+            var dd = SaleDayDelivery(date);
+
+            for (int i = 0; i < dd.Count; i++)
+                dl.Add(dd[i]);
+
+            return dl;
+        }
+
+        public static List<VendaDia> SaleDayLocal(string date)
+        {
+            List<VendaDia> s = new List<VendaDia>();
 
             connection.Open();
 
@@ -45,7 +56,30 @@ namespace Hamburgueria.Model
 
             var r = command.ExecuteReader();
             while (r.Read())
-                s.Add(new S("BALCÃO", r.GetDateTime(0), r.GetDecimal(1), r.GetInt32(2), r.GetDecimal(3), r.GetString(4)));
+                s.Add(new VendaDia("BALCÃO", r.GetDateTime(0), r.GetDecimal(1), r.GetInt32(2), r.GetDecimal(3), r.GetString(4)));
+            r.Close();
+
+            connection.Close();
+
+            return s;
+        }
+
+        public static List<VendaDia> SaleDayDelivery(string date)
+        {
+            List<VendaDia> s = new List<VendaDia>();
+
+            connection.Open();
+
+            SQLiteCommand command = new SQLiteCommand(connection);
+            command.CommandText = "" +
+                "SELECT v.date, v.total_bruto, v.desconto, v.total, v.pagamento from venda_delivery vd " +
+                "INNER JOIN venda v ON vd.venda_id = v.id " +
+                "WHERE v.date like '" + date + "%' " +
+                "GROUP BY v.id;";
+
+            var r = command.ExecuteReader();
+            while (r.Read())
+                s.Add(new VendaDia("DELIVERY", r.GetDateTime(0), r.GetDecimal(1), r.GetInt32(2), r.GetDecimal(3), r.GetString(4)));
             r.Close();
 
             connection.Close();

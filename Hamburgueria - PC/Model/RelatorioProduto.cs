@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 
 using System.Data.SQLite;
-
+using System.Windows;
 namespace Hamburgueria.Model
 {
     partial class Relatorio : Database
@@ -27,7 +27,7 @@ namespace Hamburgueria.Model
         public static List<P> Product(string date)
         {
             List<P> p = new List<P>();
-
+            MessageBox.Show(date);
             connection.Open();
 
             SQLiteCommand command = new SQLiteCommand(connection);

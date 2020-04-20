@@ -122,6 +122,9 @@
     <Compile Include="Model\Relatorio.cs" />
     <Compile Include="Model\RelatorioProduto.cs" />
     <Compile Include="Model\RelatorioVendaDia.cs" />
+    <Compile Include="Model\RelatorioVendaMes.cs" />
+    <Compile Include="Model\RelatorioVendaAnual.cs" />
+    <Compile Include="Model\RelatorioVendaSemanal.cs" />
     <Compile Include="Model\Venda.cs" />
     <Compile Include="PDF.cs" />
     <Compile Include="RawPrinterHelper.cs" />

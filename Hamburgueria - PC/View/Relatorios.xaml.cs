@@ -224,7 +224,48 @@ namespace Hamburgueria.View
             // Clientes
             else if (styleBox.SelectedIndex == 2)
             {
+                // Diario
+                if (periodBox.SelectedIndex == 0)
+                {
+                    string date = dateOne.SelectedDate.Value.ToString("yyyy-MM-dd");
+                    grid.ItemsSource = Model.Relatorio.Client(date);
+                }
+                // Semanal
+                else if (periodBox.SelectedIndex == 1)
+                {
+                    DateTime date1 = dateOne.SelectedDate.Value.StartOfWeek(DayOfWeek.Saturday);
+                    DateTime date2 = date1.AddDays(6);
+                    date1 = date1.AddDays(-1);
+                    date2 = date2.AddDays(1);
 
+                    string startDate = date1.ToString("yyyy-MM-dd");
+                    string endDate = date2.ToString("yyyy-MM-dd");
+                    grid.ItemsSource = Model.Relatorio.Client(startDate, endDate);
+                }
+                // Mensal
+                else if (periodBox.SelectedIndex == 2)
+                {
+                    string date = dateOne.SelectedDate.Value.ToString("yyyy-MM");
+                    grid.ItemsSource = Model.Relatorio.Client(date);
+                }
+                // Anual
+                else if (periodBox.SelectedIndex == 3)
+                {
+                    string date = dateOne.SelectedDate.Value.ToString("yyyy");
+                    grid.ItemsSource = Model.Relatorio.Client(date);
+                }
+                // Customizado
+                else if (periodBox.SelectedIndex == 4)
+                {
+                    DateTime date1 = dateOne.SelectedDate.Value;
+                    DateTime date2 = dateOne.SelectedDate.Value;
+                    date1 = date1.AddDays(-1);
+                    date2 = date2.AddDays(1);
+
+                    string startDate = date1.ToString("yyyy-MM-dd");
+                    string endDate = date2.ToString("yyyy-MM-dd");
+                    grid.ItemsSource = Model.Relatorio.Client(startDate, endDate);
+                }
             }
         }
 

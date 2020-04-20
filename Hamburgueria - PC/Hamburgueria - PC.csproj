@@ -120,6 +120,7 @@
     </ApplicationDefinition>
     <Compile Include="LINQExtension.cs" />
     <Compile Include="Model\Relatorio.cs" />
+    <Compile Include="Model\RelatorioCliente.cs" />
     <Compile Include="Model\RelatorioProduto.cs" />
     <Compile Include="Model\RelatorioVendaDia.cs" />
     <Compile Include="Model\RelatorioVendaMes.cs" />

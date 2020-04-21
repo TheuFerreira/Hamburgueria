@@ -1,5 +1,4 @@
 ﻿using System;
-
 using System.Data.SQLite;
 
 namespace Hamburgueria.Model
@@ -17,7 +16,12 @@ namespace Hamburgueria.Model
             DateTime date = DateTime.Now;
             var r = command.ExecuteReader();
             while (r.Read())
-                date = r.GetDateTime(0);
+            {
+                if (r.IsDBNull(0))
+                    date = DateTime.Now;
+                else
+                    date = r.GetDateTime(0);
+            }
             r.Close();
 
             connection.Close();

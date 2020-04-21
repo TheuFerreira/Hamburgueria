@@ -12,7 +12,6 @@ namespace Hamburgueria.Model
             public decimal TotalBruto { get; set; }
             public decimal Desconto { get; set; }
             public decimal Total { get; set; }
-            public string Payment { get; set; }
 
             public Cliente(string name, string address, decimal totalBruto, decimal desconto, decimal total)
             {

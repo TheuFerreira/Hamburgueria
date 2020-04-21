@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
         Title="Relatorios" Height="768" Width="1366" WindowState="Maximized" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+    <Window.Resources>
+        <SolidColorBrush x:Key="Turquesa" Color="#4472C4"/>
+        <SolidColorBrush x:Key="TurquesaClaro" Color="#8fAADC"/>
+        <SolidColorBrush x:Key="AzulBruxao" Color="#2f5597"/>
+    </Window.Resources>
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -42,7 +47,19 @@
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>
         </Button>
-        <DataGrid x:Name="grid" Margin="0,212,0,0"/>
+        <DataGrid x:Name="grid" 
+                  Margin="0,212,0,0" 
+                  AutoGenerateColumns="True"
+                  AlternationCount="2"
+                  RowBackground="{StaticResource Turquesa}" 
+                  AlternatingRowBackground="{DynamicResource TurquesaClaro}" 
+                  CanUserDeleteRows="False" 
+                  CanUserAddRows="False" 
+                  FontSize="22px"
+                  Foreground="White"
+                  SelectionMode="Single" 
+                  HorizontalScrollBarVisibility="Disabled">
+        </DataGrid>
 
     </Grid>
 </Window>

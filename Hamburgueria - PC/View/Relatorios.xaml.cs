@@ -85,6 +85,13 @@ namespace Hamburgueria.View
                         string date = dateOne.SelectedDate.Value.ToString("yyyy-MM-dd");
                         grid.ItemsSource = Model.Relatorio.SaleDayLocal(date);
                     }
+
+                    grid.Columns[0].Header = "TIPO";
+                    grid.Columns[1].Header = "DATA";
+                    grid.Columns[2].Header = "TOTAL BRUTO";
+                    grid.Columns[3].Header = "DESCONTO";
+                    grid.Columns[4].Header = "TOTAL";
+                    grid.Columns[5].Header = "PAGAMENTO";
                 }
                 // Semanal
                 else if (periodBox.SelectedIndex == 1)
@@ -110,6 +117,11 @@ namespace Hamburgueria.View
                         DateTime end = start.AddDays(6);
                         grid.ItemsSource = Model.Relatorio.SaleWeekLocal(start.ToShortDateString(), end.ToShortDateString());
                     }
+
+                    grid.Columns[0].Header = "DATA";
+                    grid.Columns[1].Header = "TOTAL BRUTO";
+                    grid.Columns[2].Header = "DESCONTO";
+                    grid.Columns[3].Header = "TOTAL";
                 }
                 // Mensal
                 else if (periodBox.SelectedIndex == 2)
@@ -132,6 +144,11 @@ namespace Hamburgueria.View
                         string date = dateOne.SelectedDate.Value.ToString("yyyy-MM-");
                         grid.ItemsSource = Model.Relatorio.SaleMonthLocal(date);
                     }
+
+                    grid.Columns[0].Header = "DIA";
+                    grid.Columns[1].Header = "TOTAL BRUTO";
+                    grid.Columns[2].Header = "DESCONTO";
+                    grid.Columns[3].Header = "TOTAL";
                 }
                 // Anual
                 else if (periodBox.SelectedIndex == 3)
@@ -154,6 +171,11 @@ namespace Hamburgueria.View
                         string date = dateOne.SelectedDate.Value.ToString("yyyy-");
                         grid.ItemsSource = Model.Relatorio.SaleYearLocal(date);
                     }
+
+                    grid.Columns[0].Header = "MÊS";
+                    grid.Columns[1].Header = "TOTAL BRUTO";
+                    grid.Columns[2].Header = "DESCONTO";
+                    grid.Columns[3].Header = "TOTAL";
                 }
                 // Customizado
                 else if (periodBox.SelectedIndex == 4)
@@ -173,6 +195,11 @@ namespace Hamburgueria.View
                     {
                         grid.ItemsSource = Model.Relatorio.SaleWeekLocal(dateOne.SelectedDate.Value.ToShortDateString(), dateTwo.SelectedDate.Value.ToShortDateString());
                     }
+
+                    grid.Columns[0].Header = "DATA";
+                    grid.Columns[1].Header = "TOTAL BRUTO";
+                    grid.Columns[2].Header = "DESCONTO";
+                    grid.Columns[3].Header = "TOTAL";
                 }
             }
             // Produtos
@@ -220,6 +247,12 @@ namespace Hamburgueria.View
                     string endDate = date2.ToString("yyyy-MM-dd");
                     grid.ItemsSource = Model.Relatorio.Product(startDate, endDate);
                 }
+
+                grid.Columns[0].Header = "CÓDIGO";
+                grid.Columns[1].Header = "NOME";
+                grid.Columns[2].Header = "PREÇO";
+                grid.Columns[3].Header = "QUANTIDADE";
+                grid.Columns[4].Header = "TOTAL";
             }
             // Clientes
             else if (styleBox.SelectedIndex == 2)
@@ -266,6 +299,21 @@ namespace Hamburgueria.View
                     string endDate = date2.ToString("yyyy-MM-dd");
                     grid.ItemsSource = Model.Relatorio.Client(startDate, endDate);
                 }
+
+                grid.Columns[0].Header = "NOME";
+                grid.Columns[1].Header = "ENDEREÇO";
+                grid.Columns[2].Header = "TOTAL BRUTO";
+                grid.Columns[3].Header = "DESCONTO";
+                grid.Columns[4].Header = "TOTAL";
+            }
+
+            Style style = new Style(typeof(System.Windows.Controls.Primitives.DataGridColumnHeader));
+            style.Setters.Add(new Setter(BackgroundProperty, FindResource("AzulBruxao")));
+
+            for (int i = 0; i < grid.Columns.Count; i++)
+            {
+                grid.Columns[i].HeaderStyle = style;
+                grid.Columns[i].MinWidth = 150;
             }
         }
 

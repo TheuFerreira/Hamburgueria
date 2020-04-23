@@ -61,9 +61,9 @@
                 <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Visibility="Hidden"/>
                 <DataGridTextColumn Binding="{Binding Path=Cod}" Header="CÓDIGO"/>
                 <DataGridTextColumn Binding="{Binding Path=Name}" Header="NOME" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Price}" Header="PREÇO" Width="Auto"/>
+                <DataGridTextColumn Binding="{Binding Path=Price, StringFormat=C2}" Header="PREÇO" Width="Auto"/>
                 <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="QTD" MinWidth="40" Width="Auto"/>
-                <DataGridTextColumn Binding="{Binding Path=Total}" Header="TOTAL" Width="Auto"/>
+                <DataGridTextColumn Binding="{Binding Path=Total, StringFormat=C2}" Header="TOTAL" Width="Auto"/>
             </DataGrid.Columns>
             <DataGrid.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

@@ -48,6 +48,8 @@ namespace Hamburgueria.View
             GridProdutos.Columns[2].Header = "NOME";
             GridProdutos.Columns[3].Header = "PREÇO";
 
+            GridProdutos.Columns[3].ClipboardContentBinding.StringFormat = "C2";
+
             GridProdutos.Columns[1].MinWidth = 150;
             GridProdutos.Columns[2].MinWidth = 150;
             GridProdutos.Columns[3].MinWidth = 200;

@@ -59,7 +59,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Total}" Header="TOTAL" MinWidth="75" FontSize="18">
+                <DataGridTextColumn Binding="{Binding Total, StringFormat=C2}" Header="TOTAL" MinWidth="75" FontSize="18">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>

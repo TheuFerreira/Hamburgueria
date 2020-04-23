@@ -92,6 +92,10 @@ namespace Hamburgueria.View
                     grid.Columns[3].Header = "DESCONTO";
                     grid.Columns[4].Header = "TOTAL";
                     grid.Columns[5].Header = "PAGAMENTO";
+
+                    grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[4].ClipboardContentBinding.StringFormat = "C2";
                 }
                 // Semanal
                 else if (periodBox.SelectedIndex == 1)
@@ -122,6 +126,10 @@ namespace Hamburgueria.View
                     grid.Columns[1].Header = "TOTAL BRUTO";
                     grid.Columns[2].Header = "DESCONTO";
                     grid.Columns[3].Header = "TOTAL";
+
+                    grid.Columns[1].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
                 }
                 // Mensal
                 else if (periodBox.SelectedIndex == 2)
@@ -149,6 +157,10 @@ namespace Hamburgueria.View
                     grid.Columns[1].Header = "TOTAL BRUTO";
                     grid.Columns[2].Header = "DESCONTO";
                     grid.Columns[3].Header = "TOTAL";
+
+                    grid.Columns[1].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
                 }
                 // Anual
                 else if (periodBox.SelectedIndex == 3)
@@ -176,6 +188,10 @@ namespace Hamburgueria.View
                     grid.Columns[1].Header = "TOTAL BRUTO";
                     grid.Columns[2].Header = "DESCONTO";
                     grid.Columns[3].Header = "TOTAL";
+
+                    grid.Columns[1].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
                 }
                 // Customizado
                 else if (periodBox.SelectedIndex == 4)
@@ -200,6 +216,10 @@ namespace Hamburgueria.View
                     grid.Columns[1].Header = "TOTAL BRUTO";
                     grid.Columns[2].Header = "DESCONTO";
                     grid.Columns[3].Header = "TOTAL";
+
+                    grid.Columns[1].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
+                    grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
                 }
             }
             // Produtos
@@ -253,6 +273,10 @@ namespace Hamburgueria.View
                 grid.Columns[2].Header = "PREÇO";
                 grid.Columns[3].Header = "QUANTIDADE";
                 grid.Columns[4].Header = "TOTAL";
+
+                grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
+                grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
+                grid.Columns[4].ClipboardContentBinding.StringFormat = "C2";
             }
             // Clientes
             else if (styleBox.SelectedIndex == 2)
@@ -305,6 +329,10 @@ namespace Hamburgueria.View
                 grid.Columns[2].Header = "TOTAL BRUTO";
                 grid.Columns[3].Header = "DESCONTO";
                 grid.Columns[4].Header = "TOTAL";
+
+                grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
+                grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
+                grid.Columns[4].ClipboardContentBinding.StringFormat = "C2";
             }
 
             Style style = new Style(typeof(System.Windows.Controls.Primitives.DataGridColumnHeader));

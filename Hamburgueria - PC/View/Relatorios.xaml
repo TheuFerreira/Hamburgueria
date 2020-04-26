@@ -19,13 +19,13 @@
             </LinearGradientBrush>
         </Grid.Background>
 
-        <ComboBox x:Name="styleBox" Margin="30,30,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top" BorderThickness="0">
+        <ComboBox x:Name="styleBox" Margin="30,75,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top" BorderThickness="0">
             <ListBoxItem Content="VENDAS"/>
             <ListBoxItem Content="PRODUTOS"/>
             <ListBoxItem Content="CLIENTES"/>
         </ComboBox>
 
-        <ComboBox x:Name="periodBox" Margin="388,30,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top">
+        <ComboBox x:Name="periodBox" Margin="388,75,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top">
             <ListBoxItem Content="DIÁRIO"/>
             <ListBoxItem Content="SEMANAL"/>
             <ListBoxItem Content="MENSAL"/>
@@ -33,23 +33,31 @@
             <ListBoxItem Content="CUSTOMIZADO"/>
         </ComboBox>
 
-        <ComboBox x:Name="typeBox" Margin="746,30,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250">
+        <ComboBox x:Name="typeBox" Margin="746,75,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250">
             <ListBoxItem Content="TODOS"/>
             <ListBoxItem Content="DELIVERY"/>
             <ListBoxItem Content="BALCÃO"/>
         </ComboBox>
 
-        <DatePicker x:Name="dateOne" Margin="28,131,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256" Height="30" BorderBrush="{x:Null}" Foreground="#FF1D3DC6"/>
-        <DatePicker x:Name="dateTwo" Margin="388,131,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" Grid.RowSpan="2" HorizontalAlignment="Left" Width="250"/>
+        <DatePicker x:Name="dateOne" Margin="28,150,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256" Height="30" BorderBrush="{x:Null}" Foreground="#FF1D3DC6"/>
+        <DatePicker x:Name="dateTwo" Margin="388,150,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="250"/>
 
-        <Button x:Name="Filter" Content="FILTRAR" Margin="839,131,444,0" VerticalAlignment="Top" FontSize="11" Foreground="#FF2F5597" Style="{DynamicResource ButtonShadowAround}" Height="25">
+        <Button x:Name="Filter" Content="FILTRAR" Margin="839,150,444,0" VerticalAlignment="Top" FontSize="11" Foreground="#FF2F5597" Style="{DynamicResource ButtonShadowAround}" Height="25">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Back" Content="VOLTAR" FontSize="11" Foreground="#FF2F5597" Margin="30,182,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="25" HorizontalAlignment="Left" Width="75">
+        <Button x:Name="Back" Content="VOLTAR" FontSize="11" Foreground="{x:Null}" Margin="20,10,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="28" HorizontalAlignment="Left" Width="18" Click="Back_Click_1" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.935"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
             <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+                <ImageBrush ImageSource="/Hamburgueria;component/Resources/iiu.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
         <DataGrid x:Name="grid" 

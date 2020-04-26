@@ -351,5 +351,9 @@ namespace Hamburgueria.View
             this.Close();
         }
 
+        private void Back_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -40,15 +40,22 @@
               VerticalAlignment="Bottom">
             <Button x:Name="BackCliente" 
                 Content="VOLTAR" 
-                Margin="10,0,0,10" 
+                Margin="10,9,0,8" 
                 BorderBrush="{x:Null}" 
                 FontFamily="Arial" 
-                FontWeight="Bold" Height="36" 
-                VerticalAlignment="Bottom"  
-                Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="#FF2F5597" HorizontalAlignment="Left" Width="73">
+                FontWeight="Bold"  
+                Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="{x:Null}" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.5" Click="BackCliente_Click_1">
                 <Button.Background>
-                    <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+                    <ImageBrush ImageSource="iiu.png" Stretch="Uniform"/>
                 </Button.Background>
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90.095"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Button.RenderTransform>
             </Button>
             <Button x:Name="AddCliente" 
                     Content="ADICIONAR" 
@@ -92,8 +99,9 @@
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
             </Button>
-            <TextBox HorizontalAlignment="Left" FontFamily="Arial" FontSize="15" Height="24" Margin="156,19,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="303" Style="{StaticResource TextBoxUnderline}"/>
+            <TextBox FontFamily="Arial" FontSize="15" Height="24" Margin="187,19,388,0" TextWrapping="Wrap" Text="Pesquisa" VerticalAlignment="Top" Style="{StaticResource TextBoxUnderline}" TextChanged="TextBox_TextChanged"/>
         </Grid>
+        <Image Height="13" Margin="411,390,366,0" VerticalAlignment="Top" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>
 
     </Grid>
 </Window>

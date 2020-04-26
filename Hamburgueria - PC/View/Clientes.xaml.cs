@@ -115,5 +115,15 @@ namespace Hamburgueria.View
             c.clients = this;
             c.ShowDialog();
         }
+
+        private void BackCliente_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

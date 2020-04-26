@@ -210,6 +210,8 @@
     <Content Include="hamburgueria.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="View\iiu.png" />
+    <Resource Include="View\down-arrow.png" />
     <Resource Include="Resources\remove.png" />
     <Resource Include="Resources\modify.png" />
     <Resource Include="Resources\print.png" />

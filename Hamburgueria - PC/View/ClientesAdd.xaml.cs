@@ -19,7 +19,6 @@ namespace Hamburgueria.View
     /// </summary>
     public partial class ClientesAdd : Window
     {
-
         public Clientes clients;
 
         public int id = -1;
@@ -97,6 +96,7 @@ namespace Hamburgueria.View
                 MessageBox.Show("Cliente cadastrado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 ClearBtn_Click(null, null);
+                clients.Clientes_Loaded(null, null);
             }
             else
             {

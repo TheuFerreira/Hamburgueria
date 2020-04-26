@@ -38,6 +38,18 @@
         <Grid Background="#FF1B3BC6" 
               Height="60" 
               VerticalAlignment="Bottom">
+            <Button x:Name="BackCliente" 
+                Content="VOLTAR" 
+                Margin="10,0,0,10" 
+                BorderBrush="{x:Null}" 
+                FontFamily="Arial" 
+                FontWeight="Bold" Height="36" 
+                VerticalAlignment="Bottom"  
+                Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="#FF2F5597" HorizontalAlignment="Left" Width="73">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+                </Button.Background>
+            </Button>
             <Button x:Name="AddCliente" 
                     Content="ADICIONAR" 
                     Margin="0,0,20,10" 
@@ -80,6 +92,7 @@
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
             </Button>
+            <TextBox HorizontalAlignment="Left" FontFamily="Arial" FontSize="15" Height="24" Margin="156,19,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="303" Style="{StaticResource TextBoxUnderline}"/>
         </Grid>
 
     </Grid>

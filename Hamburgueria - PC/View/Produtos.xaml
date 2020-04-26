@@ -34,6 +34,19 @@
         <Grid Background="#FF1B3BC6" 
               Height="60" 
               VerticalAlignment="Bottom">
+            <Button x:Name="BackProduto" 
+                Content="VOLTAR" 
+                Margin="10,0,0,10" 
+                BorderBrush="{x:Null}" 
+                FontWeight="Bold" 
+                HorizontalAlignment="Left" 
+                Width="73" Height="36" 
+                VerticalAlignment="Bottom"  
+                Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="#FF1B3BC6">
+                <Button.Background>
+                    <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+                </Button.Background>
+            </Button>
             <Button x:Name="AddProduto" 
                     Content="ADICIONAR" 
                     Margin="0,0,31,10" 

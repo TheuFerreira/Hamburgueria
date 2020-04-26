@@ -98,9 +98,13 @@ namespace Hamburgueria.View
 
                 Model.Produto.Insert(cod, Name.Text, price);
 
+                MessageBox.Show("Produto cadastrado com sucesso!", "", MessageBoxButton.OK, MessageBoxImage.Information);
+
                 Name.Text = "";
                 Code.Text = "";
                 Price.Text = "";
+
+                produtos.Produtos_Loaded(null, null);
             }
             else
             {

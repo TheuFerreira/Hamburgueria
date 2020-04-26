@@ -28,6 +28,7 @@ namespace Hamburgueria.View
             this.periodBox.SelectionChanged += PeriodBox_SelectionChanged;
 
             this.Filter.Click += Filter_Click;
+            this.Back.Click += Back_Click;
         }
 
         private void Relatorios_Loaded(object sender, RoutedEventArgs e)
@@ -343,6 +344,11 @@ namespace Hamburgueria.View
                 grid.Columns[i].HeaderStyle = style;
                 grid.Columns[i].MinWidth = 150;
             }
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
     }

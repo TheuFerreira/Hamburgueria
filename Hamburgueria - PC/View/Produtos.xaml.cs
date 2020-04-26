@@ -27,6 +27,7 @@ namespace Hamburgueria.View
 
             this.GridProdutos.BeginningEdit += (sender, e) => e.Cancel = true;
 
+            this.BackProduto.Click += BackProduto_Click;
             this.DelProduto.Click += DelProduto_Click;
             this.EditProduto.Click += EditProduto_Click;
             this.AddProduto.Click += AddProduto_Click;
@@ -61,6 +62,11 @@ namespace Hamburgueria.View
             s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
             for (int i = 0; i < GridProdutos.Columns.Count; i++)
                 GridProdutos.Columns[i].HeaderStyle = s;
+        }
+
+        private void BackProduto_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void DelProduto_Click(object sender, RoutedEventArgs e)

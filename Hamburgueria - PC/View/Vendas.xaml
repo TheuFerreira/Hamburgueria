@@ -124,6 +124,11 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="back" HorizontalAlignment="Left" Content="VOLTAR" FontFamily="Arial" Width="75" Height="34" VerticalAlignment="Bottom" Margin="10,0,0,10" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="#FF2F5597">
+            <Button.Background>
+                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+            </Button.Background>
+        </Button>
 
         <Button x:Name="addDelivery" HorizontalAlignment="Right" Content="DELIVERY" FontFamily="Arial" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,25,8" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="#FF2F5597">
             <Button.Background>

@@ -36,6 +36,7 @@ namespace Hamburgueria.View
             this.gridSales.BeginningEdit += GridSales_BeginningEdit;
             this.gridSales.PreviewMouseUp += GridSales_PreviewMouseUp;
 
+            this.back.Click += Back_Click;
             this.addFast.Click += AddFast_Click;
             this.addLocal.Click += AddLocal_Click;
             this.addDelivery.Click += AddDelivery_Click;
@@ -214,6 +215,11 @@ namespace Hamburgueria.View
             }
 
             UpdateGrid();
+        }
+
+        private void Back_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void AddFast_Click(object sender, RoutedEventArgs e)

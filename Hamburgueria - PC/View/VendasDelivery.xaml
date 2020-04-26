@@ -31,6 +31,11 @@
 
         <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Height="21" Margin="338,72,0,0" VerticalAlignment="Top" Width="107" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="complement" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="450,74,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="12,135,0,0" VerticalAlignment="Top" Width="73" Foreground="White" FontFamily="Arial"/>
+        <TextBox x:Name="searchProduct" CaretBrush="White" Height="21" Margin="90,138,276,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Image HorizontalAlignment="Left" Height="13" Margin="412,145,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>
+        <Label Content="QUANTIDADE:" Height="21" Margin="450,135,133,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="quantity" CaretBrush="White" Text="&#xA;" Height="21" Margin="550,138,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
 
         <Label Content="FORMA DE PAGAMENTO:" HorizontalAlignment="Left" Height="21" Margin="10,180,0,0" VerticalAlignment="Top" Width="156" FontFamily="Arial" Foreground="White"/>
         <ComboBox x:Name="payment" Margin="171,180,350,0" VerticalAlignment="Top" SelectedIndex="0" >
@@ -41,13 +46,6 @@
 
         <Label Content="DESCONTO:" HorizontalAlignment="Left" Height="21" Margin="448,180,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="discount" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="532,183,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00"/>
-
-        <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="12,135,0,0" VerticalAlignment="Top" Width="73" Foreground="White" FontFamily="Arial"/>
-        <TextBox x:Name="searchProduct" CaretBrush="White" Height="21" Margin="90,138,276,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
-        <Image HorizontalAlignment="Left" Height="13" Margin="412,145,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>
-
-        <Label Content="QUANTIDADE:" Height="21" Margin="450,135,133,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="quantity" CaretBrush="White" Text="&#xA;" Height="21" Margin="550,138,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
 
         <Button x:Name="confirm" Content="CONFIRMAR" Height="28" Margin="576,240,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="92" Click="confirm_Click_1">
             <Button.Background>

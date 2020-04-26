@@ -16,30 +16,15 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
+        <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="24,30,0,0" VerticalAlignment="Top" Width="63" Foreground="White" FontSize="11"/>
 
         <TextBox x:Name="search" CaretBrush="White" Height="21" Margin="87,32,312,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Image HorizontalAlignment="Left" Height="13" Margin="370,38,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png"/>
         <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="278" Margin="87,52,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True"/>
 
-        <Label Content="QUANTIDADE" HorizontalAlignment="Left" Height="21" Margin="436,30,0,0" VerticalAlignment="Top" Width="94" FontFamily="Arial" Foreground="White"/>
+        <Label Content="QUANTIDADE" HorizontalAlignment="Left" Height="21" Margin="436,30,0,0" VerticalAlignment="Top" Width="89" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="quantity" CaretBrush="White" Height="21" Margin="525,32,34,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
-
-        <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" Margin="0,0,0,0" BorderBrush="{x:Null}" Height="146" VerticalAlignment="Bottom">
-            <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding Path=Id}" Header="ID" Visibility="Hidden"/>
-                <DataGridTextColumn Binding="{Binding Path=Cod}" Header="CÓDIGO"/>
-                <DataGridTextColumn Binding="{Binding Path=Name}" Header="NOME" Width="*"/>
-                <DataGridTextColumn Binding="{Binding Path=Price, StringFormat=C2}" Header="PREÇO" Width="Auto"/>
-                <DataGridTextColumn Binding="{Binding Path=Quantity}" Header="QTD" MinWidth="40" Width="Auto"/>
-                <DataGridTextColumn Binding="{Binding Path=Total, StringFormat=C2}" Header="TOTAL" Width="Auto"/>
-            </DataGrid.Columns>
-            <DataGrid.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF4472C4" Offset="0"/>
-                    <GradientStop Color="#FF1E40C6" Offset="1"/>
-                </LinearGradientBrush>
-            </DataGrid.Background>
-        </DataGrid>
-        <Label Content="NUM. MESA" HorizontalAlignment="Left" Height="21" Margin="30,110,0,0" VerticalAlignment="Top" Width="98" FontFamily="Arial" Foreground="White"/>
+        <Label Content="NUM. MESA" HorizontalAlignment="Left" Height="21" Margin="30,110,0,0" VerticalAlignment="Top" Width="78" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="numTable" CaretBrush="White" Height="21" Margin="108,112,409,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" />
 
         <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,170,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" HorizontalAlignment="Right" Width="75" Style="{StaticResource ButtonShadowAround}">
@@ -49,7 +34,21 @@
         </Button>
 
         <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Height="43" Margin="30,170,382,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
-        <Image HorizontalAlignment="Left" Height="13" Margin="385,33,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png"/>
-        <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="30,30,0,0" VerticalAlignment="Top" Width="87" Foreground="White" FontSize="11"/>
+        <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" Margin="0,0,0,0" BorderBrush="{x:Null}" Height="146" VerticalAlignment="Bottom">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Hidden"/>
+                <DataGridTextColumn Binding="{Binding Cod}" Header="CÓDIGO"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="NOME" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="PREÇO" Width="Auto"/>
+                <DataGridTextColumn Binding="{Binding Quantity}" Header="QTD" MinWidth="40" Width="Auto"/>
+                <DataGridTextColumn Binding="{Binding Total, StringFormat=C2}" Header="TOTAL" Width="Auto"/>
+            </DataGrid.Columns>
+            <DataGrid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF4472C4" Offset="0"/>
+                    <GradientStop Color="#FF1E40C6" Offset="1"/>
+                </LinearGradientBrush>
+            </DataGrid.Background>
+        </DataGrid>
     </Grid>
 </Window>

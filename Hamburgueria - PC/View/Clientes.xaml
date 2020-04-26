@@ -31,7 +31,53 @@
                   FontSize="18px"
                   Foreground="White"
                   SelectionMode="Single" 
-                  HorizontalScrollBarVisibility="Visible"/>
+                  HorizontalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Header="Id" Visibility="Collapsed"/>
+                <DataGridTextColumn Binding="{Binding NAME}" Header="NOME" MinWidth="100" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding ADDRESS}" Header="RUA" MinWidth="150" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding NUMBER}" Header="NÚMERO" MinWidth="100">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding DISTRICT}" Header="BAIRRO" MinWidth="100" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding COMPLEMENT}" Header="COMPLEMENTO" MinWidth="150" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding REFERENCE}" Header="REFERÊNCIA" MinWidth="150" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
 
 
 
@@ -40,7 +86,7 @@
               VerticalAlignment="Bottom">
             <Button x:Name="BackCliente" 
                 Content="VOLTAR" 
-                Margin="10,9,0,8" 
+                Margin="10,21,0,21" 
                 BorderBrush="{x:Null}" 
                 FontFamily="Arial" 
                 FontWeight="Bold"  
@@ -57,6 +103,7 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
+            <TextBox x:Name="Search" FontFamily="Arial" FontSize="15" Height="24" Margin="187,19,0,0" TextWrapping="Wrap" Text="Pesquisa" VerticalAlignment="Top" Style="{StaticResource TextBoxUnderline}" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="217"/>
             <Button x:Name="AddCliente" 
                     Content="ADICIONAR" 
                     Margin="0,0,20,10" 
@@ -99,9 +146,8 @@
                     <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
                 </Button.Background>
             </Button>
-            <TextBox FontFamily="Arial" FontSize="15" Height="24" Margin="187,19,388,0" TextWrapping="Wrap" Text="Pesquisa" VerticalAlignment="Top" Style="{StaticResource TextBoxUnderline}" TextChanged="TextBox_TextChanged"/>
         </Grid>
-        <Image Height="13" Margin="411,390,366,0" VerticalAlignment="Top" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>
+        <Image Height="19" Margin="411,0,0,16" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Left" Width="22"/>
 
     </Grid>
 </Window>

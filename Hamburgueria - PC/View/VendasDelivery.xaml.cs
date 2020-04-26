@@ -110,23 +110,6 @@ namespace Hamburgueria.View
 
         // CLIENT
 
-        public void UpdateClientSearch()
-        {
-            if (gridClient.Visibility == Visibility)
-            {
-                gridClient.Columns[0].Visibility = Visibility.Hidden;
-                gridClient.Columns[2].Visibility = Visibility.Hidden;
-                gridClient.Columns[3].Visibility = Visibility.Hidden;
-                gridClient.Columns[4].Visibility = Visibility.Hidden;
-                gridClient.Columns[5].Visibility = Visibility.Hidden;
-                gridClient.Columns[6].Visibility = Visibility.Hidden;
-
-                gridClient.Columns[1].Header = "NOME";
-
-                gridClient.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            }
-        }
-
         private void SearchName_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -180,13 +163,12 @@ namespace Hamburgueria.View
             }
 
             gridClient.Visibility = Visibility.Visible;
-            gridClient.ItemsSource = Model.Cliente.Select(text);
+            gridClient.Items.Clear();
+            Model.Cliente.Select(gridClient, text);
             if (gridClient.HasItems)
                 gridClient.SelectedItem = gridClient.Items[0];
             else
                 gridClient.Visibility = Visibility.Hidden;
-
-            UpdateClientSearch();
         }
 
         private void Discount_LostFocus(object sender, RoutedEventArgs e)

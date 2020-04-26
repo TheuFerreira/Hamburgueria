@@ -6,7 +6,6 @@
       xmlns:local="clr-namespace:Hamburgueria.View"
       mc:Ignorable="d" d:DesignWidth="800"
       Title="VendasDelivery" Background="White" Height="481.334" Width="684" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
-
     <Grid Background="#FF4472C4">
         <Rectangle Height="137" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <Rectangle.Fill>
@@ -73,7 +72,12 @@
 
         <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="335" Margin="90,158,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True"/>
 
-        <DataGrid x:Name="gridClient" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="603" Margin="65,31,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True"/>
+        <DataGrid x:Name="gridClient" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="603" Margin="65,31,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Header="Id" Visibility="Collapsed"/>
+                <DataGridTextColumn Binding="{Binding NAME}" Header="NOME" MinWidth="100" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
     </Grid>
 </Window>

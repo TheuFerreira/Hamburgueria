@@ -27,6 +27,8 @@ namespace Hamburgueria.View
 
             this.GridClientes.BeginningEdit +=  (sender, e) => e.Cancel = true;
 
+            this.Search.TextChanged += Search_TextChanged;
+
             this.BackCliente.Click += BackCliente_Click;
             this.DelCliente.Click += DelCliente_Click;
             this.EditCliente.Click += EditCliente_Click;
@@ -41,29 +43,19 @@ namespace Hamburgueria.View
 
         public void Clientes_Loaded(object sender, RoutedEventArgs e)
         {
-            GridClientes.ItemsSource = Model.Cliente.GetAll();
+            GridClientes.Items.Clear();
+            Model.Cliente.GetAll(GridClientes);
+        }
 
-            GridClientes.Columns[0].Visibility = Visibility.Collapsed;
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string text = Search.Text;
+            GridClientes.Items.Clear();
 
-            GridClientes.Columns[1].Header = "NOME";
-            GridClientes.Columns[2].Header = "RUA";
-            GridClientes.Columns[3].Header = "NÚMERO";
-            GridClientes.Columns[4].Header = "BAIRRO";
-            GridClientes.Columns[5].Header = "COMPLEMENTO";
-            GridClientes.Columns[6].Header = "REFERÊNCIA";
-
-            GridClientes.Columns[1].MinWidth = 100;
-            GridClientes.Columns[2].MinWidth = 150;
-            GridClientes.Columns[3].MinWidth = 100;
-            GridClientes.Columns[4].MinWidth = 100;
-            GridClientes.Columns[5].MinWidth = 150;
-            GridClientes.Columns[6].MinWidth = 150;
-
-            Style s = new Style(typeof(DataGridColumnHeader));
-            s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush)FindResource("AzulBruxao")));
-            s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
-            for (int i = 0; i < GridClientes.Columns.Count; i++)
-                GridClientes.Columns[i].HeaderStyle = s;
+            if (string.IsNullOrWhiteSpace(text))
+                Model.Cliente.GetAll(GridClientes);
+            else
+                Model.Cliente.Select(GridClientes, text);
         }
 
         private void BackCliente_Click(object sender, RoutedEventArgs e)

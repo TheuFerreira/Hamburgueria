@@ -5,6 +5,7 @@ using System.Text;
 
 using System.Data;
 using System.Data.SQLite;
+using System.Windows.Controls;
 
 namespace Hamburgueria.Model
 {
@@ -21,7 +22,7 @@ namespace Hamburgueria.Model
             public string REFERENCE { get; set; }
         }
 
-        public static List<Item> GetAll()
+        public static void GetAll(DataGrid grid)
         {
             List<Item> items = new List<Item>();
 
@@ -56,7 +57,8 @@ namespace Hamburgueria.Model
 
             connection.Close();
 
-            return items;
+            for (int i = 0; i < items.Count; i++)
+                grid.Items.Add(items[i]);
         }
 
         public static void Insert(string name, string address, string district, string number, string complement, string reference)
@@ -105,7 +107,7 @@ namespace Hamburgueria.Model
             connection.Close();
         }
 
-        public static List<Item> Select(string text)
+        public static void Select(DataGrid grid, string text)
         {
             List<Item> items = new List<Item>();
 
@@ -140,7 +142,8 @@ namespace Hamburgueria.Model
 
             connection.Close();
 
-            return items;
+            for (int i = 0; i < items.Count; i++)
+                grid.Items.Add(items[i]);
         }
 
         public static void Delete(int id)

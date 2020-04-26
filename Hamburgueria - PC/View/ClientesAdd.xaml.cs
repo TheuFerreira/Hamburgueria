@@ -38,7 +38,7 @@ namespace Hamburgueria.View
 
             this.Number.PreviewTextInput += Number_PreviewTextInput;
 
-            this.Name.GotFocus += delegate { Name.SelectAll(); };
+            this.clientName.GotFocus += delegate { clientName.SelectAll(); };
             this.Adress.GotFocus += delegate { Adress.SelectAll(); };
             this.District.GotFocus += delegate { District.SelectAll(); };
             this.Number.GotFocus += delegate { Number.SelectAll(); };
@@ -62,15 +62,15 @@ namespace Hamburgueria.View
 
         private void ClientesAdd_Loaded(object sender, RoutedEventArgs e)
         {
-            Name.Text = name;
+            clientName.Text = name;
             Adress.Text = address;
             District.Text = district;
             Number.Text = number;
             Complement.Text = complement;
             Reference.Text = reference;
 
-            Name.Focus();
-            Name.SelectAll();
+            clientName.Focus();
+            clientName.SelectAll();
         }
 
         private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -80,7 +80,7 @@ namespace Hamburgueria.View
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(Name.Text) ||
+            if (string.IsNullOrEmpty(clientName.Text) ||
                 string.IsNullOrEmpty(Adress.Text) ||
                 string.IsNullOrEmpty(District.Text) ||
                 string.IsNullOrEmpty(Number.Text))
@@ -91,7 +91,7 @@ namespace Hamburgueria.View
 
             if (id == -1)
             {
-                Model.Cliente.Insert(Name.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);
+                Model.Cliente.Insert(clientName.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);
 
                 MessageBox.Show("Cliente cadastrado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -100,7 +100,7 @@ namespace Hamburgueria.View
             }
             else
             {
-                Model.Cliente.Update(id, Name.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);
+                Model.Cliente.Update(id, clientName.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);
 
                 MessageBox.Show("Cliente atualizado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -110,14 +110,14 @@ namespace Hamburgueria.View
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
-            Name.Text = String.Empty;
+            clientName.Text = String.Empty;
             Adress.Text = String.Empty;
             District.Text = String.Empty;
             Number.Text = String.Empty;
             Complement.Text = String.Empty;
             Reference.Text = String.Empty;
 
-            Name.Focus();
+            clientName.Focus();
         }
     }
 }

@@ -90,21 +90,6 @@ namespace Hamburgueria.View
             gridProduct.Items.Add(it);
         }
 
-        public void UpdateSearch()
-        {
-            gridSearch.Columns[0].Visibility = Visibility.Hidden;
-
-            gridSearch.Columns[1].Header = "CÓDIGO";
-            gridSearch.Columns[2].Header = "NOME";
-            gridSearch.Columns[3].Header = "PREÇO";
-
-            gridSearch.Columns[1].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-            gridSearch.Columns[2].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            gridSearch.Columns[3].Width = new DataGridLength(1, DataGridLengthUnitType.Auto);
-
-            gridSearch.Columns[3].ClipboardContentBinding.StringFormat = "C2";
-        }
-
         private void VendasBalcao_Loaded(object sender, RoutedEventArgs e)
         {
             gridSearch.Visibility = Visibility.Hidden;
@@ -158,15 +143,14 @@ namespace Hamburgueria.View
 
             gridSearch.Visibility = Visibility.Visible;
             isNumber = char.IsDigit(text[0]);
+            gridSearch.Items.Clear();
             if (isNumber)
-                gridSearch.ItemsSource = Model.Produto.Select(Convert.ToInt32(text));
+                Model.Produto.Select(gridSearch, Convert.ToInt32(text));
             else
-                gridSearch.ItemsSource = Model.Produto.Select(text);
+                Model.Produto.Select(gridSearch, text);
 
             if (gridSearch.HasItems)
                 gridSearch.SelectedItem = gridSearch.Items[0];
-
-            UpdateSearch();
         }
 
         private void GridSearch_MouseDoubleClick(object sender, MouseButtonEventArgs e)

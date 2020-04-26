@@ -17,7 +17,7 @@
         <Label Content="PREENCHA OS CAMPOS ABAIXO" HorizontalAlignment="Left" Height="29" Margin="54,35,0,0" VerticalAlignment="Top" Width="266" Foreground="White" FontSize="16" FontFamily="Arial"/>
 
         <Label Content="NOME:*" HorizontalAlignment="Left" Margin="45,90,0,0" VerticalAlignment="Top" Width="52" Foreground="White"/>
-        <TextBox x:Name="Name" CaretBrush="White" Margin="94,94,45,303" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="clientName" CaretBrush="White" Margin="94,94,45,303" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="RUA:*" HorizontalAlignment="Left" Margin="45,155,0,0" VerticalAlignment="Top" Width="43" Foreground="White" RenderTransformOrigin="0.953,0.635"/>
         <TextBox x:Name="Adress" CaretBrush="White" Margin="81,159,208,238" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" RenderTransformOrigin="0.5,0.5"/>

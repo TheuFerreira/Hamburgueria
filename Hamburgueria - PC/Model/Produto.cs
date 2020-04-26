@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+using System.Windows.Controls;
 using System.Data.SQLite;
 
 namespace Hamburgueria.Model
@@ -24,8 +25,10 @@ namespace Hamburgueria.Model
 
             connection.Open();
 
-            SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "SELECT id, cod, nome, preco FROM produto WHERE id = " + id;
+            SQLiteCommand command = new SQLiteCommand(connection)
+            {
+                CommandText = "SELECT id, cod, nome, preco FROM produto WHERE id = " + id
+            };
             var r = command.ExecuteReader();
             while (r.Read())
             {
@@ -44,8 +47,10 @@ namespace Hamburgueria.Model
         {
             connection.Open();
 
-            SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "INSERT INTO produto(cod, nome, preco) VALUES (@cod, @nome, @preco)";
+            SQLiteCommand command = new SQLiteCommand(connection)
+            {
+                CommandText = "INSERT INTO produto(cod, nome, preco) VALUES (@cod, @nome, @preco)"
+            };
 
             command.Parameters.AddWithValue("@cod", cod);
             command.Parameters.AddWithValue("@nome", name);
@@ -60,8 +65,10 @@ namespace Hamburgueria.Model
         {
             connection.Open();
 
-            SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "UPDATE produto SET cod = @cod,  nome = @name, preco = @price WHERE id = @id";
+            SQLiteCommand command = new SQLiteCommand(connection)
+            {
+                CommandText = "UPDATE produto SET cod = @cod,  nome = @name, preco = @price WHERE id = @id"
+            };
 
             command.Parameters.AddWithValue("@id", id);
             command.Parameters.AddWithValue("@cod", cod);
@@ -73,14 +80,16 @@ namespace Hamburgueria.Model
             connection.Close();
         }
 
-        public static List<Item> Select()
+        public static void Select(DataGrid grid)
         {
             List<Item> items = new List<Item>();
 
             connection.Open();
 
-            SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "SELECT id, cod, nome, preco FROM produto WHERE excluido = 0";
+            SQLiteCommand command = new SQLiteCommand(connection)
+            {
+                CommandText = "SELECT id, cod, nome, preco FROM produto WHERE excluido = 0"
+            };
 
             var r = command.ExecuteReader();
             while (r.Read())
@@ -96,17 +105,20 @@ namespace Hamburgueria.Model
 
             connection.Close();
 
-            return items;
+            foreach (Item it in items)
+                grid.Items.Add(it);
         }
 
-        public static List<Item> Select(int codigo)
+        public static void Select(DataGrid grid, int codigo)
         {
             List<Item> items = new List<Item>();
 
             connection.Open();
 
-            SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "SELECT id, cod, nome, preco FROM produto WHERE excluido = 0 AND cod like '%" + codigo + "%'";
+            SQLiteCommand command = new SQLiteCommand(connection)
+            {
+                CommandText = "SELECT id, cod, nome, preco FROM produto WHERE excluido = 0 AND cod like '%" + codigo + "%'"
+            };
 
             var r = command.ExecuteReader();
             while (r.Read())
@@ -122,17 +134,20 @@ namespace Hamburgueria.Model
 
             connection.Close();
 
-            return items;
+            foreach (Item it in items)
+                grid.Items.Add(it);
         }
 
-        public static List<Item> Select(string nome)
+        public static void Select(DataGrid grid, string nome)
         {
             List<Item> items = new List<Item>();
 
             connection.Open();
 
-            SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "SELECT id, cod, nome, preco FROM produto WHERE excluido = 0 AND nome like '%" + nome + "%'";
+            SQLiteCommand command = new SQLiteCommand(connection)
+            {
+                CommandText = "SELECT id, cod, nome, preco FROM produto WHERE excluido = 0 AND nome like '%" + nome + "%'"
+            };
 
             var r = command.ExecuteReader();
             while (r.Read())
@@ -148,15 +163,18 @@ namespace Hamburgueria.Model
 
             connection.Close();
 
-            return items;
+            foreach (Item it in items)
+                grid.Items.Add(it);
         }
 
         public static void Delete(int id)
         {
             connection.Open();
 
-            SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "UPDATE produto SET excluido = 1 WHERE id = @id";
+            SQLiteCommand command = new SQLiteCommand(connection)
+            {
+                CommandText = "UPDATE produto SET excluido = 1 WHERE id = @id"
+            };
 
             command.Parameters.AddWithValue("@id", id);
 
@@ -169,8 +187,10 @@ namespace Hamburgueria.Model
         {
             connection.Open();
 
-            SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "SELECT * FROM produto WHERE cod = @cod and excluido = 0";
+            SQLiteCommand command = new SQLiteCommand(connection)
+            {
+                CommandText = "SELECT * FROM produto WHERE cod = @cod and excluido = 0"
+            };
 
             command.Parameters.AddWithValue("@cod", cod);
 

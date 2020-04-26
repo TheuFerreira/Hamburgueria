@@ -46,7 +46,7 @@
         <Label Content="DESCONTO:" HorizontalAlignment="Left" Height="21" Margin="448,180,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="discount" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="532,183,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00"/>
 
-        <Button x:Name="confirm" Content="CONFIRMAR" Height="28" Margin="576,240,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="92" Click="confirm_Click_1">
+        <Button x:Name="confirm" Content="CONFIRMAR" Height="28" Margin="576,240,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="92">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>
@@ -70,7 +70,14 @@
             </DataGrid.Background>
         </DataGrid>
 
-        <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="335" Margin="90,158,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True"/>
+        <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="335" Margin="90,158,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Header="ID" Visibility="Collapsed"/>
+                <DataGridTextColumn Binding="{Binding COD}" Header="CÓDIGO"/>
+                <DataGridTextColumn Binding="{Binding NAME}" Header="NOME" MinWidth="150" Width="*"/>
+                <DataGridTextColumn Binding="{Binding PRICE, StringFormat=C2}" Header="PREÇO"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
         <DataGrid x:Name="gridClient" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="603" Margin="65,31,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True">
             <DataGrid.Columns>

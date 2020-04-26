@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace Hamburgueria.View
 {
@@ -19,6 +20,8 @@ namespace Hamburgueria.View
     /// </summary>
     public partial class Produtos : Window
     {
+        private bool isNumber = false;
+
         public Produtos()
         {
             InitializeComponent();
@@ -26,6 +29,10 @@ namespace Hamburgueria.View
             this.Loaded += Produtos_Loaded;
 
             this.GridProdutos.BeginningEdit += (sender, e) => e.Cancel = true;
+
+            this.Search.PreviewKeyDown += Search_PreviewKeyDown;
+            this.Search.PreviewTextInput += Search_PreviewTextInput;
+            this.Search.TextChanged += Search_TextChanged;
 
             this.BackProduto.Click += BackProduto_Click;
             this.DelProduto.Click += DelProduto_Click;
@@ -41,27 +48,62 @@ namespace Hamburgueria.View
 
         public void Produtos_Loaded(object sender, RoutedEventArgs e)
         {
-            GridProdutos.ItemsSource = Model.Produto.Select();
+            GridProdutos.Items.Clear();
+            Model.Produto.Select(GridProdutos);
+        }
 
-            GridProdutos.Columns[0].Visibility = Visibility.Collapsed;
+        private void Search_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Down)
+            {
+                if (GridProdutos.HasItems)
+                {
+                    int index = GridProdutos.SelectedIndex;
+                    index++;
+                    if (index == GridProdutos.Items.Count)
+                        index = 0;
+                    GridProdutos.SelectedIndex = index;
+                }
+            }
+            else if (e.Key == Key.Up)
+            {
+                if (GridProdutos.HasItems)
+                {
+                    int index = GridProdutos.SelectedIndex;
+                    index--;
+                    if (index < 0)
+                        index = GridProdutos.Items.Count - 1;
+                    GridProdutos.SelectedIndex = index;
+                }
+            }
+        }
 
-            GridProdutos.Columns[1].Header = "CÓDIGO";
-            GridProdutos.Columns[2].Header = "NOME";
-            GridProdutos.Columns[3].Header = "PREÇO";
+        private void Search_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (isNumber)
+                e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+        }
 
-            GridProdutos.Columns[3].ClipboardContentBinding.StringFormat = "C2";
+        private void Search_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string text = Search.Text;
+            GridProdutos.Items.Clear();
+            if (string.IsNullOrEmpty(text))
+            {
+                isNumber = false;
+                Model.Produto.Select(GridProdutos);
+                return;
+            }
 
-            GridProdutos.Columns[1].MinWidth = 150;
-            GridProdutos.Columns[2].MinWidth = 150;
-            GridProdutos.Columns[3].MinWidth = 200;
+            GridProdutos.Visibility = Visibility.Visible;
+            isNumber = char.IsDigit(text[0]);
+            if (isNumber)
+                Model.Produto.Select(GridProdutos, Convert.ToInt32(text));
+            else
+                Model.Produto.Select(GridProdutos, text);
 
-            GridProdutos.Columns[2].Width = new DataGridLength(1.0, DataGridLengthUnitType.Star);
-
-            Style s = new Style(typeof(DataGridColumnHeader));
-            s.Setters.Add(new Setter(DataGridRow.BackgroundProperty, (SolidColorBrush)FindResource("AzulBruxao")));
-            s.Setters.Add(new Setter(DataGridRow.ForegroundProperty, Brushes.White));
-            for (int i = 0; i < GridProdutos.Columns.Count; i++)
-                GridProdutos.Columns[i].HeaderStyle = s;
+            if (GridProdutos.HasItems)
+                GridProdutos.SelectedItem = GridProdutos.Items[0];
         }
 
         private void BackProduto_Click(object sender, RoutedEventArgs e)
@@ -90,12 +132,14 @@ namespace Hamburgueria.View
             {
                 var item = (Model.Produto.Item)GridProdutos.SelectedItem;
 
-                ProdutosAdd p = new ProdutosAdd();
-                p.produtos = this;
-                p.id = item.ID;
-                p.cod = item.COD;
-                p.name = item.NAME;
-                p.price = item.PRICE;
+                ProdutosAdd p = new ProdutosAdd
+                {
+                    produtos = this,
+                    id = item.ID,
+                    cod = item.COD,
+                    name = item.NAME,
+                    price = item.PRICE
+                };
                 p.ShowDialog();
             }
             else
@@ -106,9 +150,10 @@ namespace Hamburgueria.View
 
         private void AddProduto_Click(object sender, RoutedEventArgs e)
         {
-            ProdutosAdd p = new ProdutosAdd();
-            p.produtos = this;
-            p.ShowDialog();
+            new ProdutosAdd
+            {
+                produtos = this
+            }.ShowDialog();
         }
     }
 }

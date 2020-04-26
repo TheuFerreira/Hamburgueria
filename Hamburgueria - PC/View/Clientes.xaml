@@ -92,7 +92,7 @@
                 FontWeight="Bold"  
                 Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="{x:Null}" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.5" Click="BackCliente_Click_1">
                 <Button.Background>
-                    <ImageBrush ImageSource="iiu.png" Stretch="Uniform"/>
+                    <ImageBrush ImageSource="/Hamburgueria;component/Resources/iiu.png" Stretch="Uniform"/>
                 </Button.Background>
                 <Button.RenderTransform>
                     <TransformGroup>
@@ -103,7 +103,7 @@
                     </TransformGroup>
                 </Button.RenderTransform>
             </Button>
-            <TextBox x:Name="Search" FontFamily="Arial" FontSize="15" Height="24" Margin="187,19,388,0" TextWrapping="Wrap" Text="Pesquisa" VerticalAlignment="Top" Style="{StaticResource TextBoxUnderline}" TextChanged="TextBox_TextChanged"/>
+            <TextBox x:Name="Search" CharacterCasing="Upper" FontFamily="Arial" FontSize="15" Height="24" Margin="187,19,0,0" TextWrapping="Wrap" Text="Pesquisa" VerticalAlignment="Top" Style="{StaticResource TextBoxUnderline}" TextChanged="TextBox_TextChanged" HorizontalAlignment="Left" Width="217"/>
             <Button x:Name="AddCliente" 
                     Content="ADICIONAR" 
                     Margin="0,0,20,10" 

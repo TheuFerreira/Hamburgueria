@@ -47,7 +47,8 @@ namespace Hamburgueria.View
             this.search.PreviewTextInput += Search_PreviewTextInput;
             this.search.TextChanged += Search_TextChanged;
 
-            this.gridProduct.MouseDoubleClick += GridProduct_MouseDoubleClick;
+            this.gridSearch.PreviewKeyDown += GridSearch_PreviewKeyDown;
+            this.gridSearch.MouseDoubleClick += GridSearch_MouseDoubleClick;
 
             this.quantity.PreviewKeyDown += Quantity_PreviewKeyDown;
             this.quantity.PreviewTextInput += Quantity_PreviewTextInput;
@@ -73,7 +74,7 @@ namespace Hamburgueria.View
         {
             if (e.Key == Key.Enter)
             {
-                GridProduct_MouseDoubleClick(null, null);
+                GridSearch_MouseDoubleClick(null, null);
             }
             else if (e.Key == Key.Down)
             {
@@ -127,7 +128,13 @@ namespace Hamburgueria.View
                 gridSearch.SelectedItem = gridSearch.Items[0];
         }
 
-        private void GridProduct_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        private void GridSearch_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                GridSearch_MouseDoubleClick(null, null);
+        }
+
+        private void GridSearch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
             if (gridSearch.HasItems)
             {

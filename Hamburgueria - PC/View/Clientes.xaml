@@ -147,7 +147,7 @@
                 </Button.Background>
             </Button>
         </Grid>
-        <Image Height="19" Margin="375,0,0,16" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Left" Width="22"/>
+        <Image Height="19" Margin="369,0,0,16" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Left" Width="22"/>
 
     </Grid>
 </Window>

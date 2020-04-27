@@ -17,29 +17,29 @@
             <ColumnDefinition Width="455*"/>
             <ColumnDefinition Width="455*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="BtnVendas" Content="" Margin="80,37,80,34.946" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Row="1">
+        <Button x:Name="BtnVendas" Content="" Margin="80,37,80,35" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Row="1">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_vendas.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnClientes" Content="" Margin="80,42.054,80,29" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Row="2">
+        <Button x:Name="BtnClientes" Content="" Margin="80,42,80,29" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Row="2">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_cliente.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnRelatorios" Content="" Margin="80,42.054,80,29" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Column="2" Grid.Row="2">
+        <Button x:Name="BtnRelatorios" Content="" Margin="80,42,80,29" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Column="2" Grid.Row="2">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_relatorios.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnProdutos" Content="" Margin="80,42.054,80,29" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Column="1" Grid.Row="2">
+        <Button x:Name="BtnProdutos" Content="" Margin="79,37,80,34" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Column="2" Grid.Row="1">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_Produtos.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Border BorderThickness="1" Margin="7,18,16,10" Opacity="0.65" Style="{StaticResource LogoShadow}" Grid.Column="1" Grid.RowSpan="2">
+        <Border BorderThickness="1" Margin="12,100,11,148" Style="{StaticResource LogoShadow}" Grid.Column="1" Grid.RowSpan="3" Opacity="0.75">
             <Border.Background>
-                <ImageBrush ImageSource="Resources/logo.png" Stretch="Uniform"/>
+                <ImageBrush ImageSource="Resources/logo final.png" Stretch="Uniform"/>
             </Border.Background>
         </Border>
     </Grid>

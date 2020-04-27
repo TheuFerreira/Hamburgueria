@@ -59,7 +59,7 @@
         <Grid Background="#FF1B3BC6" 
               Height="60" 
               VerticalAlignment="Bottom">
-            <TextBox x:Name="Search" FontFamily="Arial" FontSize="15" Height="24" Margin="186,0,0,18" TextWrapping="Wrap" Text="Pesquisa" VerticalAlignment="Bottom" Style="{StaticResource TextBoxUnderline}" HorizontalAlignment="Left" Width="180" CharacterCasing="Upper"/>
+            <TextBox x:Name="Search" FontFamily="Arial" CaretBrush="White" FontSize="15" Height="24" Margin="186,0,0,18" TextWrapping="Wrap" Text="Pesquisar" VerticalAlignment="Bottom" Style="{StaticResource TextBoxUnderline}" HorizontalAlignment="Left" Width="180" CharacterCasing="Upper"/>
             <Image Height="19" Margin="378,0,0,17" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Left" Width="22"/>
             <Button x:Name="BackProduto" 
             Content="VOLTAR" 

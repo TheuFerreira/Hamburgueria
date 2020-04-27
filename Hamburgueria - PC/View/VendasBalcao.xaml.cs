@@ -187,6 +187,12 @@ namespace Hamburgueria.View
                     return;
                 }
 
+                if (searchId == -1)
+                {
+                    MessageBox.Show("Selecione um produto!!!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 bool exist = false;
                 for (int i = 0; i < gridProduct.Items.Count; i++)
                 {
@@ -330,6 +336,8 @@ namespace Hamburgueria.View
                 search.Focus();
 
                 MessageBox.Show("Venda adicionada com sucesso!!!");
+
+                sales.UpdateGrid();
             }
             else
             {

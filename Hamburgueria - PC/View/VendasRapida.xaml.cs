@@ -161,6 +161,12 @@ namespace Hamburgueria.View
                     return;
                 }
 
+                if (searchId == -1)
+                {
+                    MessageBox.Show("Selecione um produto!!!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 bool exist = false;
                 for (int i = 0; i < gridProduct.Items.Count; i++)
                 {
@@ -281,9 +287,17 @@ namespace Hamburgueria.View
                 };
                 pagamento.ShowDialog();
 
-                MessageBox.Show("Venda realizada com sucesso!!!");
+                if (pagamento.Confirmed)
+                {
+                    MessageBox.Show("Venda realizada com sucesso!!!");
 
-                this.Close();
+                    gridProduct.Items.Clear();
+                    search.Text = "";
+                    quantity.Text = "";
+                    totalSale = 0;
+                    searchId = -1;
+                    labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
+                }
             }
         }
     }

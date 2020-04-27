@@ -27,6 +27,8 @@ namespace Hamburgueria.View
         private decimal desconto = 0;
         private decimal pago = 0;
 
+        public bool Confirmed = false;
+
         public VendasPagamento(decimal valorTotal)
         {
             InitializeComponent();
@@ -84,6 +86,9 @@ namespace Hamburgueria.View
         {
             TextBox t = (TextBox)sender;
             t.SelectAll();
+
+            if (t.Text == "0")
+                t.Text = "";
         }
 
         private void Values_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -161,14 +166,15 @@ namespace Hamburgueria.View
                 Sales.Balcao.Delete(numTable);
 
                 sales.UpdateGrid();
-                this.Close();
             }
             // FAST
             else
             {
                 Model.Venda.Insert(dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), payment.Text, items);
-                this.Close();
             }
+
+            Confirmed = true;
+            this.Close();
         }
 
     }

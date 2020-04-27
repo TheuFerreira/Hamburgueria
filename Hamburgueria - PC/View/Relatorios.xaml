@@ -47,7 +47,7 @@
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
             </Button.Background>
         </Button>
-        <Button x:Name="Back" Content="VOLTAR" FontSize="11" Foreground="{x:Null}" Margin="20,10,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="28" HorizontalAlignment="Left" Width="18" Click="Back_Click_1" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="Back" Content="VOLTAR" FontSize="11" Foreground="{x:Null}" Margin="20,10,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="28" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -72,6 +72,10 @@
                   Foreground="White"
                   SelectionMode="Single" 
                   HorizontalScrollBarVisibility="Disabled"/>
+
+        <Label Name="labelBruteTotal" Content="BRUTO TOTAL: R$0,00" Margin="0,180,444,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="15" Foreground="White" HorizontalAlignment="Right" Width="216"/>
+        <Label Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="0,180,190,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="15" Foreground="White" HorizontalAlignment="Right" Width="240"/>
+        <Label Name="labelTotal" Content="TOTAL: R$0,00" Margin="0,180,10,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="15" Foreground="White" HorizontalAlignment="Right" Width="160"/>
 
     </Grid>
 </Window>

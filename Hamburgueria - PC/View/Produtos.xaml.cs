@@ -30,6 +30,7 @@ namespace Hamburgueria.View
 
             this.GridProdutos.BeginningEdit += (sender, e) => e.Cancel = true;
 
+            this.Search.GotFocus += Search_GotFocus;
             this.Search.PreviewKeyDown += Search_PreviewKeyDown;
             this.Search.PreviewTextInput += Search_PreviewTextInput;
             this.Search.TextChanged += Search_TextChanged;
@@ -50,6 +51,12 @@ namespace Hamburgueria.View
         {
             GridProdutos.Items.Clear();
             Model.Produto.Select(GridProdutos);
+        }
+
+        private void Search_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Search.Text == "Pesquisar")
+                Search.Text = "";
         }
 
         private void Search_PreviewKeyDown(object sender, KeyEventArgs e)

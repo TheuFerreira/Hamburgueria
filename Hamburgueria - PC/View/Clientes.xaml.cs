@@ -27,6 +27,7 @@ namespace Hamburgueria.View
 
             this.GridClientes.BeginningEdit +=  (sender, e) => e.Cancel = true;
 
+            this.Search.GotFocus += Search_GotFocus;
             this.Search.TextChanged += Search_TextChanged;
 
             this.BackCliente.Click += BackCliente_Click;
@@ -45,6 +46,12 @@ namespace Hamburgueria.View
         {
             GridClientes.Items.Clear();
             Model.Cliente.GetAll(GridClientes);
+        }
+
+        private void Search_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (Search.Text == "Pesquisar")
+                Search.Text = "";
         }
 
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
@@ -106,16 +113,6 @@ namespace Hamburgueria.View
             ClientesAdd c = new ClientesAdd();
             c.clients = this;
             c.ShowDialog();
-        }
-
-        private void BackCliente_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
         }
     }
 }

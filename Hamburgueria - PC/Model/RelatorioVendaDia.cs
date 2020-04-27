@@ -15,11 +15,11 @@ namespace Hamburgueria.Model
             public string TYPE { get; set; }
             public DateTime Date { get; set; }
             public decimal TotalBrute { get; set; }
-            public int Discount { get; set; }
+            public decimal Discount { get; set; }
             public decimal Total { get; set; }
             public string Payment { get; set; }
 
-            public VendaDia(string type, DateTime date, decimal totalBrute, int discount, decimal total, string payment)
+            public VendaDia(string type, DateTime date, decimal totalBrute, decimal discount, decimal total, string payment)
             {
                 this.TYPE = type;
                 this.Date = date;
@@ -56,7 +56,7 @@ namespace Hamburgueria.Model
 
             var r = command.ExecuteReader();
             while (r.Read())
-                s.Add(new VendaDia("BALCÃO", r.GetDateTime(0), r.GetDecimal(1), r.GetInt32(2), r.GetDecimal(3), r.GetString(4)));
+                s.Add(new VendaDia("BALCÃO", r.GetDateTime(0), r.GetDecimal(1), r.GetDecimal(2), r.GetDecimal(3), r.GetString(4)));
             r.Close();
 
             connection.Close();
@@ -79,7 +79,7 @@ namespace Hamburgueria.Model
 
             var r = command.ExecuteReader();
             while (r.Read())
-                s.Add(new VendaDia("DELIVERY", r.GetDateTime(0), r.GetDecimal(1), r.GetInt32(2), r.GetDecimal(3), r.GetString(4)));
+                s.Add(new VendaDia("DELIVERY", r.GetDateTime(0), r.GetDecimal(1), r.GetDecimal(2), r.GetDecimal(3), r.GetString(4)));
             r.Close();
 
             connection.Close();

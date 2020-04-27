@@ -97,6 +97,21 @@ namespace Hamburgueria.View
                     grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[4].ClipboardContentBinding.StringFormat = "C2";
+
+                    decimal sumTB = 0;
+                    decimal sumD = 0;
+                    decimal sumT = 0;
+                    for (int i = 0; i < grid.Items.Count; i++)
+                    {
+                        var it = (Model.Relatorio.VendaDia)grid.Items[i];
+                        sumTB += it.TotalBrute;
+                        sumD += it.Discount;
+                        sumT += it.Total;
+                    }
+
+                    labelBruteTotal.Content = "BRUTO TOTAL:" + sumTB.ToString("C2");
+                    labelDiscount.Content = "DESCONTO TOTAL:" + sumD.ToString("C2");
+                    labelTotal.Content = "TOTAL:" + sumT.ToString("C2");
                 }
                 // Semanal
                 else if (periodBox.SelectedIndex == 1)
@@ -131,6 +146,21 @@ namespace Hamburgueria.View
                     grid.Columns[1].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
+
+                    decimal sumTB = 0;
+                    decimal sumD = 0;
+                    decimal sumT = 0;
+                    for (int i = 0; i < grid.Items.Count; i++)
+                    {
+                        var it = (Model.Relatorio.VendaSemanal)grid.Items[i];
+                        sumTB += it.TotalBrute;
+                        sumD += it.Discount;
+                        sumT += it.Total;
+                    }
+
+                    labelBruteTotal.Content = "BRUTO TOTAL:" + sumTB.ToString("C2");
+                    labelDiscount.Content = "DESCONTO TOTAL:" + sumD.ToString("C2");
+                    labelTotal.Content = "TOTAL:" + sumT.ToString("C2");
                 }
                 // Mensal
                 else if (periodBox.SelectedIndex == 2)
@@ -162,6 +192,21 @@ namespace Hamburgueria.View
                     grid.Columns[1].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
+
+                    decimal sumTB = 0;
+                    decimal sumD = 0;
+                    decimal sumT = 0;
+                    for (int i = 0; i < grid.Items.Count; i++)
+                    {
+                        var it = (Model.Relatorio.VendaMes)grid.Items[i];
+                        sumTB += it.TotalBrute;
+                        sumD += it.Discount;
+                        sumT += it.Total;
+                    }
+
+                    labelBruteTotal.Content = "BRUTO TOTAL:" + sumTB.ToString("C2");
+                    labelDiscount.Content = "DESCONTO TOTAL:" + sumD.ToString("C2");
+                    labelTotal.Content = "TOTAL:" + sumT.ToString("C2");
                 }
                 // Anual
                 else if (periodBox.SelectedIndex == 3)
@@ -193,6 +238,21 @@ namespace Hamburgueria.View
                     grid.Columns[1].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
+
+                    decimal sumTB = 0;
+                    decimal sumD = 0;
+                    decimal sumT = 0;
+                    for (int i = 0; i < grid.Items.Count; i++)
+                    {
+                        var it = (Model.Relatorio.VendaAnual)grid.Items[i];
+                        sumTB += it.TotalBrute;
+                        sumD += it.Discount;
+                        sumT += it.Total;
+                    }
+
+                    labelBruteTotal.Content = "BRUTO TOTAL:" + sumTB.ToString("C2");
+                    labelDiscount.Content = "DESCONTO TOTAL:" + sumD.ToString("C2");
+                    labelTotal.Content = "TOTAL:" + sumT.ToString("C2");
                 }
                 // Customizado
                 else if (periodBox.SelectedIndex == 4)
@@ -221,6 +281,21 @@ namespace Hamburgueria.View
                     grid.Columns[1].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
                     grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
+
+                    decimal sumTB = 0;
+                    decimal sumD = 0;
+                    decimal sumT = 0;
+                    for (int i = 0; i < grid.Items.Count; i++)
+                    {
+                        var it = (Model.Relatorio.VendaSemanal)grid.Items[i];
+                        sumTB += it.TotalBrute;
+                        sumD += it.Discount;
+                        sumT += it.Total;
+                    }
+
+                    labelBruteTotal.Content = "BRUTO TOTAL:" + sumTB.ToString("C2");
+                    labelDiscount.Content = "DESCONTO TOTAL:" + sumD.ToString("C2");
+                    labelTotal.Content = "TOTAL:" + sumT.ToString("C2");
                 }
             }
             // Produtos
@@ -278,6 +353,10 @@ namespace Hamburgueria.View
                 grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
                 grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
                 grid.Columns[4].ClipboardContentBinding.StringFormat = "C2";
+
+                labelBruteTotal.Content = "BRUTO TOTAL:0,00";
+                labelDiscount.Content = "DESCONTO TOTAL:0,00";
+                labelTotal.Content = "TOTAL:0,00";
             }
             // Clientes
             else if (styleBox.SelectedIndex == 2)
@@ -334,6 +413,10 @@ namespace Hamburgueria.View
                 grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
                 grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
                 grid.Columns[4].ClipboardContentBinding.StringFormat = "C2";
+
+                labelBruteTotal.Content = "BRUTO TOTAL:0,00";
+                labelDiscount.Content = "DESCONTO TOTAL:0,00";
+                labelTotal.Content = "TOTAL:0,00";
             }
 
             Style style = new Style(typeof(System.Windows.Controls.Primitives.DataGridColumnHeader));
@@ -343,17 +426,14 @@ namespace Hamburgueria.View
             {
                 grid.Columns[i].HeaderStyle = style;
                 grid.Columns[i].MinWidth = 150;
+
+                grid.Columns[i].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             }
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void Back_Click_1(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

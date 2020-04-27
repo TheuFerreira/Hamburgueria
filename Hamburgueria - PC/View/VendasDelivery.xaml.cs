@@ -22,6 +22,7 @@ namespace Hamburgueria.View
             public decimal Total { get; set; }
         }
 
+        private Vendas sales;
         private bool isEditing = false;
         private Model.Cliente.Item oldAddress;
         private DateTime dateSale;
@@ -30,6 +31,7 @@ namespace Hamburgueria.View
         {
             InitializeComponent();
 
+            this.sales = sales;
             this.Closed += (sender, e) => sales.UpdateGrid();
             this.Loaded += VendasDelivery_Loaded;
 
@@ -283,6 +285,12 @@ namespace Hamburgueria.View
                     return;
                 }
 
+                if (searchId == -1)
+                {
+                    MessageBox.Show("Selecione um produto!!!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 bool exist = false;
                 for (int i = 0; i < gridProduct.Items.Count; i++)
                 {
@@ -436,6 +444,8 @@ namespace Hamburgueria.View
                 searchName.Focus();
 
                 MessageBox.Show("Venda adicionada com sucesso!!!");
+
+                sales.UpdateGrid();
             }
             else
             {

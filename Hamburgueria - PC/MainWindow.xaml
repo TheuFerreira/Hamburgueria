@@ -27,11 +27,6 @@
                 <ImageBrush ImageSource="Resources/Botao_cliente.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnCaixa" Content="" Margin="80,37,80,34.946" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Column="2" Grid.Row="1">
-            <Button.Background>
-                <ImageBrush ImageSource="Resources/Botao_Caixa.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
         <Button x:Name="BtnRelatorios" Content="" Margin="80,42.054,80,29" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Column="2" Grid.Row="2">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_relatorios.png" Stretch="Uniform"/>

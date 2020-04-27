@@ -11,7 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Hamburgueria.Model;
 using Hamburgueria.View;
 
 namespace Hamburgueria
@@ -28,7 +28,6 @@ namespace Hamburgueria
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;
 
             BtnVendas.Click += delegate { new Vendas().Show(); };
-            BtnCaixa.Click += delegate {  };
             BtnClientes.Click += delegate { new Clientes().Show(); };
             BtnProdutos.Click += delegate { new Produtos().Show(); };
             BtnRelatorios.Click += delegate { new Relatorios().Show(); };

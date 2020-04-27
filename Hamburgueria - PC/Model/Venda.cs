@@ -30,6 +30,11 @@ namespace Hamburgueria.Model
                 saleId = r.GetInt32(0);
             r.Close();
 
+            command.CommandText = "INSERT INTO venda_mesa(venda_id, num_table) VALUES (@id, @table)";
+            command.Parameters.AddWithValue("@id", saleId);
+            command.Parameters.AddWithValue("@table", -1);
+            command.ExecuteNonQuery();
+
             foreach (View.VendasRapida.Item it in items)
             {
                 command = new SQLiteCommand(connection);

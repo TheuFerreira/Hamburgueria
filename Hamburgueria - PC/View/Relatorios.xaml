@@ -28,6 +28,7 @@
                   CanUserDeleteRows="False" 
                   CanUserAddRows="False" 
                   FontSize="22px"
+                  IsReadOnly="True"
                   Foreground="White"
                   SelectionMode="Single" 
                   HorizontalScrollBarVisibility="Disabled"/>

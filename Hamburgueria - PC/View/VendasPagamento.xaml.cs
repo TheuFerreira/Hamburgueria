@@ -134,8 +134,6 @@ namespace Hamburgueria.View
                 confirm.Visibility = Visibility.Visible;
                 print.Visibility = Visibility.Visible;
             }
-
-            
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -146,13 +144,10 @@ namespace Hamburgueria.View
         private void Print_Click(object sender, RoutedEventArgs e)
         {
             if (typeSale == 1)
-            {
                 PDF.Sale(dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Text), payment.Text, Sales.Balcao.Products(numTable));
-            }
             else
-            {
                 PDF.Sale(dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Text), payment.Text, items);
-            }
+            new Impressao().ShowDialog();
             Confirm_Click(null, null);
         }
 
@@ -176,6 +171,5 @@ namespace Hamburgueria.View
             Confirmed = true;
             this.Close();
         }
-
     }
 }

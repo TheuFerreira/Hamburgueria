@@ -31,14 +31,16 @@ namespace Hamburgueria.Model
 
             SQLiteCommand command = new SQLiteCommand(connection);
             command.CommandText = "" +
-                "SELECT vd.name, vd.address, v.total_bruto, v.desconto, v.total " +
+                "SELECT v.date, vd.name, vd.address, v.total_bruto, v.desconto, v.total " +
                 "FROM venda_delivery vd " +
                 "INNER JOIN venda v ON v.id = vd.venda_id " +
                 "WHERE v.date like '" + date + "%';";
 
             var r = command.ExecuteReader();
             while (r.Read())
+            {
                 p.Add(new Relatorio.Cliente(r.GetString(1), r.GetString(2), r.GetDecimal(3), r.GetDecimal(4), r.GetDecimal(5)));
+            }
             r.Close();
 
             connection.Close();

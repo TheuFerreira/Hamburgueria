@@ -351,7 +351,6 @@ namespace Hamburgueria.View
                 grid.Columns[4].Header = "TOTAL";
 
                 grid.Columns[2].ClipboardContentBinding.StringFormat = "C2";
-                grid.Columns[3].ClipboardContentBinding.StringFormat = "C2";
                 grid.Columns[4].ClipboardContentBinding.StringFormat = "C2";
 
                 labelBruteTotal.Content = "BRUTO TOTAL:0,00";

@@ -19,8 +19,9 @@ namespace Hamburgueria
         public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, List<View.VendasRapida.Item> products)
         {
             string content = "BIG BURGUER LANCHES";
-            content += "\nRUA TOCANTINS, Nº 395, MORRO DAS BICAS";
-            content += "\nTELEFONE: ESPERANDO IGOR";
+            content += "\nRUA TOCANTINS, Nº 95, MORRO DAS BICAS";
+            content += "\nTELEFONE: 3543-0336";
+            content += "\n(Whats) 99303-2638";
             content += "\n--------------------------------------";
             content += "\nCUPOM NÃO FISCAL";
             content += "\n--------------------------------------";
@@ -33,11 +34,17 @@ namespace Hamburgueria
             content += "\nTOTAL BRUTO: R$" + totalBrute.ToString("N2");
             content += "\nDESCONTO: R$" + discount.ToString("N2");
             content += "\nTOTAL: R$" + totalValue.ToString("N2");
-            content += "\nVALOR PAGO: R$" + valuePay.ToString("N2");
-            content += "\nTROCO: R$" + change.ToString("N2");
+
+            if (payment == "Á VISTA")
+            {
+                content += "\nVALOR PAGO: R$" + valuePay.ToString("N2");
+                content += "\nTROCO: R$" + change.ToString("N2");
+            }
 
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
+            content += "\n    Agradecemos a preferência";
+            content += "\n         Volte Sempre!";
 
             File.WriteAllText(Path() + "\\sale.txt", content, System.Text.Encoding.UTF8);
         }
@@ -45,8 +52,9 @@ namespace Hamburgueria
         public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, List<View.VendasBalcao.Item> products)
         {
             string content = "BIG BURGUER LANCHES";
-            content += "\nRUA TOCANTINS, Nº 395, MORRO DAS BICAS";
-            content += "\nTELEFONE: ESPERANDO IGOR";
+            content += "\nRUA TOCANTINS, Nº 95, MORRO DAS BICAS";
+            content += "\nTELEFONE: 3543-0336";
+            content += "\n(Whats) 99303-2638";
             content += "\n--------------------------------------";
             content += "\nCUPOM NÃO FISCAL";
             content += "\n--------------------------------------";
@@ -59,11 +67,17 @@ namespace Hamburgueria
             content += "\nTOTAL BRUTO: R$" + totalBrute.ToString("N2");
             content += "\nDESCONTO: R$" + discount.ToString("N2");
             content += "\nTOTAL: R$" + totalValue.ToString("N2");
-            content += "\nVALOR PAGO: R$" + valuePay.ToString("N2");
-            content += "\nTROCO: R$" + change.ToString("N2");
+
+            if (payment == "Á VISTA")
+            {
+                content += "\nVALOR PAGO: R$" + valuePay.ToString("N2");
+                content += "\nTROCO: R$" + change.ToString("N2");
+            }
 
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
+            content += "\n    Agradecemos a preferência";
+            content += "\n         Volte Sempre!";
 
             File.WriteAllText(Path() + "\\sale.txt", content, System.Text.Encoding.UTF8);
         }
@@ -71,8 +85,9 @@ namespace Hamburgueria
         public static void Sale(Model.Cliente.Item clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, List<View.VendasDelivery.Item> products)
         {
             string content = "BIG BURGUER LANCHES";
-            content += "\nRUA TOCANTINS, Nº 395, MORRO DAS BICAS";
-            content += "\nTELEFONE: ESPERANDO IGOR";
+            content += "\nRUA TOCANTINS, Nº 95, MORRO DAS BICAS";
+            content += "\nTELEFONE: 3543-0336";
+            content += "\n(Whats) 99303-2638";
             content += "\n--------------------------------------";
             content += "\nCUPOM NÃO FISCAL";
             content += "\n--------------------------------------";
@@ -88,6 +103,8 @@ namespace Hamburgueria
 
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
+            content += "\n    Agradecemos a preferência";
+            content += "\n         Volte Sempre!";
 
             content += "\n--------------------------------------";
 

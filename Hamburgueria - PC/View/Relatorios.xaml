@@ -19,6 +19,28 @@
             </LinearGradientBrush>
         </Grid.Background>
 
+        <DataGrid x:Name="grid" 
+                  Margin="0,212,0,0" 
+                  AutoGenerateColumns="True"
+                  AlternationCount="2"
+                  RowBackground="{StaticResource Turquesa}" 
+                  AlternatingRowBackground="{DynamicResource TurquesaClaro}" 
+                  CanUserDeleteRows="False" 
+                  CanUserAddRows="False" 
+                  FontSize="22px"
+                  Foreground="White"
+                  SelectionMode="Single" 
+                  HorizontalScrollBarVisibility="Disabled"/>
+
+        <Rectangle Height="40" VerticalAlignment="Bottom">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF4472C4" Offset="0"/>
+                    <GradientStop Color="#FF1B3BC6" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
         <ComboBox x:Name="styleBox" Margin="30,75,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top" BorderThickness="0">
             <ListBoxItem Content="VENDAS"/>
             <ListBoxItem Content="PRODUTOS"/>
@@ -60,22 +82,10 @@
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/iiu.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <DataGrid x:Name="grid" 
-                  Margin="0,212,0,0" 
-                  AutoGenerateColumns="True"
-                  AlternationCount="2"
-                  RowBackground="{StaticResource Turquesa}" 
-                  AlternatingRowBackground="{DynamicResource TurquesaClaro}" 
-                  CanUserDeleteRows="False" 
-                  CanUserAddRows="False" 
-                  FontSize="22px"
-                  Foreground="White"
-                  SelectionMode="Single" 
-                  HorizontalScrollBarVisibility="Disabled"/>
 
-        <Label Name="labelBruteTotal" Content="BRUTO TOTAL: R$0,00" Margin="0,180,444,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="15" Foreground="White" HorizontalAlignment="Right" Width="216"/>
-        <Label Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="0,180,190,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="15" Foreground="White" HorizontalAlignment="Right" Width="240"/>
-        <Label Name="labelTotal" Content="TOTAL: R$0,00" Margin="0,180,10,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="15" Foreground="White" HorizontalAlignment="Right" Width="160"/>
+        <Label x:Name="labelBruteTotal" Content="BRUTO TOTAL: R$0,00" Margin="100,0,1042,6" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
+        <Label x:Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="559,0,559,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
+        <Label x:Name="labelTotal" Content="TOTAL: R$0,00" Margin="1118,0,80,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
 
     </Grid>
 </Window>

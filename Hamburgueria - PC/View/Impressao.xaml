@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Impressao" Height="182.957" Width="456.263" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Background="#FF4472C4">
-        <Label Content="IMPRESSORA:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,46,0,0" FontFamily="Arial" FontSize="15"/>
+        <Label Content="IMPRESSORA:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,46,0,0" FontFamily="Arial" FontSize="15" Foreground="White"/>
         <ComboBox x:Name="printsList" VerticalAlignment="Top" Margin="0,46,10,0" HorizontalAlignment="Right" Width="309" FontFamily="Arial" FontSize="15" Height="27"/>
         <Button x:Name="cancel" Content="CANCELAR" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="70" Margin="20,0,0,10" FontFamily="Arial" FontSize="10" Height="25" Style="{DynamicResource ButtonShadowAround}" Foreground="#FF4472C4">
             <Button.Background>

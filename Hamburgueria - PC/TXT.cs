@@ -52,7 +52,7 @@ namespace Hamburgueria
             content += "\nDESCONTO: R$" + discount.ToString("N2");
             content += "\nTOTAL: R$" + totalValue.ToString("N2");
 
-            if (payment == "Á VISTA")
+            if (payment == "À VISTA")
             {
                 content += "\nVALOR PAGO: R$" + valuePay.ToString("N2");
                 content += "\nTROCO: R$" + change.ToString("N2");
@@ -103,7 +103,7 @@ namespace Hamburgueria
             content += "\nDESCONTO: R$" + discount.ToString("N2");
             content += "\nTOTAL: R$" + totalValue.ToString("N2");
 
-            if (payment == "Á VISTA")
+            if (payment == "À VISTA")
             {
                 content += "\nVALOR PAGO: R$" + valuePay.ToString("N2");
                 content += "\nTROCO: R$" + change.ToString("N2");

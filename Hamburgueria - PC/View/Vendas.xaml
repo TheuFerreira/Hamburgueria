@@ -31,6 +31,7 @@
                   CanUserResizeColumns="False"
                   CanUserResizeRows="False"
                   HorizontalScrollBarVisibility="Disabled"
+                  ScrollViewer.CanContentScroll="False"
                   ColumnHeaderHeight="50">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Type}" Header="TYPE" Visibility="Hidden" FontSize="18">

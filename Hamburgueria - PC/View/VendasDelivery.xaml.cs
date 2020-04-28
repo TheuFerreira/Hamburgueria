@@ -64,8 +64,14 @@ namespace Hamburgueria.View
             this.gridProduct.BeginningEdit += (sender, e) => e.Cancel = true;
             this.gridProduct.PreviewKeyDown += GridProduct_PreviewKeyDown;
 
+            this.searchName.LostFocus += (sender, e) => CheckClient();
+            this.street.LostFocus += (sender, e) => CheckClient(); ;
+            this.number.LostFocus += (sender, e) => CheckClient(); ;
+            this.district.LostFocus += (sender, e) => CheckClient(); ;
+
             // BUTTONS
 
+            this.newClient.Click += NewClient;
             this.confirm.Click += Confirm_Click;
         }
 
@@ -421,6 +427,34 @@ namespace Hamburgueria.View
         }
 
         // BUTTONS
+
+        private void CheckClient()
+        {
+            if (string.IsNullOrEmpty(searchName.Text) ||
+                string.IsNullOrEmpty(street.Text) ||
+                string.IsNullOrEmpty(number.Text) ||
+                string.IsNullOrEmpty(district.Text))
+            {
+                newClient.Visibility = Visibility.Collapsed;
+                return;
+            }
+
+            bool exist = Model.Cliente.Exist(searchName.Text, street.Text, district.Text, number.Text);
+        
+            if (exist)
+                newClient.Visibility = Visibility.Collapsed;
+            else
+                newClient.Visibility = Visibility.Visible;
+        }
+
+        private void NewClient(object sender, RoutedEventArgs e)
+        {
+            Model.Cliente.Insert(searchName.Text, street.Text, district.Text, number.Text, complement.Text, Reference.Text);
+
+            MessageBox.Show("Cliente cadastrado com sucesso!!!");
+
+            newClient.Visibility = Visibility.Collapsed;
+        }
 
         private void Confirm_Click(object sender, RoutedEventArgs e)
         {

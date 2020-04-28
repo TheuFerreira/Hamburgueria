@@ -72,7 +72,7 @@
             </DataGrid.Background>
         </DataGrid>
 
-        <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="335" Margin="90,158,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True">
+        <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="310" Margin="92,183,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ID}" Header="ID" Visibility="Collapsed"/>
                 <DataGridTextColumn Binding="{Binding COD}" Header="CÓDIGO"/>
@@ -85,8 +85,15 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ID}" Header="Id" Visibility="Collapsed"/>
                 <DataGridTextColumn Binding="{Binding NAME}" Header="NOME" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding ADDRESS}" Header="RUA" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding NUMBER}" Header="NÚMERO" MinWidth="100" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="newClient" Visibility="Collapsed" Content="NOVO CLIENTE" Height="28" Margin="412,246,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="105" RenderTransformOrigin="-1.391,0.679">
+            <Button.Background>
+                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
+            </Button.Background>
+        </Button>
 
     </Grid>
 </Window>

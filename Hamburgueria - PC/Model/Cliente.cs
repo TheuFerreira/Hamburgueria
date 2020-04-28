@@ -146,6 +146,27 @@ namespace Hamburgueria.Model
                 grid.Items.Add(items[i]);
         }
 
+        public static bool Exist(string name, string address, string district, string number)
+        {
+            connection.Open();
+
+            SQLiteCommand command = new SQLiteCommand(connection);
+            command.CommandText = "SELECT id " +
+                "FROM Cliente " +
+                "WHERE excluido = 0 and nome = @name and rua = @street and numero = @number and bairro = @district";
+
+            command.Parameters.AddWithValue("@name", name);
+            command.Parameters.AddWithValue("@street", address);
+            command.Parameters.AddWithValue("@number", number);
+            command.Parameters.AddWithValue("@district", district);
+
+            bool value = command.ExecuteScalar() == null ? false : true;
+
+            connection.Close();
+
+            return value;
+        }
+
         public static void Delete(int id)
         {
             connection.Open();

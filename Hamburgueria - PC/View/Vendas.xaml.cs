@@ -160,7 +160,7 @@ namespace Hamburgueria.View
 
                     List<VendasDelivery.Item> items = Sales.Delivery.Products(nameClient);
 
-                    PDF.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
+                    TXT.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
                     new Impressao().ShowDialog();
                 }
             }
@@ -208,7 +208,7 @@ namespace Hamburgueria.View
                     Model.Venda.Insert(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                        PDF.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
+                        TXT.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
 
                     Sales.Delivery.Delete(nameClient);
                 }

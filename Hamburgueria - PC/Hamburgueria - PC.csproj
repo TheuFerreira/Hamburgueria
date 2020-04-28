@@ -85,7 +85,7 @@
     <Compile Include="Model\RelatorioVendaAnual.cs" />
     <Compile Include="Model\RelatorioVendaSemanal.cs" />
     <Compile Include="Model\Venda.cs" />
-    <Compile Include="PDF.cs" />
+    <Compile Include="TXT.cs" />
     <Compile Include="Sales\Balcao.cs" />
     <Compile Include="Model\Produto.cs" />
     <Compile Include="Sales\Delivery.cs" />

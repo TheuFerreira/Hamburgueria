@@ -89,6 +89,12 @@ namespace Hamburgueria.View
                 return;
             }
 
+            if (Model.Cliente.Exist(clientName.Text, Adress.Text, District.Text, Number.Text))
+            {
+                MessageBox.Show("Já existe um cliente com exatamentes estas informações", "", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             if (id == -1)
             {
                 Model.Cliente.Insert(clientName.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);

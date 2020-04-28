@@ -23,6 +23,7 @@ namespace Hamburgueria.View
         }
 
         private readonly Vendas sales;
+        private string fileName;
         private bool isEditing = false;
         private Model.Cliente.Item oldAddress;
         private DateTime dateSale;
@@ -81,10 +82,11 @@ namespace Hamburgueria.View
                 this.Close();
         }
 
-        public void LoadEditing(Model.Cliente.Item oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, List<Item> items)
+        public void LoadEditing(string fileName, Model.Cliente.Item oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, List<Item> items)
         {
             isEditing = true;
             labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
+            this.fileName = fileName;
             this.totalSale = totalSale;
             this.dateSale = dateSale;
             this.oldAddress = oldAddress;
@@ -94,6 +96,7 @@ namespace Hamburgueria.View
             street.Text = oldAddress.ADDRESS;
             district.Text = oldAddress.DISTRICT;
             complement.Text = oldAddress.COMPLEMENT;
+            Reference.Text = oldAddress.REFERENCE;
 
             switch (payment)
             {
@@ -485,12 +488,6 @@ namespace Hamburgueria.View
 
             if (isEditing == false)
             {
-                if (Sales.Delivery.Exist(address.NAME))
-                {
-                    MessageBox.Show("Um cliente com este nome, já fez um pedido");
-                    return;
-                }
-
                 List<Item> items = new List<Item>();
                 foreach (Item i in gridProduct.Items)
                     items.Add(i);
@@ -520,19 +517,10 @@ namespace Hamburgueria.View
             }
             else
             {
-                if (oldAddress.NAME != address.NAME)
-                {
-                    if (Sales.Delivery.Exist(address.NAME))
-                    {
-                        MessageBox.Show("Um cliente com este nome, já fez um pedido");
-                        return;
-                    }
-                }
-
                 List<Item> items = new List<Item>();
                 foreach (Item i in gridProduct.Items)
                     items.Add(i);
-                Sales.Delivery.Edit(oldAddress.NAME, address, dateSale, totalSale, payment.Text, Convert.ToDecimal(discount.Text), items);
+                Sales.Delivery.Edit(fileName, address, dateSale, totalSale, payment.Text, Convert.ToDecimal(discount.Text), items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

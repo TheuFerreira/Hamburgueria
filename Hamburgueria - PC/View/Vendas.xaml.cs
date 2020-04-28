@@ -113,23 +113,24 @@ namespace Hamburgueria.View
                 }
                 else
                 {
-                    string nameClient = it.File;
-                    string[] info = Sales.Delivery.Info(nameClient);
+                    string fileName = it.File;
+                    string[] info = Sales.Delivery.Info(fileName);
 
-                    DateTime dateSale = Convert.ToDateTime(info[0]);
-                    decimal totalSale = Convert.ToDecimal(info[1]);
-                    string[] addressFile = info[2].Split('>');
+                    DateTime dateSale = Convert.ToDateTime(info[1]);
+                    decimal totalSale = Convert.ToDecimal(info[2]);
+                    string[] addressFile = info[3].Split('>');
                     Model.Cliente.Item address = new Model.Cliente.Item()
                     {
-                        NAME = nameClient,
+                        NAME = info[0],
                         ADDRESS = addressFile[0],
                         NUMBER = addressFile[1],
                         DISTRICT = addressFile[2],
-                        COMPLEMENT = addressFile[3]
+                        COMPLEMENT = addressFile[3],
+                        REFERENCE = info[4]
                     };
 
                     VendasDelivery delivery = new VendasDelivery(this);
-                    delivery.LoadEditing(address, totalSale, info[3], info[4], dateSale, Sales.Delivery.Products(nameClient));
+                    delivery.LoadEditing(fileName, address, totalSale, info[5], info[6], dateSale, Sales.Delivery.Products(fileName));
                     delivery.ShowDialog();
                 }
             }
@@ -143,26 +144,27 @@ namespace Hamburgueria.View
                 }
                 else
                 {
-                    string nameClient = it.File.ToString();
-                    string[] info = Sales.Delivery.Info(nameClient);
+                    string fileName = it.File;
+                    string[] info = Sales.Delivery.Info(fileName);
 
-                    DateTime dateSale = Convert.ToDateTime(info[0]);
-                    decimal totalSale = Convert.ToDecimal(info[1]);
-                    string[] content = info[2].Split('>');
-                    string payment = info[4];
-                    decimal discount = Convert.ToDecimal(info[5]);
+                    DateTime dateSale = Convert.ToDateTime(info[1]);
+                    decimal totalSale = Convert.ToDecimal(info[2]);
+                    string[] addressFile = info[3].Split('>');
+                    Model.Cliente.Item address = new Model.Cliente.Item()
+                    {
+                        NAME = info[0],
+                        ADDRESS = addressFile[0],
+                        NUMBER = addressFile[1],
+                        DISTRICT = addressFile[2],
+                        COMPLEMENT = addressFile[3],
+                        REFERENCE = info[4]
+                    };
+                    string payment = info[5];
+                    decimal discount = Convert.ToDecimal(info[6]);
 
-                    Model.Cliente.Item client = new Model.Cliente.Item();
-                    client.NAME = nameClient;
-                    client.ADDRESS = content[0];
-                    client.NUMBER = content[1];
-                    client.DISTRICT = content[2];
-                    client.COMPLEMENT = content[3];
-                    client.REFERENCE = info[3];
+                    List<VendasDelivery.Item> items = Sales.Delivery.Products(fileName);
 
-                    List<VendasDelivery.Item> items = Sales.Delivery.Products(nameClient);
-
-                    TXT.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
+                    TXT.Sale(address, dateSale, totalSale - discount, discount, totalSale, payment, items);
                     new Impressao().ShowDialog();
                 }
             }
@@ -185,37 +187,38 @@ namespace Hamburgueria.View
                 }
                 else
                 {
-                    string nameClient = it.File.ToString();
-                    string[] info = Sales.Delivery.Info(nameClient);
+                    string fileName = it.File;
+                    string[] info = Sales.Delivery.Info(fileName);
 
-                    if (MessageBox.Show("Tem certeza de que deseja FINALIZAR a venda do Cliente " + nameClient + "??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                    if (MessageBox.Show("Tem certeza de que deseja FINALIZAR a venda do Cliente " + info[0] + "??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
                         return;
 
-                    DateTime dateSale = Convert.ToDateTime(info[0]);
-                    decimal totalSale = Convert.ToDecimal(info[1]);
-                    string[] content = info[2].Split('>');
-                    string payment = info[4];
-                    decimal discount = Convert.ToDecimal(info[5]);
+                    DateTime dateSale = Convert.ToDateTime(info[1]);
+                    decimal totalSale = Convert.ToDecimal(info[2]);
+                    string[] addressFile = info[3].Split('>');
+                    Model.Cliente.Item address = new Model.Cliente.Item()
+                    {
+                        NAME = info[0],
+                        ADDRESS = addressFile[0],
+                        NUMBER = addressFile[1],
+                        DISTRICT = addressFile[2],
+                        COMPLEMENT = addressFile[3],
+                        REFERENCE = info[4]
+                    };
+                    string payment = info[5];
+                    decimal discount = Convert.ToDecimal(info[6]);
 
-                    Model.Cliente.Item client = new Model.Cliente.Item();
-                    client.NAME = nameClient;
-                    client.ADDRESS = content[0];
-                    client.NUMBER = content[1];
-                    client.DISTRICT = content[2];
-                    client.COMPLEMENT = content[3];
-                    client.REFERENCE = info[3];
+                    List<VendasDelivery.Item>items = Sales.Delivery.Products(fileName);
 
-                    List<VendasDelivery.Item>items = Sales.Delivery.Products(nameClient);
-
-                    Model.Venda.Insert(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
+                    Model.Venda.Insert(address, dateSale, totalSale - discount, discount, totalSale, payment, items);
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        TXT.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
+                        TXT.Sale(address, dateSale, totalSale - discount, discount, totalSale, payment, items);
                         new Impressao().ShowDialog();
                     }
 
-                    Sales.Delivery.Delete(nameClient);
+                    Sales.Delivery.Delete(fileName);
                 }
             }
 

@@ -22,7 +22,7 @@ namespace Hamburgueria.View
             public decimal Total { get; set; }
         }
 
-        private Vendas sales;
+        private readonly Vendas sales;
         private bool isEditing = false;
         private Model.Cliente.Item oldAddress;
         private DateTime dateSale;
@@ -37,12 +37,15 @@ namespace Hamburgueria.View
 
             // CLIENT
 
-            this.searchName.LostFocus += (sender, e) => gridClient.Visibility = Visibility.Hidden;
+            //this.searchName.LostFocus += (sender, e) => gridClient.Visibility = Visibility.Hidden;
             this.searchName.PreviewKeyDown += SearchName_PreviewKeyDown;
             this.searchName.TextChanged += SearchName_TextChanged;
 
+            this.gridClient.MouseDoubleClick += GridClient_MouseDoubleClick;
+
             this.number.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
 
+            this.discount.GotFocus += Discount_GotFocus;
             this.discount.LostFocus += Discount_LostFocus;
             this.discount.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9,]+").IsMatch(e.Text);
 
@@ -172,6 +175,30 @@ namespace Hamburgueria.View
                 gridClient.SelectedItem = gridClient.Items[0];
             else
                 gridClient.Visibility = Visibility.Hidden;
+        }
+
+        private void GridClient_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (gridClient.HasItems)
+            {
+                var selected = (Model.Cliente.Item)gridClient.SelectedItem;
+
+                searchName.Text = selected.NAME;
+                number.Text = selected.NUMBER;
+                street.Text = selected.ADDRESS;
+                district.Text = selected.DISTRICT;
+                complement.Text = selected.COMPLEMENT;
+
+                payment.Focus();
+            }
+
+            gridClient.Visibility = Visibility.Hidden;
+        }
+
+        private void Discount_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (discount.Text == "0,00")
+                discount.Text = "";
         }
 
         private void Discount_LostFocus(object sender, RoutedEventArgs e)

@@ -72,10 +72,13 @@ namespace Hamburgueria.View
             if (gridSales.HasItems == false || gridSales.CurrentCell.IsValid == false)
                 return;
 
+            Item it = (Item)gridSales.SelectedItem;
+            if (it == null)
+                return;
+
             // Delete
             if (gridSales.CurrentCell.Column.DisplayIndex == 6)
             {
-                Item it = (Item)gridSales.SelectedItem;
                 if (it.Type == 0)
                 {
                     if (MessageBox.Show("Tem certeza que deseja excluir a venda?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -95,7 +98,6 @@ namespace Hamburgueria.View
             // Edit
             else if (gridSales.CurrentCell.Column.DisplayIndex == 7)
             {
-                Item it = (Item)gridSales.SelectedItem;
                 if (it.Type == 0)
                 {
                     int numTable = Convert.ToInt32(it.File);
@@ -134,7 +136,6 @@ namespace Hamburgueria.View
             // Print
             else if (gridSales.CurrentCell.Column.DisplayIndex == 8)
             {
-                Item it = (Item)gridSales.SelectedItem;
                 if (it.Type == 0)
                 {
                     MessageBox.Show("Somente vendas Deliveries podem ser impressas antes de finalizadas!!!");
@@ -167,7 +168,6 @@ namespace Hamburgueria.View
             // Confirm
             else if (gridSales.CurrentCell.Column.DisplayIndex == 9)
             {
-                Item it = (Item)gridSales.SelectedItem;
                 if (it.Type == 0)
                 {
                     int numTable = Convert.ToInt32(it.File);
@@ -208,7 +208,10 @@ namespace Hamburgueria.View
                     Model.Venda.Insert(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
                         TXT.Sale(client, dateSale, totalSale - discount, discount, totalSale, payment, items);
+                        new Impressao().ShowDialog();
+                    }
 
                     Sales.Delivery.Delete(nameClient);
                 }

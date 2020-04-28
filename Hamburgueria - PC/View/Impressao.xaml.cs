@@ -59,7 +59,7 @@ namespace Hamburgueria.View
 
         private void Print_Click(object sender, EventArgs e)
         {
-            string fileName = "Impressao-Hamburgueria.pdf";
+            string fileName = "Impressao-Hamburgueria" + TXT.IdFile + ".txt";
             string printerName = printsList.Text;
 
             arquivoParaImprimir = new StreamReader(TXT.Path() + "\\sale" + TXT.IdFile + ".txt");

@@ -60,6 +60,9 @@ namespace Hamburgueria
 
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
+
+            content += "\n------------------------------------";
+            
             content += "\n       Agradecemos a preferência";
             content += "\n             Volte Sempre!";
 
@@ -108,6 +111,9 @@ namespace Hamburgueria
 
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
+           
+            content += "\n------------------------------------";
+
             content += "\n       Agradecemos a preferência";
             content += "\n             Volte Sempre!";
 
@@ -142,7 +148,7 @@ namespace Hamburgueria
                 }
             }
 
-            content += "\n--------------------------------------";
+            content += "\n------------------------------------";
 
             content += "\nTOTAL BRUTO: R$" + totalBrute.ToString("N2");
             content += "\nDESCONTO: R$" + discount.ToString("N2");
@@ -150,20 +156,24 @@ namespace Hamburgueria
 
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
-            content += "\n       Agradecemos a preferência";
-            content += "\n             Volte Sempre!";
-
-            content += "\n--------------------------------------";
+            
+            content += "\n------------------------------------";
 
             content += ReformText("CLIENTE: " + clientItem.NAME);
             content += ReformText("RUA: " + clientItem.ADDRESS);
             content += ReformText("NÚMERO: " + clientItem.NUMBER);
             content += ReformText("BAIRRO: " + clientItem.DISTRICT);
             content += ReformText("COMPLEMENTO: " + clientItem.COMPLEMENT);
+            if (!string.IsNullOrWhiteSpace(clientItem.REFERENCE))
+                content += ReformText("REFERÊNCIA: " + clientItem.REFERENCE);
 
-            File.WriteAllText(Path() + "\\sale " + IdFile + ".txt", content, System.Text.Encoding.UTF8);
+            content += "\n------------------------------------";
+
+            content += "\n       Agradecemos a preferência";
+            content += "\n             Volte Sempre!";
+
+            File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
-
 
         private static string ReformText(string text)
         {
@@ -172,10 +182,9 @@ namespace Hamburgueria
             string lines = "";
             string line = "\n";
 
-
             for (int i = 0; i < words.Length; i++)
             {
-                if ((line + words[i]).Length <= 38)
+                if ((line + words[i]).Length <= 36)
                 {
                     line += words[i] + " ";
                 }

@@ -28,6 +28,8 @@
                   FontSize="22px"
                   Foreground="White"
                   SelectionMode="Single" 
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False"
                   HorizontalScrollBarVisibility="Disabled"
                   ColumnHeaderHeight="50">
             <DataGrid.Columns>

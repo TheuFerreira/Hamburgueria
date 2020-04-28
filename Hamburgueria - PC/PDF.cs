@@ -6,6 +6,8 @@ namespace Hamburgueria
 {
     class PDF
     {
+        public static int IdFile { get; set; } = 0;
+
         public static string Path()
         {
             string pathData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Necos";
@@ -46,7 +48,7 @@ namespace Hamburgueria
             content += "\n    Agradecemos a preferência";
             content += "\n         Volte Sempre!";
 
-            File.WriteAllText(Path() + "\\sale.txt", content, System.Text.Encoding.UTF8);
+            File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
         public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, List<View.VendasBalcao.Item> products)
@@ -79,7 +81,7 @@ namespace Hamburgueria
             content += "\n    Agradecemos a preferência";
             content += "\n         Volte Sempre!";
 
-            File.WriteAllText(Path() + "\\sale.txt", content, System.Text.Encoding.UTF8);
+            File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
         public static void Sale(Model.Cliente.Item clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, List<View.VendasDelivery.Item> products)
@@ -111,7 +113,7 @@ namespace Hamburgueria
             content += "\nCLIENTE: " + clientItem.NAME;
             content += "\n" + clientItem.ADDRESS + ", Nº" + clientItem.NUMBER + ", " + clientItem.DISTRICT + ", " + clientItem.COMPLEMENT;
 
-            File.WriteAllText(Path() + "\\sale.txt", content, System.Text.Encoding.UTF8);
+            File.WriteAllText(Path() + "\\sale " + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
     }
 }

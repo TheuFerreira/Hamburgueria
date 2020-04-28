@@ -20,7 +20,7 @@
 
         <TextBox x:Name="search" CaretBrush="White" Height="21" Margin="87,32,312,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
         <Image HorizontalAlignment="Left" Height="13" Margin="370,38,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png"/>
-        <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="278" Margin="87,52,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible">
+        <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="278" Margin="87,52,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ID}" Header="ID" Visibility="Collapsed"/>
                 <DataGridTextColumn Binding="{Binding COD}" Header="CÓDIGO"/>
@@ -41,7 +41,7 @@
         </Button>
 
         <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Height="43" Margin="30,170,382,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
-        <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" Margin="0,0,0,0" BorderBrush="{x:Null}" Height="146" VerticalAlignment="Bottom">
+        <DataGrid x:Name="gridProduct" CanUserResizeColumns="False" CanUserResizeRows="False" ItemsSource="{Binding Item}" Margin="0,0,0,0" BorderBrush="{x:Null}" Height="146" VerticalAlignment="Bottom">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Hidden"/>
                 <DataGridTextColumn Binding="{Binding Cod}" Header="CÓDIGO"/>

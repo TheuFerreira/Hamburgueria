@@ -36,7 +36,7 @@
                 </Button.Background>
             </Button>
             <Label x:Name="labelTotalSale" Content="TOTAL: R$0,00" Height="34" Margin="30,145,149,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
-            <DataGrid x:Name="gridSearch" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="87,59,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="308">
+            <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="87,59,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="308">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ID}" Header="ID" Visibility="Collapsed"/>
                     <DataGridTextColumn Binding="{Binding COD}" Header="CÓDIGO"/>
@@ -44,7 +44,7 @@
                     <DataGridTextColumn Binding="{Binding PRICE, StringFormat=C2}" Header="PREÇO"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" BorderBrush="{x:Null}" Height="171" VerticalAlignment="Bottom">
+            <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" BorderBrush="{x:Null}" CanUserResizeColumns="False" CanUserResizeRows="False" Height="171" VerticalAlignment="Bottom">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Hidden"/>
                     <DataGridTextColumn Binding="{Binding Cod}" Header="CÓDIGO"/>

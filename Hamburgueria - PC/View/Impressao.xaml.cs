@@ -59,11 +59,10 @@ namespace Hamburgueria.View
 
         private void Print_Click(object sender, EventArgs e)
         {
-            string filePath = PDF.Path() + "\\sale.pdf";
             string fileName = "Impressao-Hamburgueria.pdf";
             string printerName = printsList.Text;
 
-            arquivoParaImprimir = new StreamReader(PDF.Path() + "\\sale.txt");
+            arquivoParaImprimir = new StreamReader(PDF.Path() + "\\sale" + PDF.IdFile + ".txt");
             var pd = new PrintDocument();
             _font = new Font("Arial", 8);
             pd.PrinterSettings.PrinterName = printerName;
@@ -71,6 +70,8 @@ namespace Hamburgueria.View
             pd.DocumentName = fileName;
             pd.PrintPage += PD_PrintPage;
             pd.Print();
+
+            PDF.IdFile++;
 
             this.Close();
         }

@@ -23,6 +23,8 @@
                   Margin="0,212,0,0" 
                   AutoGenerateColumns="True"
                   AlternationCount="2"
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False"
                   RowBackground="{StaticResource Turquesa}" 
                   AlternatingRowBackground="{DynamicResource TurquesaClaro}" 
                   CanUserDeleteRows="False" 

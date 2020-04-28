@@ -18,6 +18,8 @@
     <Grid>
         <DataGrid x:Name="GridClientes" 
                   Margin="0,0,0,60" 
+                  CanUserResizeColumns="False"
+                  CanUserResizeRows="False"
                   AutoGenerateColumns="True"
                   AlternationCount="2" 
                   RowHeaderWidth="0"

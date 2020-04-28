@@ -128,6 +128,17 @@ namespace Hamburgueria
             content += "\n(Whats) 99303-2638";
             content += "\n------------------------------------";
             content += "\n          CUPOM NÃO FISCAL";
+
+            content += "\n------------------------------------";
+
+            content += ReformText("CLIENTE: " + clientItem.NAME);
+            content += ReformText("RUA: " + clientItem.ADDRESS);
+            content += ReformText("NÚMERO: " + clientItem.NUMBER);
+            content += ReformText("BAIRRO: " + clientItem.DISTRICT);
+            content += ReformText("COMPLEMENTO: " + clientItem.COMPLEMENT);
+            if (!string.IsNullOrWhiteSpace(clientItem.REFERENCE))
+                content += ReformText("REFERÊNCIA: " + clientItem.REFERENCE);
+
             content += "\n------------------------------------";
             content += "\nPRODUTOS";
             foreach (View.VendasDelivery.Item p in products)
@@ -157,16 +168,6 @@ namespace Hamburgueria
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
             
-            content += "\n------------------------------------";
-
-            content += ReformText("CLIENTE: " + clientItem.NAME);
-            content += ReformText("RUA: " + clientItem.ADDRESS);
-            content += ReformText("NÚMERO: " + clientItem.NUMBER);
-            content += ReformText("BAIRRO: " + clientItem.DISTRICT);
-            content += ReformText("COMPLEMENTO: " + clientItem.COMPLEMENT);
-            if (!string.IsNullOrWhiteSpace(clientItem.REFERENCE))
-                content += ReformText("REFERÊNCIA: " + clientItem.REFERENCE);
-
             content += "\n------------------------------------";
 
             content += "\n       Agradecemos a preferência";

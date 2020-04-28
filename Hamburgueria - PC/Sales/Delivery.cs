@@ -33,6 +33,7 @@ namespace Hamburgueria.Sales
             content += dateSale + "\n";
             content += totalSale + "\n";
             content += address.ADDRESS + ">" + address.NUMBER + ">" + address.DISTRICT + ">" + address.COMPLEMENT + "\n";
+            content += address.REFERENCE + "\n";
             content += payment + "\n";
             content += discount + "\n";
             content += "-\n";
@@ -60,15 +61,17 @@ namespace Hamburgueria.Sales
                 address.NUMBER = addressFile[1];
                 address.DISTRICT = addressFile[2];
                 address.COMPLEMENT = addressFile[3];
+                address.REFERENCE = lines[3];
 
                 string info = address.NAME + "\n\n";
                 info += "ENDEREÇO: " + address.ADDRESS + ", Nº" + address.NUMBER + ", " + address.DISTRICT + ", " + address.COMPLEMENT + "\n";
-                info += "FORMA DE PAGAMENTO: " + lines[3] + "\n";
-                info += "DESCONTO:R$" + lines[4] + "\n";
+                info += "REFERÊNCIA: " + address.REFERENCE + "\n";
+                info += "FORMA DE PAGAMENTO: " + lines[4] + "\n";
+                info += "DESCONTO: R$" + lines[5] + "\n";
                 info += "\n";
 
                 info += "PEDIDOS\n";
-                for (int j = 6; j < lines.Length; j++)
+                for (int j = 7; j < lines.Length; j++)
                 {
                     string[] requests = lines[j].Split('>');
 
@@ -86,13 +89,14 @@ namespace Hamburgueria.Sales
         public static string[] Info(string nameClient)
         {
             string[] lines = File.ReadAllLines(DefaultPath() + nameClient + ".bin");
-            string[] info = new string[5];
+            string[] info = new string[6];
 
             info[0] = lines[0];
             info[1] = lines[1];
             info[2] = lines[2];
             info[3] = lines[3];
             info[4] = lines[4];
+            info[5] = lines[5];
             return info;
         }
 
@@ -118,7 +122,7 @@ namespace Hamburgueria.Sales
 
             string[] lines = File.ReadAllLines(DefaultPath() + nameClient + ".bin");
 
-            for (int j = 6; j < lines.Length; j++)
+            for (int j = 7; j < lines.Length; j++)
             {
                 string[] requests = lines[j].Split('>');
 

@@ -129,6 +129,7 @@ namespace Hamburgueria.View
                     street.Text = selected.ADDRESS;
                     district.Text = selected.DISTRICT;
                     complement.Text = selected.COMPLEMENT;
+                    Reference.Text = selected.REFERENCE;
 
                     payment.Focus();
                 }
@@ -188,6 +189,7 @@ namespace Hamburgueria.View
                 street.Text = selected.ADDRESS;
                 district.Text = selected.DISTRICT;
                 complement.Text = selected.COMPLEMENT;
+                Reference.Text = selected.REFERENCE;
 
                 payment.Focus();
             }
@@ -443,7 +445,8 @@ namespace Hamburgueria.View
                 ADDRESS = street.Text,
                 COMPLEMENT = complement.Text,
                 DISTRICT = district.Text,
-                NUMBER = number.Text
+                NUMBER = number.Text,
+                REFERENCE = Reference.Text
             };
 
             if (isEditing == false)

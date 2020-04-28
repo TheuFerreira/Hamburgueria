@@ -149,8 +149,8 @@ namespace Hamburgueria.View
                     DateTime dateSale = Convert.ToDateTime(info[0]);
                     decimal totalSale = Convert.ToDecimal(info[1]);
                     string[] content = info[2].Split('>');
-                    string payment = info[3];
-                    decimal discount = Convert.ToDecimal(info[4]);
+                    string payment = info[4];
+                    decimal discount = Convert.ToDecimal(info[5]);
 
                     Model.Cliente.Item client = new Model.Cliente.Item();
                     client.NAME = nameClient;
@@ -158,6 +158,7 @@ namespace Hamburgueria.View
                     client.NUMBER = content[1];
                     client.DISTRICT = content[2];
                     client.COMPLEMENT = content[3];
+                    client.REFERENCE = info[3];
 
                     List<VendasDelivery.Item> items = Sales.Delivery.Products(nameClient);
 
@@ -193,8 +194,8 @@ namespace Hamburgueria.View
                     DateTime dateSale = Convert.ToDateTime(info[0]);
                     decimal totalSale = Convert.ToDecimal(info[1]);
                     string[] content = info[2].Split('>');
-                    string payment = info[3];
-                    decimal discount = Convert.ToDecimal(info[4]);
+                    string payment = info[4];
+                    decimal discount = Convert.ToDecimal(info[5]);
 
                     Model.Cliente.Item client = new Model.Cliente.Item();
                     client.NAME = nameClient;
@@ -202,6 +203,7 @@ namespace Hamburgueria.View
                     client.NUMBER = content[1];
                     client.DISTRICT = content[2];
                     client.COMPLEMENT = content[3];
+                    client.REFERENCE = info[3];
 
                     List<VendasDelivery.Item>items = Sales.Delivery.Products(nameClient);
 

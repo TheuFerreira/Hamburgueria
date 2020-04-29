@@ -31,18 +31,18 @@ namespace Hamburgueria
             foreach (View.VendasRapida.Item p in products)
             {
                 string nameProduct = p.Name;
-                if (p.Name.Length >= 25)
+                if (p.Name.Length >= 21)
                 {
-                    nameProduct = p.Name.Substring(0, 24);
+                    nameProduct = p.Name.Substring(0, 20);
                     nameProduct += "-";
                     content += "\n" + p.Quantity + "x " + nameProduct.PadRight(25);
-                    p.Name = p.Name.Substring(24);
+                    p.Name = p.Name.Substring(20);
 
-                    content += "\n   " + p.Name.PadRight(25) + p.Total.ToString("C2");
+                    content += "\n   " + p.Name.PadRight(21) + p.Total.ToString("C2");
                 }
                 else
                 {
-                    content += "\n" + p.Quantity + "x " + p.Name.PadRight(25) + p.Total.ToString("C2");
+                    content += "\n" + p.Quantity + "x " + p.Name.PadRight(21) + p.Total.ToString("C2");
                 }
             }
 
@@ -82,18 +82,18 @@ namespace Hamburgueria
             foreach (View.VendasBalcao.Item p in products)
             {
                 string nameProduct = p.Name;
-                if (p.Name.Length >= 25)
+                if (p.Name.Length >= 21)
                 {
-                    nameProduct = p.Name.Substring(0, 24);
+                    nameProduct = p.Name.Substring(0, 20);
                     nameProduct += "-";
                     content += "\n" + p.Quantity + "x " + nameProduct.PadRight(25);
-                    p.Name = p.Name.Substring(24);
+                    p.Name = p.Name.Substring(20);
 
-                    content += "\n   " + p.Name.PadRight(25) + p.Total.ToString("C2");
+                    content += "\n   " + p.Name.PadRight(21) + p.Total.ToString("C2");
                 }
                 else
                 {
-                    content += "\n" + p.Quantity + "x " + p.Name.PadRight(25) + p.Total.ToString("C2");
+                    content += "\n" + p.Quantity + "x " + p.Name.PadRight(21) + p.Total.ToString("C2");
                 }
             }
 
@@ -144,18 +144,18 @@ namespace Hamburgueria
             foreach (View.VendasDelivery.Item p in products)
             {
                 string nameProduct = p.Name;
-                if (p.Name.Length >= 25)
+                if (p.Name.Length >= 21)
                 {
-                    nameProduct = p.Name.Substring(0, 24);
+                    nameProduct = p.Name.Substring(0, 20);
                     nameProduct += "-";
                     content += "\n" + p.Quantity + "x " + nameProduct.PadRight(25);
-                    p.Name = p.Name.Substring(24);
+                    p.Name = p.Name.Substring(20);
 
-                    content += "\n   " + p.Name.PadRight(25) + p.Total.ToString("C2");
+                    content += "\n   " + p.Name.PadRight(21) + p.Total.ToString("C2");
                 }
                 else
                 {
-                    content += "\n" + p.Quantity + "x " + p.Name.PadRight(25) + p.Total.ToString("C2");
+                    content += "\n" + p.Quantity + "x " + p.Name.PadRight(21) + p.Total.ToString("C2");
                 }
             }
 

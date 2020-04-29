@@ -40,7 +40,7 @@
 
         <Label Content="FORMA DE PAGAMENTO:" HorizontalAlignment="Left" Height="21" Margin="10,200,0,0" VerticalAlignment="Top" Width="156" FontFamily="Arial" Foreground="White"/>
         <ComboBox x:Name="payment" Margin="171,200,350,0" VerticalAlignment="Top" SelectedIndex="0" >
-            <ListBoxItem Content="Á VISTA"/>
+            <ListBoxItem Content="À VISTA"/>
             <ListBoxItem Content="CRÉDITO"/>
             <ListBoxItem Content="DÉBITO"/>
         </ComboBox>

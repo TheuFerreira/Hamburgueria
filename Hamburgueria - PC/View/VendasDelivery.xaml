@@ -30,8 +30,10 @@
 
         <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Height="21" Margin="478,72,0,0" VerticalAlignment="Top" Width="107" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="complement" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="583,74,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
-        <Label Content="REFERÊNCIA:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="171" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="Reference" CaretBrush="White" Margin="92,107,10,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
+        <Label Content="TELEFONE:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="82" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="telephone" MaxLength="15" CaretBrush="White" Margin="92,107,10,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
+        <Label Content="REFERÊNCIA:" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="82" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="Reference" CaretBrush="White" Margin="92,129,10,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
         <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="12,160,0,0" VerticalAlignment="Top" Width="73" Foreground="White" FontFamily="Arial"/>
         <TextBox x:Name="searchProduct" CaretBrush="White" Height="21" Margin="90,163,276,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
         <Image HorizontalAlignment="Left" Height="13" Margin="412,170,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>

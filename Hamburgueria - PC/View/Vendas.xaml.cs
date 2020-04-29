@@ -126,11 +126,12 @@ namespace Hamburgueria.View
                         NUMBER = addressFile[1],
                         DISTRICT = addressFile[2],
                         COMPLEMENT = addressFile[3],
-                        REFERENCE = info[4]
+                        TELEPHONE = info[4],
+                        REFERENCE = info[5]
                     };
 
                     VendasDelivery delivery = new VendasDelivery(this);
-                    delivery.LoadEditing(fileName, address, totalSale, info[5], info[6], dateSale, Sales.Delivery.Products(fileName));
+                    delivery.LoadEditing(fileName, address, totalSale, info[6], info[7], dateSale, Sales.Delivery.Products(fileName));
                     delivery.ShowDialog();
                 }
             }
@@ -157,10 +158,11 @@ namespace Hamburgueria.View
                         NUMBER = addressFile[1],
                         DISTRICT = addressFile[2],
                         COMPLEMENT = addressFile[3],
-                        REFERENCE = info[4]
+                        TELEPHONE = info[4],
+                        REFERENCE = info[5]
                     };
-                    string payment = info[5];
-                    decimal discount = Convert.ToDecimal(info[6]);
+                    string payment = info[6];
+                    decimal discount = Convert.ToDecimal(info[7]);
 
                     List<VendasDelivery.Item> items = Sales.Delivery.Products(fileName);
 
@@ -203,10 +205,11 @@ namespace Hamburgueria.View
                         NUMBER = addressFile[1],
                         DISTRICT = addressFile[2],
                         COMPLEMENT = addressFile[3],
-                        REFERENCE = info[4]
+                        TELEPHONE = info[4],
+                        REFERENCE = info[5]
                     };
-                    string payment = info[5];
-                    decimal discount = Convert.ToDecimal(info[6]);
+                    string payment = info[6];
+                    decimal discount = Convert.ToDecimal(info[7]);
 
                     List<VendasDelivery.Item>items = Sales.Delivery.Products(fileName);
 

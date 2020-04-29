@@ -19,6 +19,7 @@ namespace Hamburgueria.Model
             public string NUMBER { get; set; }
             public string DISTRICT { get; set; }
             public string COMPLEMENT { get; set; }
+            public string TELEPHONE { get; set; }
             public string REFERENCE { get; set; }
         }
 
@@ -29,7 +30,7 @@ namespace Hamburgueria.Model
             connection.Open();
 
             SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "SELECT id, nome, rua, numero, bairro, complemento, referencia FROM Cliente WHERE excluido = 0";
+            command.CommandText = "SELECT id, nome, rua, numero, bairro, complemento, telefone, referencia FROM Cliente WHERE excluido = 0";
 
             var r = command.ExecuteReader();
             while (r.Read())
@@ -40,7 +41,8 @@ namespace Hamburgueria.Model
                 string number = r[3].ToString();
                 string district = r[4].ToString();
                 string complement = r[5].ToString();
-                string reference = r[6].ToString();
+                string telephone = r[6].ToString();
+                string reference = r[7].ToString();
 
                 items.Add(new Item()
                 {
@@ -50,6 +52,7 @@ namespace Hamburgueria.Model
                     NUMBER = number,
                     DISTRICT = district,
                     COMPLEMENT = complement,
+                    TELEPHONE = telephone,
                     REFERENCE = reference
                 });
             }
@@ -61,21 +64,22 @@ namespace Hamburgueria.Model
                 grid.Items.Add(items[i]);
         }
 
-        public static void Insert(string name, string address, string district, string number, string complement, string reference)
+        public static void Insert(string name, string address, string district, string number, string complement, string telephone, string reference)
         {
             connection.Open();
 
             SQLiteCommand command = new SQLiteCommand(connection);
             command.CommandText = "INSERT INTO cliente" +
-                "(nome, rua, numero, bairro, complemento, referencia) " +
+                "(nome, rua, numero, bairro, complemento, telefone, referencia) " +
                 "VALUES " +
-                "(@nome, @rua, @numero, @bairro, @complemento, @referencia)";
+                "(@nome, @rua, @numero, @bairro, @complemento, @telephone, @referencia)";
 
             command.Parameters.AddWithValue("@nome", name);
             command.Parameters.AddWithValue("@rua", address);
             command.Parameters.AddWithValue("@numero", number);
             command.Parameters.AddWithValue("@bairro", district);
             command.Parameters.AddWithValue("@complemento", complement);
+            command.Parameters.AddWithValue("@telephone", telephone);
             command.Parameters.AddWithValue("@referencia", reference);
 
             command.ExecuteNonQuery();
@@ -83,14 +87,14 @@ namespace Hamburgueria.Model
             connection.Close();
         }
 
-        public static void Update(int id, string name, string address, string district, string number, string complement, string reference)
+        public static void Update(int id, string name, string address, string district, string number, string complement, string telephone, string reference)
         {
             connection.Open();
 
             SQLiteCommand command = new SQLiteCommand(connection);
             command.CommandText = "UPDATE cliente " +
                 "set " +
-                "nome = @nome, rua = @rua, numero = @numero, bairro = @bairro, complemento = @complemento, referencia = @referencia " +
+                "nome = @nome, rua = @rua, numero = @numero, bairro = @bairro, complemento = @complemento, telefone = @telephone, referencia = @referencia " +
                 "WHERE " +
                 "id = @id";
 
@@ -100,6 +104,7 @@ namespace Hamburgueria.Model
             command.Parameters.AddWithValue("@numero", number);
             command.Parameters.AddWithValue("@bairro", district);
             command.Parameters.AddWithValue("@complemento", complement);
+            command.Parameters.AddWithValue("@telephone", telephone);
             command.Parameters.AddWithValue("@referencia", reference);
 
             command.ExecuteNonQuery();
@@ -114,7 +119,7 @@ namespace Hamburgueria.Model
             connection.Open();
 
             SQLiteCommand command = new SQLiteCommand(connection);
-            command.CommandText = "SELECT id, nome, rua, numero, bairro, complemento, referencia FROM Cliente WHERE excluido = 0 and nome like '%" + text + "%'";
+            command.CommandText = "SELECT id, nome, rua, numero, bairro, complemento, telefone, referencia FROM Cliente WHERE excluido = 0 and nome like '%" + text + "%'";
 
             var r = command.ExecuteReader();
             while (r.Read())
@@ -125,7 +130,8 @@ namespace Hamburgueria.Model
                 string number = r[3].ToString();
                 string district = r[4].ToString();
                 string complement = r[5].ToString();
-                string reference = r[6].ToString();
+                string telephone = r[6].ToString();
+                string reference = r[7].ToString();
 
                 items.Add(new Item()
                 {
@@ -135,6 +141,7 @@ namespace Hamburgueria.Model
                     NUMBER = number,
                     DISTRICT = district,
                     COMPLEMENT = complement,
+                    TELEPHONE = telephone,
                     REFERENCE = reference
                 });
             }

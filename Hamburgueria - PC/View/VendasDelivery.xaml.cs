@@ -96,6 +96,7 @@ namespace Hamburgueria.View
             street.Text = oldAddress.ADDRESS;
             district.Text = oldAddress.DISTRICT;
             complement.Text = oldAddress.COMPLEMENT;
+            telephone.Text = oldAddress.TELEPHONE;
             Reference.Text = oldAddress.REFERENCE;
 
             switch (payment)
@@ -138,6 +139,7 @@ namespace Hamburgueria.View
                     street.Text = selected.ADDRESS;
                     district.Text = selected.DISTRICT;
                     complement.Text = selected.COMPLEMENT;
+                    telephone.Text = selected.TELEPHONE;
                     Reference.Text = selected.REFERENCE;
 
                     payment.Focus();
@@ -456,7 +458,7 @@ namespace Hamburgueria.View
 
         private void NewClient(object sender, RoutedEventArgs e)
         {
-            Model.Cliente.Insert(searchName.Text, street.Text, district.Text, number.Text, complement.Text, Reference.Text);
+            Model.Cliente.Insert(searchName.Text, street.Text, district.Text, number.Text, complement.Text, telephone.Text, Reference.Text);
 
             MessageBox.Show("Cliente cadastrado com sucesso!!!");
 
@@ -487,6 +489,7 @@ namespace Hamburgueria.View
                 COMPLEMENT = complement.Text,
                 DISTRICT = district.Text,
                 NUMBER = number.Text,
+                TELEPHONE = telephone.Text,
                 REFERENCE = Reference.Text
             };
 
@@ -513,6 +516,7 @@ namespace Hamburgueria.View
                 district.Text = "";
                 number.Text = "";
                 discount.Text = "0,00";
+                telephone.Text = "";
                 Reference.Text = "";
 
                 gridProduct.Items.Clear();

@@ -31,8 +31,10 @@
         <Label Content="COMPLEMENTO:" Margin="480,215,214,178" Foreground="White"/>
         <TextBox x:Name="Complement" CaretBrush="White" Margin="577,218,45,179" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-        <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="45,280,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="Reference" CaretBrush="White" Margin="122,285,45,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
+        <Label Content="TELEFONE:" HorizontalAlignment="Left" Margin="45,280,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="Telephone" MaxLength="15" CaretBrush="White" Margin="122,285,45,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
+        <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="45,323,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="Reference" CaretBrush="White" Margin="122,328,45,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
         <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,160,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF4472C4" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}">
             <Button.Background>
                 <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>

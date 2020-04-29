@@ -136,6 +136,7 @@ namespace Hamburgueria
             content += ReformText("NÚMERO: " + clientItem.NUMBER);
             content += ReformText("BAIRRO: " + clientItem.DISTRICT);
             content += ReformText("COMPLEMENTO: " + clientItem.COMPLEMENT);
+            content += ReformText("TELEFONE: " + clientItem.TELEPHONE);
             if (!string.IsNullOrWhiteSpace(clientItem.REFERENCE))
                 content += ReformText("REFERÊNCIA: " + clientItem.REFERENCE);
 

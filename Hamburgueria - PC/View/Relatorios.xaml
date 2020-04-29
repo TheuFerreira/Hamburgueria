@@ -88,7 +88,11 @@
 
         <Label x:Name="labelBruteTotal" Content="BRUTO TOTAL: R$0,00" Margin="100,0,1042,6" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
         <Label x:Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="559,0,559,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
-        <Label x:Name="labelTotal" Content="TOTAL: R$0,00" Margin="1118,0,80,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
+        <Label x:Name="labelTotal" Content="TOTAL: R$0,00" Margin="1036,0,162,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
 
+        <Grid x:Name="toExcel" Margin="0,0,10,6" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="124" Background="Gray">
+            <Label Content="EXPORTAR PARA" HorizontalContentAlignment="Left"/>
+            <Image HorizontalAlignment="Right" Width="30" Source="/Hamburgueria;component/Resources/excel_icon.png"/>
+        </Grid>
     </Grid>
 </Window>

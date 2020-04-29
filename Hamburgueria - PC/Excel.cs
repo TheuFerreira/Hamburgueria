@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -15,14 +16,22 @@ namespace Hamburgueria
         private m_Excel.Worksheet worksheet;
         private readonly object misValue = Missing.Value;
 
+        private bool ok = false;
+
         public void Sales()
         {
+            ok = false;
+
             SaveFileDialog fileDialog = new SaveFileDialog();
             fileDialog.Title = "Exportar para Excel";
             fileDialog.FileName = "Vendas " + DateTime.Today.ToString("yyyy-MM-dd");
             fileDialog.DefaultExt = "*.xlsx";
             fileDialog.Filter = "*.xlsx | *.xlsx";
+            fileDialog.FileOk += FileDialog_FileOk;
             fileDialog.ShowDialog();
+
+            if (ok == false)
+                return;
 
             string fileName = fileDialog.FileName;
             try
@@ -60,6 +69,11 @@ namespace Hamburgueria
             {
                 app.Quit();
             }
+        }
+
+        private void FileDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            ok = true;
         }
     }
 }

@@ -99,6 +99,7 @@ namespace Hamburgueria.View
                 c.number = select.NUMBER;
                 c.district = select.DISTRICT;
                 c.complement = select.COMPLEMENT;
+                c.telephone = select.TELEPHONE;
                 c.reference = select.REFERENCE;
                 c.ShowDialog();
             }

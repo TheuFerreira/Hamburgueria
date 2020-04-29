@@ -113,16 +113,6 @@ namespace Hamburgueria.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BUTÃO_FERREIRA {
-            get {
-                object obj = ResourceManager.GetObject("BUTÃO_FERREIRA", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap butao_igor {
             get {
                 object obj = ResourceManager.GetObject("butao_igor", resourceCulture);

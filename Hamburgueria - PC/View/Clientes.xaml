@@ -9,7 +9,7 @@
         Height="450" 
         Width="800" 
         WindowStartupLocation="CenterScreen" 
-        WindowState="Maximized" ShowInTaskbar="False">
+        WindowState="Maximized">
     <Window.Resources>
         <SolidColorBrush x:Key="Turquesa" Color="#4472C4"/>
         <SolidColorBrush x:Key="TurquesaClaro" Color="#8fAADC"/>

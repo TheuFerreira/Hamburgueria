@@ -513,6 +513,7 @@ namespace Hamburgueria.View
                 district.Text = "";
                 number.Text = "";
                 discount.Text = "0,00";
+                Reference.Text = "";
 
                 gridProduct.Items.Clear();
                 labelTotalSale.Content = "TOTAL:R$0,00";

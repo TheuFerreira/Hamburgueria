@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Hamburgueria.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="VendasRapida" Width="683" Height="384" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" ShowInTaskbar="False">
+      Title="VendasRapida" Width="683" Height="384" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Grid Background="White" Margin="0,0,0,0">
         <Grid Background="#FF4472C4">

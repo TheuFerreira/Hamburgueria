@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Excel.cs" />
     <Compile Include="LINQExtension.cs" />
     <Compile Include="Model\Relatorio.cs" />
     <Compile Include="Model\RelatorioCliente.cs" />

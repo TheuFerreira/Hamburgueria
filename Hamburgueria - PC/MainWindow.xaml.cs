@@ -32,6 +32,9 @@ namespace Hamburgueria
             BtnProdutos.Click += delegate { new Produtos().Show(); };
             BtnRelatorios.Click += delegate { new Relatorios().Show(); };
             //TestTXT();
+
+            //Excel ex = new Excel();
+            //ex.Sales();
         }
 
         private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)

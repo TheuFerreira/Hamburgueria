@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hamburgueria.View"
       mc:Ignorable="d"
-      Title="VendasBalcao" Background="White" Height="384" Width="683" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False">
+      Title="VendasBalcao" Background="White" Height="384" Width="683" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
     <Grid Background="#FF4472C4">
         <Rectangle Height="137" VerticalAlignment="Top">

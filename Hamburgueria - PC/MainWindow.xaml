@@ -42,6 +42,7 @@
                 <ImageBrush ImageSource="Resources/logo final.png" Stretch="Uniform"/>
             </Border.Background>
         </Border>
-        <Label Content="T W O  sistemas" Margin="334,188,0,0" Grid.Row="2" FontFamily="Freestyle Script" Foreground="White" FontSize="20" Grid.Column="2" BorderBrush="Black" Height="29" VerticalAlignment="Top"/>
+        <Label Content="T W O  sistemas" Margin="9,2,341,0" FontFamily="Freestyle Script" Foreground="#FFEEEEEE" FontSize="20" BorderBrush="Black" Height="29" VerticalAlignment="Top" Background="{x:Null}"/>
+        <Label Content="twosys@gmail.com" HorizontalAlignment="Left" Margin="9,20,0,0" VerticalAlignment="Top" Width="150" Foreground="#FFEEEEEE" BorderBrush="Black" FontSize="11"/>
     </Grid>
 </Window>

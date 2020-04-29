@@ -69,19 +69,8 @@
 
         <Button x:Name="Filter" Content="FILTRAR" Margin="839,150,444,0" VerticalAlignment="Top" FontSize="11" Foreground="#FF2F5597" Style="{DynamicResource ButtonShadowAround}" Height="25"/>
 
-        <Button x:Name="Back" Foreground="{x:Null}" Margin="15,15,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Height="18" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.5">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="89.935"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-            <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/iiu.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
+        <Button x:Name="Back" Margin="15,15,0,0" VerticalAlignment="Top" Height="20" HorizontalAlignment="Left" Width="20" Style="{StaticResource ButtonBack}"/>
+
 
         <Label x:Name="labelBruteTotal" Content="BRUTO TOTAL: R$0,00" Margin="100,0,1042,6" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
         <Label x:Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="559,0,559,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>

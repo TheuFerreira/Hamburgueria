@@ -63,22 +63,8 @@
               VerticalAlignment="Bottom">
             <TextBox x:Name="Search" FontFamily="Arial" CaretBrush="White" FontSize="15" Height="24" Margin="186,0,426,18" TextWrapping="Wrap" Text="Pesquisar" VerticalAlignment="Bottom" Style="{StaticResource TextBoxUnderline}" CharacterCasing="Upper"/>
             <Image Height="19" Margin="0,0,392,17" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Right" Width="22"/>
-            <Button x:Name="BackProduto" 
-            Margin="15,20,0,22" 
-            BorderBrush="{x:Null}" 
-            Foreground="{x:Null}" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.5">
-                <Button.Background>
-                    <ImageBrush ImageSource="/Hamburgueria;component/Resources/iiu.png" Stretch="Uniform"/>
-                </Button.Background>
-                <Button.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="90.095"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </Button.RenderTransform>
-            </Button>
+            <Button x:Name="BackProduto" Margin="15,18,0,18" HorizontalAlignment="Left" Width="25" Style="{StaticResource ButtonBack}"/>
+
             <Button x:Name="AddProduto" Content="ADICIONAR" Margin="0,0,31,10" BorderBrush="{x:Null}" FontWeight="Bold" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}" FontSize="11" AutomationProperties.Name="ADICIONAR" Foreground="#FF1B3BC6"/>
 
             <Button x:Name="DelProduto" Content="EXCLUIR" Margin="0,0,206,10" BorderBrush="{x:Null}" FontWeight="Bold" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="#FF1B3BC6"/>

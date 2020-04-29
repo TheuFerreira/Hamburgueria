@@ -12,7 +12,11 @@
         <SolidColorBrush x:Key="AzulBruxao" Color="#2f5597"/>
     </Window.Resources>
     <Grid>
-        <Rectangle Margin="0,362,0,0" Fill="#FF1B3BC6"/>
+        <Grid Background="#FF1B3BC6" Height="57" VerticalAlignment="Bottom">
+            <Button x:Name="back" Margin="15,18,0,18" HorizontalAlignment="Left" Width="20" Style="{StaticResource ButtonBack}"/>
+
+
+        </Grid>
         <DataGrid x:Name="gridSales" 
                   Margin="0,0,0,57" 
                   ItemsSource="{Binding Item}"
@@ -127,25 +131,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="back" 
-            Content="VOLTAR" 
-            Margin="20,0,0,18" 
-            BorderBrush="{x:Null}" 
-            FontFamily="Arial" 
-            FontWeight="Bold"  
-            FontSize="11" Foreground="{x:Null}" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.5" Height="18" VerticalAlignment="Bottom">
-            <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/iiu.png" Stretch="Uniform"/>
-            </Button.Background>
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90.095"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
 
         <Button x:Name="addDelivery" HorizontalAlignment="Right" Content="DELIVERY" FontFamily="Arial" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,25,8" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="#FF2F5597"/>
 

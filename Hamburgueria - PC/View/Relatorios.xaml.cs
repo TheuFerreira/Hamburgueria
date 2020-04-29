@@ -31,6 +31,12 @@ namespace Hamburgueria.View
             this.Back.Click += Back_Click;
         }
 
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            if (e.Key == Key.Escape)
+                this.Close();
+        }
+
         private void Relatorios_Loaded(object sender, RoutedEventArgs e)
         {
             styleBox.SelectedIndex = 0;

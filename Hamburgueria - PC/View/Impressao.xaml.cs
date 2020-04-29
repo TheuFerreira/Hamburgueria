@@ -64,7 +64,7 @@ namespace Hamburgueria.View
 
             arquivoParaImprimir = new StreamReader(TXT.Path() + "\\sale" + TXT.IdFile + ".txt");
             var pd = new PrintDocument();
-            _font = new Font("Courier New", 8);
+            _font = new Font("Consolas", 6.5f);
             pd.PrinterSettings.PrinterName = printerName;
             pd.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
             pd.DocumentName = fileName;

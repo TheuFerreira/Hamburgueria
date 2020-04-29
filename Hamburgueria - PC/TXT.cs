@@ -23,7 +23,7 @@ namespace Hamburgueria
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
             content += "\nTELEFONE: 3543-0336";
-            content += "\n(Whats) 99303-2638";
+            content += "\nWhatsapp: 99303-2638";
             content += "\n------------------------------------";
             content += "\n          CUPOM NÃO FISCAL";
             content += "\n------------------------------------";
@@ -74,7 +74,7 @@ namespace Hamburgueria
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
             content += "\nTELEFONE: 3543-0336";
-            content += "\n(Whats) 99303-2638";
+            content += "\nWhatsapp: 99303-2638";
             content += "\n------------------------------------";
             content += "\n          CUPOM NÃO FISCAL";
             content += "\n------------------------------------";
@@ -125,7 +125,7 @@ namespace Hamburgueria
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
             content += "\nTELEFONE: 3543-0336";
-            content += "\n(Whats) 99303-2638";
+            content += "\nWhatsapp: 99303-2638";
             content += "\n------------------------------------";
             content += "\n          CUPOM NÃO FISCAL";
 

@@ -42,5 +42,6 @@
                 <ImageBrush ImageSource="Resources/logo final.png" Stretch="Uniform"/>
             </Border.Background>
         </Border>
+        <Label Content="T W O  sistemas" Margin="334,188,0,0" Grid.Row="2" FontFamily="Freestyle Script" Foreground="White" FontSize="20" Grid.Column="2" BorderBrush="Black" Height="29" VerticalAlignment="Top"/>
     </Grid>
 </Window>

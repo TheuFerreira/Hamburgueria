@@ -90,9 +90,15 @@
         <Label x:Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="559,0,559,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
         <Label x:Name="labelTotal" Content="TOTAL: R$0,00" Margin="1036,0,162,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
 
-        <Grid x:Name="toExcel" Margin="0,0,10,6" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="124" Background="Gray">
-            <Label Content="EXPORTAR PARA" HorizontalContentAlignment="Left"/>
-            <Image HorizontalAlignment="Right" Width="30" Source="/Hamburgueria;component/Resources/excel_icon.png"/>
-        </Grid>
+        <Border Margin="0,0,10,6" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="96" CornerRadius="15" Background="White">
+            <Border.Effect>
+                <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="20" Opacity=".7"/>
+            </Border.Effect>
+            <Grid x:Name="toExcel">
+                <Label Content="EXPORTAR" Foreground="#FF1D3DC6" FontFamily="Arial" FontSize="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
+                <Image HorizontalAlignment="Right" Width="30" Source="/Hamburgueria;component/Resources/excel_icon.png" Margin="0, 0, 5, 0"/>
+            </Grid>
+        </Border>
+        
     </Grid>
 </Window>

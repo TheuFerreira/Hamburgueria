@@ -21,7 +21,7 @@
                     <GradientStop Color="White" Offset="1"/>
                 </LinearGradientBrush>
             </ComboBox.Background>
-            <Button Content="Á VISTA" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            <Button Content="À VISTA" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
             <Button Content="CRÉDITO" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
             <Button Content="DÉBITO" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
         </ComboBox>

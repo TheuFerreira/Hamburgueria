@@ -219,6 +219,10 @@ namespace Hamburgueria.View
             else
                 discount.Text = "0,00";
 
+            totalSale = 0;
+            for (int i = 0; i < gridProduct.Items.Count; i++)
+                totalSale += ((Item)gridProduct.Items[i]).Total;
+
             totalSale -= Convert.ToDecimal(discount.Text);
             labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
         }
@@ -488,10 +492,14 @@ namespace Hamburgueria.View
 
             if (isEditing == false)
             {
+                decimal total = 0;
                 List<Item> items = new List<Item>();
                 foreach (Item i in gridProduct.Items)
+                {
+                    total += i.Total;
                     items.Add(i);
-                Sales.Delivery.Create(address, DateTime.Now, totalSale, payment.Text, Convert.ToDecimal(discount.Text), items);
+                }
+                Sales.Delivery.Create(address, DateTime.Now, total, payment.Text, Convert.ToDecimal(discount.Text), items);
 
                 searchId = -1;
                 searchCod = 0;
@@ -517,10 +525,14 @@ namespace Hamburgueria.View
             }
             else
             {
+                decimal total = 0;
                 List<Item> items = new List<Item>();
                 foreach (Item i in gridProduct.Items)
+                {
+                    total += i.Total;
                     items.Add(i);
-                Sales.Delivery.Edit(fileName, address, dateSale, totalSale, payment.Text, Convert.ToDecimal(discount.Text), items);
+                }
+                Sales.Delivery.Edit(fileName, address, dateSale, total, payment.Text, Convert.ToDecimal(discount.Text), items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

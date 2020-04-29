@@ -6,6 +6,7 @@ using System.Text;
 
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Shapes;
 
 namespace Hamburgueria.Sales
 {
@@ -60,7 +61,7 @@ namespace Hamburgueria.Sales
                 string[] lines = File.ReadAllLines(files[i]);
                 Model.Cliente.Item address = new Model.Cliente.Item();
 
-                string fileName = Path.GetFileNameWithoutExtension(files[i]);
+                string fileName = System.IO.Path.GetFileNameWithoutExtension(files[i]);
                 address.NAME = lines[0];
                 DateTime dateSale = Convert.ToDateTime(lines[1]);
                 decimal totalSale = Convert.ToDecimal(lines[2]);
@@ -90,7 +91,7 @@ namespace Hamburgueria.Sales
                     info += quantity + "x " + p.NAME + "\t\t" + (p.PRICE * quantity).ToString("C2") + "\n";
                 }
 
-                grid.Items.Add(new View.Vendas.Item() { Type = 1, Value = "DELIVERY", File = fileName, Info = info, Date = dateSale, Total = totalSale });
+                grid.Items.Add(new View.Vendas.Item() { Type = 1, Value = "DELIVERY", File = fileName, Info = info, Date = dateSale, Total = totalSale - Convert.ToDecimal(lines[6]) });
             }
         }
 

@@ -17,10 +17,10 @@
         </Rectangle>
 
         <Label Content="NOME:" HorizontalAlignment="Left" Height="21" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="searchName" CaretBrush="White" Height="21" Margin="65,12,10,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" CharacterCasing="Upper"/>
+        <TextBox x:Name="searchName" CaretBrush="White" Height="21" Margin="60,12,10,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" CharacterCasing="Upper"/>
 
         <Label Content="RUA:" HorizontalAlignment="Left" Height="21" Margin="10,40,0,0" VerticalAlignment="Top" Width="50" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="street" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="65,41,183,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="street" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="51,41,183,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="NÚMERO:" HorizontalAlignment="Left" Height="21" Margin="511,39,0,0" VerticalAlignment="Top" Width="67" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="number" CaretBrush="White" Height="21" Margin="583,41,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
@@ -30,8 +30,8 @@
 
         <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Height="21" Margin="478,72,0,0" VerticalAlignment="Top" Width="107" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="complement" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="583,74,10,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
-        <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="Reference" CaretBrush="White" Margin="87,107,10,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
+        <Label Content="REFERÊNCIA:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="171" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="Reference" CaretBrush="White" Margin="92,107,10,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
         <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="12,160,0,0" VerticalAlignment="Top" Width="73" Foreground="White" FontFamily="Arial"/>
         <TextBox x:Name="searchProduct" CaretBrush="White" Height="21" Margin="90,163,276,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
         <Image HorizontalAlignment="Left" Height="13" Margin="412,170,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>

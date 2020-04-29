@@ -218,6 +218,7 @@
     <Content Include="hamburgueria.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\BUTÃO_FERREIRA.png" />
     <Resource Include="Resources\excel_icon.png" />
     <Resource Include="Resources\logo final alt 2.png" />
     <Resource Include="Resources\logo final alt 1.png" />

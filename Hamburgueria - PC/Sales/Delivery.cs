@@ -41,6 +41,7 @@ namespace Hamburgueria.Sales
             content += dateSale + "\n";
             content += totalSale + "\n";
             content += address.ADDRESS + ">" + address.NUMBER + ">" + address.DISTRICT + ">" + address.COMPLEMENT + "\n";
+            content += address.TELEPHONE + "\n";
             content += address.REFERENCE + "\n";
             content += payment + "\n";
             content += discount + "\n";
@@ -70,17 +71,19 @@ namespace Hamburgueria.Sales
                 address.NUMBER = addressFile[1];
                 address.DISTRICT = addressFile[2];
                 address.COMPLEMENT = addressFile[3];
-                address.REFERENCE = lines[4];
+                address.TELEPHONE = lines[4];
+                address.REFERENCE = lines[5];
 
                 string info = address.NAME + "\n\n";
                 info += "ENDEREÇO: " + address.ADDRESS + ", Nº" + address.NUMBER + ", " + address.DISTRICT + ", " + address.COMPLEMENT + "\n";
+                info += "TELEFONE: " + address.TELEPHONE + "\n";
                 info += "REFERÊNCIA: " + address.REFERENCE + "\n";
-                info += "FORMA DE PAGAMENTO: " + lines[5] + "\n";
-                info += "DESCONTO: R$" + lines[6] + "\n";
+                info += "FORMA DE PAGAMENTO: " + lines[6] + "\n";
+                info += "DESCONTO: R$" + lines[7] + "\n";
                 info += "\n";
 
                 info += "PEDIDOS\n";
-                for (int j = 8; j < lines.Length; j++)
+                for (int j = 9; j < lines.Length; j++)
                 {
                     string[] requests = lines[j].Split('>');
 
@@ -91,14 +94,14 @@ namespace Hamburgueria.Sales
                     info += quantity + "x " + p.NAME + "\t\t" + (p.PRICE * quantity).ToString("C2") + "\n";
                 }
 
-                grid.Items.Add(new View.Vendas.Item() { Type = 1, Value = "DELIVERY", File = fileName, Info = info, Date = dateSale, Total = totalSale - Convert.ToDecimal(lines[6]) });
+                grid.Items.Add(new View.Vendas.Item() { Type = 1, Value = "DELIVERY", File = fileName, Info = info, Date = dateSale, Total = totalSale - Convert.ToDecimal(lines[7]) });
             }
         }
 
         public static string[] Info(string fileName)
         {
             string[] lines = File.ReadAllLines(DefaultPath() + fileName + ".bin");
-            string[] info = new string[7];
+            string[] info = new string[8];
 
             info[0] = lines[0];
             info[1] = lines[1];
@@ -107,6 +110,7 @@ namespace Hamburgueria.Sales
             info[4] = lines[4];
             info[5] = lines[5];
             info[6] = lines[6];
+            info[7] = lines[7];
 
             return info;
         }
@@ -137,7 +141,7 @@ namespace Hamburgueria.Sales
 
             string[] lines = File.ReadAllLines(DefaultPath() + fileName + ".bin");
 
-            for (int j = 8; j < lines.Length; j++)
+            for (int j = 9; j < lines.Length; j++)
             {
                 string[] requests = lines[j].Split('>');
 

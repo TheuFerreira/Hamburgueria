@@ -71,6 +71,13 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding TELEPHONE}" Header="TELEFONE" MinWidth="150" Width="*">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
+                        </Style>
+                    </DataGridTextColumn.HeaderStyle>
+                </DataGridTextColumn>
                 <DataGridTextColumn Binding="{Binding REFERENCE}" Header="REFERÊNCIA" MinWidth="150" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">

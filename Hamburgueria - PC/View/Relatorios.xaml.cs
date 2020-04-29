@@ -29,6 +29,13 @@ namespace Hamburgueria.View
 
             this.Filter.Click += Filter_Click;
             this.Back.Click += Back_Click;
+
+            this.toExcel.MouseLeftButtonDown += ToExcel_MouseLeftButtonDown;
+        }
+
+        private void ToExcel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            new Excel().Sales();
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)

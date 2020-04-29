@@ -59,21 +59,28 @@ namespace Hamburgueria.View
 
         private void Print_Click(object sender, EventArgs e)
         {
-            string fileName = "Impressao-Hamburgueria" + TXT.IdFile + ".txt";
-            string printerName = printsList.Text;
+            try
+            {
+                string fileName = "Impressao-Hamburgueria" + TXT.IdFile + ".txt";
+                string printerName = printsList.Text;
 
-            arquivoParaImprimir = new StreamReader(TXT.Path() + "\\sale" + TXT.IdFile + ".txt");
-            var pd = new PrintDocument();
-            _font = new Font("Consolas", 6.5f);
-            pd.PrinterSettings.PrinterName = printerName;
-            pd.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
-            pd.DocumentName = fileName;
-            pd.PrintPage += PD_PrintPage;
-            pd.Print();
+                arquivoParaImprimir = new StreamReader(TXT.Path() + "\\sale" + TXT.IdFile + ".txt");
+                var pd = new PrintDocument();
+                _font = new Font("Consolas", 6.5f);
+                pd.PrinterSettings.PrinterName = printerName;
+                pd.DefaultPageSettings.Margins = new Margins(0, 0, 0, 0);
+                pd.DocumentName = fileName;
+                pd.PrintPage += PD_PrintPage;
+                pd.Print();
 
-            TXT.IdFile++;
+                TXT.IdFile++;
 
-            this.Close();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void PD_PrintPage(object sender, PrintPageEventArgs e)

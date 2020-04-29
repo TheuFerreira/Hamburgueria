@@ -27,6 +27,7 @@ namespace Hamburgueria.View
         public string number = "";
         public string district = "";
         public string complement = "";
+        public string telephone = "";
         public string reference = "";
 
         public ClientesAdd()
@@ -43,6 +44,7 @@ namespace Hamburgueria.View
             this.District.GotFocus += delegate { District.SelectAll(); };
             this.Number.GotFocus += delegate { Number.SelectAll(); };
             this.Complement.GotFocus += delegate { Complement.SelectAll(); };
+            this.Telephone.GotFocus += delegate { Complement.SelectAll(); };
             this.Reference.GotFocus += delegate { Reference.SelectAll(); };
 
             this.SaveBtn.Click += SaveBtn_Click;
@@ -67,6 +69,7 @@ namespace Hamburgueria.View
             District.Text = district;
             Number.Text = number;
             Complement.Text = complement;
+            Telephone.Text = telephone;
             Reference.Text = reference;
 
             clientName.Focus();
@@ -97,7 +100,7 @@ namespace Hamburgueria.View
 
             if (id == -1)
             {
-                Model.Cliente.Insert(clientName.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);
+                Model.Cliente.Insert(clientName.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Telephone.Text, Reference.Text);
 
                 MessageBox.Show("Cliente cadastrado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -106,7 +109,7 @@ namespace Hamburgueria.View
             }
             else
             {
-                Model.Cliente.Update(id, clientName.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Reference.Text);
+                Model.Cliente.Update(id, clientName.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Telephone.Text, Reference.Text);
 
                 MessageBox.Show("Cliente atualizado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -121,6 +124,7 @@ namespace Hamburgueria.View
             District.Text = String.Empty;
             Number.Text = String.Empty;
             Complement.Text = String.Empty;
+            Telephone.Text = String.Empty;
             Reference.Text = String.Empty;
 
             clientName.Focus();

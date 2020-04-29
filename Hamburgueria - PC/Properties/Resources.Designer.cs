@@ -123,16 +123,6 @@ namespace Hamburgueria.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap BUTAO_IGOR_1_1 {
-            get {
-                object obj = ResourceManager.GetObject("BUTAO_IGOR_1_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap confirm {
             get {
                 object obj = ResourceManager.GetObject("confirm", resourceCulture);
@@ -186,36 +176,6 @@ namespace Hamburgueria.Properties {
         internal static System.Drawing.Bitmap logo_final {
             get {
                 object obj = ResourceManager.GetObject("logo_final", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap logo_final_alt_1 {
-            get {
-                object obj = ResourceManager.GetObject("logo_final_alt_1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap logo_final_alt_2 {
-            get {
-                object obj = ResourceManager.GetObject("logo_final_alt_2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap logo_final_alternative_color {
-            get {
-                object obj = ResourceManager.GetObject("logo_final_alternative_color", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -67,12 +67,9 @@
         <DatePicker x:Name="dateOne" Margin="28,150,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256" Height="30" BorderBrush="{x:Null}" Foreground="#FF1D3DC6"/>
         <DatePicker x:Name="dateTwo" Margin="388,150,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="250"/>
 
-        <Button x:Name="Filter" Content="FILTRAR" Margin="839,150,444,0" VerticalAlignment="Top" FontSize="11" Foreground="#FF2F5597" Style="{DynamicResource ButtonShadowAround}" Height="25">
-            <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="Back" Content="VOLTAR" FontSize="11" Foreground="{x:Null}" Margin="20,10,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="28" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.5">
+        <Button x:Name="Filter" Content="FILTRAR" Margin="839,150,444,0" VerticalAlignment="Top" FontSize="11" Foreground="#FF2F5597" Style="{DynamicResource ButtonShadowAround}" Height="25"/>
+
+        <Button x:Name="Back" Foreground="{x:Null}" Margin="15,15,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Height="18" HorizontalAlignment="Left" Width="18" RenderTransformOrigin="0.5,0.5">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -90,15 +87,15 @@
         <Label x:Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="559,0,559,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
         <Label x:Name="labelTotal" Content="TOTAL: R$0,00" Margin="1036,0,162,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
 
-        <Border Margin="0,0,10,6" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="96" CornerRadius="15" Background="White">
+        <Border Margin="0,160,10,0" HorizontalAlignment="Right" Width="132" CornerRadius="20" Background="White" Height="37" VerticalAlignment="Top">
             <Border.Effect>
                 <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="20" Opacity=".7"/>
             </Border.Effect>
             <Grid x:Name="toExcel">
-                <Label Content="EXPORTAR" Foreground="#FF1D3DC6" FontFamily="Arial" FontSize="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"/>
-                <Image HorizontalAlignment="Right" Width="30" Source="/Hamburgueria;component/Resources/excel_icon.png" Margin="0, 0, 5, 0"/>
+                <Label Content="EXPORTAR" Foreground="#FF1D3DC6" FontFamily="Arial" FontSize="14" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="10,0,0,0"/>
+                <Image HorizontalAlignment="Right" Width="38" Source="/Hamburgueria;component/Resources/excel_icon.png" Margin="0, 0, 0, 0"/>
             </Grid>
         </Border>
-        
+
     </Grid>
 </Window>

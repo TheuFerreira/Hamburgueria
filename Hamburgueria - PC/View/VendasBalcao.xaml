@@ -34,11 +34,8 @@
         <Label Content="NUM. MESA" HorizontalAlignment="Left" Height="21" Margin="30,110,0,0" VerticalAlignment="Top" Width="78" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="numTable" CaretBrush="White" Height="21" Margin="108,112,409,0" TextWrapping="Wrap" VerticalAlignment="Top" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" />
 
-        <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,170,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" HorizontalAlignment="Right" Width="75" Style="{StaticResource ButtonShadowAround}">
-            <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
-            </Button.Background>
-        </Button>
+        <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,170,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" HorizontalAlignment="Right" Width="75" Style="{StaticResource ButtonShadowAround}"/>
+
 
         <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Height="43" Margin="30,170,382,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
         <DataGrid x:Name="gridProduct" CanUserResizeColumns="False" CanUserResizeRows="False" ItemsSource="{Binding Item}" Margin="0,0,0,0" BorderBrush="{x:Null}" Height="146" VerticalAlignment="Bottom">

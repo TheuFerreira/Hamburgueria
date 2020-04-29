@@ -30,8 +30,8 @@
                                 BorderThickness="0"
                                 Padding="4,2" 
                                 BorderBrush="DarkGray" 
-                                CornerRadius="3" 
-                                Background="{TemplateBinding Background}">
+                                CornerRadius="7" 
+                                Background="White">
                             <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                         </Border>
                         <ControlTemplate.Triggers>

@@ -45,21 +45,12 @@
         <Label x:Name="labelChange" Content="TROCO:" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="change" IsReadOnly="True" HorizontalAlignment="Right" Height="23" Margin="0,210,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" FontFamily="Arial" TextAlignment="Right" Foreground="#FF1C3DC6" BorderBrush="{x:Null}"/>
 
-        <Button x:Name="cancel" Content="CANCELAR" HorizontalAlignment="Left" Width="65" Margin="20,267,0,12" Style="{DynamicResource ButtonShadowAround}" BorderBrush="{x:Null}" FontSize="9" Foreground="#FF1B3BC6">
-            <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="print" Content="IMPRIMIR" Margin="149,267,149,12" Style="{DynamicResource ButtonShadowAround}" BorderBrush="{x:Null}" FontSize="9" Foreground="#FF1B3BC6">
-            <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="confirm" Content="CONFIRMAR" Margin="279,267,20,12" Style="{DynamicResource ButtonShadowAround}" BorderBrush="{x:Null}" FontSize="9" Foreground="#FF1B3BC6">
-            <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png"/>
-            </Button.Background>
-        </Button>
+        <Button x:Name="cancel" Content="CANCELAR" HorizontalAlignment="Left" Width="65" Margin="20,267,0,12" Style="{DynamicResource ButtonShadowAround}" BorderBrush="{x:Null}" FontSize="9" Foreground="#FF1B3BC6"/>
+
+        <Button x:Name="print" Content="IMPRIMIR" Margin="149,267,149,12" Style="{DynamicResource ButtonShadowAround}" BorderBrush="{x:Null}" FontSize="9" Foreground="#FF1B3BC6"/>
+
+        <Button x:Name="confirm" Content="CONFIRMAR" Margin="279,267,20,12" Style="{DynamicResource ButtonShadowAround}" BorderBrush="{x:Null}" FontSize="9" Foreground="#FF1B3BC6"/>
+
 
     </Grid>
 </Window>

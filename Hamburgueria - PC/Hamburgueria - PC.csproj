@@ -90,6 +90,11 @@
     <Compile Include="Model\RelatorioVendaAnual.cs" />
     <Compile Include="Model\RelatorioVendaSemanal.cs" />
     <Compile Include="Model\Venda.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="TXT.cs" />
     <Compile Include="Sales\Balcao.cs" />
     <Compile Include="Model\Produto.cs" />
@@ -190,11 +195,6 @@
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -218,10 +218,8 @@
     <Content Include="hamburgueria.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="Resources\logo.png" />
     <Resource Include="Resources\excel_icon.png" />
-    <Resource Include="Resources\logo final alt 2.png" />
-    <Resource Include="Resources\logo final alt 1.png" />
-    <Resource Include="Resources\logo final alternative color.png" />
     <Resource Include="Resources\logo final.png" />
     <Resource Include="Resources\iiu.png" />
     <Resource Include="Resources\down-arrow.png" />
@@ -231,10 +229,8 @@
     <Resource Include="Resources\confirm.png" />
     <Resource Include="Resources\lupa.png" />
     <Resource Include="Resources\linha.png" />
-    <Resource Include="Resources\BUTAO_IGOR 1.1.png" />
     <Resource Include="Resources\butao_igor.png" />
     <Resource Include="Resources\logo.ico" />
-    <Resource Include="Resources\logo.png" />
     <Resource Include="Resources\Botao_vendas.png" />
     <Resource Include="Resources\Botao_relatorios.png" />
     <Resource Include="Resources\Botao_Produtos.png" />

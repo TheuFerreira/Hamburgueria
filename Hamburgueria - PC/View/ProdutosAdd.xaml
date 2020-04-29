@@ -24,16 +24,10 @@
         <TextBox x:Name="Code" CaretBrush="White" Margin="111,222,440,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="24" VerticalAlignment="Top"/>
         <Label Content="PREÇO:*" HorizontalAlignment="Left" Margin="425,224,0,0" VerticalAlignment="Top" Width="86" Foreground="White" RenderTransformOrigin="0.953,0.635" FontFamily="Arial"/>
         <TextBox x:Name="Price" CaretBrush="White" Margin="485,222,47,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="26" VerticalAlignment="Top"/>
-        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,159,30" HorizontalAlignment="Right" Width="75" BorderBrush="{x:Null}" Foreground="#FF4472C4" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}" Height="34" VerticalAlignment="Bottom">
-            <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
-        <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,47,30" HorizontalAlignment="Right" Width="75" BorderBrush="{x:Null}" Foreground="#FF4472C4" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}" Height="34" VerticalAlignment="Bottom">
-            <Button.Background>
-                <ImageBrush ImageSource="/Hamburgueria;component/Resources/BUTAO_IGOR 1.1.png" Stretch="Uniform"/>
-            </Button.Background>
-        </Button>
+        <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,159,30" HorizontalAlignment="Right" Width="75" BorderBrush="{x:Null}" Foreground="#FF4472C4" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}" Height="34" VerticalAlignment="Bottom"/>
+
+        <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,47,30" HorizontalAlignment="Right" Width="75" BorderBrush="{x:Null}" Foreground="#FF4472C4" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}" Height="34" VerticalAlignment="Bottom"/>
+
 
     </Grid>
 </Window>

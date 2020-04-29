@@ -91,7 +91,7 @@ namespace Hamburgueria.View
 
             if (Model.Cliente.Exist(clientName.Text, Adress.Text, District.Text, Number.Text))
             {
-                MessageBox.Show("Já existe um cliente com exatamentes estas informações", "", MessageBoxButton.OK, MessageBoxImage.Error);
+               // MessageBox.Show("Já existe um cliente com exatamentes estas informações", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 

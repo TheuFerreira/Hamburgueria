@@ -19,22 +19,22 @@
         <Label Content="NOME:*" HorizontalAlignment="Left" Margin="45,90,0,0" VerticalAlignment="Top" Width="52" Foreground="White"/>
         <TextBox x:Name="clientName" CaretBrush="White" Margin="94,94,45,303" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-        <Label Content="RUA:*" HorizontalAlignment="Left" Margin="45,155,0,0" VerticalAlignment="Top" Width="43" Foreground="White" RenderTransformOrigin="0.953,0.635"/>
-        <TextBox x:Name="Adress" CaretBrush="White" Margin="81,159,208,238" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" RenderTransformOrigin="0.5,0.5"/>
-        <Label Content="NUMERO:*" Margin="604,155,120,238" Foreground="White"/>
-        <TextBox x:Name="Number" CaretBrush="White" Margin="665,158,45,239" TextWrapping="Wrap" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Label Content="RUA:*" HorizontalAlignment="Left" Margin="45,165,0,0" VerticalAlignment="Top" Width="43" Foreground="White" RenderTransformOrigin="0.953,0.635"/>
+        <TextBox x:Name="Adress" CaretBrush="White" Margin="81,168,208,229" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="NUMERO:*" Margin="604,165,120,228" Foreground="White"/>
+        <TextBox x:Name="Number" CaretBrush="White" Margin="665,168,45,229" TextWrapping="Wrap" CharacterCasing="Upper" RenderTransformOrigin="0.491,0.537" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
 
-        <Label Content="BAIRRO:*" HorizontalAlignment="Left" Margin="45,215,0,0" VerticalAlignment="Top" Width="58" Foreground="White" RenderTransformOrigin="0.81,0.487"/>
-        <TextBox x:Name="District" CaretBrush="White" Margin="99,217,333,180" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" RenderTransformOrigin="0.5,0.5"/>
+        <Label Content="BAIRRO:*" HorizontalAlignment="Left" Margin="45,230,0,0" VerticalAlignment="Top" Width="58" Foreground="White" RenderTransformOrigin="0.81,0.487"/>
+        <TextBox x:Name="District" CaretBrush="White" Margin="99,233,333,164" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" RenderTransformOrigin="0.5,0.5"/>
 
-        <Label Content="COMPLEMENTO:" Margin="480,215,214,178" Foreground="White"/>
-        <TextBox x:Name="Complement" CaretBrush="White" Margin="577,218,45,179" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Label Content="COMPLEMENTO:" Margin="480,230,214,163" Foreground="White"/>
+        <TextBox x:Name="Complement" CaretBrush="White" Margin="577,233,45,164" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-        <Label Content="TELEFONE:" HorizontalAlignment="Left" Margin="45,280,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="Telephone" MaxLength="15" CaretBrush="White" Margin="122,285,45,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
-        <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="45,323,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="Reference" CaretBrush="White" Margin="122,328,45,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
+        <Label Content="TELEFONE:" HorizontalAlignment="Left" Margin="45,300,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="Telephone" MaxLength="15" CaretBrush="White" Margin="122,303,474,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
+        <Label Content="REFERENCIA:" HorizontalAlignment="Left" Margin="325,300,0,0" VerticalAlignment="Top" Width="79" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="Reference" CaretBrush="White" Margin="410,303,45,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
         <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,160,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF4472C4" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}"/>
 
         <Button x:Name="SaveBtn" Content="SALVAR" Margin="0,0,45,10" HorizontalAlignment="Right" Width="75" Height="34" VerticalAlignment="Bottom" BorderBrush="{x:Null}" Foreground="#FF4472C4" FontFamily="Arial" Style="{DynamicResource ButtonShadowAround}"/>

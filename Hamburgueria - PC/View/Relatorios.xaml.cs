@@ -35,7 +35,14 @@ namespace Hamburgueria.View
 
         private void ToExcel_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            new Excel().Sales();
+            try
+            {
+                new Excel().Sales(grid);
+            }
+            catch
+            {
+
+            }
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)

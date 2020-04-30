@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
+using System.Windows.Controls;
 using m_Excel = Microsoft.Office.Interop.Excel;
 
 namespace Hamburgueria
@@ -18,7 +19,7 @@ namespace Hamburgueria
 
         private bool ok = false;
 
-        public void Sales()
+        public void Sales(DataGrid grid)
         {
             ok = false;
 
@@ -49,12 +50,15 @@ namespace Hamburgueria
                 workbook = app.Workbooks.Open(fileName);
                 worksheet = workbook.Worksheets[1];
 
-                for (int i = 0; i < 50; i++)
+                for (int i = 0; i < grid.Items.Count; i++)
                 {
-                    for (int j = 0; j < 15; j++)
-                    {
-                        worksheet.Cells[i + 1, j + 1] = i + j;
-                    }
+                    var row = (Model.Relatorio.VendaDia)grid.Items[i];
+                    worksheet.Cells[i + 2, 1] = row.TYPE;
+                    worksheet.Cells[i + 2, 2] = row.Date;
+                    worksheet.Cells[i + 2, 3] = row.TotalBrute;
+                    worksheet.Cells[i + 2, 4] = row.Discount;
+                    worksheet.Cells[i + 2, 5] = row.Total;
+                    worksheet.Cells[i + 2, 6] = row.Payment;
                 }
 
                 workbook.Save();

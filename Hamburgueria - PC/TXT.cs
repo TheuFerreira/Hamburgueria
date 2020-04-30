@@ -18,7 +18,7 @@ namespace Hamburgueria
             return pathData;
         }
 
-        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, List<View.VendasRapida.Item> products)
+        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, string observation, List<View.VendasRapida.Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -45,6 +45,8 @@ namespace Hamburgueria
                     content += "\n" + p.Quantity + "x " + p.Name.PadRight(21) + p.Total.ToString("C2");
                 }
             }
+            if (string.IsNullOrWhiteSpace(observation) == false)
+                content += ReformText("OBSERVAÇÃO: " + observation);
 
             content += "\n------------------------------------";
 
@@ -69,7 +71,7 @@ namespace Hamburgueria
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
-        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, List<View.VendasBalcao.Item> products)
+        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, string observation, List<View.VendasBalcao.Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -96,6 +98,8 @@ namespace Hamburgueria
                     content += "\n" + p.Quantity + "x " + p.Name.PadRight(21) + p.Total.ToString("C2");
                 }
             }
+            if (string.IsNullOrWhiteSpace(observation) == false)
+                content += ReformText("OBSERVAÇÃO: " + observation);
 
             content += "\n------------------------------------";
 
@@ -120,7 +124,7 @@ namespace Hamburgueria
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
-        public static void Sale(Model.Cliente.Item clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, List<View.VendasDelivery.Item> products)
+        public static void Sale(Model.Cliente.Item clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, string observation, List<View.VendasDelivery.Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -159,6 +163,8 @@ namespace Hamburgueria
                     content += "\n" + p.Quantity + "x " + p.Name.PadRight(21) + p.Total.ToString("C2");
                 }
             }
+            if (string.IsNullOrWhiteSpace(observation) == false)
+                content += ReformText("OBSERVAÇÃO: " + observation);
 
             content += "\n------------------------------------";
 

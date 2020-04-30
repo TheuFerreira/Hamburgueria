@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-
-using System.Windows;
 using System.Windows.Controls;
 
 namespace Hamburgueria.Sales
@@ -36,10 +32,11 @@ namespace Hamburgueria.Sales
                 int numTable = Convert.ToInt32(Path.GetFileNameWithoutExtension(files[i]));
                 DateTime dateSale = Convert.ToDateTime(lines[0]);
                 decimal totalSale = Convert.ToDecimal(lines[1]);
+                string observation = lines[2];
 
                 string info = "MESA: Nº" + numTable + "\n\n";
 
-                for (int j = 3; j < lines.Length; j++)
+                for (int j = 4; j < lines.Length; j++)
                 {
                     string[] requests = lines[j].Split('>');
 
@@ -49,18 +46,21 @@ namespace Hamburgueria.Sales
                     var p = Model.Produto.GetProduct(id);
                     info += quantity + "x " + p.NAME + "\t\t" + (p.PRICE * quantity).ToString("C2") + "\n";
                 }
+                if (string.IsNullOrWhiteSpace(observation) == false)
+                    info += "OBSERVAÇÃO: " + observation + "\n";
 
                 grid.Items.Add(new View.Vendas.Item() { Type = 0, Value = "BALCÃO", File = numTable.ToString(), Info = info, Date = dateSale, Total = totalSale });
             }
         }
 
-        public static void Create(int numTable, DateTime dateSale, decimal totalSale, List<View.VendasBalcao.Item> items)
+        public static void Create(int numTable, DateTime dateSale, decimal totalSale, string observation, List<View.VendasBalcao.Item> items)
         {
             string path = DefaultPath() + numTable + ".bin";
 
             string content = "";
             content += dateSale + "\n";
             content += totalSale + "\n";
+            content += observation + "\n";
             content += "-\n";
 
             foreach (View.VendasBalcao.Item i in items)
@@ -76,17 +76,18 @@ namespace Hamburgueria.Sales
         public static string[] Info(int numTable)
         {
             string[] lines = File.ReadAllLines(DefaultPath() + numTable + ".bin");
-            string[] info = new string[2];
+            string[] info = new string[3];
 
             info[0] = lines[0];
             info[1] = lines[1];
+            info[2] = lines[2];
             return info;
         }
 
-        public static void Edit(int oldNumTable, int numTable, DateTime dateSale, decimal totalSale, List<View.VendasBalcao.Item> items)
+        public static void Edit(int oldNumTable, int numTable, DateTime dateSale, decimal totalSale, string observation, List<View.VendasBalcao.Item> items)
         {
             File.Delete(DefaultPath() + oldNumTable + ".bin");
-            Create(numTable, dateSale, totalSale, items);
+            Create(numTable, dateSale, totalSale, observation, items);
         }
 
         public static void Delete(int numTable)
@@ -100,7 +101,7 @@ namespace Hamburgueria.Sales
 
             string[] lines = File.ReadAllLines(DefaultPath() + numTable + ".bin");
 
-            for (int j = 3; j < lines.Length; j++)
+            for (int j = 4; j < lines.Length; j++)
             {
                 string[] requests = lines[j].Split('>');
 

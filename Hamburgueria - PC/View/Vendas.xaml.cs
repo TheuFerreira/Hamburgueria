@@ -105,10 +105,13 @@ namespace Hamburgueria.View
 
                     DateTime dateSale = Convert.ToDateTime(info[0]);
                     decimal totalSale = Convert.ToDecimal(info[1]);
+                    string observation = info[2];
 
-                    VendasBalcao balcao = new VendasBalcao();
-                    balcao.sales = this;
-                    balcao.LoadEditing(numTable, totalSale, dateSale, Sales.Balcao.Products(numTable));
+                    VendasBalcao balcao = new VendasBalcao
+                    {
+                        sales = this
+                    };
+                    balcao.LoadEditing(numTable, totalSale, dateSale, observation, Sales.Balcao.Products(numTable));
                     balcao.ShowDialog();
                 }
                 else
@@ -131,7 +134,7 @@ namespace Hamburgueria.View
                     };
 
                     VendasDelivery delivery = new VendasDelivery(this);
-                    delivery.LoadEditing(fileName, address, totalSale, info[6], info[7], dateSale, Sales.Delivery.Products(fileName));
+                    delivery.LoadEditing(fileName, address, totalSale, info[6], info[7], dateSale, info[8], Sales.Delivery.Products(fileName));
                     delivery.ShowDialog();
                 }
             }
@@ -166,7 +169,7 @@ namespace Hamburgueria.View
 
                     List<VendasDelivery.Item> items = Sales.Delivery.Products(fileName);
 
-                    TXT.Sale(address, dateSale, totalSale, discount, totalSale - discount, payment, items);
+                    TXT.Sale(address, dateSale, totalSale, discount, totalSale - discount, payment, info[8], items);
                     new Impressao().ShowDialog();
                 }
             }
@@ -179,13 +182,16 @@ namespace Hamburgueria.View
                     string[] info = Sales.Balcao.Info(numTable);
                     DateTime dateSale = Convert.ToDateTime(info[0]);
                     decimal totalSale = Convert.ToDecimal(info[1]);
+                    string observation = info[2];
 
-                    VendasPagamento pagamento = new VendasPagamento(totalSale);
-                    pagamento.typeSale = 1;
-                    pagamento.sales = this;
-                    pagamento.numTable = numTable;
-                    pagamento.dateSale = dateSale;
-                    pagamento.ShowDialog();
+                    new VendasPagamento(totalSale)
+                    {
+                        typeSale = 1,
+                        sales = this,
+                        numTable = numTable,
+                        dateSale = dateSale,
+                        observation = observation
+                    }.ShowDialog();
                 }
                 else
                 {
@@ -217,7 +223,7 @@ namespace Hamburgueria.View
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        TXT.Sale(address, dateSale, totalSale, discount, totalSale - discount, payment, items);
+                        TXT.Sale(address, dateSale, totalSale, discount, totalSale - discount, payment, info[8], items);
                         new Impressao().ShowDialog();
                     }
 
@@ -241,8 +247,10 @@ namespace Hamburgueria.View
 
         private void AddLocal_Click(object sender, RoutedEventArgs e)
         {
-            VendasBalcao balcao = new VendasBalcao();
-            balcao.sales = this;
+            VendasBalcao balcao = new VendasBalcao
+            {
+                sales = this
+            };
             balcao.ShowDialog();
         }
 

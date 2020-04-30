@@ -278,33 +278,32 @@ namespace Hamburgueria.View
                 return;
             }
 
-            if (MessageBox.Show("Tem certeza que deseja finalizar a venda?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            List<Item> items = new List<Item>();
+            for (int i = 0; i < gridProduct.Items.Count; i++)
             {
-                List<Item> items = new List<Item>();
-                for (int i = 0; i < gridProduct.Items.Count; i++)
-                {
-                    var row = (Item)gridProduct.Items[i];
-                    items.Add(row);
-                }
+                var row = (Item)gridProduct.Items[i];
+                items.Add(row);
+            }
 
-                VendasPagamento pagamento = new VendasPagamento(totalSale)
-                {
-                    items = items,
-                    dateSale = DateTime.Now
-                };
-                pagamento.ShowDialog();
+            VendasPagamento pagamento = new VendasPagamento(totalSale)
+            {
+                items = items,
+                dateSale = DateTime.Now,
+                observation = observation.Text
+            };
+            pagamento.ShowDialog();
 
-                if (pagamento.Confirmed)
-                {
-                    MessageBox.Show("Venda realizada com sucesso!!!");
+            if (pagamento.Confirmed)
+            {
+                MessageBox.Show("Venda realizada com sucesso!!!");
 
-                    gridProduct.Items.Clear();
-                    search.Text = "";
-                    quantity.Text = "";
-                    totalSale = 0;
-                    searchId = -1;
-                    labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
-                }
+                gridProduct.Items.Clear();
+                search.Text = "";
+                quantity.Text = "";
+                totalSale = 0;
+                searchId = -1;
+                observation.Text = "";
+                labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
             }
         }
     }

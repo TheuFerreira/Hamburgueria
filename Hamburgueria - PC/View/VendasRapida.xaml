@@ -25,15 +25,17 @@
             </Rectangle>
             <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="24,37,0,0" VerticalAlignment="Top" Width="63" Foreground="White" FontSize="11"/>
 
-            <TextBox x:Name="search" CharacterCasing="Upper" CaretBrush="White" Height="21" Margin="87,39,281,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="" Foreground="White" SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+            <TextBox x:Name="search" CharacterCasing="Upper" CaretBrush="White" Height="21" Margin="87,39,281,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="" Foreground="White" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
             <Image Height="13" Margin="400,45,0,0" VerticalAlignment="Top" Source="/Hamburgueria;component/Resources/lupa.png" HorizontalAlignment="Left" Width="15" RenderTransformOrigin="3.6,0.615"/>
             <Label Content="QUANTIDADE" HorizontalAlignment="Left" Margin="448,37,0,0" Width="90" FontFamily="Arial" Foreground="White" Height="21" VerticalAlignment="Top"/>
 
-            <TextBox x:Name="quantity" CaretBrush="White" Height="21" Margin="538,39,30,0" TextWrapping="Wrap" VerticalAlignment="Top"  SelectionBrush="{x:Null}" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
+            <TextBox x:Name="quantity" CaretBrush="White" Height="21" Margin="538,39,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
+            <Label Content="OBSERVAÇÃO:" Foreground="White" FontFamily="Arial" HorizontalAlignment="Left" Margin="24,76,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="observation" CaretBrush="White" CharacterCasing="Upper" FontFamily="Arial" Height="23" Margin="125,78,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource TextBoxUnderline}"/>
             <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,144,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Right" Width="75"/>
 
             <Label x:Name="labelTotalSale" Content="TOTAL: R$0,00" Height="34" Margin="30,145,149,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
-            <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="87,59,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="308">
+            <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="87,59,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="308" d:IsHidden="True">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding ID}" Header="ID" Visibility="Collapsed"/>
                     <DataGridTextColumn Binding="{Binding COD}" Header="CÓDIGO"/>

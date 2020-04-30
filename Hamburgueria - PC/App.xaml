@@ -113,6 +113,7 @@
             <Setter Property="Foreground" Value="White"/>
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="Padding" Value="3,3,0,3"/>
+            <Setter Property="SelectionBrush" Value="#FFFF0C0C"/>
         </Style>
     </Application.Resources>
 </Application>

@@ -78,7 +78,7 @@ namespace Hamburgueria.View
             sales.UpdateGrid();
         }
 
-        public void LoadEditing(int num, decimal totalSale, DateTime dateSale, List<Item> items)
+        public void LoadEditing(int num, decimal totalSale, DateTime dateSale, string observation, List<Item> items)
         {
             isEditing = true;
             oldNumTable = num;
@@ -86,6 +86,7 @@ namespace Hamburgueria.View
             labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
             this.totalSale = totalSale;
             this.dateSale = dateSale;
+            this.observation.Text = observation;
 
             foreach(Item it in items)
             gridProduct.Items.Add(it);
@@ -328,7 +329,7 @@ namespace Hamburgueria.View
                 List<Item> items = new List<Item>();
                 foreach (Item i in gridProduct.Items)
                     items.Add(i);
-                Sales.Balcao.Create(table, DateTime.Now, totalSale, items);
+                Sales.Balcao.Create(table, DateTime.Now, totalSale, observation.Text, items);
 
                 searchId = -1;
                 searchCod = 0;
@@ -340,6 +341,7 @@ namespace Hamburgueria.View
                 labelTotalSale.Content = "TOTAL:R$0,00";
                 quantity.Text = "";
                 numTable.Text = "";
+                observation.Text = "";
                 search.Focus();
 
                 MessageBox.Show("Venda adicionada com sucesso!!!");
@@ -361,7 +363,7 @@ namespace Hamburgueria.View
                 List<Item> items = new List<Item>();
                 foreach (Item i in gridProduct.Items)
                     items.Add(i);
-                Sales.Balcao.Edit(oldNumTable, table, dateSale, totalSale, items);
+                Sales.Balcao.Edit(oldNumTable, table, dateSale, totalSale, observation.Text, items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

@@ -23,6 +23,7 @@ namespace Hamburgueria.View
         public int numTable;
         public DateTime dateSale;
         public List<View.VendasRapida.Item> items;
+        public string observation = "";
 
         private decimal desconto = 0;
         private decimal pago = 0;
@@ -33,11 +34,7 @@ namespace Hamburgueria.View
         {
             InitializeComponent();
 
-            bruteValue.Text = valorTotal.ToString();
-            discount.Text = "0";
-            totalValue.Text = "0";
-            valuePay.Text = "0";
-            change.Text = "0";
+            bruteValue.Content = valorTotal.ToString("N2");
 
             Values_TextChanged(null, null);
 
@@ -48,6 +45,9 @@ namespace Hamburgueria.View
 
             this.discount.GotFocus += Values_GotFocus;
             this.valuePay.GotFocus += Values_GotFocus;
+
+            this.discount.LostFocus += Values_LostFocus;
+            this.valuePay.LostFocus += Values_LostFocus;
 
             this.discount.TextChanged += Values_TextChanged;
             this.valuePay.TextChanged += Values_TextChanged;
@@ -87,8 +87,17 @@ namespace Hamburgueria.View
             TextBox t = (TextBox)sender;
             t.SelectAll();
 
-            if (t.Text == "0")
+            if (t.Text == "0,00")
                 t.Text = "";
+        }
+
+        private void Values_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (string.IsNullOrEmpty(tb.Text))
+                tb.Text = "0,00";
+            else
+                tb.Text = Convert.ToDecimal(tb.Text).ToString("N2");
         }
 
         private void Values_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -102,7 +111,7 @@ namespace Hamburgueria.View
                 desconto = 0;
             else
                 desconto = Convert.ToDecimal(discount.Text);
-            totalValue.Text = (Convert.ToDecimal(bruteValue.Text) - desconto).ToString();
+            totalValue.Content = (Convert.ToDecimal(bruteValue.Content) - desconto).ToString();
 
             if (payment.SelectedIndex == 0)
             {
@@ -111,9 +120,9 @@ namespace Hamburgueria.View
                 else
                     pago = Convert.ToDecimal(valuePay.Text);
 
-                change.Text = (pago - Convert.ToDecimal(totalValue.Text)).ToString();
+                change.Content = (pago - Convert.ToDecimal(totalValue.Content)).ToString();
 
-                decimal total = Convert.ToDecimal(totalValue.Text);
+                decimal total = Convert.ToDecimal(totalValue.Content);
                 if (pago < total)
                 {
                     confirm.Visibility = Visibility.Hidden;
@@ -128,8 +137,8 @@ namespace Hamburgueria.View
             else
             {
                 pago = 0;
-                valuePay.Text = "0";
-                change.Text = "0";
+                valuePay.Text = "0,00";
+                change.Content = "0,00";
 
                 confirm.Visibility = Visibility.Visible;
                 print.Visibility = Visibility.Visible;
@@ -144,9 +153,9 @@ namespace Hamburgueria.View
         private void Print_Click(object sender, RoutedEventArgs e)
         {
             if (typeSale == 1)
-                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Text), payment.Text, Sales.Balcao.Products(numTable));
+                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, observation, Sales.Balcao.Products(numTable));
             else
-                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Text), payment.Text, items);
+                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, observation, items);
             new Impressao().ShowDialog();
             Confirm_Click(null, null);
         }
@@ -156,7 +165,7 @@ namespace Hamburgueria.View
             // TABLE
             if (typeSale == 1)
             {
-                Model.Venda.Insert(numTable, dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), payment.Text, Sales.Balcao.Products(numTable));
+                Model.Venda.Insert(numTable, dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), payment.Text, Sales.Balcao.Products(numTable));
 
                 Sales.Balcao.Delete(numTable);
 
@@ -165,7 +174,7 @@ namespace Hamburgueria.View
             // FAST
             else
             {
-                Model.Venda.Insert(dateSale, Convert.ToDecimal(bruteValue.Text), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Text), payment.Text, items);
+                Model.Venda.Insert(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), payment.Text, items);
             }
 
             Confirmed = true;

@@ -25,7 +25,6 @@ namespace Hamburgueria.View
         private readonly Vendas sales;
         private string fileName;
         private bool isEditing = false;
-        private Model.Cliente.Item oldAddress;
         private DateTime dateSale;
 
         public VendasDelivery(Vendas sales)
@@ -82,14 +81,13 @@ namespace Hamburgueria.View
                 this.Close();
         }
 
-        public void LoadEditing(string fileName, Model.Cliente.Item oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, List<Item> items)
+        public void LoadEditing(string fileName, Model.Cliente.Item oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, string observation, List<Item> items)
         {
             isEditing = true;
             labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
             this.fileName = fileName;
             this.totalSale = totalSale;
             this.dateSale = dateSale;
-            this.oldAddress = oldAddress;
 
             searchName.Text = oldAddress.NAME;
             number.Text = oldAddress.NUMBER;
@@ -98,6 +96,8 @@ namespace Hamburgueria.View
             complement.Text = oldAddress.COMPLEMENT;
             telephone.Text = oldAddress.TELEPHONE;
             Reference.Text = oldAddress.REFERENCE;
+
+            this.observation.Text = observation;
 
             switch (payment)
             {
@@ -142,7 +142,7 @@ namespace Hamburgueria.View
                     telephone.Text = selected.TELEPHONE;
                     Reference.Text = selected.REFERENCE;
 
-                    payment.Focus();
+                    searchProduct.Focus();
                 }
 
                 gridClient.Visibility = Visibility.Hidden;
@@ -202,7 +202,7 @@ namespace Hamburgueria.View
                 complement.Text = selected.COMPLEMENT;
                 Reference.Text = selected.REFERENCE;
 
-                payment.Focus();
+                searchProduct.Focus();
             }
 
             gridClient.Visibility = Visibility.Hidden;
@@ -502,7 +502,7 @@ namespace Hamburgueria.View
                     total += i.Total;
                     items.Add(i);
                 }
-                Sales.Delivery.Create(address, DateTime.Now, total, payment.Text, Convert.ToDecimal(discount.Text), items);
+                Sales.Delivery.Create(address, DateTime.Now, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, items);
 
                 searchId = -1;
                 searchCod = 0;
@@ -522,6 +522,7 @@ namespace Hamburgueria.View
                 gridProduct.Items.Clear();
                 labelTotalSale.Content = "TOTAL:R$0,00";
                 quantity.Text = "";
+                observation.Text = "";
                 searchName.Focus();
 
                 MessageBox.Show("Venda adicionada com sucesso!!!");
@@ -537,7 +538,7 @@ namespace Hamburgueria.View
                     total += i.Total;
                     items.Add(i);
                 }
-                Sales.Delivery.Edit(fileName, address, dateSale, total, payment.Text, Convert.ToDecimal(discount.Text), items);
+                Sales.Delivery.Edit(fileName, address, dateSale, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

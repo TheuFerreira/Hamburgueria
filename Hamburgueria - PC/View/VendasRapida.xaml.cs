@@ -289,7 +289,6 @@ namespace Hamburgueria.View
             {
                 items = items,
                 dateSale = DateTime.Now,
-                observation = observation.Text
             };
             pagamento.ShowDialog();
 
@@ -302,7 +301,6 @@ namespace Hamburgueria.View
                 quantity.Text = "";
                 totalSale = 0;
                 searchId = -1;
-                observation.Text = "";
                 labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
             }
         }

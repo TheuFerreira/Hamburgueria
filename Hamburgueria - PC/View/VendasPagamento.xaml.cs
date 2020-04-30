@@ -155,7 +155,7 @@ namespace Hamburgueria.View
             if (typeSale == 1)
                 TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, observation, Sales.Balcao.Products(numTable));
             else
-                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, observation, items);
+                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, items);
             new Impressao().ShowDialog();
             Confirm_Click(null, null);
         }

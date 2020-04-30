@@ -30,8 +30,6 @@
             <Label Content="QUANTIDADE" HorizontalAlignment="Left" Margin="448,37,0,0" Width="90" FontFamily="Arial" Foreground="White" Height="21" VerticalAlignment="Top"/>
 
             <TextBox x:Name="quantity" CaretBrush="White" Height="21" Margin="538,39,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
-            <Label Content="OBSERVAÇÃO:" Foreground="White" FontFamily="Arial" HorizontalAlignment="Left" Margin="24,89,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="observation" CaretBrush="White" CharacterCasing="Upper" FontFamily="Arial" Height="23" Margin="120,93,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{StaticResource TextBoxUnderline}"/>
             <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,144,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Right" Width="75"/>
 
             <Label x:Name="labelTotalSale" Content="TOTAL: R$0,00" Height="34" Margin="30,145,149,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>

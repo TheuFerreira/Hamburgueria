@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Hamburgueria.View"
       mc:Ignorable="d" d:DesignWidth="800"
-      Title="VendasDelivery" Background="White" Height="481.334" Width="684" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+      Title="VendasDelivery" Background="White" Height="502.334" Width="684" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF4472C4">
         <Rectangle Height="137" VerticalAlignment="Top" Grid.ColumnSpan="2">
             <Rectangle.Fill>
@@ -26,35 +26,35 @@
         <TextBox x:Name="number" CaretBrush="White" Height="21" Margin="583,41,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="BAIRRO:" HorizontalAlignment="Left" Height="21" Margin="10,71,0,0" VerticalAlignment="Top" Width="63" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="district" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="78,72,220,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="district" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="73,72,220,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Height="21" Margin="478,72,0,0" VerticalAlignment="Top" Width="107" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="complement" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="583,74,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
         <Label Content="TELEFONE:" HorizontalAlignment="Left" Margin="10,103,0,0" VerticalAlignment="Top" Width="82" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="telephone" MaxLength="15" CaretBrush="White" Margin="92,107,10,0" TextWrapping="Wrap" CharacterCasing="Upper" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top"/>
-        <Label Content="REFERÊNCIA:" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="82" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="Reference" CaretBrush="White" Margin="92,129,10,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
-        <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="12,160,0,0" VerticalAlignment="Top" Width="73" Foreground="White" FontFamily="Arial"/>
-        <TextBox x:Name="searchProduct" CaretBrush="White" Height="21" Margin="90,163,276,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
-        <Image HorizontalAlignment="Left" Height="13" Margin="412,170,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>
-        <Label Content="QUANTIDADE:" Height="21" Margin="450,160,133,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
-        <TextBox x:Name="quantity" CaretBrush="White" Text="&#xA;" Height="21" Margin="546,163,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
-        <Label Content="OBSERVAÇÃO:" HorizontalAlignment="Left" Height="22" Margin="14,186,0,0" VerticalAlignment="Top" Width="101" Foreground="White" FontFamily="Arial"/>
+        <TextBox x:Name="telephone" MaxLength="15" CaretBrush="White" Margin="78,106,431,0" TextWrapping="Wrap" CharacterCasing="Upper" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top"/>
+        <Label Content="REFERÊNCIA:" HorizontalAlignment="Left" Margin="270,103,0,0" VerticalAlignment="Top" Width="82" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="Reference" CaretBrush="White" Margin="352,106,10,0" TextWrapping="Wrap" CharacterCasing="Upper" SelectionBrush="#FFFF0C0C" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="22" VerticalAlignment="Top" />
+        <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="12,155,0,0" VerticalAlignment="Top" Width="73" Foreground="White" FontFamily="Arial"/>
+        <TextBox x:Name="searchProduct" CaretBrush="White" Height="21" Margin="90,158,276,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Image HorizontalAlignment="Left" Height="13" Margin="408,167,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>
+        <Label Content="QUANTIDADE:" Height="21" Margin="450,155,133,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5"/>
+        <TextBox x:Name="quantity" CaretBrush="White" Text="&#xA;" Height="21" Margin="546,158,10,0" TextWrapping="Wrap" VerticalAlignment="Top" BorderBrush="White" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
+        <Label Content="OBSERVAÇÃO:" HorizontalAlignment="Left" Height="22" Margin="10,186,0,0" VerticalAlignment="Top" Width="101" Foreground="White" FontFamily="Arial"/>
         <TextBox x:Name="observation" CaretBrush="White" Height="21" Margin="115,189,10,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Foreground="White" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-        <Label Content="FORMA DE PAGAMENTO:" HorizontalAlignment="Left" Height="21" Margin="10,217,0,0" VerticalAlignment="Top" Width="156" FontFamily="Arial" Foreground="White"/>
-        <ComboBox x:Name="payment" Margin="171,217,350,0" VerticalAlignment="Top" SelectedIndex="0" >
+        <Label Content="FORMA DE PAGAMENTO:" HorizontalAlignment="Left" Height="21" Margin="10,223,0,0" VerticalAlignment="Top" Width="156" FontFamily="Arial" Foreground="White"/>
+        <ComboBox x:Name="payment" Margin="171,223,350,0" VerticalAlignment="Top" SelectedIndex="0" >
             <ListBoxItem Content="À VISTA"/>
             <ListBoxItem Content="CRÉDITO"/>
             <ListBoxItem Content="DÉBITO"/>
         </ComboBox>
 
-        <Label Content="DESCONTO:" HorizontalAlignment="Left" Height="21" Margin="448,217,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="discount" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="532,220,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00"/>
+        <Label Content="DESCONTO:" HorizontalAlignment="Left" Height="21" Margin="448,223,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
+        <TextBox x:Name="discount" CaretBrush="White" CharacterCasing="Upper" Height="21" Margin="532,226,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00"/>
 
-        <Button x:Name="confirm" Content="CONFIRMAR" Height="35" Margin="576,246,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="92"/>
+        <Button x:Name="confirm" Content="CONFIRMAR" Height="35" Margin="576,260,0,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="92"/>
 
-        <Label x:Name="labelTotalSale" Content="TOTAL: R$ 0,00" Margin="10,246,352,0" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5" FontSize="16" Height="26" VerticalAlignment="Top"/>
+        <Label x:Name="labelTotalSale" Content="TOTAL: R$ 0,00" Margin="10,260,352,0" FontFamily="Arial" Foreground="White" RenderTransformOrigin="0.5,0.5" FontSize="16" Height="26" VerticalAlignment="Top"/>
 
         <DataGrid Name="gridProduct" CanUserResizeColumns="False" CanUserResizeRows="False" Margin="1,0,0,0" BorderBrush="{x:Null}" Height="171" VerticalAlignment="Bottom">
             <DataGrid.Columns>

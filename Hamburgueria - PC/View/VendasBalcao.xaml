@@ -16,18 +16,18 @@
                 </LinearGradientBrush>
             </Rectangle.Fill>
         </Rectangle>
-        <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="24,30,0,0" VerticalAlignment="Top" Width="63" Foreground="White" FontSize="11"/>
+        <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="30,30,0,0" VerticalAlignment="Top" Width="63" Foreground="White" FontSize="11"/>
 
-        <TextBox x:Name="search" CaretBrush="White" Height="21" Margin="87,32,312,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="search" CaretBrush="White" Height="21" Margin="90,33,309,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
         <Image HorizontalAlignment="Left" Height="13" Margin="370,38,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png"/>
 
-        <Label Content="QUANTIDADE:" HorizontalAlignment="Left" Height="21" Margin="436,30,0,0" VerticalAlignment="Top" Width="100" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="quantity" CaretBrush="White" Height="21" Margin="525,32,34,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
-        <Label Content="OBSERVAÇÃO:" HorizontalAlignment="Left" Height="22" Margin="24,67,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontSize="11"/>
-        <TextBox x:Name="observation" CaretBrush="White" Height="21" Margin="108,68,30,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
-        <Label Content="NUM. MESA:" HorizontalAlignment="Left" Height="21" Margin="30,110,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="numTable" CaretBrush="White" Height="21" Margin="108,112,409,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" />
-        <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="278" Margin="87,52,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible">
+        <Label Content="QUANTIDADE:" HorizontalAlignment="Left" Height="21" Margin="443,30,0,0" VerticalAlignment="Top" Width="100" FontFamily="Arial" Foreground="White" FontSize="11"/>
+        <TextBox x:Name="quantity" CaretBrush="White" Height="21" Margin="529,32,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Label Content="OBSERVAÇÃO:" HorizontalAlignment="Left" Height="22" Margin="259,100,0,0" VerticalAlignment="Top" Width="90" Foreground="White" FontSize="11"/>
+        <TextBox x:Name="observation" CaretBrush="White" Height="21" Margin="338,103,30,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Label Content="NUM. MESA:" HorizontalAlignment="Left" Height="21" Margin="30,100,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
+        <TextBox x:Name="numTable" CaretBrush="White" Height="21" Margin="108,103,439,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" />
+        <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="278" Margin="87,-8,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding ID}" Header="ID" Visibility="Collapsed"/>
                 <DataGridTextColumn Binding="{Binding COD}" Header="CÓDIGO"/>

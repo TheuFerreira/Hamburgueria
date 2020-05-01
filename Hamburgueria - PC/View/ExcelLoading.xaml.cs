@@ -20,24 +20,28 @@ namespace Hamburgueria.View
     public partial class ExcelLoading : Window
     {
         private readonly string date;
+        private readonly string end;
 
+        private readonly int period = 0;
         private int value = 0;
 
-        public ExcelLoading(string date)
+        public ExcelLoading(int period, string date, string end = "")
         {
             InitializeComponent();
 
             DispatcherTimer timer;
             timer = new DispatcherTimer();
             timer.Tick += Timer_Tick;
-            timer.Interval = new System.TimeSpan(0, 0, 1);
+            timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
 
+            this.period = period;
             this.date = date;
+            this.end = end;
             this.Loaded += ExcelLoading_Loaded;
         }
 
-        private void Timer_Tick(object sender, System.EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             loadingBar.Value = value;
         }
@@ -45,7 +49,16 @@ namespace Hamburgueria.View
         private void ExcelLoading_Loaded(object sender, RoutedEventArgs e)
         {
             loadingBar.Maximum = 8;
-            Task.Factory.StartNew(() => SaleDay(date));
+            if (period == 0)
+                Task.Factory.StartNew(() => SaleDay(date));
+            else if (period == 1)
+                Task.Factory.StartNew(() => SaleWeek(date, end));
+            else if (period == 2)
+                Task.Factory.StartNew(() => SaleMonth(date));
+            else if (period == 3)
+                Task.Factory.StartNew(() => SaleYear(date));
+            else if (period == 4)
+                Task.Factory.StartNew(() => SaleCustom(date, end));
         }
 
         private m_Excel.Application app;
@@ -148,6 +161,360 @@ namespace Hamburgueria.View
                 app.Quit();
             }
         }
+
+        private void SaleWeek(string start, string end)
+        {
+            ok = false;
+
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Title = "Exportar para Excel";
+            fileDialog.FileName = "Venda Semanal - " + start + " - " + end;
+            fileDialog.DefaultExt = "*.xlsx";
+            fileDialog.Filter = "*.xlsx | *.xlsx";
+            fileDialog.FileOk += FileDialog_FileOk;
+            fileDialog.ShowDialog();
+
+            if (ok == false)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+                return;
+            }
+
+            string fileName = fileDialog.FileName;
+            try
+            {
+                File.Copy("Excel\\vendasSemanais.xlsx", fileName, true);
+                value += 1;
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            try
+            {
+                app = new m_Excel.Application();
+                workbook = app.Workbooks.Open(fileName);
+                worksheet = workbook.Worksheets[1];
+
+                List<Relatorio.VendaSemanal> all = Relatorio.SaleWeek(start, end);
+                value += 1;
+                for (int i = 0; i < all.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = all[i].Date;
+                    worksheet.Cells[i + 3, 2] = all[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = all[i].Discount;
+                    worksheet.Cells[i + 3, 4] = all[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[2];
+                List<Relatorio.VendaSemanal> delivery = Relatorio.SaleWeekDelivery(start, end);
+                value += 1;
+                for (int i = 0; i < delivery.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = delivery[i].Date;
+                    worksheet.Cells[i + 3, 2] = delivery[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = delivery[i].Discount;
+                    worksheet.Cells[i + 3, 4] = delivery[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[3];
+                List<Relatorio.VendaSemanal> local = Relatorio.SaleWeekLocal(start, end);
+                value += 1;
+                for (int i = 0; i < local.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = local[i].Date;
+                    worksheet.Cells[i + 3, 2] = local[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = local[i].Discount;
+                    worksheet.Cells[i + 3, 4] = local[i].Total;
+                }
+                value += 1;
+
+                workbook.Save();
+                workbook.Close(true, misValue, misValue);
+                value += 1;
+
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+
+                Process.Start(fileName);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                app.Quit();
+            }
+        }
+
+        private void SaleMonth(string date)
+        {
+            ok = false;
+
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Title = "Exportar para Excel";
+            fileDialog.FileName = "Venda Mensal - " + date.Substring(0, date.Length - 1);
+            fileDialog.DefaultExt = "*.xlsx";
+            fileDialog.Filter = "*.xlsx | *.xlsx";
+            fileDialog.FileOk += FileDialog_FileOk;
+            fileDialog.ShowDialog();
+
+            if (ok == false)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+                return;
+            }
+
+            string fileName = fileDialog.FileName;
+            try
+            {
+                File.Copy("Excel\\vendasMensais.xlsx", fileName, true);
+                value += 1;
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            try
+            {
+                app = new m_Excel.Application();
+                workbook = app.Workbooks.Open(fileName);
+                worksheet = workbook.Worksheets[1];
+
+                List<Relatorio.VendaMes> all = Relatorio.SaleMonth(date);
+                value += 1;
+                for (int i = 0; i < all.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = all[i].Day;
+                    worksheet.Cells[i + 3, 2] = all[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = all[i].Discount;
+                    worksheet.Cells[i + 3, 4] = all[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[2];
+                List<Relatorio.VendaMes> delivery = Relatorio.SaleMonthDelivery(date);
+                value += 1;
+                for (int i = 0; i < delivery.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = delivery[i].Day;
+                    worksheet.Cells[i + 3, 2] = delivery[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = delivery[i].Discount;
+                    worksheet.Cells[i + 3, 4] = delivery[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[3];
+                List<Relatorio.VendaMes> local = Relatorio.SaleMonthLocal(date);
+                value += 1;
+                for (int i = 0; i < local.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = local[i].Day;
+                    worksheet.Cells[i + 3, 2] = local[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = local[i].Discount;
+                    worksheet.Cells[i + 3, 4] = local[i].Total;
+                }
+                value += 1;
+
+                workbook.Save();
+                workbook.Close(true, misValue, misValue);
+                value += 1;
+
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+
+                Process.Start(fileName);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                app.Quit();
+            }
+        }
+
+        private void SaleYear(string date)
+        {
+            ok = false;
+
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Title = "Exportar para Excel";
+            fileDialog.FileName = "Venda Anual - " + date.Substring(0, date.Length - 1);
+            fileDialog.DefaultExt = "*.xlsx";
+            fileDialog.Filter = "*.xlsx | *.xlsx";
+            fileDialog.FileOk += FileDialog_FileOk;
+            fileDialog.ShowDialog();
+
+            if (ok == false)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+                return;
+            }
+
+            string fileName = fileDialog.FileName;
+            try
+            {
+                File.Copy("Excel\\vendasAnuais.xlsx", fileName, true);
+                value += 1;
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            try
+            {
+                app = new m_Excel.Application();
+                workbook = app.Workbooks.Open(fileName);
+                worksheet = workbook.Worksheets[1];
+
+                List<Relatorio.VendaAnual> all = Relatorio.SaleYear(date);
+                value += 1;
+                for (int i = 0; i < all.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = all[i].Month;
+                    worksheet.Cells[i + 3, 2] = all[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = all[i].Discount;
+                    worksheet.Cells[i + 3, 4] = all[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[2];
+                List<Relatorio.VendaAnual> delivery = Relatorio.SaleYearDelivery(date);
+                value += 1;
+                for (int i = 0; i < delivery.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = delivery[i].Month;
+                    worksheet.Cells[i + 3, 2] = delivery[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = delivery[i].Discount;
+                    worksheet.Cells[i + 3, 4] = delivery[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[3];
+                List<Relatorio.VendaAnual> local = Relatorio.SaleYearLocal(date);
+                value += 1;
+                for (int i = 0; i < local.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = local[i].Month;
+                    worksheet.Cells[i + 3, 2] = local[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = local[i].Discount;
+                    worksheet.Cells[i + 3, 4] = local[i].Total;
+                }
+                value += 1;
+
+                workbook.Save();
+                workbook.Close(true, misValue, misValue);
+                value += 1;
+
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+
+                Process.Start(fileName);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                app.Quit();
+            }
+        }
+
+
+        private void SaleCustom(string start, string end)
+        {
+            ok = false;
+
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Title = "Exportar para Excel";
+            fileDialog.FileName = "Venda Customizada - " + start + " - " + end;
+            fileDialog.DefaultExt = "*.xlsx";
+            fileDialog.Filter = "*.xlsx | *.xlsx";
+            fileDialog.FileOk += FileDialog_FileOk;
+            fileDialog.ShowDialog();
+
+            if (ok == false)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+                return;
+            }
+
+            string fileName = fileDialog.FileName;
+            try
+            {
+                File.Copy("Excel\\vendasCustomizadas.xlsx", fileName, true);
+                value += 1;
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            try
+            {
+                app = new m_Excel.Application();
+                workbook = app.Workbooks.Open(fileName);
+                worksheet = workbook.Worksheets[1];
+
+                List<Relatorio.VendaSemanal> all = Relatorio.SaleWeek(start, end);
+                value += 1;
+                for (int i = 0; i < all.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = all[i].Date;
+                    worksheet.Cells[i + 3, 2] = all[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = all[i].Discount;
+                    worksheet.Cells[i + 3, 4] = all[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[2];
+                List<Relatorio.VendaSemanal> delivery = Relatorio.SaleWeekDelivery(start, end);
+                value += 1;
+                for (int i = 0; i < delivery.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = delivery[i].Date;
+                    worksheet.Cells[i + 3, 2] = delivery[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = delivery[i].Discount;
+                    worksheet.Cells[i + 3, 4] = delivery[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[3];
+                List<Relatorio.VendaSemanal> local = Relatorio.SaleWeekLocal(start, end);
+                value += 1;
+                for (int i = 0; i < local.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = local[i].Date;
+                    worksheet.Cells[i + 3, 2] = local[i].TotalBrute;
+                    worksheet.Cells[i + 3, 3] = local[i].Discount;
+                    worksheet.Cells[i + 3, 4] = local[i].Total;
+                }
+                value += 1;
+
+                workbook.Save();
+                workbook.Close(true, misValue, misValue);
+                value += 1;
+
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+
+                Process.Start(fileName);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                app.Quit();
+            }
+        }
+
 
         private void FileDialog_FileOk(object sender, CancelEventArgs e)
         {

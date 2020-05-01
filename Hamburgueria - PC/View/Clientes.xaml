@@ -35,50 +35,50 @@
                   SelectionMode="Single" 
                   HorizontalScrollBarVisibility="Visible">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header="Id" Visibility="Collapsed"/>
-                <DataGridTextColumn Binding="{Binding NAME}" Header="NOME" MinWidth="100" Width="*">
+                <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Collapsed"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="100" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding ADDRESS}" Header="RUA" MinWidth="150" Width="*">
+                <DataGridTextColumn Binding="{Binding Street}" Header="RUA" MinWidth="150" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding NUMBER}" Header="NÚMERO" MinWidth="100">
+                <DataGridTextColumn Binding="{Binding Number}" Header="NÚMERO" MinWidth="100">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding DISTRICT}" Header="BAIRRO" MinWidth="100" Width="*">
+                <DataGridTextColumn Binding="{Binding District}" Header="BAIRRO" MinWidth="100" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding COMPLEMENT}" Header="COMPLEMENTO" MinWidth="150" Width="*">
+                <DataGridTextColumn Binding="{Binding Complement}" Header="COMPLEMENTO" MinWidth="150" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding TELEPHONE}" Header="TELEFONE" MinWidth="150" Width="*">
+                <DataGridTextColumn Binding="{Binding Telephone}" Header="TELEFONE" MinWidth="150" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding REFERENCE}" Header="REFERÊNCIA" MinWidth="150" Width="*">
+                <DataGridTextColumn Binding="{Binding Reference}" Header="REFERÊNCIA" MinWidth="150" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>

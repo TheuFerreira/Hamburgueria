@@ -73,12 +73,12 @@
             </DataGrid.Background>
         </DataGrid>
 
-        <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="310" Margin="92,183,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" d:IsHidden="True">
+        <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="310" Margin="90,179,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header="ID" Visibility="Collapsed"/>
-                <DataGridTextColumn Binding="{Binding COD}" Header="CÓDIGO"/>
-                <DataGridTextColumn Binding="{Binding NAME}" Header="NOME" MinWidth="150" Width="*"/>
-                <DataGridTextColumn Binding="{Binding PRICE, StringFormat=C2}" Header="PREÇO"/>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Collapsed"/>
+                <DataGridTextColumn Binding="{Binding Cod}" Header="CÓDIGO"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="150" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="PREÇO"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -92,7 +92,7 @@ namespace Hamburgueria.View
                 return;
             }
 
-            if (Model.Cliente.Exist(clientName.Text, Adress.Text, District.Text, Number.Text))
+            if (new Hamburgueria.Sql.Client().Exist(clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text))
             {
                // MessageBox.Show("Já existe um cliente com exatamentes estas informações", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -100,7 +100,8 @@ namespace Hamburgueria.View
 
             if (id == -1)
             {
-                Model.Cliente.Insert(clientName.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Telephone.Text, Reference.Text);
+                Hamburgueria.Tables.Client client = new Hamburgueria.Tables.Client(clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text, Complement.Text, Telephone.Text, Reference.Text);
+                new Hamburgueria.Sql.Client().AddOrUpdate(client);
 
                 MessageBox.Show("Cliente cadastrado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -109,7 +110,8 @@ namespace Hamburgueria.View
             }
             else
             {
-                Model.Cliente.Update(id, clientName.Text, Adress.Text, District.Text, Number.Text, Complement.Text, Telephone.Text, Reference.Text);
+                Hamburgueria.Tables.Client client = new Hamburgueria.Tables.Client(id, clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text, Complement.Text, Telephone.Text, Reference.Text);
+                new Hamburgueria.Sql.Client().AddOrUpdate(client);
 
                 MessageBox.Show("Cliente atualizado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 

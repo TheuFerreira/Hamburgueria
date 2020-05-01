@@ -81,7 +81,7 @@ namespace Hamburgueria.View
                 this.Close();
         }
 
-        public void LoadEditing(string fileName, Model.Cliente.Item oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, string observation, List<Item> items)
+        public void LoadEditing(string fileName, Hamburgueria.Tables.Client oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, string observation, List<Item> items)
         {
             isEditing = true;
             labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
@@ -89,13 +89,13 @@ namespace Hamburgueria.View
             this.totalSale = totalSale;
             this.dateSale = dateSale;
 
-            searchName.Text = oldAddress.NAME;
-            number.Text = oldAddress.NUMBER;
-            street.Text = oldAddress.ADDRESS;
-            district.Text = oldAddress.DISTRICT;
-            complement.Text = oldAddress.COMPLEMENT;
-            telephone.Text = oldAddress.TELEPHONE;
-            Reference.Text = oldAddress.REFERENCE;
+            searchName.Text = oldAddress.Name;
+            number.Text = oldAddress.Number.ToString();
+            street.Text = oldAddress.Street;
+            district.Text = oldAddress.District;
+            complement.Text = oldAddress.Complement;
+            telephone.Text = oldAddress.Telephone;
+            Reference.Text = oldAddress.Reference;
 
             this.observation.Text = observation;
 
@@ -132,15 +132,15 @@ namespace Hamburgueria.View
             {
                 if (gridClient.HasItems)
                 {
-                    var selected = (Model.Cliente.Item)gridClient.SelectedItem;
+                    var selected = (Hamburgueria.Tables.Client)gridClient.SelectedItem;
 
-                    searchName.Text = selected.NAME;
-                    number.Text = selected.NUMBER;
-                    street.Text = selected.ADDRESS;
-                    district.Text = selected.DISTRICT;
-                    complement.Text = selected.COMPLEMENT;
-                    telephone.Text = selected.TELEPHONE;
-                    Reference.Text = selected.REFERENCE;
+                    searchName.Text = selected.Name;
+                    number.Text = selected.Number.ToString();
+                    street.Text = selected.Street;
+                    district.Text = selected.District;
+                    complement.Text = selected.Complement;
+                    telephone.Text = selected.Telephone;
+                    Reference.Text = selected.Reference;
 
                     searchProduct.Focus();
                 }
@@ -182,7 +182,9 @@ namespace Hamburgueria.View
 
             gridClient.Visibility = Visibility.Visible;
             gridClient.Items.Clear();
-            Model.Cliente.Select(gridClient, text);
+            var clients = new Hamburgueria.Sql.Client().Select(text);
+            foreach (var c in clients)
+                gridClient.Items.Add(c);
             if (gridClient.HasItems)
                 gridClient.SelectedItem = gridClient.Items[0];
             else
@@ -193,14 +195,14 @@ namespace Hamburgueria.View
         {
             if (gridClient.HasItems)
             {
-                var selected = (Model.Cliente.Item)gridClient.SelectedItem;
+                var selected = (Hamburgueria.Tables.Client)gridClient.SelectedItem;
 
-                searchName.Text = selected.NAME;
-                number.Text = selected.NUMBER;
-                street.Text = selected.ADDRESS;
-                district.Text = selected.DISTRICT;
-                complement.Text = selected.COMPLEMENT;
-                Reference.Text = selected.REFERENCE;
+                searchName.Text = selected.Name;
+                number.Text = selected.Number.ToString();
+                street.Text = selected.Street;
+                district.Text = selected.District;
+                complement.Text = selected.Complement;
+                Reference.Text = selected.Reference;
 
                 searchProduct.Focus();
             }
@@ -288,9 +290,17 @@ namespace Hamburgueria.View
             isNumber = char.IsDigit(text[0]);
             gridSearch.Items.Clear();
             if (isNumber)
-                Model.Produto.Select(gridSearch, Convert.ToInt32(text));
+            {
+                var products = new Hamburgueria.Sql.Product().Select(Convert.ToInt32(text));
+                foreach (var p in products)
+                    gridSearch.Items.Add(p);
+            }
             else
-                Model.Produto.Select(gridSearch, text);
+            {
+                var products = new Hamburgueria.Sql.Product().Select(text);
+                foreach (var p in products)
+                    gridSearch.Items.Add(p);
+            }
 
             if (gridSearch.HasItems)
                 gridSearch.SelectedItem = gridSearch.Items[0];
@@ -306,12 +316,12 @@ namespace Hamburgueria.View
         {
             if (gridSearch.HasItems)
             {
-                var selected = (Model.Produto.Item)gridSearch.SelectedItem;
-                searchId = selected.ID;
-                searchCod = selected.COD;
-                searchNames = selected.NAME;
-                searchProduct.Text = selected.NAME;
-                searchPrice = selected.PRICE;
+                var selected = (Hamburgueria.Tables.Product)gridSearch.SelectedItem;
+                searchId = selected.Id;
+                searchCod = selected.Cod;
+                searchNames = selected.Name;
+                searchProduct.Text = selected.Name;
+                searchPrice = selected.Price;
             }
 
             gridSearch.Visibility = Visibility.Hidden;
@@ -448,7 +458,7 @@ namespace Hamburgueria.View
                 return;
             }
 
-            bool exist = Model.Cliente.Exist(searchName.Text, street.Text, district.Text, number.Text);
+            bool exist = new Hamburgueria.Sql.Client().Exist(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text);
         
             if (exist)
                 newClient.Visibility = Visibility.Collapsed;
@@ -458,7 +468,8 @@ namespace Hamburgueria.View
 
         private void NewClient(object sender, RoutedEventArgs e)
         {
-            Model.Cliente.Insert(searchName.Text, street.Text, district.Text, number.Text, complement.Text, telephone.Text, Reference.Text);
+            Hamburgueria.Tables.Client client = new Hamburgueria.Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
+            new Hamburgueria.Sql.Client().AddOrUpdate(client);
 
             MessageBox.Show("Cliente cadastrado com sucesso!!!");
 
@@ -482,17 +493,8 @@ namespace Hamburgueria.View
                 return;
             }
 
-            Model.Cliente.Item address = new Model.Cliente.Item()
-            {
-                NAME = searchName.Text,
-                ADDRESS = street.Text,
-                COMPLEMENT = complement.Text,
-                DISTRICT = district.Text,
-                NUMBER = number.Text,
-                TELEPHONE = telephone.Text,
-                REFERENCE = Reference.Text
-            };
-
+            Hamburgueria.Tables.Client address = new Hamburgueria.Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
+            
             if (isEditing == false)
             {
                 decimal total = 0;

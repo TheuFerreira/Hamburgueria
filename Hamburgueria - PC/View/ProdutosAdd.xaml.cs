@@ -89,14 +89,15 @@ namespace Hamburgueria.View
             if (id == -1)
             {
                 cod = Convert.ToInt32(Code.Text);
-                if (Model.Produto.CodExist(cod))
+                if (new Hamburgueria.Sql.Product().Exist(cod))
                 {
                     MessageBox.Show("O Codigo digitado, já pertence a outro PRODUTO!!!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
                 decimal price = Convert.ToDecimal(Price.Text);
 
-                Model.Produto.Insert(cod, Name.Text, price);
+                Hamburgueria.Tables.Product product = new Hamburgueria.Tables.Product(cod, Name.Text, price);
+                new Hamburgueria.Sql.Product().AddOrUpdate(product);
 
                 MessageBox.Show("Produto cadastrado com sucesso!", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -114,14 +115,15 @@ namespace Hamburgueria.View
 
                 if (cod != newCod)
                 {
-                    if (Model.Produto.CodExist(newCod))
+                    if (new Hamburgueria.Sql.Product().Exist(cod))
                     {
                         MessageBox.Show("O Codigo digitado, já pertence a outro PRODUTO!!!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
                     }
                 }
 
-                Model.Produto.Update(id, newCod, name, price);
+                Hamburgueria.Tables.Product product = new Hamburgueria.Tables.Product(id, newCod, name, price);
+                new Hamburgueria.Sql.Product().AddOrUpdate(product);
 
                 this.Close();
             }

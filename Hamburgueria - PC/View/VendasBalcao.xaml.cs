@@ -147,9 +147,17 @@ namespace Hamburgueria.View
             isNumber = char.IsDigit(text[0]);
             gridSearch.Items.Clear();
             if (isNumber)
-                Model.Produto.Select(gridSearch, Convert.ToInt32(text));
+            {
+                var products = new Hamburgueria.Sql.Product().Select(Convert.ToInt32(text));
+                foreach (var p in products)
+                    gridSearch.Items.Add(p);
+            }
             else
-                Model.Produto.Select(gridSearch, text);
+            {
+                var products = new Hamburgueria.Sql.Product().Select(text);
+                foreach (var p in products)
+                    gridSearch.Items.Add(p);
+            }
 
             if (gridSearch.HasItems)
                 gridSearch.SelectedItem = gridSearch.Items[0];
@@ -165,12 +173,12 @@ namespace Hamburgueria.View
         {
             if (gridSearch.HasItems)
             {
-                var selected = (Model.Produto.Item)gridSearch.SelectedItem;
-                searchId = selected.ID;
-                searchCod = selected.COD;
-                searchName = selected.NAME;
-                search.Text = selected.NAME;
-                searchPrice = selected.PRICE;
+                var selected = (Hamburgueria.Tables.Product)gridSearch.SelectedItem;
+                searchId = selected.Id;
+                searchCod = selected.Cod;
+                searchName = selected.Name;
+                search.Text = selected.Name;
+                searchPrice = selected.Price;
             }
 
             gridSearch.Visibility = Visibility.Hidden;

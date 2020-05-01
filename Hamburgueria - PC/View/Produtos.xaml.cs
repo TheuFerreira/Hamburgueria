@@ -50,7 +50,9 @@ namespace Hamburgueria.View
         public void Produtos_Loaded(object sender, RoutedEventArgs e)
         {
             GridProdutos.Items.Clear();
-            Model.Produto.Select(GridProdutos);
+            var products = new Hamburgueria.Sql.Product().Select();
+            foreach (var p in products)
+                GridProdutos.Items.Add(p);
         }
 
         private void Search_GotFocus(object sender, RoutedEventArgs e)
@@ -98,16 +100,26 @@ namespace Hamburgueria.View
             if (string.IsNullOrEmpty(text))
             {
                 isNumber = false;
-                Model.Produto.Select(GridProdutos);
+                var products = new Hamburgueria.Sql.Product().Select();
+                foreach (var p in products)
+                    GridProdutos.Items.Add(p);
                 return;
             }
 
             GridProdutos.Visibility = Visibility.Visible;
             isNumber = char.IsDigit(text[0]);
             if (isNumber)
-                Model.Produto.Select(GridProdutos, Convert.ToInt32(text));
+            {
+                var products = new Hamburgueria.Sql.Product().Select(Convert.ToInt32(text));
+                foreach (var p in products)
+                    GridProdutos.Items.Add(p);
+            }
             else
-                Model.Produto.Select(GridProdutos, text);
+            {
+                var products = new Hamburgueria.Sql.Product().Select(text);
+                foreach (var p in products)
+                    GridProdutos.Items.Add(p);
+            }
 
             if (GridProdutos.HasItems)
                 GridProdutos.SelectedItem = GridProdutos.Items[0];
@@ -122,8 +134,8 @@ namespace Hamburgueria.View
         {
             if (GridProdutos.SelectedIndex != -1)
             {
-                int id = ((Model.Produto.Item)GridProdutos.SelectedItem).ID;
-                Model.Produto.Delete(id);
+                int id = ((Hamburgueria.Tables.Product)GridProdutos.SelectedItem).Id;
+                new Hamburgueria.Sql.Product().Delete(id);
 
                 Produtos_Loaded(null, null);
             }
@@ -137,15 +149,15 @@ namespace Hamburgueria.View
         {
             if (GridProdutos.SelectedIndex != -1)
             {
-                var item = (Model.Produto.Item)GridProdutos.SelectedItem;
+                var item = (Hamburgueria.Tables.Product)GridProdutos.SelectedItem;
 
                 ProdutosAdd p = new ProdutosAdd
                 {
                     produtos = this,
-                    id = item.ID,
-                    cod = item.COD,
-                    name = item.NAME,
-                    price = item.PRICE
+                    id = item.Id,
+                    cod = item.Cod,
+                    name = item.Name,
+                    price = item.Price
                 };
                 p.ShowDialog();
             }

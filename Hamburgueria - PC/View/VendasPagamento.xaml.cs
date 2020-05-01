@@ -165,7 +165,7 @@ namespace Hamburgueria.View
             // TABLE
             if (typeSale == 1)
             {
-                Model.Venda.Insert(numTable, dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), payment.Text, Sales.Balcao.Products(numTable));
+                new Sql.Sale().Insert(numTable, dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), payment.Text, Sales.Balcao.Products(numTable));
 
                 Sales.Balcao.Delete(numTable);
 
@@ -174,7 +174,7 @@ namespace Hamburgueria.View
             // FAST
             else
             {
-                Model.Venda.Insert(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), payment.Text, items);
+                new Sql.Sale().Insert(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), payment.Text, items);
             }
 
             Confirmed = true;

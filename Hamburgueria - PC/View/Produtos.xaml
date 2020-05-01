@@ -31,22 +31,22 @@
                   SelectionMode="Single" 
                   HorizontalScrollBarVisibility="Visible">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header="ID" Visibility="Collapsed"/>
-                <DataGridTextColumn Binding="{Binding COD}" Header="CÓDIGO" MinWidth="150">
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Collapsed"/>
+                <DataGridTextColumn Binding="{Binding Cod}" Header="CÓDIGO" MinWidth="150">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding NAME}" Header="NOME" MinWidth="150" Width="*">
+                <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="150" Width="*">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding PRICE, StringFormat=C2}" Header="PREÇO" MinWidth="200">
+                <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="PREÇO" MinWidth="200">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>

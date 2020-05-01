@@ -43,8 +43,8 @@ namespace Hamburgueria.Sales
                     int id = Convert.ToInt32(requests[0]);
                     int quantity = Convert.ToInt32(requests[1]);
 
-                    var p = Model.Produto.GetProduct(id);
-                    info += quantity + "x " + p.NAME + "\t\t" + (p.PRICE * quantity).ToString("C2") + "\n";
+                    var p = new Hamburgueria.Sql.Product().GetProduct(id);
+                    info += quantity + "x " + p.Name + "\t\t" + (p.Price * quantity).ToString("C2") + "\n";
                 }
                 if (string.IsNullOrWhiteSpace(observation) == false)
                     info += "OBSERVAÇÃO: " + observation + "\n";
@@ -108,8 +108,8 @@ namespace Hamburgueria.Sales
                 int id = Convert.ToInt32(requests[0]);
                 int quantity = Convert.ToInt32(requests[1]);
 
-                var p = Model.Produto.GetProduct(id);
-                it.Add(new View.VendasBalcao.Item() { Id = id, Cod = p.COD, Name = p.NAME, Price = p.PRICE, Quantity = quantity, Total = p.PRICE * quantity });
+                var p = new Hamburgueria.Sql.Product().GetProduct(id);
+                it.Add(new View.VendasBalcao.Item() { Id = id, Cod = p.Cod, Name = p.Name, Price = p.Price, Quantity = quantity, Total = p.Price * quantity });
             }
 
             return it;

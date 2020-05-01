@@ -122,16 +122,7 @@ namespace Hamburgueria.View
                     DateTime dateSale = Convert.ToDateTime(info[1]);
                     decimal totalSale = Convert.ToDecimal(info[2]);
                     string[] addressFile = info[3].Split('>');
-                    Model.Cliente.Item address = new Model.Cliente.Item()
-                    {
-                        NAME = info[0],
-                        ADDRESS = addressFile[0],
-                        NUMBER = addressFile[1],
-                        DISTRICT = addressFile[2],
-                        COMPLEMENT = addressFile[3],
-                        TELEPHONE = info[4],
-                        REFERENCE = info[5]
-                    };
+                    Hamburgueria.Tables.Client address = new Hamburgueria.Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
 
                     VendasDelivery delivery = new VendasDelivery(this);
                     delivery.LoadEditing(fileName, address, totalSale, info[6], info[7], dateSale, info[8], Sales.Delivery.Products(fileName));
@@ -154,16 +145,7 @@ namespace Hamburgueria.View
                     DateTime dateSale = Convert.ToDateTime(info[1]);
                     decimal totalSale = Convert.ToDecimal(info[2]);
                     string[] addressFile = info[3].Split('>');
-                    Model.Cliente.Item address = new Model.Cliente.Item()
-                    {
-                        NAME = info[0],
-                        ADDRESS = addressFile[0],
-                        NUMBER = addressFile[1],
-                        DISTRICT = addressFile[2],
-                        COMPLEMENT = addressFile[3],
-                        TELEPHONE = info[4],
-                        REFERENCE = info[5]
-                    };
+                    Hamburgueria.Tables.Client address = new Hamburgueria.Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
                     string payment = info[6];
                     decimal discount = Convert.ToDecimal(info[7]);
 
@@ -204,22 +186,13 @@ namespace Hamburgueria.View
                     DateTime dateSale = Convert.ToDateTime(info[1]);
                     decimal totalSale = Convert.ToDecimal(info[2]);
                     string[] addressFile = info[3].Split('>');
-                    Model.Cliente.Item address = new Model.Cliente.Item()
-                    {
-                        NAME = info[0],
-                        ADDRESS = addressFile[0],
-                        NUMBER = addressFile[1],
-                        DISTRICT = addressFile[2],
-                        COMPLEMENT = addressFile[3],
-                        TELEPHONE = info[4],
-                        REFERENCE = info[5]
-                    };
+                    Hamburgueria.Tables.Client address = new Hamburgueria.Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
                     string payment = info[6];
                     decimal discount = Convert.ToDecimal(info[7]);
 
                     List<VendasDelivery.Item>items = Sales.Delivery.Products(fileName);
 
-                    Model.Venda.Insert(address, dateSale, totalSale - discount, discount, totalSale, payment, items);
+                    new Sql.Sale().Insert(address, dateSale, totalSale - discount, discount, totalSale, payment, items);
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {

@@ -80,6 +80,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Connection.cs" />
     <Compile Include="Excel.cs" />
     <Compile Include="LINQExtension.cs" />
     <Compile Include="Model\Relatorio.cs" />
@@ -89,15 +90,22 @@
     <Compile Include="Model\RelatorioVendaMes.cs" />
     <Compile Include="Model\RelatorioVendaAnual.cs" />
     <Compile Include="Model\RelatorioVendaSemanal.cs" />
-    <Compile Include="Model\Venda.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Sql\Client.cs" />
+    <Compile Include="Sql\Product.cs" />
+    <Compile Include="Sql\Sale.cs" />
+    <Compile Include="Tables\ProductSale.cs" />
+    <Compile Include="Tables\SaleDelivery.cs" />
+    <Compile Include="Tables\SaleTable.cs" />
+    <Compile Include="Tables\Client.cs" />
+    <Compile Include="Tables\Product.cs" />
+    <Compile Include="Tables\Sale.cs" />
     <Compile Include="TXT.cs" />
     <Compile Include="Sales\Balcao.cs" />
-    <Compile Include="Model\Produto.cs" />
     <Compile Include="Sales\Delivery.cs" />
     <Compile Include="View\Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
@@ -197,7 +205,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Cliente.cs" />
     <Compile Include="Model\Database.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -212,7 +219,19 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="Excel\vendasAnuais.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel\vendasCustomizadas.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Excel\vendasDiarias.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel\vendasMensais.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Excel\vendasSemanais.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
@@ -246,7 +265,6 @@
     <Resource Include="Resources\Botao_cliente.png" />
     <Resource Include="Resources\Botao_Caixa.png" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

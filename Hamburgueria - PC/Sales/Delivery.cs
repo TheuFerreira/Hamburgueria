@@ -21,7 +21,7 @@ namespace Hamburgueria.Sales
             return pathData + "\\";
         }
 
-        public static void Create(Model.Cliente.Item address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<View.VendasDelivery.Item> items, string fileName = "-1")
+        public static void Create(Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<View.VendasDelivery.Item> items, string fileName = "-1")
         {
             int i = Directory.GetFiles(DefaultPath(), "*.bin").Length;
 
@@ -32,12 +32,12 @@ namespace Hamburgueria.Sales
                 path = DefaultPath() + fileName + ".bin";
 
             string content = "";
-            content += address.NAME + "\n";
+            content += address.Name + "\n";
             content += dateSale + "\n";
             content += totalSale + "\n";
-            content += address.ADDRESS + ">" + address.NUMBER + ">" + address.DISTRICT + ">" + address.COMPLEMENT + "\n";
-            content += address.TELEPHONE + "\n";
-            content += address.REFERENCE + "\n";
+            content += address.Street + ">" + address.Number + ">" + address.District + ">" + address.Complement + "\n";
+            content += address.Telephone + "\n";
+            content += address.Reference + "\n";
             content += payment + "\n";
             content += discount + "\n";
             content += observation + "\n";
@@ -56,26 +56,26 @@ namespace Hamburgueria.Sales
             for (int i = 0; i < files.Length; i++)
             {
                 string[] lines = File.ReadAllLines(files[i]);
-                Model.Cliente.Item address = new Model.Cliente.Item();
+                Hamburgueria.Tables.Client address = new Hamburgueria.Tables.Client();
 
                 string fileName = System.IO.Path.GetFileNameWithoutExtension(files[i]);
-                address.NAME = lines[0];
+                address.Name = lines[0];
                 DateTime dateSale = Convert.ToDateTime(lines[1]);
                 decimal totalSale = Convert.ToDecimal(lines[2]);
                 string[] addressFile = lines[3].Split('>');
-                address.ADDRESS = addressFile[0];
-                address.NUMBER = addressFile[1];
-                address.DISTRICT = addressFile[2];
-                address.COMPLEMENT = addressFile[3];
-                address.TELEPHONE = lines[4];
-                address.REFERENCE = lines[5];
+                address.Street = addressFile[0];
+                address.Number = Convert.ToInt32(addressFile[1]);
+                address.District = addressFile[2];
+                address.Complement = addressFile[3];
+                address.Telephone = lines[4];
+                address.Reference = lines[5];
 
                 string observation = lines[8];
 
-                string info = address.NAME + "\n\n";
-                info += "ENDEREÇO: " + address.ADDRESS + ", Nº" + address.NUMBER + ", " + address.DISTRICT + ", " + address.COMPLEMENT + "\n";
-                info += "TELEFONE: " + address.TELEPHONE + "\n";
-                info += "REFERÊNCIA: " + address.REFERENCE + "\n";
+                string info = address.Name + "\n\n";
+                info += "ENDEREÇO: " + address.Street + ", Nº" + address.Number + ", " + address.District + ", " + address.Complement + "\n";
+                info += "TELEFONE: " + address.Telephone + "\n";
+                info += "REFERÊNCIA: " + address.Reference + "\n";
                 info += "FORMA DE PAGAMENTO: " + lines[6] + "\n";
                 info += "DESCONTO: R$" + lines[7] + "\n";
                 info += "\n";
@@ -88,8 +88,8 @@ namespace Hamburgueria.Sales
                     int id = Convert.ToInt32(requests[0]);
                     int quantity = Convert.ToInt32(requests[1]);
 
-                    var p = Model.Produto.GetProduct(id);
-                    info += quantity + "x " + p.NAME + "\t\t" + (p.PRICE * quantity).ToString("C2") + "\n";
+                    var p = new Hamburgueria.Sql.Product().GetProduct(id);
+                    info += quantity + "x " + p.Name + "\t\t" + (p.Price * quantity).ToString("C2") + "\n";
                 }
                 if (string.IsNullOrWhiteSpace(observation) == false)
                     info += "OBSERVAÇÃO: " + observation + "\n";
@@ -116,7 +116,7 @@ namespace Hamburgueria.Sales
             return info;
         }
 
-        public static void Edit(string oldFileName, Model.Cliente.Item address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<View.VendasDelivery.Item> items)
+        public static void Edit(string oldFileName, Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<View.VendasDelivery.Item> items)
         {
             Create(address, dateSale, totalSale, payment, discount, observation, items, oldFileName);
         }
@@ -149,8 +149,8 @@ namespace Hamburgueria.Sales
                 int id = Convert.ToInt32(requests[0]);
                 int quantity = Convert.ToInt32(requests[1]);
 
-                var p = Model.Produto.GetProduct(id);
-                it.Add(new View.VendasDelivery.Item() { Id = id, Cod = p.COD, Name = p.NAME, Price = p.PRICE, Quantity = quantity, Total = p.PRICE * quantity });
+                var p = new Hamburgueria.Sql.Product().GetProduct(id);
+                it.Add(new View.VendasDelivery.Item() { Id = id, Cod = p.Cod, Name = p.Name, Price = p.Price, Quantity = quantity, Total = p.Price * quantity });
             }
 
             return it;

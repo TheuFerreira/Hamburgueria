@@ -122,7 +122,7 @@ namespace Hamburgueria
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
-        public static void Sale(Model.Cliente.Item clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, string observation, List<View.VendasDelivery.Item> products)
+        public static void Sale(Hamburgueria.Tables.Client clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, string observation, List<View.VendasDelivery.Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -133,14 +133,14 @@ namespace Hamburgueria
 
             content += "\n------------------------------------";
 
-            content += ReformText("CLIENTE: " + clientItem.NAME);
-            content += ReformText("RUA: " + clientItem.ADDRESS);
-            content += ReformText("NÚMERO: " + clientItem.NUMBER);
-            content += ReformText("BAIRRO: " + clientItem.DISTRICT);
-            content += ReformText("COMPLEMENTO: " + clientItem.COMPLEMENT);
-            content += ReformText("TELEFONE: " + clientItem.TELEPHONE);
-            if (!string.IsNullOrWhiteSpace(clientItem.REFERENCE))
-                content += ReformText("REFERÊNCIA: " + clientItem.REFERENCE);
+            content += ReformText("CLIENTE: " + clientItem.Name);
+            content += ReformText("RUA: " + clientItem.Street);
+            content += ReformText("NÚMERO: " + clientItem.Number);
+            content += ReformText("BAIRRO: " + clientItem.District);
+            content += ReformText("COMPLEMENTO: " + clientItem.Complement);
+            content += ReformText("TELEFONE: " + clientItem.Telephone);
+            if (!string.IsNullOrWhiteSpace(clientItem.Reference))
+                content += ReformText("REFERÊNCIA: " + clientItem.Reference);
 
             content += "\n------------------------------------";
             content += "\nPRODUTOS";

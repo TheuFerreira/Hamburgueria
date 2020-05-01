@@ -45,7 +45,9 @@ namespace Hamburgueria.View
         public void Clientes_Loaded(object sender, RoutedEventArgs e)
         {
             GridClientes.Items.Clear();
-            Model.Cliente.GetAll(GridClientes);
+            var clients = new Hamburgueria.Sql.Client().Select();
+            foreach (var c in clients)
+                GridClientes.Items.Add(c);
         }
 
         private void Search_GotFocus(object sender, RoutedEventArgs e)
@@ -60,9 +62,17 @@ namespace Hamburgueria.View
             GridClientes.Items.Clear();
 
             if (string.IsNullOrWhiteSpace(text))
-                Model.Cliente.GetAll(GridClientes);
+            {
+                var clients = new Hamburgueria.Sql.Client().Select();
+                foreach (var c in clients)
+                    GridClientes.Items.Add(c);
+            }
             else
-                Model.Cliente.Select(GridClientes, text);
+            {
+                var clients = new Hamburgueria.Sql.Client().Select(text);
+                foreach (var c in clients)
+                    GridClientes.Items.Add(c);
+            }
         }
 
         private void BackCliente_Click(object sender, RoutedEventArgs e)
@@ -74,8 +84,8 @@ namespace Hamburgueria.View
         {
             if (GridClientes.SelectedIndex != -1)
             {
-                var select = (Model.Cliente.Item)GridClientes.SelectedItem;
-                Model.Cliente.Delete(select.ID);
+                var select = (Hamburgueria.Tables.Client)GridClientes.SelectedItem;
+                new Hamburgueria.Sql.Client().Delete(select.Id);
 
                 Clientes_Loaded(null, null);
             }
@@ -89,18 +99,18 @@ namespace Hamburgueria.View
         {
             if (GridClientes.SelectedIndex != -1)
             {
-                var select = (Model.Cliente.Item)GridClientes.SelectedItem;
+                var select = (Hamburgueria.Tables.Client)GridClientes.SelectedItem;
 
                 ClientesAdd c = new ClientesAdd();
                 c.clients = this;
-                c.id = select.ID;
-                c.name = select.NAME;
-                c.address = select.ADDRESS;
-                c.number = select.NUMBER;
-                c.district = select.DISTRICT;
-                c.complement = select.COMPLEMENT;
-                c.telephone = select.TELEPHONE;
-                c.reference = select.REFERENCE;
+                c.id = select.Id;
+                c.name = select.Name;
+                c.address = select.Street;
+                c.number = select.Number.ToString();
+                c.district = select.District;
+                c.complement = select.Complement;
+                c.telephone = select.Telephone;
+                c.reference = select.Reference;
                 c.ShowDialog();
             }
             else

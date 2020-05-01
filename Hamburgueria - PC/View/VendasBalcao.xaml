@@ -27,12 +27,12 @@
         <TextBox x:Name="observation" CaretBrush="White" Height="21" Margin="338,103,30,0" CharacterCasing="Upper" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
         <Label Content="NUM. MESA:" HorizontalAlignment="Left" Height="21" Margin="30,100,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="numTable" CaretBrush="White" Height="21" Margin="108,103,439,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" />
-        <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="278" Margin="87,-8,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible">
+        <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="278" Margin="90,54,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header="ID" Visibility="Collapsed"/>
-                <DataGridTextColumn Binding="{Binding COD}" Header="CÓDIGO"/>
-                <DataGridTextColumn Binding="{Binding NAME}" Header="NOME" MinWidth="150" Width="*"/>
-                <DataGridTextColumn Binding="{Binding PRICE, StringFormat=C2}" Header="PREÇO"/>
+                <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Collapsed"/>
+                <DataGridTextColumn Binding="{Binding Cod}" Header="CÓDIGO"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="150" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="PREÇO"/>
             </DataGrid.Columns>
         </DataGrid>
 

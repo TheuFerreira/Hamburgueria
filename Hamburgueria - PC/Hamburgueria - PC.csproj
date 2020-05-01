@@ -105,6 +105,9 @@
     <Compile Include="View\ClientesAdd.xaml.cs">
       <DependentUpon>ClientesAdd.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ExcelLoading.xaml.cs">
+      <DependentUpon>ExcelLoading.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Impressao.xaml.cs">
       <DependentUpon>Impressao.xaml</DependentUpon>
     </Compile>
@@ -149,6 +152,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\ClientesAdd.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExcelLoading.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,7 +212,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="Excel\testingModel.xlsx">
+    <None Include="Excel\vendasDiarias.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

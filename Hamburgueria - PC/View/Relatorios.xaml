@@ -81,12 +81,8 @@
                 <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="20" Opacity=".7"/>
             </Border.Effect>
             <Grid x:Name="toExcel">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="9*"/>
-                    <ColumnDefinition Width="13*"/>
-                </Grid.ColumnDefinitions>
-                <Label Content="EXPORTAR" Foreground="#FF1D3DC6" FontFamily="Arial" FontSize="11" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="5,-1,5,1" Grid.ColumnSpan="2"/>
-                <Image Margin="28,0,-1,0" Source="/Hamburgueria;component/Resources/excel_icon.png" Grid.Column="1"/>
+                <Label Content="EXPORTAR" Foreground="#FF1D3DC6" FontFamily="Arial" FontSize="11" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" Margin="5,0,0,0" HorizontalAlignment="Left" Width="100"/>
+                <Image Margin="0,0,0,0" Source="/Hamburgueria;component/Resources/excel_icon.png" HorizontalAlignment="Right" Width="110" />
             </Grid>
         </Border>
 

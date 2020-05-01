@@ -1,11 +1,11 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using Hamburgueria.Model;
+using Microsoft.Win32;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Windows;
-using System.Windows.Controls;
 using m_Excel = Microsoft.Office.Interop.Excel;
 
 namespace Hamburgueria
@@ -19,13 +19,13 @@ namespace Hamburgueria
 
         private bool ok = false;
 
-        public void Sales(DataGrid grid)
+        public void SaleDay(string date)
         {
             ok = false;
 
             SaveFileDialog fileDialog = new SaveFileDialog();
             fileDialog.Title = "Exportar para Excel";
-            fileDialog.FileName = "Vendas " + DateTime.Today.ToString("yyyy-MM-dd");
+            fileDialog.FileName = "Vendas " + date;
             fileDialog.DefaultExt = "*.xlsx";
             fileDialog.Filter = "*.xlsx | *.xlsx";
             fileDialog.FileOk += FileDialog_FileOk;
@@ -50,15 +50,18 @@ namespace Hamburgueria
                 workbook = app.Workbooks.Open(fileName);
                 worksheet = workbook.Worksheets[1];
 
-                for (int i = 0; i < grid.Items.Count; i++)
+                List<Relatorio.VendaDia> all = Relatorio.SaleDay(date);
+                //Relatorio.SaleDayDelivery(date);
+                //Relatorio.SaleDayLocal(date)
+
+                for (int i = 0; i < all.Count; i++)
                 {
-                    var row = (Model.Relatorio.VendaDia)grid.Items[i];
-                    worksheet.Cells[i + 2, 1] = row.TYPE;
-                    worksheet.Cells[i + 2, 2] = row.Date;
-                    worksheet.Cells[i + 2, 3] = row.TotalBrute;
-                    worksheet.Cells[i + 2, 4] = row.Discount;
-                    worksheet.Cells[i + 2, 5] = row.Total;
-                    worksheet.Cells[i + 2, 6] = row.Payment;
+                    worksheet.Cells[i + 2, 1] = all[i].TYPE;
+                    worksheet.Cells[i + 2, 2] = all[i].Date;
+                    worksheet.Cells[i + 2, 3] = all[i].TotalBrute;
+                    worksheet.Cells[i + 2, 4] = all[i].Discount;
+                    worksheet.Cells[i + 2, 5] = all[i].Total;
+                    worksheet.Cells[i + 2, 6] = all[i].Payment;
                 }
 
                 workbook.Save();

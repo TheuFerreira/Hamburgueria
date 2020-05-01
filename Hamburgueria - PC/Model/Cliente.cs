@@ -1,9 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using System.Data;
 using System.Data.SQLite;
 using System.Windows.Controls;
 
@@ -12,7 +8,7 @@ namespace Hamburgueria.Model
     public class Cliente : Database
     {
         public class Item
-        { 
+        {
             public int ID { get; set; }
             public string NAME { get; set; }
             public string ADDRESS { get; set; }

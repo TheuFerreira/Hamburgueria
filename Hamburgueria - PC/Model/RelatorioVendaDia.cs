@@ -8,7 +8,7 @@ using System.Data.SQLite;
 
 namespace Hamburgueria.Model
 {
-    partial class Relatorio : Database
+    public partial class Relatorio : Database
     {
         public class VendaDia
         {

@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:Hamburgueria___PC"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
+
+        <SolidColorBrush x:Key="TurquesaEscuro" Color="#2f5597"/>
+        <SolidColorBrush x:Key="Turquesa" Color="#4472C4"/>
+        <SolidColorBrush x:Key="TurquesaClaro" Color="#8fAADC"/>
+
         <Style x:Key="LogoShadow" TargetType="Border">
             <Setter Property="Button.Effect">
                 <Setter.Value>
@@ -12,6 +17,51 @@
             </Setter>
         </Style>
 
+        <Style x:Key="DataGridStyle" TargetType="DataGrid">
+            <Setter Property="CanUserResizeColumns" Value="False"/>
+            <Setter Property="CanUserResizeRows" Value="False"/>
+            <Setter Property="AutoGenerateColumns" Value="True"/>
+            <Setter Property="RowHeaderWidth" Value="0"/>
+            <Setter Property="CanUserDeleteRows" Value="False"/>
+            <Setter Property="CanUserAddRows" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="RowBackground" Value="{StaticResource Turquesa}"/>
+            <Setter Property="Background" Value="{DynamicResource Turquesa}"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+        </Style>
+
+        <Style x:Key="HeaderStyle" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{DynamicResource TurquesaEscuro}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Padding" Value="3"/>
+        </Style>
+
+        <Style x:Key="CellStyle" TargetType="DataGridCell">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="FontSize" Value="18"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
         <Style x:Key="ButtonBack" TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
             <Setter Property="Template">
@@ -115,5 +165,63 @@
             <Setter Property="Padding" Value="3,3,0,3"/>
             <Setter Property="SelectionBrush" Value="#FFFF0C0C"/>
         </Style>
+
+
+        <Style x:Key="GridHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+        <Style x:Key="GridCell" TargetType="DataGridCell">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SearchHeader" TargetType="DataGridColumnHeader">
+            <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+
+        <Style x:Key="SearchCell" TargetType="DataGridCell">
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontFamily" Value="Arial"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="3"/>
+            <Setter Property="BorderBrush" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="{x:Null}"/>
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Application.Resources>
 </Application>

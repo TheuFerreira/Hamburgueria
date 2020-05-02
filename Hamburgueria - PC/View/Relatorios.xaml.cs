@@ -571,14 +571,9 @@ namespace Hamburgueria.View
                 labelTotal.Content = "TOTAL:0,00";
             }
 
-            Style style = new Style(typeof(System.Windows.Controls.Primitives.DataGridColumnHeader));
-            style.Setters.Add(new Setter(BackgroundProperty, FindResource("AzulBruxao")));
-
             for (int i = 0; i < grid.Columns.Count; i++)
             {
-                grid.Columns[i].HeaderStyle = style;
                 grid.Columns[i].MinWidth = 150;
-
                 grid.Columns[i].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             }
         }

@@ -81,6 +81,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Connection.cs" />
+    <Compile Include="ConnectionConfiguration.cs" />
     <Compile Include="Excel.cs" />
     <Compile Include="LINQExtension.cs" />
     <Compile Include="Model\Relatorio.cs" />

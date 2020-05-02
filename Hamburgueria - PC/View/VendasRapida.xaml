@@ -10,12 +10,7 @@
 
     <Grid Background="White" Margin="0,0,0,0">
         <Grid Background="#FF4472C4">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="799*"/>
-                <ColumnDefinition/>
-                <ColumnDefinition Width="0*"/>
-            </Grid.ColumnDefinitions>
-            <Rectangle Height="137" VerticalAlignment="Top" Grid.ColumnSpan="2">
+            <Rectangle Height="137" VerticalAlignment="Top">
                 <Rectangle.Fill>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF1B3BC6" Offset="0"/>
@@ -33,22 +28,53 @@
             <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,144,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Right" Width="75"/>
 
             <Label x:Name="labelTotalSale" Content="TOTAL: R$0,00" Height="34" Margin="30,145,149,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
-            <DataGrid x:Name="gridSearch" CanUserResizeColumns="False" CanUserResizeRows="False" SelectionUnit="FullRow" Height="70" VerticalAlignment="Top" Margin="87,59,0,0" AutoGenerateColumns="True" RowHeaderWidth="0" IsReadOnly="true" SelectionMode="Single" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="308">
+            <DataGrid x:Name="gridSearch" Height="70" VerticalAlignment="Top" Margin="87,60,0,0" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="309" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Collapsed"/>
-                    <DataGridTextColumn Binding="{Binding Cod}" Header="CÓDIGO"/>
+                    <DataGridTextColumn Binding="{Binding Cod,StringFormat=D3}" Header="CÓDIGO"/>
                     <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="150" Width="*"/>
                     <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="PREÇO"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" BorderBrush="{x:Null}" CanUserResizeColumns="False" CanUserResizeRows="False" Height="171" VerticalAlignment="Bottom">
+            
+            <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Height="171" VerticalAlignment="Bottom" Style="{StaticResource DataGridStyle}">
+                <DataGrid.ColumnHeaderStyle>
+                    <Style TargetType="DataGridColumnHeader">
+                        <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontFamily" Value="Arial"/>
+                        <Setter Property="Padding" Value="2"/>
+                        <Setter Property="FontSize" Value="15"/>
+                    </Style>
+                </DataGrid.ColumnHeaderStyle>
+                <DataGrid.CellStyle>
+                    <Style TargetType="DataGridCell">
+                        <Setter Property="Margin" Value="0"/>
+                        <Setter Property="FontSize" Value="14"/>
+                        <Setter Property="FontFamily" Value="Arial"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Padding" Value="3"/>
+                        <Setter Property="BorderBrush" Value="{x:Null}"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsFocused" Value="True">
+                                <Setter Property="BorderThickness" Value="0"/>
+                                <Setter Property="BorderBrush" Value="{x:Null}"/>
+                            </Trigger>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </DataGrid.CellStyle>
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Hidden"/>
-                    <DataGridTextColumn Binding="{Binding Cod}" Header="CÓDIGO"/>
+                    <DataGridTextColumn Binding="{Binding Cod, StringFormat=D3}" Header="CÓDIGO" MinWidth="80"/>
                     <DataGridTextColumn Binding="{Binding Name}" Header="NOME" Width="*"/>
-                    <DataGridTextColumn Binding="{Binding Price, StringFormat=c2}" Header="PREÇO" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Quantity}" Header="QTD" MinWidth="40" Width="Auto"/>
-                    <DataGridTextColumn Binding="{Binding Total, StringFormat=C2}" Header="TOTAL" Width="Auto"/>
+                    <DataGridTextColumn Binding="{Binding Price, StringFormat=c2}" Header="PREÇO" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding Quantity}" Header="QTD" MinWidth="50"/>
+                    <DataGridTextColumn Binding="{Binding Total, StringFormat=C2}" Header="TOTAL" MinWidth="80"/>
                 </DataGrid.Columns>
                 <DataGrid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

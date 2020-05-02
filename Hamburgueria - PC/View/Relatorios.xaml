@@ -33,6 +33,7 @@
                   IsReadOnly="True"
                   Foreground="White"
                   SelectionMode="Single" 
+                  ColumnHeaderStyle="{StaticResource HeaderStyle}"
                   HorizontalScrollBarVisibility="Disabled"/>
 
         <Rectangle Height="40" VerticalAlignment="Bottom">

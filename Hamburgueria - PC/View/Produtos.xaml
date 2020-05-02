@@ -6,61 +6,17 @@
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
         Title="Produtos" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <SolidColorBrush x:Key="Turquesa" Color="#4472C4"/>
-        <SolidColorBrush x:Key="TurquesaClaro" Color="#8fAADC"/>
-        <SolidColorBrush x:Key="AzulBruxao" Color="#2f5597"/>
-    </Window.Resources>
     <Grid>
-        <DataGrid x:Name="GridProdutos" 
-                  Margin="0,0,0,60" 
-                  CanUserResizeColumns="False"
-                  CanUserResizeRows="False"
-                  AutoGenerateColumns="True"
-                  AlternationCount="2" 
-                  RowHeaderWidth="0"
-                  VerticalGridLinesBrush="White"
-                  HorizontalGridLinesBrush="White"
-                  RowBackground="{StaticResource Turquesa}" 
-                  AlternatingRowBackground="{DynamicResource TurquesaClaro}" 
-                  CanUserDeleteRows="False" 
-                  CanUserAddRows="False" 
-                  IsReadOnly="True"
-                  FontSize="18px"
-                  Foreground="White"
-                  SelectionMode="Single" 
-                  HorizontalScrollBarVisibility="Visible">
+        <DataGrid x:Name="GridProdutos" Margin="0,0,0,60" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="{x:Null}" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CellStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Collapsed"/>
-                <DataGridTextColumn Binding="{Binding Cod}" Header="CÓDIGO" MinWidth="150">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="150" Width="*">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="PREÇO" MinWidth="200">
-                    <DataGridTextColumn.HeaderStyle>
-                        <Style TargetType="DataGridColumnHeader">
-                            <Setter Property="Background" Value="{DynamicResource AzulBruxao}"/>
-                        </Style>
-                    </DataGridTextColumn.HeaderStyle>
-                </DataGridTextColumn>
+                <DataGridTextColumn Binding="{Binding Cod, StringFormat=D3}" Header="CÓDIGO" MinWidth="150"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="150" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="PREÇO" MinWidth="200"/>
             </DataGrid.Columns>
         </DataGrid>
 
-
-
-        <Grid Background="#FF1B3BC6" 
-              Height="60" 
-              VerticalAlignment="Bottom">
+        <Grid Background="{StaticResource TurquesaEscuro}" Height="60" VerticalAlignment="Bottom">
             <TextBox x:Name="Search" FontFamily="Arial" CaretBrush="White" FontSize="15" Height="24" Margin="186,0,426,18" TextWrapping="Wrap" Text="Pesquisar" VerticalAlignment="Bottom" Style="{StaticResource TextBoxUnderline}" CharacterCasing="Upper"/>
             <Image Height="19" Margin="0,0,392,17" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Right" Width="22"/>
             <Button x:Name="BackProduto" Margin="15,18,0,18" HorizontalAlignment="Left" Width="25" Style="{StaticResource ButtonBack}"/>

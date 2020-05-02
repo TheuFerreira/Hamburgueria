@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace Hamburgueria.View
@@ -12,15 +15,7 @@ namespace Hamburgueria.View
     /// </summary>
     public partial class VendasDelivery : Window
     {
-        public class Item
-        {
-            public int Id { get; set; }
-            public int Cod { get; set; }
-            public string Name { get; set; }
-            public decimal Price { get; set; }
-            public int Quantity { get; set; }
-            public decimal Total { get; set; }
-        }
+        public ObservableCollection<Item> Items = new ObservableCollection<Item>();
 
         private readonly Vendas sales;
         private string fileName;
@@ -31,48 +26,49 @@ namespace Hamburgueria.View
         {
             InitializeComponent();
 
+            gridProduct.DataContext = Items;
+
             this.sales = sales;
-            this.Closed += (sender, e) => sales.UpdateGrid();
-            this.Loaded += VendasDelivery_Loaded;
+            Closed += (sender, e) => sales.UpdateGrid();
+            Loaded += VendasDelivery_Loaded;
 
             // CLIENT
 
-            //this.searchName.LostFocus += (sender, e) => gridClient.Visibility = Visibility.Hidden;
-            this.searchName.PreviewKeyDown += SearchName_PreviewKeyDown;
-            this.searchName.TextChanged += SearchName_TextChanged;
+            searchName.PreviewKeyDown += SearchName_PreviewKeyDown;
+            searchName.TextChanged += SearchName_TextChanged;
 
-            this.gridClient.MouseDoubleClick += GridClient_MouseDoubleClick;
+            gridClient.MouseDoubleClick += GridClient_MouseDoubleClick;
 
-            this.number.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+            number.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
 
-            this.discount.GotFocus += Discount_GotFocus;
-            this.discount.LostFocus += Discount_LostFocus;
-            this.discount.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9,]+").IsMatch(e.Text);
+            discount.GotFocus += Discount_GotFocus;
+            discount.LostFocus += Discount_LostFocus;
+            discount.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9,]+").IsMatch(e.Text);
 
             // Product
 
-            this.searchProduct.PreviewKeyDown += SearchProduct_PreviewKeyDown;
-            this.searchProduct.PreviewTextInput += SearchProduct_PreviewTextInput;
-            this.searchProduct.TextChanged += SearchProduct_TextChanged;
+            searchProduct.PreviewKeyDown += SearchProduct_PreviewKeyDown;
+            searchProduct.PreviewTextInput += SearchProduct_PreviewTextInput;
+            searchProduct.TextChanged += SearchProduct_TextChanged;
 
-            this.gridSearch.PreviewKeyDown += GridSearch_PreviewKeyDown;
-            this.gridSearch.MouseDoubleClick += GridSearch_MouseDoubleClick;
+            gridSearch.PreviewKeyDown += GridSearch_PreviewKeyDown;
+            gridSearch.MouseDoubleClick += GridSearch_MouseDoubleClick;
 
-            this.quantity.PreviewKeyDown += Quantity_PreviewKeyDown;
-            this.quantity.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
+            quantity.PreviewKeyDown += Quantity_PreviewKeyDown;
+            quantity.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
 
-            this.gridProduct.BeginningEdit += (sender, e) => e.Cancel = true;
-            this.gridProduct.PreviewKeyDown += GridProduct_PreviewKeyDown;
+            gridProduct.BeginningEdit += (sender, e) => e.Cancel = true;
+            gridProduct.PreviewKeyDown += GridProduct_PreviewKeyDown;
 
-            this.searchName.LostFocus += (sender, e) => CheckClient();
-            this.street.LostFocus += (sender, e) => CheckClient(); ;
-            this.number.LostFocus += (sender, e) => CheckClient(); ;
-            this.district.LostFocus += (sender, e) => CheckClient(); ;
+            searchName.LostFocus += (sender, e) => CheckClient();
+            street.LostFocus += (sender, e) => CheckClient(); ;
+            number.LostFocus += (sender, e) => CheckClient(); ;
+            district.LostFocus += (sender, e) => CheckClient(); ;
 
             // BUTTONS
 
-            this.newClient.Click += NewClient;
-            this.confirm.Click += Confirm_Click;
+            newClient.Click += NewClient;
+            confirm.Click += Confirm_Click;
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
@@ -81,12 +77,11 @@ namespace Hamburgueria.View
                 this.Close();
         }
 
-        public void LoadEditing(string fileName, Hamburgueria.Tables.Client oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, string observation, List<Item> items)
+        public void LoadEditing(string fileName, Tables.Client oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, string observation, List<Item> items)
         {
             isEditing = true;
             labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
             this.fileName = fileName;
-            this.totalSale = totalSale;
             this.dateSale = dateSale;
 
             searchName.Text = oldAddress.Name;
@@ -114,8 +109,7 @@ namespace Hamburgueria.View
 
             this.discount.Text = discount;
 
-            foreach (Item it in items)
-                gridProduct.Items.Add(it);
+            Items = new ObservableCollection<Item>(items);
         }
 
         private void VendasDelivery_Loaded(object sender, RoutedEventArgs e)
@@ -132,7 +126,7 @@ namespace Hamburgueria.View
             {
                 if (gridClient.HasItems)
                 {
-                    var selected = (Hamburgueria.Tables.Client)gridClient.SelectedItem;
+                    var selected = (Tables.Client)gridClient.SelectedItem;
 
                     searchName.Text = selected.Name;
                     number.Text = selected.Number.ToString();
@@ -147,23 +141,18 @@ namespace Hamburgueria.View
 
                 gridClient.Visibility = Visibility.Hidden;
             }
-            else if (e.Key == Key.Down)
+            else if (gridClient.HasItems)
             {
-                if (gridClient.HasItems)
+                if (e.Key == Key.Down)
                 {
-                    int index = gridClient.SelectedIndex;
-                    index++;
+                    int index = gridClient.SelectedIndex++;
                     if (index == gridClient.Items.Count)
                         index = 0;
                     gridClient.SelectedIndex = index;
                 }
-            }
-            else if (e.Key == Key.Up)
-            {
-                if (gridClient.HasItems)
+                else if (e.Key == Key.Up)
                 {
-                    int index = gridClient.SelectedIndex;
-                    index--;
+                    int index = gridClient.SelectedIndex--;
                     if (index < 0)
                         index = gridClient.Items.Count - 1;
                     gridClient.SelectedIndex = index;
@@ -195,7 +184,7 @@ namespace Hamburgueria.View
         {
             if (gridClient.HasItems)
             {
-                var selected = (Hamburgueria.Tables.Client)gridClient.SelectedItem;
+                var selected = (Tables.Client)gridClient.SelectedItem;
 
                 searchName.Text = selected.Name;
                 number.Text = selected.Number.ToString();
@@ -223,22 +212,12 @@ namespace Hamburgueria.View
             else
                 discount.Text = "0,00";
 
-            totalSale = 0;
-            for (int i = 0; i < gridProduct.Items.Count; i++)
-                totalSale += ((Item)gridProduct.Items[i]).Total;
-
-            totalSale -= Convert.ToDecimal(discount.Text);
-            labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
+            labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
         }
 
         // PRODUCT
         private bool isNumber = false;
-        private int searchId = -1;
-        private int searchCod = 0;
-        private string searchNames = "";
-        private decimal searchPrice = 0;
-
-        private decimal totalSale = 0;
+        private Tables.Product product = null;
 
         private void SearchProduct_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -246,23 +225,18 @@ namespace Hamburgueria.View
             {
                 GridSearch_MouseDoubleClick(null, null);
             }
-            else if (e.Key == Key.Down)
+            else if (gridSearch.HasItems)
             {
-                if (gridSearch.HasItems)
+                if (e.Key == Key.Down)
                 {
-                    int index = gridSearch.SelectedIndex;
-                    index++;
+                    int index = gridSearch.SelectedIndex++;
                     if (index == gridSearch.Items.Count)
                         index = 0;
                     gridSearch.SelectedIndex = index;
                 }
-            }
-            else if (e.Key == Key.Up)
-            {
-                if (gridSearch.HasItems)
+                else if (e.Key == Key.Up)
                 {
-                    int index = gridSearch.SelectedIndex;
-                    index--;
+                    int index = gridSearch.SelectedIndex--;
                     if (index < 0)
                         index = gridSearch.Items.Count - 1;
                     gridSearch.SelectedIndex = index;
@@ -314,15 +288,10 @@ namespace Hamburgueria.View
 
         private void GridSearch_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if (gridSearch.HasItems)
-            {
-                var selected = (Hamburgueria.Tables.Product)gridSearch.SelectedItem;
-                searchId = selected.Id;
-                searchCod = selected.Cod;
-                searchNames = selected.Name;
-                searchProduct.Text = selected.Name;
-                searchPrice = selected.Price;
-            }
+            if (gridSearch.HasItems == false)
+                return;
+             
+            product = (Tables.Product)gridSearch.SelectedItem;
 
             gridSearch.Visibility = Visibility.Hidden;
             quantity.Focus();
@@ -332,36 +301,26 @@ namespace Hamburgueria.View
         {
             if (e.Key == Key.Enter)
             {
-                int q;
-                try
-                {
-                    q = Convert.ToInt32(quantity.Text);
+                int q = Convert.ToInt32(quantity.Text);
 
-                    if (q == 0)
-                        return;
-                }
-                catch
+                if (q == 0)
                 {
-                    MessageBox.Show("Valor na quantidade inválido!!!");
+                    MessageBox.Show("Valor na quantidade precisa ser maior que 0!!!");
                     return;
                 }
 
-                if (searchId == -1)
+                if (product == null)
                 {
                     MessageBox.Show("Selecione um produto!!!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
 
                 bool exist = false;
-                for (int i = 0; i < gridProduct.Items.Count; i++)
+                foreach (Item i in Items)
                 {
-                    var row = (Item)gridProduct.Items[i];
-                    if (row.Id == searchId)
+                    if (i.Id == product.Id)
                     {
-                        row.Quantity += q;
-                        row.Total = row.Price * row.Quantity;
-                        gridProduct.Items.RemoveAt(i);
-                        gridProduct.Items.Insert(i, row);
+                        i.Quantity += q;
 
                         exist = true;
                         break;
@@ -369,21 +328,9 @@ namespace Hamburgueria.View
                 }
 
                 if (exist == false)
-                    gridProduct.Items.Add(new Item() { Id = searchId, Cod = searchCod, Name = searchNames, Price = searchPrice, Quantity = q, Total = searchPrice * q });
+                    Items.Add(new Item(product.Id, product.Cod, product.Name, product.Price, q));
 
-                totalSale = 0;
-                for (int i = 0; i < gridProduct.Items.Count; i++)
-                {
-                    var row = (Item)gridProduct.Items[i];
-                    totalSale += row.Total;
-                }
-                totalSale -= Convert.ToDecimal(discount.Text);
-                labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
-
-                searchId = -1;
-                searchCod = 0;
-                searchNames = "";
-                searchPrice = 0;
+                labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
 
                 quantity.Text = "";
                 searchProduct.Text = "";
@@ -395,54 +342,27 @@ namespace Hamburgueria.View
 
         private void GridProduct_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (gridProduct.HasItems)
+            if (Items.Count == 0)
+                return;
+
+            int index = gridProduct.SelectedIndex;
+
+            if (e.Key == Key.Add)
             {
-                int index = gridProduct.SelectedIndex;
-                var it = (Item)gridProduct.SelectedItem;
-
-                if (e.Key == Key.Add)
-                {
-                    it.Quantity++;
-                    it.Total = it.Quantity * it.Price;
-
-                    gridProduct.Items.RemoveAt(index);
-                    gridProduct.Items.Insert(index, it);
-                }
-                else if (e.Key == Key.Subtract)
-                {
-                    it.Quantity--;
-                    if (it.Quantity == 0)
-                    {
-                        gridProduct.Items.RemoveAt(index);
-
-                        if (gridProduct.HasItems)
-                            gridProduct.SelectedIndex = 0;
-                    }
-                    else
-                    {
-                        it.Total = it.Quantity * it.Price;
-
-                        gridProduct.Items.RemoveAt(index);
-                        gridProduct.Items.Insert(index, it);
-                    }
-                }
-                else if (e.Key == Key.Delete)
-                {
-                    gridProduct.Items.RemoveAt(index);
-
-                    if (gridProduct.HasItems)
-                        gridProduct.SelectedIndex = 0;
-                }
-
-                totalSale = 0;
-                for (int i = 0; i < gridProduct.Items.Count; i++)
-                {
-                    var row = (Item)gridProduct.Items[i];
-                    totalSale += row.Total;
-                }
-                totalSale -= Convert.ToDecimal(discount.Text);
-                labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
+                Items[index].Quantity++;
             }
+            else if (e.Key == Key.Subtract)
+            {
+                Items[index].Quantity--;
+                if (Items[index].Quantity == 0)
+                    Items.RemoveAt(index);
+            }
+            else if (e.Key == Key.Delete)
+            {
+                Items.RemoveAt(index);
+            }
+
+            labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
         }
 
         // BUTTONS
@@ -497,19 +417,9 @@ namespace Hamburgueria.View
             if (isEditing == false)
             {
                 decimal total = 0;
-                List<Item> items = new List<Item>();
-                foreach (Item i in gridProduct.Items)
-                {
+                foreach (Item i in Items)
                     total += i.Total;
-                    items.Add(i);
-                }
-                Sales.Delivery.Create(address, DateTime.Now, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, items);
-
-                searchId = -1;
-                searchCod = 0;
-                searchNames = "";
-                searchPrice = 0;
-                totalSale = 0;
+                Sales.Delivery.Create(address, DateTime.Now, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items.ToList());
 
                 searchName.Text = "";
                 street.Text = "";
@@ -533,18 +443,23 @@ namespace Hamburgueria.View
             else
             {
                 decimal total = 0;
-                List<Item> items = new List<Item>();
-                foreach (Item i in gridProduct.Items)
-                {
+                foreach (Item i in Items)
                     total += i.Total;
-                    items.Add(i);
-                }
-                Sales.Delivery.Edit(fileName, address, dateSale, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, items);
+                Sales.Delivery.Edit(fileName, address, dateSale, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items.ToList());
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 
                 this.Close();
             }
+        }
+
+        private decimal TotalSale()
+        {
+            decimal t = -Convert.ToDecimal(discount.Text);
+            foreach (Item i in Items)
+                t += i.Total;
+
+            return t;
         }
     }
 }

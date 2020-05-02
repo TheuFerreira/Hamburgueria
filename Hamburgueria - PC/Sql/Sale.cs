@@ -14,7 +14,7 @@ namespace Hamburgueria.Sql
             con = new Connection();
         }
 
-        public void Insert(DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, List<View.VendasRapida.Item> items)
+        public void Insert(DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, List<Item> items)
         {
             Tables.Sale sale = new Tables.Sale(date, totalBruto, desconto, total, pagamento);
             con.Sales.Add(sale);
@@ -25,7 +25,7 @@ namespace Hamburgueria.Sql
             con.SaleTables.Add(new Tables.SaleTable(saleId, -1));
             con.SaveChanges();
 
-            foreach (View.VendasRapida.Item it in items)
+            foreach (Item it in items)
             {
                 Tables.ProductSale productSale = new Tables.ProductSale(saleId, it.Id, it.Name, it.Price, it.Quantity, it.Total);
                 con.ProductSales.Add(productSale);
@@ -33,7 +33,7 @@ namespace Hamburgueria.Sql
             con.SaveChanges();
         }
 
-        public void Insert(int numTable, DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, List<View.VendasBalcao.Item> items)
+        public void Insert(int numTable, DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, List<Item> items)
         {
             Tables.Sale sale = new Tables.Sale(date, totalBruto, desconto, total, pagamento);
             con.Sales.Add(sale);
@@ -44,7 +44,7 @@ namespace Hamburgueria.Sql
             con.SaleTables.Add(new Tables.SaleTable(saleId, numTable));
             con.SaveChanges();
 
-            foreach (View.VendasBalcao.Item it in items)
+            foreach (Item it in items)
             {
                 Tables.ProductSale productSale = new Tables.ProductSale(saleId, it.Id, it.Name, it.Price, it.Quantity, it.Total);
                 con.ProductSales.Add(productSale);
@@ -52,7 +52,7 @@ namespace Hamburgueria.Sql
             con.SaveChanges();
         }
 
-        public void Insert(Tables.Client client, DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, List<View.VendasDelivery.Item> items)
+        public void Insert(Tables.Client client, DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, List<Item> items)
         {
             Tables.Sale sale = new Tables.Sale(date, totalBruto, desconto, total, pagamento);
             con.Sales.Add(sale);
@@ -63,7 +63,7 @@ namespace Hamburgueria.Sql
             con.SaleDeliveries.Add(new Tables.SaleDelivery(saleId, client.Name, client.Street + ", Nº" + client.Number + ", " + client.District + ", " + client.Complement));
             con.SaveChanges();
 
-            foreach (View.VendasDelivery.Item it in items)
+            foreach (Item it in items)
             {
                 Tables.ProductSale productSale = new Tables.ProductSale(saleId, it.Id, it.Name, it.Price, it.Quantity, it.Total);
                 con.ProductSales.Add(productSale);

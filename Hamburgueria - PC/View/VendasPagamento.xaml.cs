@@ -22,7 +22,7 @@ namespace Hamburgueria.View
         public int typeSale = -1;
         public int numTable;
         public DateTime dateSale;
-        public List<View.VendasRapida.Item> items;
+        public List<Item> items;
         public string observation = "";
 
         private decimal desconto = 0;

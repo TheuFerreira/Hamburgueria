@@ -149,7 +149,7 @@ namespace Hamburgueria.View
                     string payment = info[6];
                     decimal discount = Convert.ToDecimal(info[7]);
 
-                    List<VendasDelivery.Item> items = Sales.Delivery.Products(fileName);
+                    List<Hamburgueria.Item> items = Sales.Delivery.Products(fileName);
 
                     TXT.Sale(address, dateSale, totalSale, discount, totalSale - discount, payment, info[8], items);
                     new Impressao().ShowDialog();
@@ -190,7 +190,7 @@ namespace Hamburgueria.View
                     string payment = info[6];
                     decimal discount = Convert.ToDecimal(info[7]);
 
-                    List<VendasDelivery.Item>items = Sales.Delivery.Products(fileName);
+                    List<Hamburgueria.Item>items = Sales.Delivery.Products(fileName);
 
                     new Sql.Sale().Insert(address, dateSale, totalSale - discount, discount, totalSale, payment, items);
 

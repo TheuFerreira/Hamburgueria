@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using System.Windows.Threading;
 
 namespace Hamburgueria.View
 {
@@ -19,35 +10,56 @@ namespace Hamburgueria.View
     /// </summary>
     public partial class Clientes : Window
     {
+        private readonly Sql.Client sqlClient;
+
         public Clientes()
         {
             InitializeComponent();
 
-            this.Loaded += Clientes_Loaded;
+            sqlClient = new Sql.Client();
 
-            this.GridClientes.BeginningEdit +=  (sender, e) => e.Cancel = true;
+            Loaded += Clientes_Loaded;
 
-            this.Search.GotFocus += Search_GotFocus;
-            this.Search.TextChanged += Search_TextChanged;
+            GridClientes.PreviewMouseDoubleClick += GridClientes_PreviewMouseDoubleClick;
 
-            this.BackCliente.Click += BackCliente_Click;
-            this.DelCliente.Click += DelCliente_Click;
-            this.EditCliente.Click += EditCliente_Click;
-            this.AddCliente.Click += AddCliente_Click;
+            Search.GotFocus += Search_GotFocus;
+            Search.PreviewKeyDown += Search_PreviewKeyDown;
+            Search.TextChanged += Search_TextChanged;
+
+            BackCliente.Click += (sender, e) => Close();
+            DelCliente.Click += DelCliente_Click;
+            EditCliente.Click += (sender, e) => GridClientes_PreviewMouseDoubleClick(null, null);
+            AddCliente.Click += AddCliente_Click;
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                this.Close();
+                Close();
         }
 
-        public void Clientes_Loaded(object sender, RoutedEventArgs e)
+        private void Clientes_Loaded(object sender, RoutedEventArgs e)
         {
             GridClientes.Items.Clear();
-            var clients = new Hamburgueria.Sql.Client().Select();
-            foreach (var c in clients)
+            foreach (var c in sqlClient.Select())
                 GridClientes.Items.Add(c);
+        }
+
+        private void GridClientes_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (GridClientes.SelectedItem == null)
+                return;
+
+            if (GridClientes.SelectedIndex != -1)
+            {
+                Tables.Client selected = (Tables.Client)GridClientes.SelectedItem;
+                new ClientesAdd(selected).ShowDialog();
+                Search_TextChanged(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Selecione um CLIENTE para ser editado!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void Search_GotFocus(object sender, RoutedEventArgs e)
@@ -56,62 +68,48 @@ namespace Hamburgueria.View
                 Search.Text = "";
         }
 
+        private void Search_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (GridClientes.HasItems)
+            {
+                if (e.Key == Key.Down)
+                {
+                    int index = GridClientes.SelectedIndex + 1;
+                    if (index == GridClientes.Items.Count)
+                        index = 0;
+                    GridClientes.SelectedIndex = index;
+                }
+                else if (e.Key == Key.Up)
+                {
+                    int index = GridClientes.SelectedIndex - 1;
+                    if (index < 0)
+                        index = GridClientes.Items.Count - 1;
+                    GridClientes.SelectedIndex = index;
+                }
+            }
+        }
+
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
             string text = Search.Text;
             GridClientes.Items.Clear();
 
-            if (string.IsNullOrWhiteSpace(text))
-            {
-                var clients = new Hamburgueria.Sql.Client().Select();
-                foreach (var c in clients)
+            if (string.IsNullOrWhiteSpace(text) || Search.Text == "Pesquisar")
+                foreach (var c in sqlClient.Select())
                     GridClientes.Items.Add(c);
-            }
             else
-            {
-                var clients = new Hamburgueria.Sql.Client().Select(text);
-                foreach (var c in clients)
+                foreach (var c in sqlClient.Select(text))
                     GridClientes.Items.Add(c);
-            }
-        }
-
-        private void BackCliente_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
         }
 
         private void DelCliente_Click(object sender, RoutedEventArgs e)
         {
             if (GridClientes.SelectedIndex != -1)
             {
-                var select = (Hamburgueria.Tables.Client)GridClientes.SelectedItem;
-                new Hamburgueria.Sql.Client().Delete(select.Id);
+                var select = (Tables.Client)GridClientes.SelectedItem;
+                sqlClient.Delete(select.Id);
 
-                Clientes_Loaded(null, null);
-            }
-            else
-            {
-                MessageBox.Show("Selecione um CLIENTE para ser editado!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
-        }
-
-        private void EditCliente_Click(object sender, RoutedEventArgs e)
-        {
-            if (GridClientes.SelectedIndex != -1)
-            {
-                var select = (Hamburgueria.Tables.Client)GridClientes.SelectedItem;
-
-                ClientesAdd c = new ClientesAdd();
-                c.clients = this;
-                c.id = select.Id;
-                c.name = select.Name;
-                c.address = select.Street;
-                c.number = select.Number.ToString();
-                c.district = select.District;
-                c.complement = select.Complement;
-                c.telephone = select.Telephone;
-                c.reference = select.Reference;
-                c.ShowDialog();
+                Search_TextChanged(null, null);
             }
             else
             {
@@ -121,9 +119,15 @@ namespace Hamburgueria.View
 
         private void AddCliente_Click(object sender, RoutedEventArgs e)
         {
-            ClientesAdd c = new ClientesAdd();
-            c.clients = this;
-            c.ShowDialog();
+#pragma warning disable IDE0017 // Simplificar a inicialização de objeto
+            DispatcherTimer timerToUpdate = new DispatcherTimer();
+#pragma warning restore IDE0017 // Simplificar a inicialização de objeto
+            timerToUpdate.Interval = new System.TimeSpan(0, 0, 1);
+            timerToUpdate.Tick += (s, r) => Search_TextChanged(null, null);
+            timerToUpdate.Start();
+
+            new ClientesAdd().ShowDialog();
+            timerToUpdate.Stop();
         }
     }
 }

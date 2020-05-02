@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Hamburgueria.View
 {
@@ -19,66 +10,53 @@ namespace Hamburgueria.View
     /// </summary>
     public partial class ClientesAdd : Window
     {
-        public Clientes clients;
+        private readonly Sql.Client sqlClient;
+        private readonly int idClient = -1;
 
-        public int id = -1;
-        public string name = "";
-        public string address = "";
-        public string number = "";
-        public string district = "";
-        public string complement = "";
-        public string telephone = "";
-        public string reference = "";
-
-        public ClientesAdd()
+        public ClientesAdd(Tables.Client client = null)
         {
             InitializeComponent();
 
-            this.Loaded += ClientesAdd_Loaded;
-            this.Closed += ClientesAdd_Closed;
+            sqlClient = new Sql.Client();
+            
+            if (client != null)
+            {
+                idClient = client.Id;
+                clientName.Text = client.Name;
+                Adress.Text = client.Street;
+                District.Text = client.District;
+                Number.Text = client.Number.ToString();
+                Complement.Text = client.Complement;
+                Telephone.Text = client.Telephone;
+                Reference.Text = client.Reference;
+            }
 
-            this.Number.PreviewTextInput += Number_PreviewTextInput;
+            Loaded += ClientesAdd_Loaded;
 
-            this.clientName.GotFocus += delegate { clientName.SelectAll(); };
-            this.Adress.GotFocus += delegate { Adress.SelectAll(); };
-            this.District.GotFocus += delegate { District.SelectAll(); };
-            this.Number.GotFocus += delegate { Number.SelectAll(); };
-            this.Complement.GotFocus += delegate { Complement.SelectAll(); };
-            this.Telephone.GotFocus += delegate { Complement.SelectAll(); };
-            this.Reference.GotFocus += delegate { Reference.SelectAll(); };
+            Number.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9]").IsMatch(e.Text);
 
-            this.SaveBtn.Click += SaveBtn_Click;
-            this.ClearBtn.Click += ClearBtn_Click;
-        }
+            clientName.GotFocus += delegate { clientName.SelectAll(); };
+            Adress.GotFocus += delegate { Adress.SelectAll(); };
+            District.GotFocus += delegate { District.SelectAll(); };
+            Number.GotFocus += delegate { Number.SelectAll(); };
+            Complement.GotFocus += delegate { Complement.SelectAll(); };
+            Telephone.GotFocus += delegate { Complement.SelectAll(); };
+            Reference.GotFocus += delegate { Reference.SelectAll(); };
 
-        private void ClientesAdd_Closed(object sender, EventArgs e)
-        {
-            clients.Clientes_Loaded(null, null);
+            SaveBtn.Click += SaveBtn_Click;
+            ClearBtn.Click += ClearBtn_Click;
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                this.Close();
+                Close();
         }
 
         private void ClientesAdd_Loaded(object sender, RoutedEventArgs e)
         {
-            clientName.Text = name;
-            Adress.Text = address;
-            District.Text = district;
-            Number.Text = number;
-            Complement.Text = complement;
-            Telephone.Text = telephone;
-            Reference.Text = reference;
-
             clientName.Focus();
             clientName.SelectAll();
-        }
-
-        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            e.Handled = new Regex("[^0-9]").IsMatch(e.Text);
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
@@ -92,26 +70,24 @@ namespace Hamburgueria.View
                 return;
             }
 
-            if (new Sql.Client().Exist(clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text))
+            if (sqlClient.Exist(clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text))
             {
-               // MessageBox.Show("Já existe um cliente com exatamentes estas informações", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            if (id == -1)
+            if (idClient == -1)
             {
                 Tables.Client client = new Tables.Client(clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text, Complement.Text, Telephone.Text, Reference.Text);
-                new Sql.Client().AddOrUpdate(client);
+                sqlClient.AddOrUpdate(client);
 
                 MessageBox.Show("Cliente cadastrado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 ClearBtn_Click(null, null);
-                clients.Clientes_Loaded(null, null);
             }
             else
             {
-                Tables.Client client = new Tables.Client(id, clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text, Complement.Text, Telephone.Text, Reference.Text);
-                new Sql.Client().AddOrUpdate(client);
+                Tables.Client client = new Tables.Client(idClient, clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text, Complement.Text, Telephone.Text, Reference.Text);
+                sqlClient.AddOrUpdate(client);
 
                 MessageBox.Show("Cliente atualizado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 

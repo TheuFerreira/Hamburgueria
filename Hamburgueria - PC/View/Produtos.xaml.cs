@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Text.RegularExpressions;
+using System.Windows.Threading;
 
 namespace Hamburgueria.View
 {
@@ -20,39 +12,60 @@ namespace Hamburgueria.View
     /// </summary>
     public partial class Produtos : Window
     {
+        private readonly Sql.Product sqlProduct;
+
         private bool isNumber = false;
 
         public Produtos()
         {
             InitializeComponent();
 
-            this.Loaded += Produtos_Loaded;
+            sqlProduct = new Sql.Product();
 
-            this.GridProdutos.BeginningEdit += (sender, e) => e.Cancel = true;
+            Loaded += Produtos_Loaded;
 
-            this.Search.GotFocus += Search_GotFocus;
-            this.Search.PreviewKeyDown += Search_PreviewKeyDown;
-            this.Search.PreviewTextInput += Search_PreviewTextInput;
-            this.Search.TextChanged += Search_TextChanged;
+            GridProdutos.PreviewMouseDoubleClick += GridProdutos_PreviewMouseDoubleClick;
 
-            this.BackProduto.Click += BackProduto_Click;
-            this.DelProduto.Click += DelProduto_Click;
-            this.EditProduto.Click += EditProduto_Click;
-            this.AddProduto.Click += AddProduto_Click;
+            Search.GotFocus += Search_GotFocus;
+            Search.PreviewKeyDown += Search_PreviewKeyDown;
+            Search.PreviewTextInput += Search_PreviewTextInput;
+            Search.TextChanged += Search_TextChanged;
+
+            BackProduto.Click += (sender, e) => Close();
+            DelProduto.Click += DelProduto_Click;
+            EditProduto.Click += (sender, e) => GridProdutos_PreviewMouseDoubleClick(null, null);
+            AddProduto.Click += AddProduto_Click;
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                this.Close();
+                Close();
         }
 
         public void Produtos_Loaded(object sender, RoutedEventArgs e)
         {
             GridProdutos.Items.Clear();
-            var products = new Hamburgueria.Sql.Product().Select();
-            foreach (var p in products)
+            foreach (var p in sqlProduct.Select())
                 GridProdutos.Items.Add(p);
+        }
+
+        private void GridProdutos_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (GridProdutos.Items == null)
+                return;
+
+            if (GridProdutos.SelectedIndex != -1)
+            {
+                Tables.Product item = (Tables.Product)GridProdutos.SelectedItem;
+                new ProdutosAdd(item).ShowDialog();
+
+                Search_TextChanged(null, null);
+            }
+            else
+            {
+                MessageBox.Show("Selecione um PRODUTO para ser editado!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
         }
 
         private void Search_GotFocus(object sender, RoutedEventArgs e)
@@ -63,23 +76,18 @@ namespace Hamburgueria.View
 
         private void Search_PreviewKeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key == Key.Down)
+            if (GridProdutos.HasItems)
             {
-                if (GridProdutos.HasItems)
+                if (e.Key == Key.Down)
                 {
-                    int index = GridProdutos.SelectedIndex;
-                    index++;
+                    int index = GridProdutos.SelectedIndex + 1;
                     if (index == GridProdutos.Items.Count)
                         index = 0;
                     GridProdutos.SelectedIndex = index;
                 }
-            }
-            else if (e.Key == Key.Up)
-            {
-                if (GridProdutos.HasItems)
+                else if (e.Key == Key.Up)
                 {
-                    int index = GridProdutos.SelectedIndex;
-                    index--;
+                    int index = GridProdutos.SelectedIndex - 1;
                     if (index < 0)
                         index = GridProdutos.Items.Count - 1;
                     GridProdutos.SelectedIndex = index;
@@ -97,45 +105,34 @@ namespace Hamburgueria.View
         {
             string text = Search.Text;
             GridProdutos.Items.Clear();
-            if (string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text) || text == "Pesquisar")
             {
                 isNumber = false;
-                var products = new Hamburgueria.Sql.Product().Select();
-                foreach (var p in products)
-                    GridProdutos.Items.Add(p);
-                return;
-            }
-
-            GridProdutos.Visibility = Visibility.Visible;
-            isNumber = char.IsDigit(text[0]);
-            if (isNumber)
-            {
-                var products = new Hamburgueria.Sql.Product().Select(Convert.ToInt32(text));
-                foreach (var p in products)
+                foreach (var p in sqlProduct.Select())
                     GridProdutos.Items.Add(p);
             }
             else
             {
-                var products = new Hamburgueria.Sql.Product().Select(text);
-                foreach (var p in products)
-                    GridProdutos.Items.Add(p);
+                GridProdutos.Visibility = Visibility.Visible;
+                isNumber = char.IsDigit(text[0]);
+                if (isNumber)
+                    foreach (var p in sqlProduct.Select(Convert.ToInt32(text)))
+                        GridProdutos.Items.Add(p);
+                else
+                    foreach (var p in sqlProduct.Select(text))
+                        GridProdutos.Items.Add(p);
             }
 
             if (GridProdutos.HasItems)
                 GridProdutos.SelectedItem = GridProdutos.Items[0];
         }
-
-        private void BackProduto_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
+        
         private void DelProduto_Click(object sender, RoutedEventArgs e)
         {
             if (GridProdutos.SelectedIndex != -1)
             {
-                int id = ((Hamburgueria.Tables.Product)GridProdutos.SelectedItem).Id;
-                new Hamburgueria.Sql.Product().Delete(id);
+                int id = ((Tables.Product)GridProdutos.SelectedItem).Id;
+                sqlProduct.Delete(id);
 
                 Produtos_Loaded(null, null);
             }
@@ -145,34 +142,17 @@ namespace Hamburgueria.View
             }
         }
 
-        private void EditProduto_Click(object sender, RoutedEventArgs e)
-        {
-            if (GridProdutos.SelectedIndex != -1)
-            {
-                var item = (Hamburgueria.Tables.Product)GridProdutos.SelectedItem;
-
-                ProdutosAdd p = new ProdutosAdd
-                {
-                    produtos = this,
-                    id = item.Id,
-                    cod = item.Cod,
-                    name = item.Name,
-                    price = item.Price
-                };
-                p.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Selecione um PRODUTO para ser editado!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Exclamation);
-            }
-        }
-
         private void AddProduto_Click(object sender, RoutedEventArgs e)
         {
-            new ProdutosAdd
-            {
-                produtos = this
-            }.ShowDialog();
+#pragma warning disable IDE0017 // Simplificar a inicialização de objeto
+            DispatcherTimer timerToUpdate = new DispatcherTimer();
+#pragma warning restore IDE0017 // Simplificar a inicialização de objeto
+            timerToUpdate.Interval = new TimeSpan(0, 0, 1);
+            timerToUpdate.Tick += (s, se) => Search_TextChanged(null, null);
+            timerToUpdate.Start();
+
+            new ProdutosAdd().ShowDialog();
+            timerToUpdate.Stop();
         }
     }
 }

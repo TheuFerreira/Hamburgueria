@@ -62,7 +62,7 @@
 
         <Label x:Name="labelTotalSale" Content="TOTAL: R$ 0,00" Margin="10,260,352,0" FontFamily="Arial" Foreground="White" FontSize="16" Height="26" VerticalAlignment="Top"/>
 
-        <DataGrid Name="gridProduct" Height="171" VerticalAlignment="Bottom" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}">
+        <DataGrid Name="gridProduct" ItemsSource="{Binding}" Height="171" VerticalAlignment="Bottom" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>

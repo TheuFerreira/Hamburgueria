@@ -53,7 +53,7 @@ namespace Hamburgueria.Sales
             }
         }
 
-        public static void Create(int numTable, DateTime dateSale, decimal totalSale, string observation, List<View.VendasBalcao.Item> items)
+        public static void Create(int numTable, DateTime dateSale, decimal totalSale, string observation, List<Item> items)
         {
             string path = DefaultPath() + numTable + ".bin";
 
@@ -63,7 +63,7 @@ namespace Hamburgueria.Sales
             content += observation + "\n";
             content += "-\n";
 
-            foreach (View.VendasBalcao.Item i in items)
+            foreach (Item i in items)
                 content += i.Id + ">" + i.Quantity + "\n";
             File.WriteAllText(path, content);
         }
@@ -84,7 +84,7 @@ namespace Hamburgueria.Sales
             return info;
         }
 
-        public static void Edit(int oldNumTable, int numTable, DateTime dateSale, decimal totalSale, string observation, List<View.VendasBalcao.Item> items)
+        public static void Edit(int oldNumTable, int numTable, DateTime dateSale, decimal totalSale, string observation, List<Item> items)
         {
             File.Delete(DefaultPath() + oldNumTable + ".bin");
             Create(numTable, dateSale, totalSale, observation, items);
@@ -95,9 +95,9 @@ namespace Hamburgueria.Sales
             File.Delete(DefaultPath() + numTable + ".bin");
         }
 
-        public static List<View.VendasBalcao.Item> Products(int numTable)
+        public static List<Item> Products(int numTable)
         {
-            List<View.VendasBalcao.Item> it = new List<View.VendasBalcao.Item>();
+            List<Item> it = new List<Item>();
 
             string[] lines = File.ReadAllLines(DefaultPath() + numTable + ".bin");
 
@@ -109,7 +109,7 @@ namespace Hamburgueria.Sales
                 int quantity = Convert.ToInt32(requests[1]);
 
                 var p = new Hamburgueria.Sql.Product().GetProduct(id);
-                it.Add(new View.VendasBalcao.Item() { Id = id, Cod = p.Cod, Name = p.Name, Price = p.Price, Quantity = quantity, Total = p.Price * quantity });
+                it.Add(new Item(id, p.Cod, p.Name, p.Price, quantity ));
             }
 
             return it;

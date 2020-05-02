@@ -82,6 +82,7 @@
     </ApplicationDefinition>
     <Compile Include="Connection.cs" />
     <Compile Include="Excel.cs" />
+    <Compile Include="Item.cs" />
     <Compile Include="LINQExtension.cs" />
     <Compile Include="Model\Relatorio.cs" />
     <Compile Include="Model\RelatorioCliente.cs" />

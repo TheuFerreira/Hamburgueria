@@ -21,7 +21,7 @@ namespace Hamburgueria.Sales
             return pathData + "\\";
         }
 
-        public static void Create(Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<View.VendasDelivery.Item> items, string fileName = "-1")
+        public static void Create(Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<Item> items, string fileName = "-1")
         {
             int i = Directory.GetFiles(DefaultPath(), "*.bin").Length;
 
@@ -43,7 +43,7 @@ namespace Hamburgueria.Sales
             content += observation + "\n";
             content += "-\n";
 
-            foreach (View.VendasDelivery.Item it in items)
+            foreach (Item it in items)
                 content += it.Id + ">" + it.Quantity + "\n";
 
             File.WriteAllText(path, content);
@@ -116,7 +116,7 @@ namespace Hamburgueria.Sales
             return info;
         }
 
-        public static void Edit(string oldFileName, Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<View.VendasDelivery.Item> items)
+        public static void Edit(string oldFileName, Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<Item> items)
         {
             Create(address, dateSale, totalSale, payment, discount, observation, items, oldFileName);
         }
@@ -136,9 +136,9 @@ namespace Hamburgueria.Sales
                 File.Move(files[i], DefaultPath() + i + ".bin");
         }
 
-        public static List<View.VendasDelivery.Item> Products(string fileName)
+        public static List<Item> Products(string fileName)
         {
-            List<View.VendasDelivery.Item> it = new List<View.VendasDelivery.Item>();
+            List<Item> it = new List<Item>();
 
             string[] lines = File.ReadAllLines(DefaultPath() + fileName + ".bin");
 
@@ -150,7 +150,7 @@ namespace Hamburgueria.Sales
                 int quantity = Convert.ToInt32(requests[1]);
 
                 var p = new Hamburgueria.Sql.Product().GetProduct(id);
-                it.Add(new View.VendasDelivery.Item() { Id = id, Cod = p.Cod, Name = p.Name, Price = p.Price, Quantity = quantity, Total = p.Price * quantity });
+                it.Add(new Item(id, p.Cod, p.Name, p.Price, quantity));
             }
 
             return it;

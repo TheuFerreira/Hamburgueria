@@ -43,7 +43,7 @@
         <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,170,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="95" Style="{StaticResource ButtonShadowAround}"/>
         <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Height="43" Margin="30,170,382,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
 
-        <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" Height="146" VerticalAlignment="Bottom" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource GridHeader}" CellStyle="{StaticResource GridCell}">
+        <DataGrid x:Name="gridProduct" ItemsSource="{Binding}" Height="146" VerticalAlignment="Bottom" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource GridHeader}" CellStyle="{StaticResource GridCell}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Hidden"/>
                 <DataGridTextColumn Binding="{Binding Cod, StringFormat=D3}" Header="CÓDIGO" MinWidth="80"/>

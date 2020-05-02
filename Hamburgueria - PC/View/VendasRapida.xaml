@@ -30,7 +30,7 @@
             <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,144,10,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Right" Width="95"/>
 
             <Label x:Name="labelTotalSale" Content="TOTAL: R$0,00" Height="34" Margin="30,145,149,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
-            <DataGrid x:Name="gridSearch" Height="70" VerticalAlignment="Top" Margin="87,60,0,0" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="309" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}">
+            <DataGrid x:Name="gridSearch" Visibility="Collapsed" Height="70" VerticalAlignment="Top" Margin="87,60,0,0" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="309" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Collapsed"/>
                     <DataGridTextColumn Binding="{Binding Cod,StringFormat=D3}" Header="CÓDIGO"/>
@@ -39,7 +39,7 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Height="171" VerticalAlignment="Bottom" Style="{StaticResource DataGridStyle}">
+            <DataGrid x:Name="gridProduct" ItemsSource="{Binding}" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Height="171" VerticalAlignment="Bottom" Style="{StaticResource DataGridStyle}">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">
                         <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>
@@ -76,7 +76,7 @@
                     <DataGridTextColumn Binding="{Binding Name}" Header="NOME" Width="*"/>
                     <DataGridTextColumn Binding="{Binding Price, StringFormat=c2}" Header="PREÇO" MinWidth="80"/>
                     <DataGridTextColumn Binding="{Binding Quantity}" Header="QTD" MinWidth="50"/>
-                    <DataGridTextColumn Binding="{Binding Total, StringFormat=C2}" Header="TOTAL" MinWidth="80"/>
+                    <DataGridTextColumn Binding="{Binding Total, StringFormat=C2, UpdateSourceTrigger=LostFocus}" Header="TOTAL" MinWidth="80"/>
                 </DataGrid.Columns>
                 <DataGrid.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">

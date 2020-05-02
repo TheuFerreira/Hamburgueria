@@ -18,7 +18,7 @@ namespace Hamburgueria
             return pathData;
         }
 
-        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, List<View.VendasRapida.Item> products)
+        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, List<Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -28,7 +28,7 @@ namespace Hamburgueria
             content += "\n          CUPOM NÃO FISCAL";
             content += "\n------------------------------------";
             content += "\nPRODUTOS";
-            foreach (View.VendasRapida.Item p in products)
+            foreach (Item p in products)
             {
                 string nameProduct = p.Name;
                 if (p.Name.Length >= 21)
@@ -69,7 +69,7 @@ namespace Hamburgueria
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
-        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, string observation, List<View.VendasBalcao.Item> products)
+        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, string observation, List<Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -79,7 +79,7 @@ namespace Hamburgueria
             content += "\n          CUPOM NÃO FISCAL";
             content += "\n------------------------------------";
             content += "\nPRODUTOS";
-            foreach (View.VendasBalcao.Item p in products)
+            foreach (Item p in products)
             {
                 string nameProduct = p.Name;
                 if (p.Name.Length >= 21)
@@ -122,7 +122,7 @@ namespace Hamburgueria
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
-        public static void Sale(Hamburgueria.Tables.Client clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, string observation, List<View.VendasDelivery.Item> products)
+        public static void Sale(Hamburgueria.Tables.Client clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, string observation, List<Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -144,7 +144,7 @@ namespace Hamburgueria
 
             content += "\n------------------------------------";
             content += "\nPRODUTOS";
-            foreach (View.VendasDelivery.Item p in products)
+            foreach (Item p in products)
             {
                 string nameProduct = p.Name;
                 if (p.Name.Length >= 21)

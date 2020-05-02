@@ -468,8 +468,8 @@ namespace Hamburgueria.View
 
         private void NewClient(object sender, RoutedEventArgs e)
         {
-            Hamburgueria.Tables.Client client = new Hamburgueria.Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
-            new Hamburgueria.Sql.Client().AddOrUpdate(client);
+            Tables.Client client = new Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
+            new Sql.Client().AddOrUpdate(client);
 
             MessageBox.Show("Cliente cadastrado com sucesso!!!");
 
@@ -481,8 +481,7 @@ namespace Hamburgueria.View
             if (string.IsNullOrEmpty(searchName.Text) ||
                 string.IsNullOrEmpty(street.Text) ||
                 string.IsNullOrEmpty(number.Text) ||
-                string.IsNullOrEmpty(district.Text) ||
-                string.IsNullOrEmpty(complement.Text))
+                string.IsNullOrEmpty(district.Text))
             {
                 MessageBox.Show("Por favor preencha todas as informações");
                 return;
@@ -493,7 +492,7 @@ namespace Hamburgueria.View
                 return;
             }
 
-            Hamburgueria.Tables.Client address = new Hamburgueria.Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
+            Tables.Client address = new Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
             
             if (isEditing == false)
             {

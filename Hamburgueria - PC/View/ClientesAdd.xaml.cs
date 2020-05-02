@@ -92,7 +92,7 @@ namespace Hamburgueria.View
                 return;
             }
 
-            if (new Hamburgueria.Sql.Client().Exist(clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text))
+            if (new Sql.Client().Exist(clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text))
             {
                // MessageBox.Show("Já existe um cliente com exatamentes estas informações", "", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
@@ -100,8 +100,8 @@ namespace Hamburgueria.View
 
             if (id == -1)
             {
-                Hamburgueria.Tables.Client client = new Hamburgueria.Tables.Client(clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text, Complement.Text, Telephone.Text, Reference.Text);
-                new Hamburgueria.Sql.Client().AddOrUpdate(client);
+                Tables.Client client = new Tables.Client(clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text, Complement.Text, Telephone.Text, Reference.Text);
+                new Sql.Client().AddOrUpdate(client);
 
                 MessageBox.Show("Cliente cadastrado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -110,8 +110,8 @@ namespace Hamburgueria.View
             }
             else
             {
-                Hamburgueria.Tables.Client client = new Hamburgueria.Tables.Client(id, clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text, Complement.Text, Telephone.Text, Reference.Text);
-                new Hamburgueria.Sql.Client().AddOrUpdate(client);
+                Tables.Client client = new Tables.Client(id, clientName.Text, Adress.Text, Convert.ToInt32(Number.Text), District.Text, Complement.Text, Telephone.Text, Reference.Text);
+                new Sql.Client().AddOrUpdate(client);
 
                 MessageBox.Show("Cliente atualizado com Sucesso!!!", "Informação", MessageBoxButton.OK, MessageBoxImage.Information);
 

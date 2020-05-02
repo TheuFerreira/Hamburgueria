@@ -588,7 +588,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Hamburgueria"
         "ProductCode" = "8:{CA38565B-345A-42D4-A1E7-72A0DC008A3C}"
-        "PackageCode" = "8:{67F2B62E-5A68-437D-91AB-C0CF1E1FA58E}"
+        "PackageCode" = "8:{DEFD6F01-0ED6-40E7-95FA-8D1237EAE335}"
         "UpgradeCode" = "8:{6CB0B7D6-8CEB-478A-8826-4EB88872EF0B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"

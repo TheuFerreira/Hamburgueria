@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="Relatorios" Height="768" Width="1366" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="RELATÓRIOS" Height="768" Width="1366" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <SolidColorBrush x:Key="Turquesa" Color="#4472C4"/>
         <SolidColorBrush x:Key="TurquesaClaro" Color="#8fAADC"/>
@@ -68,10 +68,9 @@
         <DatePicker x:Name="dateOne" Margin="28,150,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256" Height="30" BorderBrush="{x:Null}" Foreground="#FF1D3DC6"/>
         <DatePicker x:Name="dateTwo" Margin="388,150,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="250"/>
 
-        <Button x:Name="Filter" Content="FILTRAR" Margin="839,150,444,0" VerticalAlignment="Top" FontSize="11" Foreground="#FF2F5597" Style="{DynamicResource ButtonShadowAround}" Height="25"/>
+        <Button x:Name="Filter" Content="FILTRAR" Margin="839,150,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="25" HorizontalAlignment="Left" Width="75"/>
 
         <Button x:Name="Back" Margin="15,15,0,0" VerticalAlignment="Top" Height="20" HorizontalAlignment="Left" Width="20" Style="{StaticResource ButtonBack}"/>
-
 
         <Label x:Name="labelBruteTotal" Content="BRUTO TOTAL: R$0,00" Margin="100,0,1042,6" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
         <Label x:Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="559,0,559,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>

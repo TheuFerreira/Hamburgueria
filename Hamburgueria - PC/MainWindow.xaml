@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria___PC"
         mc:Ignorable="d"
-        Title="MainWindow" Height="766.9" Width="1366" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="Resources/logo.png">
+        Title="HAMBURGUERIA" Height="766.9" Width="1366" WindowStartupLocation="CenterScreen" WindowState="Maximized" Icon="Resources/logo.png">
     <Grid Background="Orange">
         <Grid.RowDefinitions>
             <RowDefinition Height="297*"/>
@@ -17,22 +17,23 @@
             <ColumnDefinition Width="455*"/>
             <ColumnDefinition Width="455*"/>
         </Grid.ColumnDefinitions>
-        <Button x:Name="BtnVendas" Content="" Margin="80,19,80,53" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Row="1">
+        
+        <Button x:Name="BtnVendas" Content="" Margin="80,19,80,53" Style="{StaticResource MyButtonStyle}" Grid.Row="1">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_vendas.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnClientes" Content="" Margin="130,42,30,29" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Row="2">
+        <Button x:Name="BtnClientes" Content="" Margin="130,42,30,29" Style="{StaticResource MyButtonStyle}" Grid.Row="2">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_cliente.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnRelatorios" Content="" Margin="30,42,130,29" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Column="2" Grid.Row="2">
+        <Button x:Name="BtnRelatorios" Content="" Margin="30,42,130,29" Style="{StaticResource MyButtonStyle}" Grid.Column="2" Grid.Row="2">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_relatorios.png" Stretch="Uniform"/>
             </Button.Background>
         </Button>
-        <Button x:Name="BtnProdutos" Content="" Margin="79,19,80,52" BorderBrush="{x:Null}" Style="{StaticResource MyButtonStyle}" Grid.Column="2" Grid.Row="1">
+        <Button x:Name="BtnProdutos" Content="" Margin="79,19,80,52" Style="{StaticResource MyButtonStyle}" Grid.Column="2" Grid.Row="1">
             <Button.Background>
                 <ImageBrush ImageSource="Resources/Botao_Produtos.png" Stretch="Uniform"/>
             </Button.Background>

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="Vendas" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
+        Title="VENDAS" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <SolidColorBrush x:Key="Turquesa" Color="#4472C4"/>
         <SolidColorBrush x:Key="TurquesaClaro" Color="#8fAADC"/>
@@ -65,11 +65,11 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="addDelivery" HorizontalAlignment="Right" Content="DELIVERY" FontFamily="Arial" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,25,8" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="#FF2F5597"/>
+        <Button x:Name="addDelivery" HorizontalAlignment="Right" Content="DELIVERY" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,25,8" Style="{DynamicResource ButtonShadowAround}"/>
 
-        <Button x:Name="addLocal" HorizontalAlignment="Right" Content="BALCÃO" FontFamily="Arial" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,123,8" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="#FF2F5597"/>
+        <Button x:Name="addLocal" HorizontalAlignment="Right" Content="BALCÃO" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,123,8" Style="{DynamicResource ButtonShadowAround}"/>
 
-        <Button x:Name="addFast" HorizontalAlignment="Right" Content="RÁPIDA" FontFamily="Arial" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,218,9" BorderBrush="{x:Null}" Style="{DynamicResource ButtonShadowAround}" Foreground="#FF2F5597"/>
+        <Button x:Name="addFast" HorizontalAlignment="Right" Content="RÁPIDA" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,218,9" Style="{DynamicResource ButtonShadowAround}"/>
 
     </Grid>
 </Window>

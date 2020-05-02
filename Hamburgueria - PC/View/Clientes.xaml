@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
-        Title="Clientes" 
+        Title="CLIENTES" 
         Height="450" 
         Width="800" 
         WindowStartupLocation="CenterScreen" 
@@ -31,12 +31,14 @@
 
         <Grid Background="#FF1B3BC6" Height="60" VerticalAlignment="Bottom">
             <Button x:Name="BackCliente" Content="VOLTAR" Margin="15,18,0,18" Style="{StaticResource ButtonBack}" HorizontalAlignment="Left" Width="25"/>
-            <TextBox x:Name="Search" CharacterCasing="Upper" CaretBrush="White" FontFamily="Arial" FontSize="15" Height="24" Margin="187,19,425,0" TextWrapping="Wrap" Text="Pesquisar" VerticalAlignment="Top" Style="{StaticResource TextBoxUnderline}"/>
-            <Button x:Name="AddCliente" Content="ADICIONAR" Margin="0,0,20,10" BorderBrush="{x:Null}" FontFamily="Arial" FontWeight="Bold" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}" FontSize="11" AutomationProperties.Name="ADICIONAR" Foreground="#FF2F5597"/>
+            
+            <TextBox x:Name="Search" FontFamily="Arial" FontSize="15" Height="24" Margin="187,19,425,0" TextWrapping="Wrap" Text="Pesquisar" VerticalAlignment="Top" Style="{StaticResource TextBoxUnderline}"/>
+           
+            <Button x:Name="AddCliente" Content="ADICIONAR" Margin="0,0,20,10" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}"/>
 
-            <Button x:Name="DelCliente" Content="EXCLUIR" Margin="0,0,201,10" BorderBrush="{x:Null}" FontFamily="Arial" FontWeight="Bold" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="#FF2F5597"/>
+            <Button x:Name="DelCliente" Content="EXCLUIR" Margin="0,0,201,10" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}"/>
 
-            <Button x:Name="EditCliente" Content="EDITAR" Margin="0,0,111,10" BorderBrush="{x:Null}" FontFamily="Arial" FontWeight="Bold" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}" FontSize="11" Foreground="#FF2F5597"/>
+            <Button x:Name="EditCliente" Content="EDITAR" Margin="0,0,111,10" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}"/>
 
         </Grid>
         <Image Height="19" Margin="0,0,401,16" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Right" Width="22"/>

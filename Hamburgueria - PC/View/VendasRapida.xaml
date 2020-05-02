@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Hamburgueria.View"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="VendasRapida" Width="683" Height="384" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+      Title="VENDA RÁPIDA" Width="683" Height="384" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
 
     <Grid Background="White" Margin="0,0,0,0">
         <Grid Background="#FF4472C4">
@@ -18,14 +18,16 @@
                     </LinearGradientBrush>
                 </Rectangle.Fill>
             </Rectangle>
+
             <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="24,37,0,0" VerticalAlignment="Top" Width="63" Foreground="White" FontSize="11"/>
+            <TextBox x:Name="search" Height="21" Margin="87,39,281,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-            <TextBox x:Name="search" CharacterCasing="Upper" CaretBrush="White" Height="21" Margin="87,39,281,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="" Foreground="White" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
             <Image Height="13" Margin="400,45,0,0" VerticalAlignment="Top" Source="/Hamburgueria;component/Resources/lupa.png" HorizontalAlignment="Left" Width="15" RenderTransformOrigin="3.6,0.615"/>
-            <Label Content="QUANTIDADE" HorizontalAlignment="Left" Margin="448,37,0,0" Width="90" FontFamily="Arial" Foreground="White" Height="21" VerticalAlignment="Top"/>
 
-            <TextBox x:Name="quantity" CaretBrush="White" Height="21" Margin="538,39,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Foreground="White"/>
-            <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,144,30,0" VerticalAlignment="Top" BorderBrush="{x:Null}" Foreground="#FF2041C6" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Right" Width="75"/>
+            <Label Content="QUANTIDADE" HorizontalAlignment="Left" Margin="448,37,0,0" Width="90" FontFamily="Arial" Foreground="White" Height="21" VerticalAlignment="Top"/>
+            <TextBox x:Name="quantity" Height="21" Margin="538,39,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+
+            <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,144,10,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Right" Width="95"/>
 
             <Label x:Name="labelTotalSale" Content="TOTAL: R$0,00" Height="34" Margin="30,145,149,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" FontSize="20"/>
             <DataGrid x:Name="gridSearch" Height="70" VerticalAlignment="Top" Margin="87,60,0,0" VerticalScrollBarVisibility="Visible" HorizontalAlignment="Left" Width="309" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}">
@@ -36,7 +38,7 @@
                     <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="PREÇO"/>
                 </DataGrid.Columns>
             </DataGrid>
-            
+
             <DataGrid x:Name="gridProduct" ItemsSource="{Binding Item}" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Height="171" VerticalAlignment="Bottom" Style="{StaticResource DataGridStyle}">
                 <DataGrid.ColumnHeaderStyle>
                     <Style TargetType="DataGridColumnHeader">

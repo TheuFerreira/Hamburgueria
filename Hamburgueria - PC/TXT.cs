@@ -10,7 +10,7 @@ namespace Hamburgueria
 
         public static string Path()
         {
-            string pathData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Necos";
+            string pathData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TWO Sistemas";
 
             if (Directory.Exists(pathData) == false)
                 pathData = Directory.CreateDirectory(pathData).FullName;

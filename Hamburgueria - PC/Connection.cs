@@ -1,8 +1,5 @@
-﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
+﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.IO;
 
 namespace Hamburgueria
 {
@@ -14,6 +11,10 @@ namespace Hamburgueria
         public DbSet<Tables.Sale> Sales { get; set; }
         public DbSet<Tables.SaleDelivery> SaleDeliveries { get; set; }
         public DbSet<Tables.SaleTable> SaleTables { get; set; }
+
+        public Connection() : base("Connection")
+        {
+        }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

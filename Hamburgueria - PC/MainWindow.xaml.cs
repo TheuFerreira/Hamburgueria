@@ -23,6 +23,8 @@ namespace Hamburgueria
     {
         public MainWindow()
         {
+            new Sql.Product().Select();
+
             InitializeComponent();
 
             this.PreviewKeyDown += MainWindow_PreviewKeyDown;

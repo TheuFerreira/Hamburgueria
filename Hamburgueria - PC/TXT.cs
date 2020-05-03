@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 
 namespace Hamburgueria
@@ -18,7 +18,7 @@ namespace Hamburgueria
             return pathData;
         }
 
-        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, List<Item> products)
+        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, ObservableCollection<Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -62,14 +62,14 @@ namespace Hamburgueria
             content += "\nDATA DA EMISSÃO: " + dateSale;
 
             content += "\n------------------------------------";
-            
+
             content += "\n       Agradecemos a preferência";
             content += "\n             Volte Sempre!";
 
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
-        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, string observation, List<Item> products)
+        public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, string observation, ObservableCollection<Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -113,7 +113,7 @@ namespace Hamburgueria
 
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
-           
+
             content += "\n------------------------------------";
 
             content += "\n       Agradecemos a preferência";
@@ -122,7 +122,7 @@ namespace Hamburgueria
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
-        public static void Sale(Hamburgueria.Tables.Client clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, string observation, List<Item> products)
+        public static void Sale(Tables.Client clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, string observation, ObservableCollection<Item> products)
         {
             string content = "            BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
@@ -172,7 +172,7 @@ namespace Hamburgueria
 
             content += "\nFORMA DE PAGAMENTO: " + payment;
             content += "\nDATA DA EMISSÃO: " + dateSale;
-            
+
             content += "\n------------------------------------";
 
             content += "\n       Agradecemos a preferência";

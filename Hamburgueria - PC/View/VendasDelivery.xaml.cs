@@ -77,7 +77,7 @@ namespace Hamburgueria.View
                 this.Close();
         }
 
-        public void LoadEditing(string fileName, Tables.Client oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, string observation, List<Item> items)
+        public void LoadEditing(string fileName, Tables.Client oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, string observation, ObservableCollection<Item> items)
         {
             isEditing = true;
             labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
@@ -109,7 +109,7 @@ namespace Hamburgueria.View
 
             this.discount.Text = discount;
 
-            Items = new ObservableCollection<Item>(items);
+            Items = items;
         }
 
         private void VendasDelivery_Loaded(object sender, RoutedEventArgs e)
@@ -419,7 +419,7 @@ namespace Hamburgueria.View
                 decimal total = 0;
                 foreach (Item i in Items)
                     total += i.Total;
-                Sales.Delivery.Create(address, DateTime.Now, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items.ToList());
+                Sales.Delivery.Create(address, DateTime.Now, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items);
 
                 searchName.Text = "";
                 street.Text = "";
@@ -445,7 +445,7 @@ namespace Hamburgueria.View
                 decimal total = 0;
                 foreach (Item i in Items)
                     total += i.Total;
-                Sales.Delivery.Edit(fileName, address, dateSale, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items.ToList());
+                Sales.Delivery.Edit(fileName, address, dateSale, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

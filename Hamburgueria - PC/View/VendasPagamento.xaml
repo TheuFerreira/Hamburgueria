@@ -14,16 +14,10 @@
             </LinearGradientBrush>
         </Grid.Background>
         <Label Content="PAGAMENTO:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
-        <ComboBox x:Name="payment" Margin="0,10,10,0" VerticalAlignment="Top" SelectedIndex="0" HorizontalAlignment="Right" Width="188" BorderBrush="{x:Null}" Foreground="#FF1C3DC6">
-            <ComboBox.Background>
-                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
-                    <GradientStop Color="#FFF0F0F0" Offset="0"/>
-                    <GradientStop Color="White" Offset="1"/>
-                </LinearGradientBrush>
-            </ComboBox.Background>
-            <Button Content="À VISTA" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
-            <Button Content="CRÉDITO" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
-            <Button Content="DÉBITO" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <ComboBox x:Name="payment" Margin="0,10,10,0" VerticalAlignment="Top" SelectedIndex="0" HorizontalAlignment="Right" Width="188">
+            <ListBoxItem Content="À VISTA" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            <ListBoxItem Content="CRÉDITO" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
+            <ListBoxItem Content="DÉBITO" FontFamily="Arial" Background="{x:Null}" BorderBrush="{x:Null}"/>
         </ComboBox>
 
         <Label Content="VALOR BRUTO:" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>

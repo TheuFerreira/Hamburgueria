@@ -199,7 +199,7 @@ namespace Hamburgueria.View
 
             VendasPagamento pagamento = new VendasPagamento(TotalSale())
             {
-                items = Items.ToList(),
+                items = Items,
                 dateSale = DateTime.Now,
             };
             pagamento.ShowDialog();

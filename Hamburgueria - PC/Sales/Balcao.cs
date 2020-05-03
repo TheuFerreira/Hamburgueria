@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Controls;
 
@@ -53,7 +54,7 @@ namespace Hamburgueria.Sales
             }
         }
 
-        public static void Create(int numTable, DateTime dateSale, decimal totalSale, string observation, List<Item> items)
+        public static void Create(int numTable, DateTime dateSale, decimal totalSale, string observation, ObservableCollection<Item> items)
         {
             string path = DefaultPath() + numTable + ".bin";
 
@@ -84,7 +85,7 @@ namespace Hamburgueria.Sales
             return info;
         }
 
-        public static void Edit(int oldNumTable, int numTable, DateTime dateSale, decimal totalSale, string observation, List<Item> items)
+        public static void Edit(int oldNumTable, int numTable, DateTime dateSale, decimal totalSale, string observation, ObservableCollection<Item> items)
         {
             File.Delete(DefaultPath() + oldNumTable + ".bin");
             Create(numTable, dateSale, totalSale, observation, items);
@@ -95,9 +96,9 @@ namespace Hamburgueria.Sales
             File.Delete(DefaultPath() + numTable + ".bin");
         }
 
-        public static List<Item> Products(int numTable)
+        public static ObservableCollection<Item> Products(int numTable)
         {
-            List<Item> it = new List<Item>();
+            ObservableCollection<Item> it = new ObservableCollection<Item>();
 
             string[] lines = File.ReadAllLines(DefaultPath() + numTable + ".bin");
 

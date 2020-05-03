@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Windows.Controls;
 
@@ -21,7 +22,7 @@ namespace Hamburgueria.Sales
             return pathData + "\\";
         }
 
-        public static void Create(Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<Item> items, string fileName = "-1")
+        public static void Create(Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, ObservableCollection<Item> items, string fileName = "-1")
         {
             int i = Directory.GetFiles(DefaultPath(), "*.bin").Length;
 
@@ -116,7 +117,7 @@ namespace Hamburgueria.Sales
             return info;
         }
 
-        public static void Edit(string oldFileName, Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, List<Item> items)
+        public static void Edit(string oldFileName, Hamburgueria.Tables.Client address, DateTime dateSale, decimal totalSale, string payment, decimal discount, string observation, ObservableCollection<Item> items)
         {
             Create(address, dateSale, totalSale, payment, discount, observation, items, oldFileName);
         }
@@ -136,9 +137,9 @@ namespace Hamburgueria.Sales
                 File.Move(files[i], DefaultPath() + i + ".bin");
         }
 
-        public static List<Item> Products(string fileName)
+        public static ObservableCollection<Item> Products(string fileName)
         {
-            List<Item> it = new List<Item>();
+            ObservableCollection<Item> it = new ObservableCollection<Item>();
 
             string[] lines = File.ReadAllLines(DefaultPath() + fileName + ".bin");
 

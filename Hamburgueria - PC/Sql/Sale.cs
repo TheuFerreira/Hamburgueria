@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows;
 
 namespace Hamburgueria.Sql
 {
@@ -14,7 +13,7 @@ namespace Hamburgueria.Sql
             con = new Connection();
         }
 
-        public void Insert(DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, List<Item> items)
+        public void Insert(DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, ObservableCollection<Item> items)
         {
             Tables.Sale sale = new Tables.Sale(date, totalBruto, desconto, total, pagamento);
             con.Sales.Add(sale);
@@ -33,7 +32,7 @@ namespace Hamburgueria.Sql
             con.SaveChanges();
         }
 
-        public void Insert(int numTable, DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, List<Item> items)
+        public void Insert(int numTable, DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, ObservableCollection<Item> items)
         {
             Tables.Sale sale = new Tables.Sale(date, totalBruto, desconto, total, pagamento);
             con.Sales.Add(sale);
@@ -52,14 +51,14 @@ namespace Hamburgueria.Sql
             con.SaveChanges();
         }
 
-        public void Insert(Tables.Client client, DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, List<Item> items)
+        public void Insert(Tables.Client client, DateTime date, decimal totalBruto, decimal desconto, decimal total, string pagamento, ObservableCollection<Item> items)
         {
             Tables.Sale sale = new Tables.Sale(date, totalBruto, desconto, total, pagamento);
             con.Sales.Add(sale);
             con.SaveChanges();
 
             int saleId = con.Sales.Max(x => x.Id);
-            
+
             con.SaleDeliveries.Add(new Tables.SaleDelivery(saleId, client.Name, client.Street + ", Nº" + client.Number + ", " + client.District + ", " + client.Complement));
             con.SaveChanges();
 

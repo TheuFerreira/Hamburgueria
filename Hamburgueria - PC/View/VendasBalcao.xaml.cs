@@ -69,7 +69,7 @@ namespace Hamburgueria.View
             sales.UpdateGrid();
         }
 
-        public void LoadEditing(int num, decimal totalSale, DateTime dateSale, string observation, List<Item> items)
+        public void LoadEditing(int num, decimal totalSale, DateTime dateSale, string observation, ObservableCollection<Item> items)
         {
             isEditing = true;
             oldNumTable = num;
@@ -78,7 +78,7 @@ namespace Hamburgueria.View
             this.dateSale = dateSale;
             this.observation.Text = observation;
 
-            Items = new ObservableCollection<Item>(items);
+            Items = items;
 
             foreach(Item it in items)
                 gridProduct.Items.Add(it);
@@ -257,7 +257,7 @@ namespace Hamburgueria.View
                     return;
                 }
 
-                Sales.Balcao.Create(table, DateTime.Now, TotalSale(), observation.Text, Items.ToList());
+                Sales.Balcao.Create(table, DateTime.Now, TotalSale(), observation.Text, Items);
 
                 product = null;
 
@@ -283,7 +283,7 @@ namespace Hamburgueria.View
                     }
                 }
 
-                Sales.Balcao.Edit(oldNumTable, table, dateSale, TotalSale(), observation.Text, Items.ToList());
+                Sales.Balcao.Edit(oldNumTable, table, dateSale, TotalSale(), observation.Text, Items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

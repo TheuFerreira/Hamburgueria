@@ -6,11 +6,6 @@
         xmlns:local="clr-namespace:Hamburgueria.View"
         mc:Ignorable="d"
         Title="RELATÓRIOS" Height="768" Width="1366" WindowState="Maximized" WindowStartupLocation="CenterScreen">
-    <Window.Resources>
-        <SolidColorBrush x:Key="Turquesa" Color="#4472C4"/>
-        <SolidColorBrush x:Key="TurquesaClaro" Color="#8fAADC"/>
-        <SolidColorBrush x:Key="AzulBruxao" Color="#2f5597"/>
-    </Window.Resources>
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -45,13 +40,13 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <ComboBox x:Name="styleBox" Margin="30,75,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top" BorderThickness="0">
+        <ComboBox x:Name="styleBox" Margin="30,75,0,0" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top">
             <ListBoxItem Content="VENDAS"/>
             <ListBoxItem Content="PRODUTOS"/>
             <ListBoxItem Content="CLIENTES"/>
         </ComboBox>
 
-        <ComboBox x:Name="periodBox" Margin="388,75,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top">
+        <ComboBox x:Name="periodBox" Margin="388,75,0,0" HorizontalAlignment="Left" Width="250" Height="25" VerticalAlignment="Top">
             <ListBoxItem Content="DIÁRIO"/>
             <ListBoxItem Content="SEMANAL"/>
             <ListBoxItem Content="MENSAL"/>
@@ -59,16 +54,16 @@
             <ListBoxItem Content="CUSTOMIZADO"/>
         </ComboBox>
 
-        <ComboBox x:Name="typeBox" Margin="746,75,0,0" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250">
+        <ComboBox x:Name="typeBox" Margin="746,75,0,0" Height="25" VerticalAlignment="Top" HorizontalAlignment="Left" Width="250">
             <ListBoxItem Content="TODOS"/>
             <ListBoxItem Content="DELIVERY"/>
             <ListBoxItem Content="BALCÃO"/>
         </ComboBox>
 
-        <DatePicker x:Name="dateOne" Margin="28,150,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256" Height="30" BorderBrush="{x:Null}" Foreground="#FF1D3DC6"/>
-        <DatePicker x:Name="dateTwo" Margin="388,150,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="250"/>
+        <DatePicker x:Name="dateOne" Margin="28,150,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="256" Height="30" BorderBrush="{x:Null}" Foreground="#FF1D3DC6" FontFamily="Arial" FontSize="15"/>
+        <DatePicker x:Name="dateTwo" Margin="388,150,0,0" VerticalAlignment="Top" Height="25" Foreground="#FF1D3DC6" BorderBrush="{x:Null}" HorizontalAlignment="Left" Width="250"  FontFamily="Arial" FontSize="15"/>
 
-        <Button x:Name="Filter" Content="FILTRAR" Margin="839,150,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="25" HorizontalAlignment="Left" Width="75"/>
+        <Button x:Name="Filter" Content="FILTRAR" Margin="886,144,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" Height="36" HorizontalAlignment="Left" Width="110"/>
 
         <Button x:Name="Back" Margin="15,15,0,0" VerticalAlignment="Top" Height="20" HorizontalAlignment="Left" Width="20" Style="{StaticResource ButtonBack}"/>
 

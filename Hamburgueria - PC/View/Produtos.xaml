@@ -14,6 +14,13 @@
                 <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="150" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Price, StringFormat=C2}" Header="PREÇO" MinWidth="200"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="menuAdd" Header="ADICIONAR"/>
+                    <MenuItem x:Name="menuEdit" Header="EDITAR"/>
+                    <MenuItem x:Name="menuDel" Header="DELETAR"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
 
         <Grid Background="{StaticResource TurquesaEscuro}" Height="60" VerticalAlignment="Bottom">
@@ -29,6 +36,5 @@
             <Button x:Name="EditProduto" Content="EDITAR" Margin="0,0,118,10" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}"/>
 
         </Grid>
-
     </Grid>
 </Window>

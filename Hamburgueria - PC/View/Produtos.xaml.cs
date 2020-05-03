@@ -35,6 +35,10 @@ namespace Hamburgueria.View
             DelProduto.Click += DelProduto_Click;
             EditProduto.Click += (sender, e) => GridProdutos_PreviewMouseDoubleClick(null, null);
             AddProduto.Click += AddProduto_Click;
+
+            menuDel.Click += DelProduto_Click;
+            menuEdit.Click += (sender, e) => GridProdutos_PreviewMouseDoubleClick(null, null);
+            menuAdd.Click += AddProduto_Click;
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
@@ -131,6 +135,9 @@ namespace Hamburgueria.View
         {
             if (GridProdutos.SelectedIndex != -1)
             {
+                if (MessageBox.Show("Tem certeza de que deseja excluir o produto selecionado?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                    return;
+
                 int id = ((Tables.Product)GridProdutos.SelectedItem).Id;
                 sqlProduct.Delete(id);
 

@@ -25,6 +25,13 @@
                 <DataGridTextColumn Binding="{Binding Telephone}" Header="TELEFONE" MinWidth="150" Width="*"/>
                 <DataGridTextColumn Binding="{Binding Reference}" Header="REFERÊNCIA" MinWidth="150" Width="*"/>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="menuAdd" Header="ADICIONAR"/>
+                    <MenuItem x:Name="menuEdit" Header="EDITAR"/>
+                    <MenuItem x:Name="menuDel" Header="DELETAR"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
 
 

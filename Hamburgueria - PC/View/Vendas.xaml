@@ -63,6 +63,13 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem x:Name="menuDelivery" Header="DELIVERY"/>
+                    <MenuItem x:Name="menuLocal" Header="BALCÃO"/>
+                    <MenuItem x:Name="menuFast" Header="RÁPIDA"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
         </DataGrid>
 
         <Button x:Name="addDelivery" HorizontalAlignment="Right" Content="DELIVERY" Width="75" Height="34" VerticalAlignment="Bottom" Margin="0,0,25,8" Style="{DynamicResource ButtonShadowAround}"/>

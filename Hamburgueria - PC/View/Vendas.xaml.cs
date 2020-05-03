@@ -41,6 +41,10 @@ namespace Hamburgueria.View
             this.addFast.Click += AddFast_Click;
             this.addLocal.Click += AddLocal_Click;
             this.addDelivery.Click += AddDelivery_Click;
+
+            this.menuFast.Click += AddFast_Click;
+            this.menuLocal.Click += AddLocal_Click;
+            this.menuDelivery.Click += AddDelivery_Click;
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)

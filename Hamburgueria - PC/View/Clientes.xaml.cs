@@ -30,6 +30,10 @@ namespace Hamburgueria.View
             DelCliente.Click += DelCliente_Click;
             EditCliente.Click += (sender, e) => GridClientes_PreviewMouseDoubleClick(null, null);
             AddCliente.Click += AddCliente_Click;
+
+            menuDel.Click += DelCliente_Click;
+            menuEdit.Click += (sender, e) => GridClientes_PreviewMouseDoubleClick(null, null);
+            menuAdd.Click += AddCliente_Click;
         }
 
         protected override void OnKeyDown(KeyEventArgs e)

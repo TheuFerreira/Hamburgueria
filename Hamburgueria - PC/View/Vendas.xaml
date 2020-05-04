@@ -14,7 +14,7 @@
     <Grid>
         <Grid Background="#FF1B3BC6" Height="57" VerticalAlignment="Bottom">
             <Button x:Name="back" Margin="15,18,0,18" HorizontalAlignment="Left" Width="20" Style="{StaticResource ButtonBack}"/>
-            <ComboBox x:Name="filter" HorizontalAlignment="Right" Margin="0,13,315,10" Width="166" SelectedIndex="0">
+            <ComboBox x:Name="filter" HorizontalAlignment="Right" Margin="0,13,317,10" Width="75" SelectedIndex="0" Height="34" SelectionChanged="filter_SelectionChanged_1" FontSize="11" FontWeight="Bold">
                 <ListBoxItem Content="TODOS" />
                 <ListBoxItem Content="DELIVERY" />
                 <ListBoxItem Content="BALCÃO" />

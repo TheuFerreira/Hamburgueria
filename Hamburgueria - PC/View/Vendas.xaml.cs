@@ -246,5 +246,10 @@ namespace Hamburgueria.View
             VendasDelivery delivery = new VendasDelivery(this, new ObservableCollection<Hamburgueria.Item>(), new Tables.Client(), DateTime.Today);
             delivery.ShowDialog();
         }
+
+        private void filter_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -299,11 +299,19 @@ namespace Hamburgueria.View
         {
             if (e.Key == Key.Enter)
             {
-                int q = Convert.ToInt32(quantity.Text);
-
-                if (q == 0)
+                int q;
+                try
                 {
-                    MessageBox.Show("Valor na quantidade precisa ser maior que 0!!!");
+                    q = Convert.ToInt32(quantity.Text);
+                    if (q == 0)
+                    {
+                        MessageBox.Show("Valor na quantidade precisa ser maior que 0!!!");
+                        return;
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Informe alguma valor no campo Quantidade!!!", "", MessageBoxButton.OK, MessageBoxImage.Error);
                     return;
                 }
 

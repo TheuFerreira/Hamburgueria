@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Documents;
 using System.Windows.Input;
 
 namespace Hamburgueria.View
@@ -17,16 +14,25 @@ namespace Hamburgueria.View
     {
         public ObservableCollection<Item> Items = new ObservableCollection<Item>();
 
+        private readonly Sql.Client sqlClient;
+        private readonly Sql.Product sqlProduct;
         private readonly Vendas sales;
-        private string fileName;
-        private bool isEditing = false;
-        private DateTime dateSale;
+        private readonly string fileName;
+        private readonly bool isEditing = false;
+        private readonly DateTime dateSale;
 
-        public VendasDelivery(Vendas sales)
+        public VendasDelivery(Vendas sales, ObservableCollection<Item> items, Tables.Client oldAddress, DateTime dateSale, bool isEditing = false, string fileName = "",  decimal totalSale = 0, string payment = "", string discounts = "",  string observations = "")
         {
             InitializeComponent();
 
+            sqlClient = new Sql.Client();
+            sqlProduct = new Sql.Product();
+
+            Items = new ObservableCollection<Item>();
             gridProduct.DataContext = Items;
+
+            foreach (Item it in items)
+                Items.Add(it);
 
             this.sales = sales;
             Closed += (sender, e) => sales.UpdateGrid();
@@ -69,47 +75,45 @@ namespace Hamburgueria.View
 
             newClient.Click += NewClient;
             confirm.Click += Confirm_Click;
+
+            if (isEditing)
+            {
+                this.isEditing = true;
+                labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
+                this.fileName = fileName;
+                this.dateSale = dateSale;
+
+                searchName.Text = oldAddress.Name;
+                number.Text = oldAddress.Number.ToString();
+                street.Text = oldAddress.Street;
+                district.Text = oldAddress.District;
+                complement.Text = oldAddress.Complement;
+                telephone.Text = oldAddress.Telephone;
+                Reference.Text = oldAddress.Reference;
+
+                this.observation.Text = observations;
+
+                switch (payment)
+                {
+                    case "Á VISTA":
+                        this.payment.SelectedIndex = 0;
+                        break;
+                    case "CRÉDITO":
+                        this.payment.SelectedIndex = 1;
+                        break;
+                    case "DÉBITO":
+                        this.payment.SelectedIndex = 2;
+                        break;
+                }
+
+                this.discount.Text = discounts;
+            }
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
                 this.Close();
-        }
-
-        public void LoadEditing(string fileName, Tables.Client oldAddress, decimal totalSale, string payment, string discount, DateTime dateSale, string observation, ObservableCollection<Item> items)
-        {
-            isEditing = true;
-            labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
-            this.fileName = fileName;
-            this.dateSale = dateSale;
-
-            searchName.Text = oldAddress.Name;
-            number.Text = oldAddress.Number.ToString();
-            street.Text = oldAddress.Street;
-            district.Text = oldAddress.District;
-            complement.Text = oldAddress.Complement;
-            telephone.Text = oldAddress.Telephone;
-            Reference.Text = oldAddress.Reference;
-
-            this.observation.Text = observation;
-
-            switch (payment)
-            {
-                case "Á VISTA":
-                    this.payment.SelectedIndex = 0;
-                    break;
-                case "CRÉDITO":
-                    this.payment.SelectedIndex = 1;
-                    break;
-                case "DÉBITO":
-                    this.payment.SelectedIndex = 2;
-                    break;
-            }
-
-            this.discount.Text = discount;
-
-            Items = items;
         }
 
         private void VendasDelivery_Loaded(object sender, RoutedEventArgs e)
@@ -171,8 +175,7 @@ namespace Hamburgueria.View
 
             gridClient.Visibility = Visibility.Visible;
             gridClient.Items.Clear();
-            var clients = new Hamburgueria.Sql.Client().Select(text);
-            foreach (var c in clients)
+            foreach (var c in sqlClient.Select(text))
                 gridClient.Items.Add(c);
             if (gridClient.HasItems)
                 gridClient.SelectedItem = gridClient.Items[0];
@@ -264,17 +267,11 @@ namespace Hamburgueria.View
             isNumber = char.IsDigit(text[0]);
             gridSearch.Items.Clear();
             if (isNumber)
-            {
-                var products = new Hamburgueria.Sql.Product().Select(Convert.ToInt32(text));
-                foreach (var p in products)
+                foreach (var p in sqlProduct.Select(Convert.ToInt32(text)))
                     gridSearch.Items.Add(p);
-            }
             else
-            {
-                var products = new Hamburgueria.Sql.Product().Select(text);
-                foreach (var p in products)
+                foreach (var p in sqlProduct.Select(text))
                     gridSearch.Items.Add(p);
-            }
 
             if (gridSearch.HasItems)
                 gridSearch.SelectedItem = gridSearch.Items[0];
@@ -290,8 +287,9 @@ namespace Hamburgueria.View
         {
             if (gridSearch.HasItems == false)
                 return;
-             
+
             product = (Tables.Product)gridSearch.SelectedItem;
+            searchName.Text = product.Name;
 
             gridSearch.Visibility = Visibility.Hidden;
             quantity.Focus();
@@ -378,8 +376,8 @@ namespace Hamburgueria.View
                 return;
             }
 
-            bool exist = new Hamburgueria.Sql.Client().Exist(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text);
-        
+            bool exist = sqlClient.Exist(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text);
+
             if (exist)
                 newClient.Visibility = Visibility.Collapsed;
             else
@@ -389,7 +387,7 @@ namespace Hamburgueria.View
         private void NewClient(object sender, RoutedEventArgs e)
         {
             Tables.Client client = new Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
-            new Sql.Client().AddOrUpdate(client);
+            sqlClient.AddOrUpdate(client);
 
             MessageBox.Show("Cliente cadastrado com sucesso!!!");
 
@@ -413,7 +411,7 @@ namespace Hamburgueria.View
             }
 
             Tables.Client address = new Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
-            
+
             if (isEditing == false)
             {
                 decimal total = 0;
@@ -430,14 +428,13 @@ namespace Hamburgueria.View
                 telephone.Text = "";
                 Reference.Text = "";
 
-                gridProduct.Items.Clear();
+                Items.Clear();
                 labelTotalSale.Content = "TOTAL:R$0,00";
                 quantity.Text = "";
                 observation.Text = "";
                 searchName.Focus();
 
                 MessageBox.Show("Venda adicionada com sucesso!!!");
-
                 sales.UpdateGrid();
             }
             else
@@ -449,7 +446,7 @@ namespace Hamburgueria.View
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 
-                this.Close();
+                Close();
             }
         }
 

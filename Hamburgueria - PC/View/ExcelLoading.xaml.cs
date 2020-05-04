@@ -6,7 +6,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
@@ -561,10 +560,11 @@ namespace Hamburgueria.View
             {
                 app = new m_Excel.Application();
                 workbook = app.Workbooks.Open(fileName);
+                
                 worksheet = workbook.Worksheets[1];
-
                 string day = date.ToString("yyyy-MM-dd");
-                List<Relatorio.P> products = Relatorio.Product(day);
+                worksheet.Cells[1, 1] = "DIÁRIO - " + day;
+                List < Relatorio.P> products = Relatorio.Product(day);
                 value += 1;
                 for (int i = 0; i < products.Count; i++)
                 {
@@ -583,6 +583,7 @@ namespace Hamburgueria.View
                 date2 = date2.AddDays(1);
                 string startDate = date1.ToString("yyyy-MM-dd");
                 string endDate = date2.ToString("yyyy-MM-dd");
+                worksheet.Cells[1, 1] = "SEMANAL - " + startDate + " - " + endDate;
                 products = Relatorio.Product(startDate, endDate);
                 value += 1;
                 for (int i = 0; i < products.Count; i++)
@@ -597,6 +598,7 @@ namespace Hamburgueria.View
 
                 worksheet = workbook.Worksheets[3];
                 string month = date.ToString("yyyy-MM");
+                worksheet.Cells[1, 1] = "MENSAL - " + month;
                 products = Relatorio.Product(month);
                 value += 1;
                 for (int i = 0; i < products.Count; i++)
@@ -611,6 +613,7 @@ namespace Hamburgueria.View
 
                 worksheet = workbook.Worksheets[4];
                 string year = date.ToString("yyyy");
+                worksheet.Cells[1, 1] = "DIÁRIO - " + year;
                 products = Relatorio.Product(year);
                 value += 1;
                 for (int i = 0; i < products.Count; i++)

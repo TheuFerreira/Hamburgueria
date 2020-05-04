@@ -112,11 +112,7 @@ namespace Hamburgueria.View
                     decimal totalSale = Convert.ToDecimal(info[1]);
                     string observation = info[2];
 
-                    VendasBalcao balcao = new VendasBalcao
-                    {
-                        sales = this
-                    };
-                    balcao.LoadEditing(numTable, totalSale, dateSale, observation, Sales.Balcao.Products(numTable));
+                    VendasBalcao balcao = new VendasBalcao(this, Sales.Balcao.Products(numTable), dateSale, true, numTable, totalSale, observation);
                     balcao.ShowDialog();
                 }
                 else
@@ -127,10 +123,9 @@ namespace Hamburgueria.View
                     DateTime dateSale = Convert.ToDateTime(info[1]);
                     decimal totalSale = Convert.ToDecimal(info[2]);
                     string[] addressFile = info[3].Split('>');
-                    Hamburgueria.Tables.Client address = new Hamburgueria.Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
+                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
 
-                    VendasDelivery delivery = new VendasDelivery(this);
-                    delivery.LoadEditing(fileName, address, totalSale, info[6], info[7], dateSale, info[8], Sales.Delivery.Products(fileName));
+                    VendasDelivery delivery = new VendasDelivery(this, Sales.Delivery.Products(fileName), address, dateSale, true, fileName, totalSale, info[6], info[7], info[8]);
                     delivery.ShowDialog();
                 }
             }
@@ -191,7 +186,7 @@ namespace Hamburgueria.View
                     DateTime dateSale = Convert.ToDateTime(info[1]);
                     decimal totalSale = Convert.ToDecimal(info[2]);
                     string[] addressFile = info[3].Split('>');
-                    Hamburgueria.Tables.Client address = new Hamburgueria.Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
+                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
                     string payment = info[6];
                     decimal discount = Convert.ToDecimal(info[7]);
 
@@ -225,16 +220,13 @@ namespace Hamburgueria.View
 
         private void AddLocal_Click(object sender, RoutedEventArgs e)
         {
-            VendasBalcao balcao = new VendasBalcao
-            {
-                sales = this
-            };
+            VendasBalcao balcao = new VendasBalcao(this, new ObservableCollection<Hamburgueria.Item>(), DateTime.Today);
             balcao.ShowDialog();
         }
 
         private void AddDelivery_Click(object sender, RoutedEventArgs e)
         {
-            VendasDelivery delivery = new VendasDelivery(this);
+            VendasDelivery delivery = new VendasDelivery(this, new ObservableCollection<Hamburgueria.Item>(), new Tables.Client(), DateTime.Today);
             delivery.ShowDialog();
         }
     }

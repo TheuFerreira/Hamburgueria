@@ -1,17 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Hamburgueria.View
 {
@@ -22,20 +14,29 @@ namespace Hamburgueria.View
     {
         public Vendas sales;
 
-        public ObservableCollection<Item> Items = new ObservableCollection<Item>();
+        public ObservableCollection<Item> Items;
 
+        private readonly Sql.Product sqlProduct;
         private bool isNumber = false;
         private Tables.Product product = null;
 
-        private bool isEditing = false;
-        private DateTime dateSale;
-        private int oldNumTable;
+        private readonly bool isEditing = false;
+        private readonly DateTime dateSale;
+        private readonly int oldNumTable;
 
-        public VendasBalcao()
+        public VendasBalcao(Vendas sales, ObservableCollection<Item> items, DateTime dateSale, bool editing = false, int num = -1, decimal totalSale = 0, string observations = "")
         {
             InitializeComponent();
 
+            sqlProduct = new Sql.Product();
+
+            Items = new ObservableCollection<Item>();
             gridProduct.DataContext = Items;
+
+            foreach (Item it in items)
+                Items.Add(it);
+
+            this.sales = sales;
 
             Closed += VendasBalcao_Closed;
             Loaded += VendasBalcao_Loaded;
@@ -55,7 +56,20 @@ namespace Hamburgueria.View
             gridProduct.BeginningEdit += (sender, e) => e.Cancel = true;
             gridProduct.PreviewKeyDown += GridProduct_PreviewKeyDown;
 
+            numTable.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) observation.Focus(); };
+            observation.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) Confirm_Click(null, null); };
+
             confirm.Click += Confirm_Click;
+
+            if (editing)
+            {
+                isEditing = true;
+                oldNumTable = num;
+                numTable.Text = num.ToString();
+                labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
+                this.dateSale = dateSale;
+                observation.Text = observations;
+            }
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
@@ -67,21 +81,6 @@ namespace Hamburgueria.View
         private void VendasBalcao_Closed(object sender, EventArgs e)
         {
             sales.UpdateGrid();
-        }
-
-        public void LoadEditing(int num, decimal totalSale, DateTime dateSale, string observation, ObservableCollection<Item> items)
-        {
-            isEditing = true;
-            oldNumTable = num;
-            numTable.Text = num.ToString();
-            labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
-            this.dateSale = dateSale;
-            this.observation.Text = observation;
-
-            Items = items;
-
-            foreach(Item it in items)
-                gridProduct.Items.Add(it);
         }
 
         private void VendasBalcao_Loaded(object sender, RoutedEventArgs e)
@@ -123,7 +122,7 @@ namespace Hamburgueria.View
         private void Search_TextChanged(object sender, TextChangedEventArgs e)
         {
             string text = search.Text;
-            if(string.IsNullOrEmpty(text))
+            if (string.IsNullOrEmpty(text))
             {
                 isNumber = false;
                 gridSearch.Visibility = Visibility.Hidden;
@@ -134,17 +133,11 @@ namespace Hamburgueria.View
             isNumber = char.IsDigit(text[0]);
             gridSearch.Items.Clear();
             if (isNumber)
-            {
-                var products = new Hamburgueria.Sql.Product().Select(Convert.ToInt32(text));
-                foreach (var p in products)
+                foreach (var p in sqlProduct.Select(Convert.ToInt32(text)))
                     gridSearch.Items.Add(p);
-            }
             else
-            {
-                var products = new Hamburgueria.Sql.Product().Select(text);
-                foreach (var p in products)
+                foreach (var p in sqlProduct.Select(text))
                     gridSearch.Items.Add(p);
-            }
 
             if (gridSearch.HasItems)
                 gridSearch.SelectedItem = gridSearch.Items[0];
@@ -160,8 +153,9 @@ namespace Hamburgueria.View
         {
             if (gridSearch.HasItems == false)
                 return;
-            
+
             product = (Tables.Product)gridSearch.SelectedItem;
+            search.Text = product.Name;
             gridSearch.Visibility = Visibility.Hidden;
             quantity.Focus();
         }
@@ -261,6 +255,7 @@ namespace Hamburgueria.View
 
                 product = null;
 
+                Items.Clear();
                 labelTotalSale.Content = "TOTAL:R$0,00";
                 quantity.Text = "";
                 numTable.Text = "";

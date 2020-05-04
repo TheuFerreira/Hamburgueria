@@ -172,7 +172,10 @@ namespace Hamburgueria.View
             }
 
             Confirmed = true;
-            this.Close();
+
+            MessageBox.Show("Venda confirmada!!!");
+
+            Close();
         }
     }
 }

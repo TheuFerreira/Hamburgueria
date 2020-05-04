@@ -38,6 +38,7 @@ namespace Hamburgueria.View
             this.gridSales.PreviewMouseUp += GridSales_PreviewMouseUp;
 
             this.back.Click += Back_Click;
+            filter.SelectionChanged += Filter_SelectionChanged;
             this.addFast.Click += AddFast_Click;
             this.addLocal.Click += AddLocal_Click;
             this.addDelivery.Click += AddDelivery_Click;
@@ -55,9 +56,25 @@ namespace Hamburgueria.View
 
         public void UpdateGrid()
         {
+            Filter_SelectionChanged(null, null);
+        }
+
+        private void Filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
             gridSales.Items.Clear();
-            Sales.Balcao.Select(gridSales);
-            Sales.Delivery.Select(gridSales);
+            if (filter.SelectedIndex == 0)
+            {
+                Sales.Balcao.Select(gridSales);
+                Sales.Delivery.Select(gridSales);
+            }
+            else if (filter.SelectedIndex == 1)
+            {
+                Sales.Delivery.Select(gridSales);
+            }
+            else
+            {
+                Sales.Balcao.Select(gridSales);
+            }
         }
 
         private void Vendas_Loaded(object sender, RoutedEventArgs e)

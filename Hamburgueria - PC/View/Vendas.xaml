@@ -14,8 +14,13 @@
     <Grid>
         <Grid Background="#FF1B3BC6" Height="57" VerticalAlignment="Bottom">
             <Button x:Name="back" Margin="15,18,0,18" HorizontalAlignment="Left" Width="20" Style="{StaticResource ButtonBack}"/>
+            <ComboBox x:Name="filter" HorizontalAlignment="Right" Margin="0,13,315,10" Width="166" SelectedIndex="0">
+                <ListBoxItem Content="TODOS" />
+                <ListBoxItem Content="DELIVERY" />
+                <ListBoxItem Content="BALCÃO" />
+            </ComboBox>
         </Grid>
-        
+
         <DataGrid x:Name="gridSales" Margin="0,0,0,57" ItemsSource="{Binding Item}" AlternationCount="2" AlternatingRowBackground="{StaticResource TurquesaClaro}" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="{x:Null}" HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" ColumnHeaderHeight="50" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource CellStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Type}" Header="TYPE" Visibility="Hidden" HeaderStyle="{StaticResource HeaderStyle}"/>

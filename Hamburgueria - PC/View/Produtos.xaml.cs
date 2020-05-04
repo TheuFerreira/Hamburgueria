@@ -22,6 +22,8 @@ namespace Hamburgueria.View
 
             sqlProduct = new Sql.Product();
 
+            Search.Visibility = Visibility.Collapsed;
+
             Loaded += Produtos_Loaded;
 
             GridProdutos.PreviewMouseDoubleClick += GridProdutos_PreviewMouseDoubleClick;
@@ -31,6 +33,8 @@ namespace Hamburgueria.View
             Search.PreviewTextInput += Search_PreviewTextInput;
             Search.TextChanged += Search_TextChanged;
 
+            lupa.PreviewMouseDown += Lupa_PreviewMouseDown;
+
             BackProduto.Click += (sender, e) => Close();
             DelProduto.Click += DelProduto_Click;
             EditProduto.Click += (sender, e) => GridProdutos_PreviewMouseDoubleClick(null, null);
@@ -39,6 +43,20 @@ namespace Hamburgueria.View
             menuDel.Click += DelProduto_Click;
             menuEdit.Click += (sender, e) => GridProdutos_PreviewMouseDoubleClick(null, null);
             menuAdd.Click += AddProduto_Click;
+        }
+
+        private void Lupa_PreviewMouseDown(object sender, MouseButtonEventArgs e)
+        {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                if (Search.Visibility == Visibility.Visible)
+                    Search.Visibility = Visibility.Collapsed;
+                else
+                    Search.Visibility = Visibility.Visible;
+
+                Search.Text = "Pesquisar";
+                Search_TextChanged(null, null);
+            }
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)

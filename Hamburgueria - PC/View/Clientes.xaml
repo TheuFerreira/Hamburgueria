@@ -48,7 +48,7 @@
             <Button x:Name="EditCliente" Content="EDITAR" Margin="0,0,111,10" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}"/>
 
         </Grid>
-        <Image Height="19" Margin="0,0,401,16" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Right" Width="22"/>
+        <Image x:Name="lupa" Height="19" Margin="0,0,401,16" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Right" Width="22" Style="{StaticResource Lupa}"/>
 
     </Grid>
 </Window>

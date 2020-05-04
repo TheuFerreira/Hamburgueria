@@ -9,6 +9,14 @@
         <SolidColorBrush x:Key="Turquesa" Color="#4472C4"/>
         <SolidColorBrush x:Key="TurquesaClaro" Color="#8fAADC"/>
 
+        <Style x:Key="Lupa" TargetType="Image">
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Cursor" Value="Hand"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
         <ControlTemplate x:Key="ComboBoxToggleButton" TargetType="{x:Type ToggleButton}">
             <Grid>
                 <Grid.ColumnDefinitions>

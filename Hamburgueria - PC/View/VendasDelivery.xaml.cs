@@ -149,7 +149,8 @@ namespace Hamburgueria.View
             {
                 if (e.Key == Key.Down)
                 {
-                    int index = gridClient.SelectedIndex++;
+                    int index = gridClient.SelectedIndex;
+                    index += 1;
                     if (index == gridClient.Items.Count)
                         index = 0;
                     gridClient.SelectedIndex = index;
@@ -157,6 +158,7 @@ namespace Hamburgueria.View
                 else if (e.Key == Key.Up)
                 {
                     int index = gridClient.SelectedIndex--;
+                    index -= 1;
                     if (index < 0)
                         index = gridClient.Items.Count - 1;
                     gridClient.SelectedIndex = index;
@@ -232,14 +234,16 @@ namespace Hamburgueria.View
             {
                 if (e.Key == Key.Down)
                 {
-                    int index = gridSearch.SelectedIndex++;
+                    int index = gridSearch.SelectedIndex;
+                    index += 1;
                     if (index == gridSearch.Items.Count)
                         index = 0;
                     gridSearch.SelectedIndex = index;
                 }
                 else if (e.Key == Key.Up)
                 {
-                    int index = gridSearch.SelectedIndex--;
+                    int index = gridSearch.SelectedIndex;
+                    index -= 1;
                     if (index < 0)
                         index = gridSearch.Items.Count - 1;
                     gridSearch.SelectedIndex = index;

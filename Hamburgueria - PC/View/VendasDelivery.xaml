@@ -120,10 +120,10 @@
 
         <DataGrid x:Name="gridClient" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="608" Margin="60,33,0,0" VerticalScrollBarVisibility="Visible" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}">
             <DataGrid.Columns>
-                <DataGridTextColumn Binding="{Binding ID}" Header="Id" Visibility="Collapsed"/>
-                <DataGridTextColumn Binding="{Binding NAME}" Header="NOME" MinWidth="100" Width="*"/>
-                <DataGridTextColumn Binding="{Binding ADDRESS}" Header="RUA" MinWidth="100" Width="*"/>
-                <DataGridTextColumn Binding="{Binding NUMBER}" Header="NÚMERO" MinWidth="100" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Collapsed"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Street}" Header="RUA" MinWidth="100" Width="*"/>
+                <DataGridTextColumn Binding="{Binding Number}" Header="NÚMERO" MinWidth="100" Width="100"/>
             </DataGrid.Columns>
         </DataGrid>
 

@@ -24,9 +24,9 @@
         </DataGrid>
 
         <Grid Height="60" VerticalAlignment="Bottom" Background="#FF1B3BC6">
-            <TextBox x:Name="Search" FontFamily="Arial" FontSize="15" Height="24" Margin="298,0,314,18" TextWrapping="Wrap" Text="Pesquisar" VerticalAlignment="Bottom" Style="{StaticResource TextBoxUnderline}"/>
+            <TextBox x:Name="Search" FontFamily="Arial" FontSize="15" Margin="0,15,303,21" TextWrapping="Wrap" Text="Pesquisar" Style="{StaticResource TextBoxUnderline}" HorizontalAlignment="Right" Width="180"/>
 
-            <Image x:Name="lupa" Height="19" Margin="0,0,284,17" VerticalAlignment="Bottom" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Right" Width="22" Style="{StaticResource Lupa}"/>
+            <Image x:Name="lupa" Margin="0,20,280,21" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154" HorizontalAlignment="Right" Width="22" Style="{StaticResource Lupa}"/>
             <Button x:Name="BackProduto" Margin="15,18,0,18" HorizontalAlignment="Left" Width="25" Style="{StaticResource ButtonBack}"/>
 
             <Button x:Name="AddProduto" Content="ADICIONAR" Margin="0,0,20,10" HorizontalAlignment="Right" Width="73" Height="36" VerticalAlignment="Bottom" Style="{StaticResource ButtonShadowAround}"/>

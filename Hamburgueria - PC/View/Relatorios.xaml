@@ -25,6 +25,8 @@
                   CanUserDeleteRows="False" 
                   CanUserAddRows="False" 
                   FontSize="22px"
+                  VerticalGridLinesBrush="White"
+                  HorizontalGridLinesBrush="White"
                   IsReadOnly="True"
                   Foreground="White"
                   SelectionMode="Single" 

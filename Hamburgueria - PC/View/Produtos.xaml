@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="PRODUTOS" Height="450" Width="800" WindowState="Maximized" WindowStartupLocation="CenterScreen">
     <Grid>
-        <DataGrid x:Name="GridProdutos" Margin="0,0,0,60" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="{x:Null}" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CellStyle}">
+        <DataGrid x:Name="GridProdutos" Margin="0,0,0,60" HorizontalGridLinesBrush="White" AlternationCount="2" AlternatingRowBackground="{StaticResource TurquesaClaro}" VerticalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CellStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Collapsed"/>
                 <DataGridTextColumn Binding="{Binding Cod, StringFormat=D3}" Header="CÓDIGO" MinWidth="150"/>

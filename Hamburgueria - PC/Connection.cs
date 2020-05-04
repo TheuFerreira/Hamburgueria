@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
 namespace Hamburgueria
@@ -14,6 +15,14 @@ namespace Hamburgueria
 
         public Connection() : base("Connection")
         {
+        }
+
+        private string GetConnectionString()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\TWO Systemas\\DB";
+
+            var conStr = System.Configuration.ConfigurationManager.ConnectionStrings["Connection"].ConnectionString;
+            return conStr.Replace("%USER%", path);
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

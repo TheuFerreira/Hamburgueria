@@ -14,7 +14,7 @@
         <SolidColorBrush x:Key="AzulBruxao" Color="#2f5597"/>
     </Window.Resources>
     <Grid>
-        <DataGrid x:Name="GridClientes" Margin="0,0,0,60" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="White" HorizontalScrollBarVisibility="Auto" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CellStyle}">
+        <DataGrid x:Name="GridClientes" Margin="0,0,0,60" HorizontalGridLinesBrush="White" AlternationCount="2" AlternatingRowBackground="{StaticResource TurquesaClaro}" VerticalGridLinesBrush="White" HorizontalScrollBarVisibility="Auto" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource HeaderStyle}" CellStyle="{StaticResource CellStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Collapsed"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="100" Width="*"/>

@@ -289,7 +289,7 @@ namespace Hamburgueria.View
                 return;
 
             product = (Tables.Product)gridSearch.SelectedItem;
-            searchName.Text = product.Name;
+            searchProduct.Text = product.Name;
 
             gridSearch.Visibility = Visibility.Hidden;
             quantity.Focus();

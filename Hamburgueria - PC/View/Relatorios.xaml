@@ -71,7 +71,7 @@
         <Label x:Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="559,0,559,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
         <Label x:Name="labelTotal" Content="TOTAL: R$0,00" Margin="1106,0,92,6" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
 
-        <Border Margin="0,95,80,0" HorizontalAlignment="Right" Width="110" CornerRadius="20" Background="White" Height="37" VerticalAlignment="Top">
+        <Border x:Name="btnExcel" Margin="0,95,80,0" HorizontalAlignment="Right" Width="110" CornerRadius="20" Background="White" Height="37" VerticalAlignment="Top">
             <Border.Effect>
                 <DropShadowEffect Color="Black" ShadowDepth="0" BlurRadius="20" Opacity=".7"/>
             </Border.Effect>

@@ -118,6 +118,12 @@ namespace Hamburgueria.View
         private void StyleBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             typeBox.Visibility = styleBox.SelectedIndex == 0 ? Visibility.Visible : Visibility.Hidden;
+
+            if (styleBox.SelectedIndex == 0 || styleBox.SelectedIndex == 1)
+                btnExcel.Visibility = Visibility.Visible;
+            else
+                btnExcel.Visibility = Visibility.Collapsed;
+
         }
 
         private void PeriodBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

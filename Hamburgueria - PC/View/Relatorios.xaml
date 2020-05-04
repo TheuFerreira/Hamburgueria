@@ -70,8 +70,8 @@
         <Button x:Name="Back" Margin="15,15,0,0" VerticalAlignment="Top" Height="20" HorizontalAlignment="Left" Width="20" Style="{StaticResource ButtonBack}"/>
 
         <Label x:Name="labelBruteTotal" Content="BRUTO TOTAL: R$0,00" Margin="100,0,1042,6" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
-        <Label x:Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="559,0,559,8" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
-        <Label x:Name="labelTotal" Content="TOTAL: R$0,00" Margin="1106,0,92,6" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom"/>
+        <Label x:Name="labelDiscount" Content="DESCONTO TOTAL: R$0,00" Margin="573,0,545,6" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="240"/>
+        <Label x:Name="labelTotal" Content="TOTAL: R$0,00" Margin="0,0,92,6" FontFamily="Arial" FontSize="15" Foreground="White" Height="27" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="160"/>
 
         <Border x:Name="btnExcel" Margin="0,95,80,0" HorizontalAlignment="Right" Width="110" CornerRadius="20" Background="White" Height="37" VerticalAlignment="Top">
             <Border.Effect>

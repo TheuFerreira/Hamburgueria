@@ -111,7 +111,7 @@ namespace Hamburgueria.View
             {
                 if (codProduct != newCod)
                 {
-                    if (sqlProduct.Exist(codProduct))
+                    if (sqlProduct.Exist(newCod))
                     {
                         MessageBox.Show("O Codigo digitado, já pertence a outro PRODUTO!!!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Error);
                         return;
@@ -120,6 +120,8 @@ namespace Hamburgueria.View
 
                 Tables.Product product = new Tables.Product(idProduct, newCod, Description.Text, Convert.ToDecimal(Price.Text));
                 sqlProduct.AddOrUpdate(product);
+
+                MessageBox.Show("Produto atualizado com sucesso!", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 Close();
             }

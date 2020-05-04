@@ -16,16 +16,16 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <Label Content="NOME:" HorizontalAlignment="Left" Height="21" Margin="10,10,0,0" VerticalAlignment="Top" Width="50" FontFamily="Arial" Foreground="White"/>
+        <Label Content="NOME:*" HorizontalAlignment="Left" Height="21" Margin="10,10,0,0" VerticalAlignment="Top" Width="54" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="searchName" Height="21" Margin="60,12,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-        <Label Content="RUA:" HorizontalAlignment="Left" Height="21" Margin="10,40,0,0" VerticalAlignment="Top" Width="50" FontFamily="Arial" Foreground="White"/>
+        <Label Content="RUA:*" HorizontalAlignment="Left" Height="21" Margin="10,40,0,0" VerticalAlignment="Top" Width="50" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="street" Height="21" Margin="51,41,183,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-        <Label Content="NÚMERO:" HorizontalAlignment="Left" Height="21" Margin="511,39,0,0" VerticalAlignment="Top" Width="67" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="number" Height="21" Margin="583,41,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <Label Content="NÚMERO:*" HorizontalAlignment="Left" Height="21" Margin="511,39,0,0" VerticalAlignment="Top" Width="74" FontFamily="Arial" Foreground="White"/>
+        <TextBox x:Name="number" MaxLength="5" Height="21" Margin="583,41,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
-        <Label Content="BAIRRO:" HorizontalAlignment="Left" Height="21" Margin="10,71,0,0" VerticalAlignment="Top" Width="63" FontFamily="Arial" Foreground="White"/>
+        <Label Content="BAIRRO:*" HorizontalAlignment="Left" Height="21" Margin="10,71,0,0" VerticalAlignment="Top" Width="63" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="district" Height="21" Margin="73,72,220,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="COMPLEMENTO:" HorizontalAlignment="Left" Height="21" Margin="478,72,0,0" VerticalAlignment="Top" Width="107" FontFamily="Arial" Foreground="White"/>
@@ -43,7 +43,7 @@
         <Image HorizontalAlignment="Left" Height="13" Margin="408,167,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png" RenderTransformOrigin="7.933,0.154"/>
 
         <Label Content="QUANTIDADE:" Height="21" Margin="450,155,133,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="quantity" Height="21" Margin="546,158,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
+        <TextBox x:Name="quantity" MaxLength="5" Height="21" Margin="546,158,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />
 
         <Label Content="OBSERVAÇÃO:" HorizontalAlignment="Left" Height="22" Margin="10,186,0,0" VerticalAlignment="Top" Width="101" Foreground="White" FontFamily="Arial"/>
         <TextBox x:Name="observation" Height="21" Margin="115,189,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
@@ -56,13 +56,13 @@
         </ComboBox>
 
         <Label Content="DESCONTO:" HorizontalAlignment="Left" Height="21" Margin="448,223,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="discount" Height="21" Margin="532,226,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00"/>
+        <TextBox x:Name="discount" MaxLength="5" Height="21" Margin="532,226,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00"/>
 
         <Button x:Name="confirm" Content="CONFIRMAR" Height="35" Margin="576,260,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="92"/>
 
         <Label x:Name="labelTotalSale" Content="TOTAL: R$ 0,00" Margin="10,260,352,0" FontFamily="Arial" Foreground="White" FontSize="16" Height="26" VerticalAlignment="Top"/>
 
-        <DataGrid Name="gridProduct" ItemsSource="{Binding}" Height="171" VerticalAlignment="Bottom" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}">
+        <DataGrid Name="gridProduct" ItemsSource="{Binding}" Height="171" VerticalAlignment="Bottom" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" d:IsHidden="True">
             <DataGrid.ColumnHeaderStyle>
                 <Style TargetType="DataGridColumnHeader">
                     <Setter Property="Background" Value="{StaticResource TurquesaEscuro}"/>
@@ -109,7 +109,7 @@
             </DataGrid.Background>
         </DataGrid>
 
-        <DataGrid x:Name="gridSearch" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="312" Margin="90,179,0,0" VerticalScrollBarVisibility="Visible" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}">
+        <DataGrid x:Name="gridSearch" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="312" Margin="90,179,0,0" VerticalScrollBarVisibility="Visible" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}" d:IsHidden="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="ID" Visibility="Collapsed"/>
                 <DataGridTextColumn Binding="{Binding Cod,StringFormat=D3}" Header="CÓDIGO" MinWidth="60"/>
@@ -118,7 +118,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid x:Name="gridClient" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="608" Margin="60,33,0,0" VerticalScrollBarVisibility="Visible" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}">
+        <DataGrid x:Name="gridClient" HorizontalAlignment="Left" Height="79" VerticalAlignment="Top" Width="608" Margin="60,33,0,0" VerticalScrollBarVisibility="Visible" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}" d:IsHidden="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Id}" Header="Id" Visibility="Collapsed"/>
                 <DataGridTextColumn Binding="{Binding Name}" Header="NOME" MinWidth="100" Width="*"/>

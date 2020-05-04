@@ -20,10 +20,10 @@
         <TextBox x:Name="Description" Margin="102,138,47,0" TextWrapping="Wrap" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="24" VerticalAlignment="Top"/>
 
         <Label Content="CÓDIGO:*" HorizontalAlignment="Left" Margin="45,224,0,0" VerticalAlignment="Top" Width="70" Foreground="White" FontFamily="Arial"/>
-        <TextBox x:Name="Code" Margin="111,222,440,0" TextWrapping="Wrap" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="24" VerticalAlignment="Top"/>
+        <TextBox x:Name="Code" MaxLength="5" Margin="111,222,440,0" TextWrapping="Wrap" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="24" VerticalAlignment="Top"/>
        
         <Label Content="PREÇO:*" HorizontalAlignment="Left" Margin="425,224,0,0" VerticalAlignment="Top" Width="86" Foreground="White" FontFamily="Arial"/>
-        <TextBox x:Name="Price" Margin="485,222,47,0" TextWrapping="Wrap" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="26" VerticalAlignment="Top"/>
+        <TextBox x:Name="Price" MaxLength="8" Margin="485,222,47,0" TextWrapping="Wrap" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Height="26" VerticalAlignment="Top"/>
        
         <Button x:Name="ClearBtn" Content="LIMPAR" Margin="0,0,159,30" HorizontalAlignment="Right" Width="75" Style="{DynamicResource ButtonShadowAround}" Height="34" VerticalAlignment="Bottom"/>
 

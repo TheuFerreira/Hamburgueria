@@ -23,7 +23,7 @@
         <TextBox x:Name="Adress" Margin="81,168,208,229" TextWrapping="Wrap" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
         
         <Label Content="NUMERO:*" Margin="604,165,120,228" Foreground="White"/>
-        <TextBox x:Name="Number" Margin="665,168,45,229" TextWrapping="Wrap" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+        <TextBox x:Name="Number" Margin="665,168,45,229" TextWrapping="Wrap" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" MaxLength="5"/>
 
         <Label Content="BAIRRO:*" HorizontalAlignment="Left" Margin="45,230,0,0" VerticalAlignment="Top" Width="58" Foreground="White"/>
         <TextBox x:Name="District" Margin="99,233,333,164" TextWrapping="Wrap" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" />

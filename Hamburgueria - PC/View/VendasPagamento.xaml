@@ -26,15 +26,15 @@
         </Border>
 
         <Label Content="DESCONTO:" HorizontalAlignment="Left" Margin="10,90,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="discount" HorizontalAlignment="Right" Text="0,00" Height="23" Margin="0,90,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" FontFamily="Arial" TextAlignment="Right" Style="{StaticResource TextBoxUnderline}"/>
+        <TextBox x:Name="discount" MaxLength="8" HorizontalAlignment="Right" Text="0,00" Height="23" Margin="0,90,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" FontFamily="Arial" TextAlignment="Right" Style="{StaticResource TextBoxUnderline}"/>
 
         <Label Content="VALOR TOTAL:" HorizontalAlignment="Left" Margin="10,130,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
         <Border Margin="0,130,10,0" HorizontalAlignment="Right" Height="23"  VerticalAlignment="Top" Width="188">
             <Label x:Name="totalValue" Content="0,00" HorizontalContentAlignment="Right" FontFamily="Arial" Foreground="White" Padding="0,5,2,0"/>
         </Border>
 
-        <Label x:Name="labelValuePay" Content="VALOR PAGO:" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="valuePay" Text="0,00" HorizontalAlignment="Right" Height="23" Margin="0,170,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" FontFamily="Arial" TextAlignment="Right" Style="{StaticResource TextBoxUnderline}"/>
+        <Label x:Name="labelValuePay" Content="VALOR PAGO:*" HorizontalAlignment="Left" Margin="10,170,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White" Width="98"/>
+        <TextBox x:Name="valuePay" MaxLength="8" Text="0,00" HorizontalAlignment="Right" Height="23" Margin="0,170,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" FontFamily="Arial" TextAlignment="Right" Style="{StaticResource TextBoxUnderline}"/>
 
         <Label x:Name="labelChange" Content="TROCO:" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" FontFamily="Arial" Foreground="White"/>
         <Border Margin="0,210,10,0" HorizontalAlignment="Right" Height="23"  VerticalAlignment="Top" Width="188">

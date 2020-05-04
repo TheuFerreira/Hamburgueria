@@ -42,68 +42,41 @@ namespace Hamburgueria.View
                 if (periodBox.SelectedIndex == 0)
                 {
                     string date = dateOne.SelectedDate.Value.ToString("yyyy-MM-dd");
-                    new ExcelLoading(0, date).ShowDialog();
+                    new ExcelLoading(0, 0, date).ShowDialog();
                 }
                 // Semanal
                 else if (periodBox.SelectedIndex == 1)
                 {
                     DateTime start = dateOne.SelectedDate.Value.StartOfWeek(DayOfWeek.Sunday);
                     DateTime end = start.AddDays(6);
-                    new ExcelLoading(1, start.ToString("yyyy-MM-dd"), end.ToString("yyyy-MM-dd")).ShowDialog();
+                    new ExcelLoading(0, 1, start.ToString("yyyy-MM-dd"), end.ToString("yyyy-MM-dd")).ShowDialog();
                 }
                 // Mensal
                 else if (periodBox.SelectedIndex == 2)
                 {
                     string date = dateOne.SelectedDate.Value.ToString("yyyy-MM-");
-                    new ExcelLoading(2, date).ShowDialog();
+                    new ExcelLoading(0, 2, date).ShowDialog();
                 }
                 // Anual
                 else if (periodBox.SelectedIndex == 3)
                 {
                     string date = dateOne.SelectedDate.Value.ToString("yyyy-");
-                    new ExcelLoading(3, date).ShowDialog();
+                    new ExcelLoading(0, 3, date).ShowDialog();
                 }
                 // Customizado
                 else if (periodBox.SelectedIndex == 4)
                 {
-                    new ExcelLoading(4, dateOne.SelectedDate.Value.ToString("yyyy-MM-dd"), dateTwo.SelectedDate.Value.ToString("yyyy-MM-dd")).ShowDialog();
+                    new ExcelLoading(0, 4, dateOne.SelectedDate.Value.ToString("yyyy-MM-dd"), dateTwo.SelectedDate.Value.ToString("yyyy-MM-dd")).ShowDialog();
                 }
             }
             // Produtos
             else if (styleBox.SelectedIndex == 1)
             {
-                // Diario
-                if (periodBox.SelectedIndex == 0)
-                {
-                    string date = dateOne.SelectedDate.Value.ToString("yyyy-MM-dd");
-                    grid.ItemsSource = Model.Relatorio.Product(date);
-                }
-                // Semanal
-                else if (periodBox.SelectedIndex == 1)
-                {
-                    DateTime date1 = dateOne.SelectedDate.Value.StartOfWeek(DayOfWeek.Saturday);
-                    DateTime date2 = date1.AddDays(6);
-                    date1 = date1.AddDays(-1);
-                    date2 = date2.AddDays(1);
-
-                    string startDate = date1.ToString("yyyy-MM-dd");
-                    string endDate = date2.ToString("yyyy-MM-dd");
-                    grid.ItemsSource = Model.Relatorio.Product(startDate, endDate);
-                }
-                // Mensal
-                else if (periodBox.SelectedIndex == 2)
-                {
-                    string date = dateOne.SelectedDate.Value.ToString("yyyy-MM");
-                    grid.ItemsSource = Model.Relatorio.Product(date);
-                }
-                // Anual
-                else if (periodBox.SelectedIndex == 3)
-                {
-                    string date = dateOne.SelectedDate.Value.ToString("yyyy");
-                    grid.ItemsSource = Model.Relatorio.Product(date);
-                }
+                string d = dateOne.SelectedDate.Value.ToShortDateString();
+                new ExcelLoading(1, 0, d).ShowDialog();
+                
                 // Customizado
-                else if (periodBox.SelectedIndex == 4)
+                if (periodBox.SelectedIndex == 4)
                 {
                     DateTime date1 = dateOne.SelectedDate.Value;
                     DateTime date2 = dateOne.SelectedDate.Value;
@@ -114,63 +87,6 @@ namespace Hamburgueria.View
                     string endDate = date2.ToString("yyyy-MM-dd");
                     grid.ItemsSource = Model.Relatorio.Product(startDate, endDate);
                 }
-            }
-            // Clientes
-            else if (styleBox.SelectedIndex == 2)
-            {
-                // Diario
-                if (periodBox.SelectedIndex == 0)
-                {
-                    string date = dateOne.SelectedDate.Value.ToString("yyyy-MM-dd");
-                    grid.ItemsSource = Model.Relatorio.Client(date);
-                }
-                // Semanal
-                else if (periodBox.SelectedIndex == 1)
-                {
-                    DateTime date1 = dateOne.SelectedDate.Value.StartOfWeek(DayOfWeek.Saturday);
-                    DateTime date2 = date1.AddDays(6);
-                    date1 = date1.AddDays(-1);
-                    date2 = date2.AddDays(1);
-
-                    string startDate = date1.ToString("yyyy-MM-dd");
-                    string endDate = date2.ToString("yyyy-MM-dd");
-                    grid.ItemsSource = Model.Relatorio.Client(startDate, endDate);
-                }
-                // Mensal
-                else if (periodBox.SelectedIndex == 2)
-                {
-                    string date = dateOne.SelectedDate.Value.ToString("yyyy-MM");
-                    grid.ItemsSource = Model.Relatorio.Client(date);
-                }
-                // Anual
-                else if (periodBox.SelectedIndex == 3)
-                {
-                    string date = dateOne.SelectedDate.Value.ToString("yyyy");
-                    grid.ItemsSource = Model.Relatorio.Client(date);
-                }
-                // Customizado
-                else if (periodBox.SelectedIndex == 4)
-                {
-                    DateTime date1 = dateOne.SelectedDate.Value;
-                    DateTime date2 = dateOne.SelectedDate.Value;
-                    date1 = date1.AddDays(-1);
-                    date2 = date2.AddDays(1);
-
-                    string startDate = date1.ToString("yyyy-MM-dd");
-                    string endDate = date2.ToString("yyyy-MM-dd");
-                    grid.ItemsSource = Model.Relatorio.Client(startDate, endDate);
-                }
-            }
-
-            Style style = new Style(typeof(System.Windows.Controls.Primitives.DataGridColumnHeader));
-            style.Setters.Add(new Setter(BackgroundProperty, FindResource("AzulBruxao")));
-
-            for (int i = 0; i < grid.Columns.Count; i++)
-            {
-                grid.Columns[i].HeaderStyle = style;
-                grid.Columns[i].MinWidth = 150;
-
-                grid.Columns[i].Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             }
         }
 

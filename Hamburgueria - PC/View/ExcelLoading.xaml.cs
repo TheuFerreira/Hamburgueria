@@ -21,11 +21,11 @@ namespace Hamburgueria.View
     {
         private readonly string date;
         private readonly string end;
-
+        private readonly int style = 0;
         private readonly int period = 0;
         private int value = 0;
 
-        public ExcelLoading(int period, string date, string end = "")
+        public ExcelLoading(int style, int period, string date, string end = "")
         {
             InitializeComponent();
 
@@ -35,6 +35,7 @@ namespace Hamburgueria.View
             timer.Interval = new TimeSpan(0, 0, 1);
             timer.Start();
 
+            this.style = style;
             this.period = period;
             this.date = date;
             this.end = end;
@@ -48,17 +49,30 @@ namespace Hamburgueria.View
 
         private void ExcelLoading_Loaded(object sender, RoutedEventArgs e)
         {
-            loadingBar.Maximum = 8;
-            if (period == 0)
-                Task.Factory.StartNew(() => SaleDay(date));
-            else if (period == 1)
-                Task.Factory.StartNew(() => SaleWeek(date, end));
-            else if (period == 2)
-                Task.Factory.StartNew(() => SaleMonth(date));
-            else if (period == 3)
-                Task.Factory.StartNew(() => SaleYear(date));
-            else if (period == 4)
-                Task.Factory.StartNew(() => SaleCustom(date, end));
+            if (style == 0)
+            {
+                loadingBar.Maximum = 8;
+                if (period == 0)
+                    Task.Factory.StartNew(() => SaleDay(date));
+                else if (period == 1)
+                    Task.Factory.StartNew(() => SaleWeek(date, end));
+                else if (period == 2)
+                    Task.Factory.StartNew(() => SaleMonth(date));
+                else if (period == 3)
+                    Task.Factory.StartNew(() => SaleYear(date));
+                else if (period == 4)
+                    Task.Factory.StartNew(() => SaleCustom(date, end));
+            }
+            else if (style == 1)
+            {
+                DateTime dateTime = Convert.ToDateTime(date);
+
+                if (period == 0)
+                {
+                    loadingBar.Maximum = 10;
+                    Task.Factory.StartNew(() => Product(dateTime));
+                }
+            }
         }
 
         private m_Excel.Application app;
@@ -426,7 +440,6 @@ namespace Hamburgueria.View
             }
         }
 
-
         private void SaleCustom(string start, string end)
         {
             ok = false;
@@ -515,6 +528,118 @@ namespace Hamburgueria.View
             }
         }
 
+        private void Product(DateTime date)
+        {
+            ok = false;
+
+            SaveFileDialog fileDialog = new SaveFileDialog();
+            fileDialog.Title = "Exportar para Excel";
+            fileDialog.FileName = "Produtos - " + date.ToString("yyyy-MM-dd");
+            fileDialog.DefaultExt = "*.xlsx";
+            fileDialog.Filter = "*.xlsx | *.xlsx";
+            fileDialog.FileOk += FileDialog_FileOk;
+            fileDialog.ShowDialog();
+
+            if (ok == false)
+            {
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+                return;
+            }
+
+            string fileName = fileDialog.FileName;
+            try
+            {
+                File.Copy("Excel\\produtos.xlsx", fileName, true);
+                value += 1;
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            try
+            {
+                app = new m_Excel.Application();
+                workbook = app.Workbooks.Open(fileName);
+                worksheet = workbook.Worksheets[1];
+
+                string day = date.ToString("yyyy-MM-dd");
+                List<Relatorio.P> products = Relatorio.Product(day);
+                value += 1;
+                for (int i = 0; i < products.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = products[i].Cod;
+                    worksheet.Cells[i + 3, 2] = products[i].Name;
+                    worksheet.Cells[i + 3, 3] = products[i].Price;
+                    worksheet.Cells[i + 3, 4] = products[i].Quantity;
+                    worksheet.Cells[i + 3, 5] = products[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[2];
+                DateTime date1 = date.StartOfWeek(DayOfWeek.Saturday);
+                DateTime date2 = date1.AddDays(6);
+                date1 = date1.AddDays(-1);
+                date2 = date2.AddDays(1);
+                string startDate = date1.ToString("yyyy-MM-dd");
+                string endDate = date2.ToString("yyyy-MM-dd");
+                products = Relatorio.Product(startDate, endDate);
+                value += 1;
+                for (int i = 0; i < products.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = products[i].Cod;
+                    worksheet.Cells[i + 3, 2] = products[i].Name;
+                    worksheet.Cells[i + 3, 3] = products[i].Price;
+                    worksheet.Cells[i + 3, 4] = products[i].Quantity;
+                    worksheet.Cells[i + 3, 5] = products[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[3];
+                string month = date.ToString("yyyy-MM");
+                products = Relatorio.Product(month);
+                value += 1;
+                for (int i = 0; i < products.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = products[i].Cod;
+                    worksheet.Cells[i + 3, 2] = products[i].Name;
+                    worksheet.Cells[i + 3, 3] = products[i].Price;
+                    worksheet.Cells[i + 3, 4] = products[i].Quantity;
+                    worksheet.Cells[i + 3, 5] = products[i].Total;
+                }
+                value += 1;
+
+                worksheet = workbook.Worksheets[4];
+                string year = date.ToString("yyyy");
+                products = Relatorio.Product(year);
+                value += 1;
+                for (int i = 0; i < products.Count; i++)
+                {
+                    worksheet.Cells[i + 3, 1] = products[i].Cod;
+                    worksheet.Cells[i + 3, 2] = products[i].Name;
+                    worksheet.Cells[i + 3, 3] = products[i].Price;
+                    worksheet.Cells[i + 3, 4] = products[i].Quantity;
+                    worksheet.Cells[i + 3, 5] = products[i].Total;
+                }
+                value += 1;
+
+                workbook.Save();
+                workbook.Close(true, misValue, misValue);
+                value += 1;
+
+                Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Background, new Action(() => this.Close()));
+
+                Process.Start(fileName);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                app.Quit();
+            }
+        }
 
         private void FileDialog_FileOk(object sender, CancelEventArgs e)
         {

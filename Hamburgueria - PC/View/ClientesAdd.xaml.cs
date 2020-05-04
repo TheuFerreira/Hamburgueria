@@ -43,6 +43,14 @@ namespace Hamburgueria.View
             Telephone.GotFocus += delegate { Complement.SelectAll(); };
             Reference.GotFocus += delegate { Reference.SelectAll(); };
 
+            clientName.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) Adress.Focus(); };
+            Adress.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) Number.Focus(); };
+            Number.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) District.Focus(); };
+            District.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) Complement.Focus(); };
+            Complement.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) Telephone.Focus(); };
+            Telephone.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) Reference.Focus(); };
+            Reference.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) SaveBtn_Click(null, null); };
+
             SaveBtn.Click += SaveBtn_Click;
             ClearBtn.Click += ClearBtn_Click;
         }

@@ -32,7 +32,7 @@ namespace Hamburgueria.Model
 
             SQLiteCommand command = new SQLiteCommand(connection);
             command.CommandText = "" +
-                "SELECT p.cod, pv.nome, sum(pv.preco), sum(pv.quantidade), sum(pv.total) FROM venda v " +
+                "SELECT p.cod, pv.nome, pv.preco, sum(pv.quantidade), sum(pv.total) FROM venda v " +
                 "INNER JOIN produto_venda pv ON v.id = pv.venda_id " +
                 "INNER JOIN produto p ON p.id = pv.produto_id " +
                 "WHERE v.date like '" + date + "%' " +
@@ -56,7 +56,7 @@ namespace Hamburgueria.Model
 
             SQLiteCommand command = new SQLiteCommand(connection);
             command.CommandText = "" +
-                "SELECT p.cod, pv.nome, sum(pv.preco), sum(pv.quantidade), sum(pv.total) FROM venda v " +
+                "SELECT p.cod, pv.nome, pv.preco, sum(pv.quantidade), sum(pv.total) FROM venda v " +
                 "INNER JOIN produto_venda pv ON v.id = pv.venda_id " +
                 "INNER JOIN produto p ON p.id = pv.produto_id " +
                 "WHERE v.date BETWEEN '" + startDate + "%' and '" + endDate + "%' " +

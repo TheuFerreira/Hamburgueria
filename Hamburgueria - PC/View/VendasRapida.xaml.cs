@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -44,7 +43,7 @@ namespace Hamburgueria.View
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                this.Close();
+                Close();
         }
 
         private void Search_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -208,7 +207,7 @@ namespace Hamburgueria.View
             {
                 MessageBox.Show("Venda realizada com sucesso!!!");
 
-                Items = new ObservableCollection<Item>();
+                Items.Clear();
                 search.Text = "";
                 quantity.Text = "";
                 product = null;

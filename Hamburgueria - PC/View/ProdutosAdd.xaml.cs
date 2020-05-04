@@ -24,12 +24,16 @@ namespace Hamburgueria.View
             {
                 idProduct = product.Id;
                 codProduct = product.Cod;
-                Name.Text = product.Name;
+                Description.Text = product.Name;
                 Code.Text = product.Cod.ToString();
                 Price.Text = product.Price.ToString();
             }
 
             Loaded += ProdutosAdd_Loaded;
+
+            Description.PreviewKeyDown += Description_PreviewKeyDown;
+            Code.PreviewKeyDown += Code_PreviewKeyDown;
+            Price.PreviewKeyDown += Price_PreviewKeyDown;
 
             Code.PreviewTextInput += (s, e) => e.Handled = new Regex("[^0-9]").IsMatch(e.Text);
             Price.PreviewTextInput += (s, e) => e.Handled = new Regex("[^0-9,.]").IsMatch(e.Text);
@@ -44,25 +48,43 @@ namespace Hamburgueria.View
                 Close();
         }
 
+        private void Description_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                Code.Focus();
+        }
+
+        private void Code_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                Price.Focus();
+        }
+
+        private void Price_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+                SaveBtn_Click(null, null);
+        }
+
         private void ProdutosAdd_Loaded(object sender, RoutedEventArgs e)
         {
-            Name.Focus();
-            Name.SelectAll();
+            Description.Focus();
+            Description.SelectAll();
         }
 
         private void ClearBtn_Click(object sender, RoutedEventArgs e)
         {
-            Name.Text = string.Empty;
+            Description.Text = string.Empty;
             Code.Text = string.Empty;
             Price.Text = string.Empty;
 
-            Name.Focus();
+            Description.Focus();
         }
 
         private void SaveBtn_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(Price.Text) || 
-                string.IsNullOrEmpty(Name.Text) || 
+                string.IsNullOrEmpty(Description.Text) || 
                 string.IsNullOrEmpty(Code.Text))
             {
                 MessageBox.Show("Todos os campos precisam serem preenchidos!!!", "ERRO", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -78,8 +100,8 @@ namespace Hamburgueria.View
                     return;
                 }
 
-                Tables.Product product = new Tables.Product(newCod, Name.Text, Convert.ToDecimal(Price.Text));
-                new Sql.Product().AddOrUpdate(product);
+                Tables.Product product = new Tables.Product(newCod, Description.Text, Convert.ToDecimal(Price.Text));
+                sqlProduct.AddOrUpdate(product);
 
                 MessageBox.Show("Produto cadastrado com sucesso!", "", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -96,8 +118,8 @@ namespace Hamburgueria.View
                     }
                 }
 
-                Tables.Product product = new Tables.Product(idProduct, newCod, Name.Text, Convert.ToDecimal(Price.Text));
-                new Sql.Product().AddOrUpdate(product);
+                Tables.Product product = new Tables.Product(idProduct, newCod, Description.Text, Convert.ToDecimal(Price.Text));
+                sqlProduct.AddOrUpdate(product);
 
                 Close();
             }

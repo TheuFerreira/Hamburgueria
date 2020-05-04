@@ -248,9 +248,7 @@
     <Content Include="hamburgueria.db">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <None Include="Resources\splash_screen.png" />
-    <SplashScreen Include="Resources\splash_screen_1.png" />
-    <None Include="Resources\splash_screen_2.png" />
+    <SplashScreen Include="Resources\splash_screen.png" />
     <Content Include="x64\SQLite.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

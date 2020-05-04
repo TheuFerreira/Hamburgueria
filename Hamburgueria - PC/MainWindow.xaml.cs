@@ -15,12 +15,12 @@ namespace Hamburgueria
         {
             new Sql.Product().Select();
 
-            ObservableCollection<Item> items = new ObservableCollection<Item>();
+            /*ObservableCollection<Item> items = new ObservableCollection<Item>();
             items.Add(new Item(2, 1, "COCA COLA 1L", 6.5m, 1));
             for (int i = 0; i < 25; i++)
             {
                 Sales.Balcao.Create(i + 1, DateTime.Today, 10, "", items);
-            }
+            }*/
 
             InitializeComponent();
 

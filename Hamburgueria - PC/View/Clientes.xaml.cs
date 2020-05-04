@@ -128,6 +128,9 @@ namespace Hamburgueria.View
         {
             if (GridClientes.SelectedIndex != -1)
             {
+                if (MessageBox.Show("Tem certeza de que deseja excluir o cliente selecionado?", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                    return;
+
                 var select = (Tables.Client)GridClientes.SelectedItem;
                 sqlClient.Delete(select.Id);
 

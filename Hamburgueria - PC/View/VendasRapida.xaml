@@ -19,13 +19,13 @@
                 </Rectangle.Fill>
             </Rectangle>
 
-            <Label Content="PRODUTO" HorizontalAlignment="Left" Height="22" Margin="24,37,0,0" VerticalAlignment="Top" Width="63" Foreground="White" FontSize="11"/>
+            <Label Content="PRODUTO:" HorizontalAlignment="Left" Height="22" Margin="24,37,0,0" VerticalAlignment="Top" Width="63" Foreground="White" FontSize="11"/>
             <TextBox x:Name="search" Height="21" Margin="87,39,281,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
             <Image Height="13" Margin="400,45,0,0" VerticalAlignment="Top" Source="/Hamburgueria;component/Resources/lupa.png" HorizontalAlignment="Left" Width="15" RenderTransformOrigin="3.6,0.615"/>
 
-            <Label Content="QUANTIDADE" HorizontalAlignment="Left" Margin="448,37,0,0" Width="90" FontFamily="Arial" Foreground="White" Height="21" VerticalAlignment="Top"/>
-            <TextBox x:Name="quantity" Height="21" Margin="538,39,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
+            <Label Content="QUANTIDADE:" HorizontalAlignment="Left" Margin="444,37,0,0" Width="94" FontFamily="Arial" Foreground="White" Height="21" VerticalAlignment="Top"/>
+            <TextBox x:Name="quantity" MaxLength="5" Height="21" Margin="538,39,30,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
             <Button x:Name="confirm" Content="CONFIRMAR" Height="34" Margin="0,144,10,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Right" Width="95"/>
 

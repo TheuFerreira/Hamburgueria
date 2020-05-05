@@ -126,10 +126,9 @@ namespace Hamburgueria.View
                     string[] info = Sales.Balcao.Info(numTable);
 
                     DateTime dateSale = Convert.ToDateTime(info[0]);
-                    decimal totalSale = Convert.ToDecimal(info[1]);
-                    string observation = info[2];
+                    string observation = info[1];
 
-                    VendasBalcao balcao = new VendasBalcao(this, Sales.Balcao.Products(numTable), dateSale, true, numTable, totalSale, observation);
+                    VendasBalcao balcao = new VendasBalcao(this, Sales.Balcao.Products(numTable), dateSale, true, numTable, observation);
                     balcao.ShowDialog();
                 }
                 else
@@ -138,11 +137,10 @@ namespace Hamburgueria.View
                     string[] info = Sales.Delivery.Info(fileName);
 
                     DateTime dateSale = Convert.ToDateTime(info[1]);
-                    decimal totalSale = Convert.ToDecimal(info[2]);
-                    string[] addressFile = info[3].Split('>');
-                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
+                    string[] addressFile = info[2].Split('>');
+                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[3], info[4]);
 
-                    VendasDelivery delivery = new VendasDelivery(this, Sales.Delivery.Products(fileName), address, dateSale, true, fileName, totalSale, info[6], info[7], info[8]);
+                    VendasDelivery delivery = new VendasDelivery(this, Sales.Delivery.Products(fileName), address, dateSale, true, fileName, info[5], info[6], info[7]);
                     delivery.ShowDialog();
                 }
             }
@@ -160,15 +158,14 @@ namespace Hamburgueria.View
                     string[] info = Sales.Delivery.Info(fileName);
 
                     DateTime dateSale = Convert.ToDateTime(info[1]);
-                    decimal totalSale = Convert.ToDecimal(info[2]);
-                    string[] addressFile = info[3].Split('>');
-                    Hamburgueria.Tables.Client address = new Hamburgueria.Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
-                    string payment = info[6];
-                    decimal discount = Convert.ToDecimal(info[7]);
+                    string[] addressFile = info[2].Split('>');
+                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[3], info[4]);
+                    string payment = info[5];
+                    decimal discount = Convert.ToDecimal(info[6]);
 
                     ObservableCollection<Hamburgueria.Item> items = Sales.Delivery.Products(fileName);
 
-                    TXT.Sale(address, dateSale, totalSale, discount, totalSale - discount, payment, info[8], items);
+                    TXT.Sale(address, dateSale, it.Total, discount, it.Total - discount, payment, info[7], items);
                     new Impressao().ShowDialog();
                 }
             }
@@ -180,10 +177,9 @@ namespace Hamburgueria.View
                     int numTable = Convert.ToInt32(it.File);
                     string[] info = Sales.Balcao.Info(numTable);
                     DateTime dateSale = Convert.ToDateTime(info[0]);
-                    decimal totalSale = Convert.ToDecimal(info[1]);
-                    string observation = info[2];
+                    string observation = info[1];
 
-                    new VendasPagamento(totalSale)
+                    new VendasPagamento(it.Total)
                     {
                         typeSale = 1,
                         sales = this,
@@ -201,19 +197,18 @@ namespace Hamburgueria.View
                         return;
 
                     DateTime dateSale = Convert.ToDateTime(info[1]);
-                    decimal totalSale = Convert.ToDecimal(info[2]);
-                    string[] addressFile = info[3].Split('>');
-                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[4], info[5]);
-                    string payment = info[6];
-                    decimal discount = Convert.ToDecimal(info[7]);
+                    string[] addressFile = info[2].Split('>');
+                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[3], info[4]);
+                    string payment = info[5];
+                    decimal discount = Convert.ToDecimal(info[6]);
 
                     ObservableCollection<Hamburgueria.Item>items = Sales.Delivery.Products(fileName);
 
-                    new Sql.Sale().Insert(address, dateSale, totalSale - discount, discount, totalSale, payment, items);
+                    new Sql.Sale().Insert(address, dateSale, it.Total - discount, discount, it.Total, payment, items);
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        TXT.Sale(address, dateSale, totalSale, discount, totalSale - discount, payment, info[8], items);
+                        TXT.Sale(address, dateSale, it.Total, discount, it.Total- discount, payment, info[7], items);
                         new Impressao().ShowDialog();
                     }
 

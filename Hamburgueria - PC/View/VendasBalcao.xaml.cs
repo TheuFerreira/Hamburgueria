@@ -24,7 +24,7 @@ namespace Hamburgueria.View
         private readonly DateTime dateSale;
         private readonly int oldNumTable;
 
-        public VendasBalcao(Vendas sales, ObservableCollection<Item> items, DateTime dateSale, bool editing = false, int num = -1, decimal totalSale = 0, string observations = "")
+        public VendasBalcao(Vendas sales, ObservableCollection<Item> items, DateTime dateSale, bool editing = false, int num = -1, string observations = "")
         {
             InitializeComponent();
 
@@ -66,7 +66,7 @@ namespace Hamburgueria.View
                 isEditing = true;
                 oldNumTable = num;
                 numTable.Text = num.ToString();
-                labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
+                labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
                 this.dateSale = dateSale;
                 observation.Text = observations;
             }
@@ -260,7 +260,7 @@ namespace Hamburgueria.View
                     return;
                 }
 
-                Sales.Balcao.Create(table, DateTime.Now, TotalSale(), observation.Text, Items);
+                Sales.Balcao.Create(table, DateTime.Now, observation.Text, Items);
 
                 product = null;
 
@@ -287,7 +287,7 @@ namespace Hamburgueria.View
                     }
                 }
 
-                Sales.Balcao.Edit(oldNumTable, table, dateSale, TotalSale(), observation.Text, Items);
+                Sales.Balcao.Edit(oldNumTable, table, dateSale, observation.Text, Items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

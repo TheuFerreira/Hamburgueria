@@ -21,7 +21,7 @@ namespace Hamburgueria.View
         private readonly bool isEditing = false;
         private readonly DateTime dateSale;
 
-        public VendasDelivery(Vendas sales, ObservableCollection<Item> items, Tables.Client oldAddress, DateTime dateSale, bool isEditing = false, string fileName = "",  decimal totalSale = 0, string payment = "", string discounts = "",  string observations = "")
+        public VendasDelivery(Vendas sales, ObservableCollection<Item> items, Tables.Client oldAddress, DateTime dateSale, bool isEditing = false, string fileName = "", string payment = "", string discounts = "",  string observations = "")
         {
             InitializeComponent();
 
@@ -79,7 +79,6 @@ namespace Hamburgueria.View
             if (isEditing)
             {
                 this.isEditing = true;
-                labelTotalSale.Content = "TOTAL:" + totalSale.ToString("C2");
                 this.fileName = fileName;
                 this.dateSale = dateSale;
 
@@ -107,6 +106,7 @@ namespace Hamburgueria.View
                 }
 
                 this.discount.Text = discounts;
+                labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
             }
         }
 
@@ -426,10 +426,7 @@ namespace Hamburgueria.View
 
             if (isEditing == false)
             {
-                decimal total = 0;
-                foreach (Item i in Items)
-                    total += i.Total;
-                Sales.Delivery.Create(address, DateTime.Now, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items);
+                Sales.Delivery.Create(address, DateTime.Now, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items);
 
                 searchName.Text = "";
                 street.Text = "";
@@ -451,10 +448,7 @@ namespace Hamburgueria.View
             }
             else
             {
-                decimal total = 0;
-                foreach (Item i in Items)
-                    total += i.Total;
-                Sales.Delivery.Edit(fileName, address, dateSale, total, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items);
+                Sales.Delivery.Edit(fileName, address, dateSale, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

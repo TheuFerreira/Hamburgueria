@@ -1,6 +1,7 @@
 ﻿using Hamburgueria.View;
 using System.Windows;
 using System.Windows.Input;
+using System;
 
 namespace Hamburgueria
 {
@@ -22,12 +23,25 @@ namespace Hamburgueria
 
             InitializeComponent();
 
+            //this.Loaded += MainWindow_Loaded;
+
             PreviewKeyDown += MainWindow_PreviewKeyDown;
 
             BtnVendas.Click += delegate { new Vendas().Show(); };
             BtnClientes.Click += delegate { new Clientes().Show(); };
             BtnProdutos.Click += delegate { new Produtos().Show(); };
             BtnRelatorios.Click += delegate { new Relatorios().Show(); };
+        }
+
+        private void MainWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            DateTime maxDate = new DateTime(2000, 5, 10);
+
+            if (DateTime.Today >= maxDate)
+            {
+                MessageBox.Show("Tempo de avalização expirado!!!");
+                this.Close();
+            }
         }
 
         private void MainWindow_PreviewKeyDown(object sender, KeyEventArgs e)

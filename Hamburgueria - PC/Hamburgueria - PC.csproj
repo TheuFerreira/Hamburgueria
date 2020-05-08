@@ -96,6 +96,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Sales\Log.cs" />
     <Compile Include="Sql\Client.cs" />
     <Compile Include="Sql\Product.cs" />
     <Compile Include="Sql\Sale.cs" />
@@ -106,8 +107,6 @@
     <Compile Include="Tables\Product.cs" />
     <Compile Include="Tables\Sale.cs" />
     <Compile Include="TXT.cs" />
-    <Compile Include="Sales\Balcao.cs" />
-    <Compile Include="Sales\Delivery.cs" />
     <Compile Include="View\Clientes.xaml.cs">
       <DependentUpon>Clientes.xaml</DependentUpon>
     </Compile>

@@ -17,11 +17,10 @@ namespace Hamburgueria.View
         private readonly Sql.Client sqlClient;
         private readonly Sql.Product sqlProduct;
         private readonly Vendas sales;
-        private readonly string fileName;
         private readonly bool isEditing = false;
         private readonly DateTime dateSale;
 
-        public VendasDelivery(Vendas sales, ObservableCollection<Item> items, Tables.Client oldAddress, DateTime dateSale, bool isEditing = false, string fileName = "", string payment = "", string discounts = "")
+        public VendasDelivery(Vendas sales, ObservableCollection<Item> items, Tables.Client oldAddress, DateTime dateSale, bool isEditing = false, string payment = "", string discounts = "")
         {
             InitializeComponent();
 
@@ -81,7 +80,6 @@ namespace Hamburgueria.View
             if (isEditing)
             {
                 this.isEditing = true;
-                this.fileName = fileName;
                 this.dateSale = dateSale;
 
                 searchName.Text = oldAddress.Name;
@@ -427,7 +425,7 @@ namespace Hamburgueria.View
 
             if (isEditing == false)
             {
-                Sales.Delivery.Create(address, DateTime.Now, payment.Text, Convert.ToDecimal(discount.Text), Items);
+                Sales.Log.Create(DateTime.Now, address, payment.Text, Convert.ToDecimal(discount.Text), Items);
 
                 searchName.Text = "";
                 street.Text = "";
@@ -452,7 +450,7 @@ namespace Hamburgueria.View
             }
             else
             {
-                Sales.Delivery.Edit(fileName, address, dateSale, payment.Text, Convert.ToDecimal(discount.Text), Items);
+                Sales.Log.Create(dateSale, address, payment.Text, Convert.ToDecimal(discount.Text), Items);
 
                 if (MessageBox.Show("Venda alterada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {

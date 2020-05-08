@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Controls.Primitives;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace Hamburgueria.View
 {
@@ -22,13 +19,13 @@ namespace Hamburgueria.View
 
             gridSales.DataContext = sales;
 
-            this.Loaded += Vendas_Loaded;
+            this.Loaded += (sender, e) => UpdateGrid();
 
-            this.gridSales.BeginningEdit += GridSales_BeginningEdit;
+            this.gridSales.BeginningEdit += (sender, e) => e.Cancel = true;
             this.gridSales.PreviewMouseUp += GridSales_PreviewMouseUp;
 
             this.back.Click += Back_Click;
-            filter.SelectionChanged += Filter_SelectionChanged;
+            filter.SelectionChanged += (sender, e) => UpdateGrid();
             this.addFast.Click += AddFast_Click;
             this.addLocal.Click += AddLocal_Click;
             this.addDelivery.Click += AddDelivery_Click;
@@ -46,39 +43,7 @@ namespace Hamburgueria.View
 
         public void UpdateGrid()
         {
-            Filter_SelectionChanged(null, null);
-        }
-
-        private void Filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            sales.Clear();
-            if (filter.SelectedIndex == 0)
-            {
-                Sales.Balcao.Select(sales);
-                Sales.Delivery.Select(sales);
-            }
-            else if (filter.SelectedIndex == 1)
-            {
-                Sales.Delivery.Select(sales);
-            }
-            else
-            {
-                Sales.Balcao.Select(sales);
-            }
-            sales.Rearrange();
-        }
-
-        private void Vendas_Loaded(object sender, RoutedEventArgs e)
-        {
-            sales.Clear();
-            Sales.Balcao.Select(sales);
-            Sales.Delivery.Select(sales);
-            sales.Rearrange();
-        }
-
-        private void GridSales_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
-        {
-            e.Cancel = true;
+            Sales.Log.Select(sales, filter.SelectedIndex);
         }
 
         private void GridSales_PreviewMouseUp(object sender, MouseButtonEventArgs e)
@@ -97,15 +62,16 @@ namespace Hamburgueria.View
                 {
                     if (MessageBox.Show("Tem certeza que deseja excluir a venda?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        int numTable = Convert.ToInt32(it.File);
-                        Sales.Balcao.Delete(numTable);
+                        Sales.Log.Delete(it.Date);
+                        sales.Remove(it);
                     }
                 }
                 else
                 {
                     if (MessageBox.Show("Tem certeza que deseja excluir a venda?", "", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                     {
-                        Sales.Delivery.Delete(it.File);
+                        Sales.Log.Delete(it.Date);
+                        sales.Remove(it);
                     }
                 }
             }
@@ -114,24 +80,15 @@ namespace Hamburgueria.View
             {
                 if (it.Type == 0)
                 {
-                    int numTable = Convert.ToInt32(it.File);
-                    string[] info = Sales.Balcao.Info(numTable);
-
-                    DateTime dateSale = Convert.ToDateTime(info[0]);
-
-                    VendasBalcao balcao = new VendasBalcao(this, Sales.Balcao.Products(numTable), dateSale, true, numTable);
+                    VendasBalcao balcao = new VendasBalcao(this, Sales.Log.Products(it.Date), it.Date, true, Sales.Log.NumTable(it.Date));
                     balcao.ShowDialog();
                 }
                 else
                 {
-                    string fileName = it.File;
-                    string[] info = Sales.Delivery.Info(fileName);
+                    Tables.Client client = Sales.Log.Client(it.Date);
+                    string[] info = Sales.Log.InfoDelivery(it.Date);
 
-                    DateTime dateSale = Convert.ToDateTime(info[1]);
-                    string[] addressFile = info[2].Split('>');
-                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[3], info[4]);
-
-                    VendasDelivery delivery = new VendasDelivery(this, Sales.Delivery.Products(fileName), address, dateSale, true, fileName, info[5], info[6]);
+                    VendasDelivery delivery = new VendasDelivery(this, Sales.Log.Products(it.Date), client, it.Date, true, info[0], info[1]);
                     delivery.ShowDialog();
                 }
             }
@@ -145,18 +102,15 @@ namespace Hamburgueria.View
                 }
                 else
                 {
-                    string fileName = it.File;
-                    string[] info = Sales.Delivery.Info(fileName);
+                    Tables.Client client = Sales.Log.Client(it.Date);
+                    string[] info = Sales.Log.InfoDelivery(it.Date);
 
-                    DateTime dateSale = Convert.ToDateTime(info[1]);
-                    string[] addressFile = info[2].Split('>');
-                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[3], info[4]);
-                    string payment = info[5];
-                    decimal discount = Convert.ToDecimal(info[6]);
+                    string payment = info[0];
+                    decimal discount = Convert.ToDecimal(info[1]);
 
-                    ObservableCollection<Hamburgueria.Item> items = Sales.Delivery.Products(fileName);
+                    ObservableCollection<Item> items = Sales.Log.Products(it.Date);
 
-                    TXT.Sale(address, dateSale, it.Total, discount, it.Total - discount, payment, items);
+                    TXT.Sale(client, it.Date, it.Total, discount, it.Total - discount, payment, items);
                     new Impressao().ShowDialog();
                 }
             }
@@ -165,47 +119,41 @@ namespace Hamburgueria.View
             {
                 if (it.Type == 0)
                 {
-                    int numTable = Convert.ToInt32(it.File);
-                    string[] info = Sales.Balcao.Info(numTable);
-                    DateTime dateSale = Convert.ToDateTime(info[0]);
-
                     new VendasPagamento(it.Total)
                     {
                         typeSale = 1,
                         sales = this,
-                        numTable = numTable,
-                        dateSale = dateSale
+                        numTable = Sales.Log.NumTable(it.Date),
+                        dateSale = it.Date
                     }.ShowDialog();
+
+                    UpdateGrid();
                 }
                 else
                 {
-                    string fileName = it.File;
-                    string[] info = Sales.Delivery.Info(fileName);
+                    Tables.Client client = Sales.Log.Client(it.Date);
+                    string[] info = Sales.Log.InfoDelivery(it.Date);
 
-                    if (MessageBox.Show("Tem certeza de que deseja FINALIZAR a venda do Cliente " + info[0] + "??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
+                    if (MessageBox.Show("Tem certeza de que deseja FINALIZAR a venda do Cliente " + client.Name + "??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.No)
                         return;
 
-                    DateTime dateSale = Convert.ToDateTime(info[1]);
-                    string[] addressFile = info[2].Split('>');
-                    Tables.Client address = new Tables.Client(info[0], addressFile[0], Convert.ToInt32(addressFile[1]), addressFile[2], addressFile[3], info[3], info[4]);
-                    string payment = info[5];
-                    decimal discount = Convert.ToDecimal(info[6]);
+                    string payment = info[0];
+                    decimal discount = Convert.ToDecimal(info[1]);
 
-                    ObservableCollection<Hamburgueria.Item>items = Sales.Delivery.Products(fileName);
+                    ObservableCollection<Item> items = Sales.Log.Products(it.Date);
 
-                    new Sql.Sale().Insert(address, dateSale, it.Total - discount, discount, it.Total, payment, items);
+                    new Sql.Sale().Insert(client, it.Date, it.Total - discount, discount, it.Total, payment, items);
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        TXT.Sale(address, dateSale, it.Total, discount, it.Total- discount, payment, items);
+                        TXT.Sale(client, it.Date, it.Total, discount, it.Total - discount, payment, items);
                         new Impressao().ShowDialog();
                     }
 
-                    Sales.Delivery.Delete(fileName);
+                    Sales.Log.Delete(it.Date);
+                    sales.Remove(it);
                 }
             }
-
-            UpdateGrid();
         }
 
         private void Back_Click(object sender, RoutedEventArgs e)
@@ -229,11 +177,6 @@ namespace Hamburgueria.View
         {
             VendasDelivery delivery = new VendasDelivery(this, new ObservableCollection<Hamburgueria.Item>(), new Tables.Client(), DateTime.Today);
             delivery.ShowDialog();
-        }
-
-        private void filter_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

@@ -255,13 +255,22 @@ namespace Hamburgueria.View
             if (isEditing == false)
             {
                 int table = Convert.ToInt32(numTable.Text);
-                if (Sales.Balcao.Exist(table))
+                bool exist = false;
+                for (int i = 0; i < sales.sales.Count; i++)
+                {
+                    if (sales.sales[i].File == table.ToString())
+                    {
+                        exist = true;
+                        break;
+                    }
+                }
+                if (exist)
                 {
                     MessageBox.Show("Essa mesa já está sendo utilizada!!!");
                     return;
                 }
 
-                Sales.Balcao.Create(table, DateTime.Now, Items);
+                Sales.Log.Create(DateTime.Now, table, Items);
 
                 product = null;
 
@@ -280,14 +289,24 @@ namespace Hamburgueria.View
                 int table = Convert.ToInt32(numTable.Text);
                 if (oldNumTable != table)
                 {
-                    if (Sales.Balcao.Exist(table))
+                    bool exist = false;
+                    for (int i = 0; i < sales.sales.Count; i++)
+                    {
+                        if (sales.sales[i].File == table.ToString())
+                        {
+                            exist = true;
+                            break;
+                        }
+                    }
+
+                    if (exist)
                     {
                         MessageBox.Show("Essa mesa já está sendo utilizada!!!");
                         return;
                     }
                 }
 
-                Sales.Balcao.Edit(oldNumTable, table, dateSale, Items);
+                Sales.Log.Create(dateSale, table, Items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

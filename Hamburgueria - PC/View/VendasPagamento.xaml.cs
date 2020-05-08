@@ -146,7 +146,7 @@ namespace Hamburgueria.View
         private void Print_Click(object sender, RoutedEventArgs e)
         {
             if (typeSale == 1)
-                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, Sales.Balcao.Products(numTable));
+                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, Sales.Log.Products(dateSale));
             else
                 TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, items);
             new Impressao().ShowDialog();
@@ -158,9 +158,9 @@ namespace Hamburgueria.View
             // TABLE
             if (typeSale == 1)
             {
-                new Sql.Sale().Insert(numTable, dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), payment.Text, Sales.Balcao.Products(numTable));
+                new Sql.Sale().Insert(numTable, dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), payment.Text, Sales.Log.Products(dateSale));
 
-                Sales.Balcao.Delete(numTable);
+                Sales.Log.Delete(dateSale);
 
                 sales.UpdateGrid();
             }

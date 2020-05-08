@@ -56,8 +56,8 @@ namespace Hamburgueria.View
             gridProduct.BeginningEdit += (sender, e) => e.Cancel = true;
             gridProduct.PreviewKeyDown += GridProduct_PreviewKeyDown;
 
-            numTable.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) observation.Focus(); };
-            observation.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) Confirm_Click(null, null); };
+            numTable.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) Confirm_Click(null, null); };
+            observation.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) quantity.Focus(); };
 
             confirm.Click += Confirm_Click;
 
@@ -157,7 +157,7 @@ namespace Hamburgueria.View
             product = (Tables.Product)gridSearch.SelectedItem;
             search.Text = product.Name;
             gridSearch.Visibility = Visibility.Hidden;
-            quantity.Focus();
+            observation.Focus();
         }
 
         private void Quantity_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -189,7 +189,7 @@ namespace Hamburgueria.View
                 bool exist = false;
                 foreach (Item i in Items)
                 {
-                    if (i.Id == product.Id)
+                    if (i.Name == product.Name + " " + observation.Text)
                     {
                         i.Quantity++;
 
@@ -199,12 +199,13 @@ namespace Hamburgueria.View
                 }
 
                 if (exist == false)
-                    Items.Add(new Item(product.Id, product.Cod, product.Name, product.Price, q));
+                    Items.Add(new Item(product.Id, product.Cod, product.Name + " " + observation.Text, product.Price, q));
 
                 labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
 
                 product = null;
 
+                observation.Text = "";
                 quantity.Text = "";
                 search.Text = "";
                 gridSearch.Visibility = Visibility.Hidden;
@@ -260,7 +261,7 @@ namespace Hamburgueria.View
                     return;
                 }
 
-                Sales.Balcao.Create(table, DateTime.Now, observation.Text, Items);
+                Sales.Balcao.Create(table, DateTime.Now, Items);
 
                 product = null;
 
@@ -268,7 +269,6 @@ namespace Hamburgueria.View
                 labelTotalSale.Content = "TOTAL:R$0,00";
                 quantity.Text = "";
                 numTable.Text = "";
-                observation.Text = "";
                 search.Focus();
 
                 MessageBox.Show("Venda adicionada com sucesso!!!");
@@ -287,11 +287,11 @@ namespace Hamburgueria.View
                     }
                 }
 
-                Sales.Balcao.Edit(oldNumTable, table, dateSale, observation.Text, Items);
+                Sales.Balcao.Edit(oldNumTable, table, dateSale, Items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 
-                this.Close();
+                Close();
             }
         }
 

@@ -21,7 +21,7 @@ namespace Hamburgueria.Sales
             return pathData + "\\";
         }
 
-        public static void Create(Tables.Client address, DateTime dateSale, string payment, decimal discount, string observation, ObservableCollection<Item> items, string fileName = "-1")
+        public static void Create(Tables.Client address, DateTime dateSale, string payment, decimal discount, ObservableCollection<Item> items, string fileName = "-1")
         {
             int i = Directory.GetFiles(DefaultPath(), "*.bin").Length;
 
@@ -39,11 +39,13 @@ namespace Hamburgueria.Sales
             content += address.Reference + "\n";
             content += payment + "\n";
             content += discount + "\n";
-            content += observation + "\n";
             content += "-\n";
 
             foreach (Item it in items)
-                content += it.Id + ">" + it.Quantity + "\n";
+            {
+                string obs = it.Name.Substring(new Sql.Product().GetProduct(it.Id).Name.Length + 1);
+                content += it.Id + ">" + obs + ">" + it.Quantity + "\n";
+            }
 
             File.WriteAllText(path, content);
         }
@@ -68,8 +70,6 @@ namespace Hamburgueria.Sales
                 address.Telephone = lines[3];
                 address.Reference = lines[4];
 
-                string observation = lines[7];
-
                 string info = address.Name + "\n\n";
                 info += "ENDEREÇO: " + address.Street + ", Nº" + address.Number + ", " + address.District + ", " + address.Complement + "\n";
                 info += "TELEFONE: " + address.Telephone + "\n";
@@ -80,19 +80,18 @@ namespace Hamburgueria.Sales
 
                 info += "PEDIDOS\n";
                 decimal totalSale = 0;
-                for (int j = 9; j < lines.Length; j++)
+                for (int j = 8; j < lines.Length; j++)
                 {
                     string[] requests = lines[j].Split('>');
 
                     int id = Convert.ToInt32(requests[0]);
-                    int quantity = Convert.ToInt32(requests[1]);
+                    string obs = requests[1];
+                    int quantity = Convert.ToInt32(requests[2]);
 
                     var p = new Sql.Product().GetProduct(id);
-                    info += quantity + "x " + p.Name + "\t\t" + (p.Price * quantity).ToString("C2") + "\n";
+                    info += quantity + "x " + p.Name +" " + obs + "\t\t" + (p.Price * quantity).ToString("C2") + "\n";
                     totalSale += p.Price * quantity;
                 }
-                if (string.IsNullOrWhiteSpace(observation) == false)
-                    info += "OBSERVAÇÃO: " + observation + "\n";
 
                 grid.Items.Add(new View.Vendas.Item() { Type = 1, Value = "DELIVERY", File = fileName, Info = info, Date = dateSale, Total = totalSale - Convert.ToDecimal(lines[6]) });
             }
@@ -101,7 +100,7 @@ namespace Hamburgueria.Sales
         public static string[] Info(string fileName)
         {
             string[] lines = File.ReadAllLines(DefaultPath() + fileName + ".bin");
-            string[] info = new string[8];
+            string[] info = new string[7];
 
             info[0] = lines[0];
             info[1] = lines[1];
@@ -110,14 +109,13 @@ namespace Hamburgueria.Sales
             info[4] = lines[4];
             info[5] = lines[5];
             info[6] = lines[6];
-            info[7] = lines[7];
 
             return info;
         }
 
-        public static void Edit(string oldFileName, Tables.Client address, DateTime dateSale, string payment, decimal discount, string observation, ObservableCollection<Item> items)
+        public static void Edit(string oldFileName, Tables.Client address, DateTime dateSale, string payment, decimal discount, ObservableCollection<Item> items)
         {
-            Create(address, dateSale, payment, discount, observation, items, oldFileName);
+            Create(address, dateSale, payment, discount, items, oldFileName);
         }
 
         public static bool Exist(string fileName)
@@ -141,15 +139,16 @@ namespace Hamburgueria.Sales
 
             string[] lines = File.ReadAllLines(DefaultPath() + fileName + ".bin");
 
-            for (int j = 9; j < lines.Length; j++)
+            for (int j = 8; j < lines.Length; j++)
             {
                 string[] requests = lines[j].Split('>');
 
                 int id = Convert.ToInt32(requests[0]);
-                int quantity = Convert.ToInt32(requests[1]);
+                string obs = requests[1];
+                int quantity = Convert.ToInt32(requests[2]);
 
                 var p = new Sql.Product().GetProduct(id);
-                it.Add(new Item(id, p.Cod, p.Name, p.Price, quantity));
+                it.Add(new Item(id, p.Cod, p.Name + " " + obs, p.Price, quantity));
             }
 
             return it;

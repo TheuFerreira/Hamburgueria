@@ -21,7 +21,7 @@ namespace Hamburgueria.View
         private readonly bool isEditing = false;
         private readonly DateTime dateSale;
 
-        public VendasDelivery(Vendas sales, ObservableCollection<Item> items, Tables.Client oldAddress, DateTime dateSale, bool isEditing = false, string fileName = "", string payment = "", string discounts = "",  string observations = "")
+        public VendasDelivery(Vendas sales, ObservableCollection<Item> items, Tables.Client oldAddress, DateTime dateSale, bool isEditing = false, string fileName = "", string payment = "", string discounts = "")
         {
             InitializeComponent();
 
@@ -60,6 +60,8 @@ namespace Hamburgueria.View
             gridSearch.PreviewKeyDown += GridSearch_PreviewKeyDown;
             gridSearch.MouseDoubleClick += GridSearch_MouseDoubleClick;
 
+            observation.PreviewKeyDown += (sender, e) => { if (e.Key == Key.Enter) quantity.Focus(); };
+
             quantity.PreviewKeyDown += Quantity_PreviewKeyDown;
             quantity.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9]+").IsMatch(e.Text);
 
@@ -89,8 +91,6 @@ namespace Hamburgueria.View
                 complement.Text = oldAddress.Complement;
                 telephone.Text = oldAddress.Telephone;
                 Reference.Text = oldAddress.Reference;
-
-                this.observation.Text = observations;
 
                 switch (payment)
                 {
@@ -296,7 +296,7 @@ namespace Hamburgueria.View
             searchProduct.Text = product.Name;
 
             gridSearch.Visibility = Visibility.Hidden;
-            quantity.Focus();
+            observation.Focus();
         }
 
         private void Quantity_PreviewKeyDown(object sender, KeyEventArgs e)
@@ -328,7 +328,7 @@ namespace Hamburgueria.View
                 bool exist = false;
                 foreach (Item i in Items)
                 {
-                    if (i.Id == product.Id)
+                    if (i.Name == product.Name + " " + observation.Text)
                     {
                         i.Quantity += q;
 
@@ -338,10 +338,11 @@ namespace Hamburgueria.View
                 }
 
                 if (exist == false)
-                    Items.Add(new Item(product.Id, product.Cod, product.Name, product.Price, q));
+                    Items.Add(new Item(product.Id, product.Cod, product.Name + " " + observation.Text, product.Price, q));
 
                 labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
 
+                observation.Text = "";
                 quantity.Text = "";
                 searchProduct.Text = "";
                 gridSearch.Visibility = Visibility.Hidden;
@@ -426,7 +427,7 @@ namespace Hamburgueria.View
 
             if (isEditing == false)
             {
-                Sales.Delivery.Create(address, DateTime.Now, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items);
+                Sales.Delivery.Create(address, DateTime.Now, payment.Text, Convert.ToDecimal(discount.Text), Items);
 
                 searchName.Text = "";
                 street.Text = "";
@@ -440,7 +441,6 @@ namespace Hamburgueria.View
                 Items.Clear();
                 labelTotalSale.Content = "TOTAL:R$0,00";
                 quantity.Text = "";
-                observation.Text = "";
                 searchName.Focus();
 
                 MessageBox.Show("Venda adicionada com sucesso!!!");
@@ -448,7 +448,7 @@ namespace Hamburgueria.View
             }
             else
             {
-                Sales.Delivery.Edit(fileName, address, dateSale, payment.Text, Convert.ToDecimal(discount.Text), observation.Text, Items);
+                Sales.Delivery.Edit(fileName, address, dateSale, payment.Text, Convert.ToDecimal(discount.Text), Items);
 
                 MessageBox.Show("Venda alterada com sucesso!!!");
 

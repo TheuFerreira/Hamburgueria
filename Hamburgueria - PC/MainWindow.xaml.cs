@@ -23,7 +23,7 @@ namespace Hamburgueria
 
             InitializeComponent();
 
-            //this.Loaded += MainWindow_Loaded;
+            this.Loaded += MainWindow_Loaded;
 
             PreviewKeyDown += MainWindow_PreviewKeyDown;
 
@@ -35,7 +35,7 @@ namespace Hamburgueria
 
         private void MainWindow_Loaded(object sender, RoutedEventArgs e)
         {
-            DateTime maxDate = new DateTime(2000, 5, 10);
+            DateTime maxDate = new DateTime(2020, 5, 10);
 
             if (DateTime.Today >= maxDate)
             {

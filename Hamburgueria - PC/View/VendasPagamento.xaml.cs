@@ -17,7 +17,6 @@ namespace Hamburgueria.View
         public int numTable;
         public DateTime dateSale;
         public ObservableCollection<Item> items;
-        public string observation = "";
 
         private decimal desconto = 0;
         private decimal pago = 0;
@@ -147,7 +146,7 @@ namespace Hamburgueria.View
         private void Print_Click(object sender, RoutedEventArgs e)
         {
             if (typeSale == 1)
-                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, observation, Sales.Balcao.Products(numTable));
+                TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, Sales.Balcao.Products(numTable));
             else
                 TXT.Sale(dateSale, Convert.ToDecimal(bruteValue.Content), Convert.ToDecimal(discount.Text), Convert.ToDecimal(totalValue.Content), Convert.ToDecimal(valuePay.Text), Convert.ToDecimal(change.Content), payment.Text, items);
             new Impressao().ShowDialog();

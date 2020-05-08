@@ -14,23 +14,13 @@ namespace Hamburgueria.View
     /// </summary>
     public partial class Vendas : Window
     {
-        public class Item
-        {
-            public int Type { get; set; }
-            public string Value { get; set; }
-            public string File { get; set; }
-            public string Info { get; set; }
-            public decimal Total { get; set; }
-            public DateTime Date { get; set; }
-            public string Remove { get; } = "/Hamburgueria;component/Resources/remove.png";
-            public string Modify { get; } = "/Hamburgueria;component/Resources/modify.png";
-            public string Print { get; } = "/Hamburgueria;component/Resources/print.png";
-            public string Confirm { get; } = "/Hamburgueria;component/Resources/confirm.png";
-        }
+        public ObservableCollection<Sale> sales = new ObservableCollection<Sale>();
 
         public Vendas()
         {
             InitializeComponent();
+
+            gridSales.DataContext = sales;
 
             this.Loaded += Vendas_Loaded;
 
@@ -51,7 +41,7 @@ namespace Hamburgueria.View
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
             if (e.Key == Key.Escape)
-                this.Close();
+                Close();
         }
 
         public void UpdateGrid()
@@ -61,27 +51,29 @@ namespace Hamburgueria.View
 
         private void Filter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            gridSales.Items.Clear();
+            sales.Clear();
             if (filter.SelectedIndex == 0)
             {
-                Sales.Balcao.Select(gridSales);
-                Sales.Delivery.Select(gridSales);
+                Sales.Balcao.Select(sales);
+                Sales.Delivery.Select(sales);
             }
             else if (filter.SelectedIndex == 1)
             {
-                Sales.Delivery.Select(gridSales);
+                Sales.Delivery.Select(sales);
             }
             else
             {
-                Sales.Balcao.Select(gridSales);
+                Sales.Balcao.Select(sales);
             }
+            sales.Rearrange();
         }
 
         private void Vendas_Loaded(object sender, RoutedEventArgs e)
         {
-            gridSales.Items.Clear();
-            Sales.Balcao.Select(gridSales);
-            Sales.Delivery.Select(gridSales);
+            sales.Clear();
+            Sales.Balcao.Select(sales);
+            Sales.Delivery.Select(sales);
+            sales.Rearrange();
         }
 
         private void GridSales_BeginningEdit(object sender, DataGridBeginningEditEventArgs e)
@@ -94,7 +86,7 @@ namespace Hamburgueria.View
             if (gridSales.HasItems == false || gridSales.CurrentCell.IsValid == false)
                 return;
 
-            Item it = (Item)gridSales.SelectedItem;
+            View.Sale it = (View.Sale)gridSales.SelectedItem;
             if (it == null)
                 return;
 

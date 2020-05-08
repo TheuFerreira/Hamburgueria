@@ -50,7 +50,7 @@ namespace Hamburgueria.Sales
             File.WriteAllText(path, content);
         }
 
-        public static void Select(DataGrid grid)
+        public static void Select(ObservableCollection<View.Sale> sales)
         {
             string[] files = Directory.GetFiles(DefaultPath(), "*.bin", SearchOption.TopDirectoryOnly);
 
@@ -93,7 +93,7 @@ namespace Hamburgueria.Sales
                     totalSale += p.Price * quantity;
                 }
 
-                grid.Items.Add(new View.Vendas.Item() { Type = 1, Value = "DELIVERY", File = fileName, Info = info, Date = dateSale, Total = totalSale - Convert.ToDecimal(lines[6]) });
+                sales.Add(new View.Sale() { Type = 1, Value = "DELIVERY", File = fileName, Info = info, Date = dateSale, Total = totalSale - Convert.ToDecimal(lines[6]) });
             }
         }
 

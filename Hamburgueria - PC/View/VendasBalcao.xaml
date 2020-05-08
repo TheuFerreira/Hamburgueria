@@ -22,14 +22,14 @@
 
         <Image HorizontalAlignment="Left" Height="13" Margin="264,39,0,0" VerticalAlignment="Top" Width="15" Source="/Hamburgueria;component/Resources/lupa.png"/>
 
+        <Label Content="OBS:" HorizontalAlignment="Left" Height="22" Margin="302,30,0,0" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="11"/>
+        <TextBox x:Name="observation" Height="21" Margin="336,33,171,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Width="170"/>
+
         <Label Content="QUANTIDADE:" HorizontalAlignment="Left" Height="21" Margin="514,30,0,0" VerticalAlignment="Top" Width="100" FontFamily="Arial" Foreground="White" FontSize="11"/>
         <TextBox x:Name="quantity" MaxLength="5" CaretBrush="White" Height="21" Margin="599,33,28,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial"/>
 
         <Label Content="NUM. MESA:*" HorizontalAlignment="Left" Height="21" Margin="30,100,0,0" VerticalAlignment="Top" Width="92" FontFamily="Arial" Foreground="White"/>
         <TextBox x:Name="numTable" MaxLength="3" Height="21" Margin="114,103,423,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" />
-
-        <Label Content="OBS:" HorizontalAlignment="Left" Height="22" Margin="302,30,0,0" VerticalAlignment="Top" Width="40" Foreground="White" FontSize="11"/>
-        <TextBox x:Name="observation" Height="21" Margin="336,33,171,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Width="170"/>
 
         <DataGrid x:Name="gridSearch" HorizontalAlignment="Left" Height="70" VerticalAlignment="Top" Width="298" Margin="90,54,0,0" VerticalScrollBarVisibility="Visible" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" ColumnHeaderStyle="{StaticResource SearchHeader}" CellStyle="{StaticResource SearchCell}" d:IsHidden="True">
             <DataGrid.Columns>

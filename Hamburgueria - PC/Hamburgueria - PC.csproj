@@ -129,6 +129,7 @@
     <Compile Include="View\Relatorios.xaml.cs">
       <DependentUpon>Relatorios.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Sale.cs" />
     <Compile Include="View\Vendas.xaml.cs">
       <DependentUpon>Vendas.xaml</DependentUpon>
     </Compile>

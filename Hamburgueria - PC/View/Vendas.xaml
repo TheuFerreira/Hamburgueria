@@ -21,7 +21,7 @@
             </ComboBox>
         </Grid>
 
-        <DataGrid x:Name="gridSales" Margin="0,0,0,57" ItemsSource="{Binding Item}" AlternationCount="2" AlternatingRowBackground="{StaticResource TurquesaClaro}" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="{x:Null}" HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" ColumnHeaderHeight="50" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource CellStyle}">
+        <DataGrid x:Name="gridSales" Margin="0,0,0,57" ItemsSource="{Binding}" AlternationCount="2" AlternatingRowBackground="{StaticResource TurquesaClaro}" HorizontalGridLinesBrush="White" VerticalGridLinesBrush="{x:Null}" HorizontalScrollBarVisibility="Disabled" ScrollViewer.CanContentScroll="False" ColumnHeaderHeight="50" Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource CellStyle}">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Type}" Header="TYPE" Visibility="Hidden" HeaderStyle="{StaticResource HeaderStyle}"/>
                 <DataGridTextColumn Binding="{Binding Value}" Header="TIPO" MinWidth="100" HeaderStyle="{StaticResource HeaderStyle}"/>

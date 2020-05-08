@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Windows.Controls;
 
 namespace Hamburgueria.Sales
 {
@@ -21,7 +20,7 @@ namespace Hamburgueria.Sales
             return pathData + "\\";
         }
 
-        public static void Select(DataGrid grid)
+        public static void Select(ObservableCollection<View.Sale> sales)
         {
             string[] files = Directory.GetFiles(DefaultPath(), "*.bin", SearchOption.TopDirectoryOnly);
 
@@ -47,7 +46,7 @@ namespace Hamburgueria.Sales
                     totalSale += p.Price * quantity;
                 }
 
-                grid.Items.Add(new View.Vendas.Item() { Type = 0, Value = "BALCÃO", File = numTable.ToString(), Info = info, Date = dateSale, Total = totalSale });
+                sales.Add(new View.Sale() { Type = 0, Value = "BALCÃO", File = numTable.ToString(), Info = info, Date = dateSale, Total = totalSale });
             }
         }
 
@@ -98,7 +97,7 @@ namespace Hamburgueria.Sales
 
             string[] lines = File.ReadAllLines(DefaultPath() + numTable + ".bin");
 
-            for (int j = 3; j < lines.Length; j++)
+            for (int j = 2; j < lines.Length; j++)
             {
                 string[] requests = lines[j].Split('>');
 

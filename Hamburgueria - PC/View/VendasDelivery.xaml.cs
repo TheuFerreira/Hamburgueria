@@ -443,14 +443,22 @@ namespace Hamburgueria.View
                 quantity.Text = "";
                 searchName.Focus();
 
-                MessageBox.Show("Venda adicionada com sucesso!!!");
+                if (MessageBox.Show("Venda adicionada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    TXT.Sale(address, dateSale, TotalSale(), Convert.ToDecimal(discount.Text), TotalSale() - Convert.ToDecimal(discount.Text), payment.Text, Items);
+                    new Impressao().ShowDialog();
+                }
                 sales.UpdateGrid();
             }
             else
             {
                 Sales.Delivery.Edit(fileName, address, dateSale, payment.Text, Convert.ToDecimal(discount.Text), Items);
 
-                MessageBox.Show("Venda alterada com sucesso!!!");
+                if (MessageBox.Show("Venda alterada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    TXT.Sale(address, dateSale, TotalSale(), Convert.ToDecimal(discount.Text), TotalSale() - Convert.ToDecimal(discount.Text), payment.Text, Items);
+                    new Impressao().ShowDialog();
+                }
 
                 Close();
             }

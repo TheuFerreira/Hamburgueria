@@ -20,65 +20,64 @@ namespace Hamburgueria
 
         public static void Sale(DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, decimal valuePay, decimal change, string payment, ObservableCollection<Item> products)
         {
-            string content = "            BIG BURGUER";
-            content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
+            string content = "        BIG BURGUER";
+            content += "\nRUA TOCANTINS, Nº95, MORRO";
+            content += "\nDAS BICAS";
             content += "\nTELEFONE: 3543-0336";
             content += "\nWhatsapp: 99303-2638";
-            content += "\n------------------------------------";
-            content += "\n          CUPOM NÃO FISCAL";
-            content += "\n------------------------------------";
+            content += "\n---------------------------";
+            content += "\n      CUPOM NÃO FISCAL";
+            content += "\n---------------------------";
             content += "\nPRODUTOS";
             foreach (Item p in products)
             {
+                string quantity = (p.Quantity + "x").PadRight(4);
                 string nameProduct = p.Name;
-                if (p.Name.Length >= 21)
+                if (p.Name.Length >= 15)
                 {
-                    nameProduct = p.Name.Substring(0, 20);
-                    nameProduct += "-";
-                    content += "\n" + p.Quantity + "x " + nameProduct.PadRight(25);
-                    p.Name = p.Name.Substring(20);
-
-                    content += "\n   " + p.Name.PadRight(21) + p.Total.ToString("C2");
+                    content += "\n" + quantity + nameProduct.Substring(0, 14) + "-";
+                    nameProduct = nameProduct.Substring(14);
+                    content += "\n    " + nameProduct.PadRight(14) + p.Total.ToString("C2");
                 }
                 else
                 {
-                    content += "\n" + p.Quantity + "x " + p.Name.PadRight(21) + p.Total.ToString("C2");
+                    content += "\n" + quantity + p.Name.PadRight(14) + p.Total.ToString("C2");
                 }
             }
 
-            content += "\n------------------------------------";
+            content += "\n---------------------------";
 
-            content += "\nTOTAL BRUTO: R$" + totalBrute.ToString("N2");
-            content += "\nDESCONTO: R$" + discount.ToString("N2");
-            content += "\nTOTAL: R$" + totalValue.ToString("N2");
+            content += "\nTOTAL BRUTO:      R$" + totalBrute.ToString("N2");
+            content += "\nDESCONTO:         R$" + discount.ToString("N2");
+            content += "\nTOTAL:            R$" + totalValue.ToString("N2");
 
             if (payment == "À VISTA")
             {
-                content += "\nVALOR PAGO: R$" + valuePay.ToString("N2");
-                content += "\nTROCO: R$" + change.ToString("N2");
+                content += "\nVALOR PAGO:       R$" + valuePay.ToString("N2");
+                content += "\nTROCO:            R$" + change.ToString("N2");
             }
 
-            content += "\nFORMA DE PAGAMENTO: " + payment;
-            content += "\nDATA DA EMISSÃO: " + dateSale;
+            content += "\nPAGAMENTO: " + payment;
+            content += "\nDATA: " + dateSale;
 
-            content += "\n------------------------------------";
+            content += "\n---------------------------";
 
-            content += "\n       Agradecemos a preferência";
-            content += "\n             Volte Sempre!";
+            content += "\n Agradecemos a preferência";
+            content += "\n       Volte Sempre!";
 
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
         public static void Sale(Tables.Client clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, ObservableCollection<Item> products)
         {
-            string content = "            BIG BURGUER";
-            content += "\nRUA TOCANTINS, Nº95, MORRO DAS BICAS";
+            string content = "        BIG BURGUER";
+            content += "\nRUA TOCANTINS, Nº95, MORRO";
+            content += "\nDAS BICAS";
             content += "\nTELEFONE: 3543-0336";
             content += "\nWhatsapp: 99303-2638";
-            content += "\n------------------------------------";
-            content += "\n          CUPOM NÃO FISCAL";
-
-            content += "\n------------------------------------";
+            content += "\n---------------------------";
+            content += "\n      CUPOM NÃO FISCAL";
+            content += "\n---------------------------";
 
             content += ReformText("CLIENTE: " + clientItem.Name);
             content += ReformText("RUA: " + clientItem.Street);
@@ -90,39 +89,37 @@ namespace Hamburgueria
             if (!string.IsNullOrWhiteSpace(clientItem.Reference))
                 content += ReformText("REFERÊNCIA: " + clientItem.Reference);
 
-            content += "\n------------------------------------";
+            content += "\n---------------------------";
             content += "\nPRODUTOS";
             foreach (Item p in products)
             {
+                string quantity = (p.Quantity + "x").PadRight(4);
                 string nameProduct = p.Name;
-                if (p.Name.Length >= 21)
+                if (p.Name.Length >= 15)
                 {
-                    nameProduct = p.Name.Substring(0, 20);
-                    nameProduct += "-";
-                    content += "\n" + p.Quantity + "x " + nameProduct.PadRight(25);
-                    p.Name = p.Name.Substring(20);
-
-                    content += "\n   " + p.Name.PadRight(21) + p.Total.ToString("C2");
+                    content += "\n" + quantity + nameProduct.Substring(0, 14) + "-";
+                    nameProduct = nameProduct.Substring(14);
+                    content += "\n    " + nameProduct.PadRight(14) + p.Total.ToString("C2");
                 }
                 else
                 {
-                    content += "\n" + p.Quantity + "x " + p.Name.PadRight(21) + p.Total.ToString("C2");
+                    content += "\n" + quantity + p.Name.PadRight(14) + p.Total.ToString("C2");
                 }
             }
 
-            content += "\n------------------------------------";
+            content += "\n---------------------------";
 
-            content += "\nTOTAL BRUTO: R$" + totalBrute.ToString("N2");
-            content += "\nDESCONTO: R$" + discount.ToString("N2");
-            content += "\nTOTAL: R$" + totalValue.ToString("N2");
+            content += "\nTOTAL BRUTO:      R$" + totalBrute.ToString("N2");
+            content += "\nDESCONTO:         R$" + discount.ToString("N2");
+            content += "\nTOTAL:            R$" + totalValue.ToString("N2");
 
-            content += "\nFORMA DE PAGAMENTO: " + payment;
-            content += "\nDATA DA EMISSÃO: " + dateSale;
+            content += "\nPAGAMENTO: " + payment;
+            content += "\nDATA: " + dateSale;
 
-            content += "\n------------------------------------";
+            content += "\n---------------------------";
 
-            content += "\n       Agradecemos a preferência";
-            content += "\n             Volte Sempre!";
+            content += "\n Agradecemos a preferência";
+            content += "\n       Volte Sempre!";
 
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
@@ -136,7 +133,7 @@ namespace Hamburgueria
 
             for (int i = 0; i < words.Length; i++)
             {
-                if ((line + words[i]).Length <= 36)
+                if ((line + words[i]).Length <= 26)
                 {
                     line += words[i] + " ";
                 }

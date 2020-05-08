@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Windows;
 
 namespace Hamburgueria.Sql
 {
@@ -43,6 +44,21 @@ namespace Hamburgueria.Sql
             con.SaleTables.Add(new Tables.SaleTable(saleId, numTable));
             con.SaveChanges();
 
+            for (int i = 0; i < items.Count; i++)
+            {
+                items[i].Name = new Product().GetProduct(items[i].Id).Name;
+                for (int j = i + 1; j < items.Count; j++)
+                {
+                    if (items[i].Id == items[j].Id)
+                    {
+                        items[i].Quantity += items[j].Quantity;
+
+                        items.RemoveAt(j);
+                        j--;
+                    }
+                }
+            }
+
             foreach (Item it in items)
             {
                 Tables.ProductSale productSale = new Tables.ProductSale(saleId, it.Id, it.Name, it.Price, it.Quantity, it.Total);
@@ -61,6 +77,21 @@ namespace Hamburgueria.Sql
 
             con.SaleDeliveries.Add(new Tables.SaleDelivery(saleId, client.Name, client.Street + ", Nº" + client.Number + ", " + client.District + ", " + client.Complement));
             con.SaveChanges();
+            
+            for (int i = 0; i < items.Count; i++)
+            {
+                items[i].Name = new Product().GetProduct(items[i].Id).Name;
+                for (int j = i + 1; j < items.Count; j++)
+                {
+                    if (items[i].Id == items[j].Id)
+                    {
+                        items[i].Quantity += items[j].Quantity;
+
+                        items.RemoveAt(j);
+                        j--;
+                    }
+                }
+            }
 
             foreach (Item it in items)
             {

@@ -112,7 +112,7 @@ namespace Hamburgueria.View
 
                     ObservableCollection<Item> items = Sales.Log.Products(it.Date);
 
-                    TXT.Sale(client, it.Date, it.Total, discount, it.Total - discount, payment, valuePay, change, items);
+                    TXT.Sale(client, it.Date, it.Total + discount, discount, it.Total, payment, valuePay, change, items);
                     new Impressao().ShowDialog();
                 }
             }
@@ -146,11 +146,11 @@ namespace Hamburgueria.View
 
                     ObservableCollection<Item> items = Sales.Log.Products(it.Date);
 
-                    new Sql.Sale().Insert(client, it.Date, it.Total - discount, discount, it.Total, payment, items);
+                    new Sql.Sale().Insert(client, it.Date, it.Total + discount, discount, it.Total, payment, items);
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        TXT.Sale(client, it.Date, it.Total, discount, it.Total - discount, payment, valuePay, change, items);
+                        TXT.Sale(client, it.Date, it.Total + discount, discount, it.Total, payment, valuePay, change, items);
                         new Impressao().ShowDialog();
                     }
 

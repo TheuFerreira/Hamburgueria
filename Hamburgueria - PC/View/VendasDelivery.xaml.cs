@@ -493,7 +493,7 @@ namespace Hamburgueria.View
 
                 if (MessageBox.Show("Venda adicionada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    TXT.Sale(client, dateSale, tempTotalSale, tempDiscount, tempTotalSale - tempDiscount, payment.Text, tempValuePay, tempChange, Items);
+                    TXT.Sale(client, dateSale, tempTotalSale + tempDiscount, tempDiscount, tempTotalSale, payment.Text, tempValuePay, tempChange, Items);
                     new Impressao().ShowDialog();
                 }
                 sales.UpdateGrid();
@@ -504,7 +504,7 @@ namespace Hamburgueria.View
 
                 if (MessageBox.Show("Venda alterada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    TXT.Sale(client, dateSale, tempTotalSale, tempDiscount, tempTotalSale - tempDiscount, payment.Text, tempValuePay, tempChange, Items);
+                    TXT.Sale(client, dateSale, tempTotalSale + tempDiscount, tempDiscount, tempTotalSale, payment.Text, tempValuePay, tempChange, Items);
                     new Impressao().ShowDialog();
                 }
 

@@ -49,6 +49,7 @@ namespace Hamburgueria.View
             discount.GotFocus += Discount_GotFocus;
             discount.LostFocus += Discount_LostFocus;
             discount.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9,]+").IsMatch(e.Text);
+            discount.TextChanged += Discount_TextChanged;
 
             // Product
 
@@ -79,6 +80,7 @@ namespace Hamburgueria.View
             valuePay.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9,]+").IsMatch(e.Text);
             valuePay.GotFocus += ValuePay_GotFocus;
             valuePay.LostFocus += ValuePay_LostFocus;
+            valuePay.TextChanged += ValuePay_TextChanged;
 
             newClient.Click += NewClient;
             confirm.Click += Confirm_Click;
@@ -111,8 +113,8 @@ namespace Hamburgueria.View
 
                 this.discount.Text = discounts;
                 this.valuePay.Text = valuePays;
-                labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
-                Switch();
+                labelTotalSale.Content = "TOTAL:" + TotalSale(Convert.ToDecimal(discount.Text)).ToString("C2");
+                Switch(Convert.ToDecimal(valuePay.Text));
             }
         }
 
@@ -223,8 +225,18 @@ namespace Hamburgueria.View
             else
                 discount.Text = "0,00";
 
-            labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
-            Switch();
+            labelTotalSale.Content = "TOTAL:" + TotalSale(Convert.ToDecimal(discount.Text)).ToString("C2");
+            Switch(Convert.ToDecimal(valuePay.Text));
+        }
+
+        private void Discount_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            decimal value = 0;
+            if (decimal.TryParse(discount.Text, out decimal t))
+                value = t;
+
+            labelTotalSale.Content = "TOTAL:" + TotalSale(value).ToString("C2");
+            Switch(Convert.ToDecimal(valuePay.Text));
         }
 
         // PRODUCT
@@ -347,8 +359,8 @@ namespace Hamburgueria.View
                 if (exist == false)
                     Items.Add(new Item(product.Id, product.Cod, product.Name + " " + observation.Text, product.Price, q));
 
-                labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
-                Switch();
+                labelTotalSale.Content = "TOTAL:" + TotalSale(Convert.ToDecimal(discount.Text)).ToString("C2");
+                Switch(Convert.ToDecimal(valuePay.Text));
 
                 observation.Text = "";
                 quantity.Text = "";
@@ -381,8 +393,8 @@ namespace Hamburgueria.View
                 Items.RemoveAt(index);
             }
 
-            labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
-            Switch();
+            labelTotalSale.Content = "TOTAL:" + TotalSale(Convert.ToDecimal(discount.Text)).ToString("C2");
+            Switch(Convert.ToDecimal(valuePay.Text));
         }
 
         // BUTTONS
@@ -416,7 +428,15 @@ namespace Hamburgueria.View
             else
                 valuePay.Text = "0,00";
 
-            Switch();
+            Switch(Convert.ToDecimal(valuePay.Text));
+        }
+
+        private void ValuePay_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (decimal.TryParse(valuePay.Text, out decimal t))
+                Switch(Convert.ToDecimal(t));
+            else
+                Switch(Convert.ToDecimal(0));
         }
 
         private void CheckClient()
@@ -466,7 +486,7 @@ namespace Hamburgueria.View
 
             Tables.Client client = new Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
 
-            decimal tempTotalSale = TotalSale();
+            decimal tempTotalSale = TotalSale(Convert.ToDecimal(discount.Text));
             decimal tempDiscount = Convert.ToDecimal(discount.Text);
             decimal tempValuePay = Convert.ToDecimal(valuePay.Text);
             decimal tempChange = tempValuePay - tempTotalSale;
@@ -487,7 +507,7 @@ namespace Hamburgueria.View
                 Items.Clear();
                 labelTotalSale.Content = "TOTAL:R$0,00";
                 valuePay.Text = "0,00";
-                Switch();
+                Switch(Convert.ToDecimal(valuePay.Text));
                 quantity.Text = "";
                 searchName.Focus();
 
@@ -512,18 +532,22 @@ namespace Hamburgueria.View
             }
         }
 
-        private decimal TotalSale()
+        private decimal TotalSale(decimal tempDiscount)
         {
-            decimal t = -Convert.ToDecimal(discount.Text);
+            decimal t = -tempDiscount;
             foreach (Item i in Items)
                 t += i.Total;
 
             return t;
         }
     
-        private void Switch()
+        private void Switch(decimal tempValuePay)
         {
-            decimal value = Convert.ToDecimal(valuePay.Text) - TotalSale();
+            decimal value;
+            if (decimal.TryParse(discount.Text, out decimal t))
+                value = tempValuePay - TotalSale(t);
+            else
+                value = tempValuePay - TotalSale(0);
 
             labelSwitch.Content = "TROCO:" + value.ToString("C2");
         }

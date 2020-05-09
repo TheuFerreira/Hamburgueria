@@ -113,7 +113,10 @@ namespace Hamburgueria.View
                 else
                     pago = Convert.ToDecimal(valuePay.Text);
 
-                change.Content = (pago - Convert.ToDecimal(totalValue.Content)).ToString();
+                decimal tempChange = pago - Convert.ToDecimal(totalValue.Content);
+                if (tempChange < 0)
+                    tempChange = 0;
+                change.Content = tempChange.ToString();
 
                 decimal total = Convert.ToDecimal(totalValue.Content);
                 if (pago < total)

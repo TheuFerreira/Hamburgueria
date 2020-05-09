@@ -143,6 +143,8 @@ namespace Hamburgueria.Sales
                     sales.Add(new View.Sale() { Type = 1, Value = "DELIVERY", File = name, Info = info, Date = dateSale, Total = totalSale - Convert.ToDecimal(discount) });
                 }
             }
+
+            sales.Rearrange();
         }
 
         public static ObservableCollection<Item> Products(DateTime dateSale)

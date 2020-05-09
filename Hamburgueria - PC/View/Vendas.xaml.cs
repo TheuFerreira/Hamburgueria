@@ -88,7 +88,7 @@ namespace Hamburgueria.View
                     Tables.Client client = Sales.Log.Client(it.Date);
                     string[] info = Sales.Log.InfoDelivery(it.Date);
 
-                    VendasDelivery delivery = new VendasDelivery(this, Sales.Log.Products(it.Date), client, it.Date, true, info[0], info[1]);
+                    VendasDelivery delivery = new VendasDelivery(this, Sales.Log.Products(it.Date), client, it.Date, true, info[0], info[1], info[2], info[3]);
                     delivery.ShowDialog();
                 }
             }

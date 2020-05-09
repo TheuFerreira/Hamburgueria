@@ -464,11 +464,16 @@ namespace Hamburgueria.View
                 return;
             }
 
-            Tables.Client address = new Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
+            Tables.Client client = new Tables.Client(searchName.Text, street.Text, Convert.ToInt32(number.Text), district.Text, complement.Text, telephone.Text, Reference.Text);
+
+            decimal tempTotalSale = TotalSale();
+            decimal tempDiscount = Convert.ToDecimal(discount.Text);
+            decimal tempValuePay = Convert.ToDecimal(valuePay.Text);
+            decimal tempChange = tempValuePay - tempTotalSale;
 
             if (isEditing == false)
             {
-                Sales.Log.Create(DateTime.Now, address, payment.Text, Convert.ToDecimal(discount.Text), Convert.ToDecimal(valuePay.Text), TotalSale() - Convert.ToDecimal(valuePay.Text), Items);
+                Sales.Log.Create(DateTime.Now, client, payment.Text, tempDiscount, tempValuePay, tempChange, Items);
 
                 searchName.Text = "";
                 street.Text = "";
@@ -481,24 +486,25 @@ namespace Hamburgueria.View
 
                 Items.Clear();
                 labelTotalSale.Content = "TOTAL:R$0,00";
+                valuePay.Text = "0,00";
                 Switch();
                 quantity.Text = "";
                 searchName.Focus();
 
                 if (MessageBox.Show("Venda adicionada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    TXT.Sale(address, dateSale, TotalSale(), Convert.ToDecimal(discount.Text), TotalSale() - Convert.ToDecimal(discount.Text), payment.Text, Convert.ToDecimal(valuePay.Text), TotalSale() - Convert.ToDecimal(valuePay.Text), Items);
+                    TXT.Sale(client, dateSale, tempTotalSale, tempDiscount, tempTotalSale - tempDiscount, payment.Text, tempValuePay, tempChange, Items);
                     new Impressao().ShowDialog();
                 }
                 sales.UpdateGrid();
             }
             else
             {
-                Sales.Log.Create(dateSale, address, payment.Text, Convert.ToDecimal(discount.Text), Convert.ToDecimal(valuePay.Text), TotalSale() - Convert.ToDecimal(valuePay.Text), Items);
+                Sales.Log.Create(dateSale, client, payment.Text, tempDiscount, tempValuePay, tempChange, Items);
 
                 if (MessageBox.Show("Venda alterada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    TXT.Sale(address, dateSale, TotalSale(), Convert.ToDecimal(discount.Text), TotalSale() - Convert.ToDecimal(discount.Text), payment.Text, Convert.ToDecimal(valuePay.Text), TotalSale() - Convert.ToDecimal(valuePay.Text), Items);
+                    TXT.Sale(client, dateSale, tempTotalSale, tempDiscount, tempTotalSale - tempDiscount, payment.Text, tempValuePay, tempChange, Items);
                     new Impressao().ShowDialog();
                 }
 
@@ -517,7 +523,7 @@ namespace Hamburgueria.View
     
         private void Switch()
         {
-            decimal value = TotalSale() - Convert.ToDecimal(valuePay.Text);
+            decimal value = Convert.ToDecimal(valuePay.Text) - TotalSale();
 
             labelSwitch.Content = "TROCO:" + value.ToString("C2");
         }

@@ -495,6 +495,12 @@ namespace Hamburgueria.View
             {
                 Sales.Log.Create(DateTime.Now, client, payment.Text, tempDiscount, tempValuePay, tempChange, Items);
 
+                if (MessageBox.Show("Venda adicionada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    TXT.Sale(client, dateSale, tempTotalSale + tempDiscount, tempDiscount, tempTotalSale, payment.Text, tempValuePay, tempChange, Items);
+                    new Impressao().ShowDialog();
+                }
+
                 searchName.Text = "";
                 street.Text = "";
                 complement.Text = "";
@@ -511,11 +517,6 @@ namespace Hamburgueria.View
                 quantity.Text = "";
                 searchName.Focus();
 
-                if (MessageBox.Show("Venda adicionada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
-                {
-                    TXT.Sale(client, dateSale, tempTotalSale + tempDiscount, tempDiscount, tempTotalSale, payment.Text, tempValuePay, tempChange, Items);
-                    new Impressao().ShowDialog();
-                }
                 sales.UpdateGrid();
             }
             else

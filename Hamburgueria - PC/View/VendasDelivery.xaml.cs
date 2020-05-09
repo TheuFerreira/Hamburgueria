@@ -549,6 +549,9 @@ namespace Hamburgueria.View
             else
                 value = tempValuePay - TotalSale(0);
 
+            if (value < 0)
+                value = 0;
+
             labelSwitch.Content = "TROCO:" + value.ToString("C2");
         }
     }

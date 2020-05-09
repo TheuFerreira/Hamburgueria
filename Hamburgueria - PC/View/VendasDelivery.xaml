@@ -49,18 +49,23 @@
         <TextBox x:Name="quantity" MaxLength="5" Height="21" Margin="618,158,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Width="50" />
 
         <Label Content="FORMA DE PAGAMENTO:" HorizontalAlignment="Left" Height="21" Margin="10,223,0,0" VerticalAlignment="Top" Width="156" FontFamily="Arial" Foreground="White"/>
-        <ComboBox x:Name="payment" Margin="171,223,350,0" VerticalAlignment="Top" SelectedIndex="0" >
+        <ComboBox x:Name="payment" Margin="171,223,386,0" VerticalAlignment="Top" SelectedIndex="0" >
             <ListBoxItem Content="À VISTA"/>
             <ListBoxItem Content="CRÉDITO"/>
             <ListBoxItem Content="DÉBITO"/>
         </ComboBox>
 
-        <Label Content="DESCONTO:" HorizontalAlignment="Left" Height="21" Margin="448,223,0,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
-        <TextBox x:Name="discount" MaxLength="5" Height="21" Margin="532,226,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00"/>
+        <Label x:Name="labelValuePay" Content="VALOR PAGO:" HorizontalAlignment="Right" Height="21" Margin="0,223,290,0" VerticalAlignment="Top" Width="92" FontFamily="Arial" Foreground="White"/>
+        <TextBox x:Name="valuePay" MaxLength="5" Height="21" Margin="0,226,200,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00" HorizontalAlignment="Right" Width="90"/>
+
+        <Label Content="DESCONTO:" HorizontalAlignment="Right" Height="21" Margin="0,223,110,0" VerticalAlignment="Top" Width="84" FontFamily="Arial" Foreground="White"/>
+        <TextBox x:Name="discount" MaxLength="5" Height="21" Margin="0,226,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Style="{DynamicResource TextBoxUnderline}" FontFamily="Arial" Text="0,00" HorizontalAlignment="Right" Width="100"/>
 
         <Button x:Name="confirm" Content="CONFIRMAR" Height="35" Margin="576,260,0,0" VerticalAlignment="Top" Style="{DynamicResource ButtonShadowAround}" HorizontalAlignment="Left" Width="92"/>
 
-        <Label x:Name="labelTotalSale" Content="TOTAL: R$ 0,00" Margin="10,260,352,0" FontFamily="Arial" Foreground="White" FontSize="16" Height="26" VerticalAlignment="Top"/>
+        <Label x:Name="labelTotalSale" Content="TOTAL:R$0,00" Margin="10,260,0,0" FontFamily="Arial" Foreground="White" FontSize="16" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="194"/>
+       
+        <Label x:Name="labelSwitch" Content="TROCO:R$0,00" Margin="220,260,0,0" FontFamily="Arial" Foreground="White" FontSize="16" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="194"/>
 
         <DataGrid Name="gridProduct" ItemsSource="{Binding}" Height="171" VerticalAlignment="Bottom" VerticalGridLinesBrush="{x:Null}" HorizontalGridLinesBrush="White" Style="{StaticResource DataGridStyle}" d:IsHidden="True">
             <DataGrid.ColumnHeaderStyle>

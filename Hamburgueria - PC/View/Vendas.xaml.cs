@@ -107,10 +107,12 @@ namespace Hamburgueria.View
 
                     string payment = info[0];
                     decimal discount = Convert.ToDecimal(info[1]);
+                    decimal valuePay = Convert.ToDecimal(info[2]);
+                    decimal change = Convert.ToDecimal(info[3]);
 
                     ObservableCollection<Item> items = Sales.Log.Products(it.Date);
 
-                    TXT.Sale(client, it.Date, it.Total, discount, it.Total - discount, payment, items);
+                    TXT.Sale(client, it.Date, it.Total, discount, it.Total - discount, payment, valuePay, change, items);
                     new Impressao().ShowDialog();
                 }
             }
@@ -139,6 +141,8 @@ namespace Hamburgueria.View
 
                     string payment = info[0];
                     decimal discount = Convert.ToDecimal(info[1]);
+                    decimal valuePay = Convert.ToDecimal(info[2]);
+                    decimal change = Convert.ToDecimal(info[3]);
 
                     ObservableCollection<Item> items = Sales.Log.Products(it.Date);
 
@@ -146,7 +150,7 @@ namespace Hamburgueria.View
 
                     if (MessageBox.Show("Deseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                     {
-                        TXT.Sale(client, it.Date, it.Total, discount, it.Total - discount, payment, items);
+                        TXT.Sale(client, it.Date, it.Total, discount, it.Total - discount, payment, valuePay, change, items);
                         new Impressao().ShowDialog();
                     }
 
@@ -169,13 +173,13 @@ namespace Hamburgueria.View
 
         private void AddLocal_Click(object sender, RoutedEventArgs e)
         {
-            VendasBalcao balcao = new VendasBalcao(this, new ObservableCollection<Hamburgueria.Item>(), DateTime.Today);
+            VendasBalcao balcao = new VendasBalcao(this, new ObservableCollection<Item>(), DateTime.Today);
             balcao.ShowDialog();
         }
 
         private void AddDelivery_Click(object sender, RoutedEventArgs e)
         {
-            VendasDelivery delivery = new VendasDelivery(this, new ObservableCollection<Hamburgueria.Item>(), new Tables.Client(), DateTime.Today);
+            VendasDelivery delivery = new VendasDelivery(this, new ObservableCollection<Item>(), new Tables.Client(), DateTime.Today);
             delivery.ShowDialog();
         }
     }

@@ -68,7 +68,7 @@ namespace Hamburgueria
             File.WriteAllText(Path() + "\\sale" + IdFile + ".txt", content, System.Text.Encoding.UTF8);
         }
 
-        public static void Sale(Tables.Client clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, ObservableCollection<Item> products)
+        public static void Sale(Tables.Client clientItem, DateTime dateSale, decimal totalBrute, decimal discount, decimal totalValue, string payment, decimal valuePay, decimal change, ObservableCollection<Item> products)
         {
             string content = "        BIG BURGUER";
             content += "\nRUA TOCANTINS, Nº95, MORRO";
@@ -112,6 +112,12 @@ namespace Hamburgueria
             content += "\nTOTAL BRUTO:      R$" + totalBrute.ToString("N2");
             content += "\nDESCONTO:         R$" + discount.ToString("N2");
             content += "\nTOTAL:            R$" + totalValue.ToString("N2");
+
+            if (payment == "À VISTA")
+            {
+                content += "\nVALOR PAGO:       R$" + valuePay.ToString("N2");
+                content += "\nTROCO:            R$" + change.ToString("N2");
+            }
 
             content += "\nPAGAMENTO: " + payment;
             content += "\nDATA: " + dateSale;

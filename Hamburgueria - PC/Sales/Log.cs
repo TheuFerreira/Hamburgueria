@@ -37,7 +37,7 @@ namespace Hamburgueria.Sales
             File.WriteAllText(path, content, Encoding.UTF8);
         }
 
-        public static void Create(DateTime dateSale, Tables.Client client, string payment, decimal discount, ObservableCollection<Item> items)
+        public static void Create(DateTime dateSale, Tables.Client client, string payment, decimal discount, decimal valuePay, decimal change, ObservableCollection<Item> items)
         {
             string path = DefaultPath() + dateSale.ToString("yyyy-MM-dd HH+mm+ss") + ".bin";
 
@@ -51,6 +51,8 @@ namespace Hamburgueria.Sales
             content += client.Reference + "\n";
             content += payment + "\n";
             content += discount + "\n";
+            content += valuePay + "\n";
+            content += change + "\n";
             content += "-PRODUTOS-\n";
             foreach (Item it in items)
             {
@@ -105,6 +107,8 @@ namespace Hamburgueria.Sales
                     string reference = lines[7];
                     string payment = lines[8];
                     string discount = lines[9];
+                    string valuePay = lines[10];
+                    string change = lines[11];
 
                     string info = name + "\n\n";
                     info += "ENDEREÇO: " + street + ", Nº" + number + ", " + district + ", " + complement + "\n";
@@ -112,11 +116,18 @@ namespace Hamburgueria.Sales
                     info += "REFERÊNCIA: " + reference + "\n";
                     info += "FORMA DE PAGAMENTO: " + payment + "\n";
                     info += "DESCONTO: R$" + discount + "\n";
+
+                    if (payment == "À VISTA")
+                    {
+                        info += "VALOR PAGO: R$" + valuePay + "\n";
+                        info += "TROCO: R$" + change + "\n";
+                    }
+
                     info += "\n";
 
                     info += "PEDIDOS\n";
                     decimal totalSale = 0;
-                    for (int j = 11; j < lines.Length; j++)
+                    for (int j = 13; j < lines.Length; j++)
                     {
                         string[] requests = lines[j].Split('>');
 
@@ -189,9 +200,11 @@ namespace Hamburgueria.Sales
         public static string[] InfoDelivery(DateTime dateSale)
         {
             string[] lines = File.ReadAllLines(DefaultPath() + dateSale.ToString("yyyy-MM-dd HH+mm+ss") + ".bin");
-            string[] info = new string[2];
+            string[] info = new string[4];
             info[0] = lines[8];
             info[1] = lines[9];
+            info[2] = lines[10];
+            info[3] = lines[11];
 
             return info;
         }

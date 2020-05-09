@@ -20,7 +20,7 @@ namespace Hamburgueria.View
         private readonly bool isEditing = false;
         private readonly DateTime dateSale;
 
-        public VendasDelivery(Vendas sales, ObservableCollection<Item> items, Tables.Client oldAddress, DateTime dateSale, bool isEditing = false, string payment = "", string discounts = "")
+        public VendasDelivery(Vendas sales, ObservableCollection<Item> items, Tables.Client oldAddress, DateTime dateSale, bool isEditing = false, string payment = "", string discounts = "", string valuePays = "", string changes = "")
         {
             InitializeComponent();
 
@@ -74,6 +74,12 @@ namespace Hamburgueria.View
 
             // BUTTONS
 
+            this.payment.SelectionChanged += Payment_SelectionChanged;
+
+            valuePay.PreviewTextInput += (sender, e) => e.Handled = new Regex("[^0-9,]+").IsMatch(e.Text);
+            valuePay.GotFocus += ValuePay_GotFocus;
+            valuePay.LostFocus += ValuePay_LostFocus;
+
             newClient.Click += NewClient;
             confirm.Click += Confirm_Click;
 
@@ -104,7 +110,9 @@ namespace Hamburgueria.View
                 }
 
                 this.discount.Text = discounts;
+                this.valuePay.Text = valuePays;
                 labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
+                Switch();
             }
         }
 
@@ -216,6 +224,7 @@ namespace Hamburgueria.View
                 discount.Text = "0,00";
 
             labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
+            Switch();
         }
 
         // PRODUCT
@@ -339,6 +348,7 @@ namespace Hamburgueria.View
                     Items.Add(new Item(product.Id, product.Cod, product.Name + " " + observation.Text, product.Price, q));
 
                 labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
+                Switch();
 
                 observation.Text = "";
                 quantity.Text = "";
@@ -372,9 +382,42 @@ namespace Hamburgueria.View
             }
 
             labelTotalSale.Content = "TOTAL:" + TotalSale().ToString("C2");
+            Switch();
         }
 
         // BUTTONS
+
+        private void Payment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (payment.SelectedIndex == 0)
+            {
+                labelValuePay.Visibility = Visibility.Visible;
+                valuePay.Visibility = Visibility.Visible;
+                labelSwitch.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                labelValuePay.Visibility = Visibility.Collapsed;
+                valuePay.Visibility = Visibility.Collapsed;
+                labelSwitch.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        private void ValuePay_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (valuePay.Text == "0,00")
+                valuePay.Text = "";
+        }
+
+        private void ValuePay_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (decimal.TryParse(valuePay.Text, out decimal d))
+                valuePay.Text = d.ToString("N2");
+            else
+                valuePay.Text = "0,00";
+
+            Switch();
+        }
 
         private void CheckClient()
         {
@@ -425,7 +468,7 @@ namespace Hamburgueria.View
 
             if (isEditing == false)
             {
-                Sales.Log.Create(DateTime.Now, address, payment.Text, Convert.ToDecimal(discount.Text), Items);
+                Sales.Log.Create(DateTime.Now, address, payment.Text, Convert.ToDecimal(discount.Text), Convert.ToDecimal(valuePay.Text), TotalSale() - Convert.ToDecimal(valuePay.Text), Items);
 
                 searchName.Text = "";
                 street.Text = "";
@@ -438,23 +481,24 @@ namespace Hamburgueria.View
 
                 Items.Clear();
                 labelTotalSale.Content = "TOTAL:R$0,00";
+                Switch();
                 quantity.Text = "";
                 searchName.Focus();
 
                 if (MessageBox.Show("Venda adicionada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    TXT.Sale(address, dateSale, TotalSale(), Convert.ToDecimal(discount.Text), TotalSale() - Convert.ToDecimal(discount.Text), payment.Text, Items);
+                    TXT.Sale(address, dateSale, TotalSale(), Convert.ToDecimal(discount.Text), TotalSale() - Convert.ToDecimal(discount.Text), payment.Text, Convert.ToDecimal(valuePay.Text), TotalSale() - Convert.ToDecimal(valuePay.Text), Items);
                     new Impressao().ShowDialog();
                 }
                 sales.UpdateGrid();
             }
             else
             {
-                Sales.Log.Create(dateSale, address, payment.Text, Convert.ToDecimal(discount.Text), Items);
+                Sales.Log.Create(dateSale, address, payment.Text, Convert.ToDecimal(discount.Text), Convert.ToDecimal(valuePay.Text), TotalSale() - Convert.ToDecimal(valuePay.Text), Items);
 
                 if (MessageBox.Show("Venda alterada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    TXT.Sale(address, dateSale, TotalSale(), Convert.ToDecimal(discount.Text), TotalSale() - Convert.ToDecimal(discount.Text), payment.Text, Items);
+                    TXT.Sale(address, dateSale, TotalSale(), Convert.ToDecimal(discount.Text), TotalSale() - Convert.ToDecimal(discount.Text), payment.Text, Convert.ToDecimal(valuePay.Text), TotalSale() - Convert.ToDecimal(valuePay.Text), Items);
                     new Impressao().ShowDialog();
                 }
 
@@ -469,6 +513,13 @@ namespace Hamburgueria.View
                 t += i.Total;
 
             return t;
+        }
+    
+        private void Switch()
+        {
+            decimal value = TotalSale() - Convert.ToDecimal(valuePay.Text);
+
+            labelSwitch.Content = "TROCO:" + value.ToString("C2");
         }
     }
 }

@@ -85,6 +85,8 @@ namespace Hamburgueria.View
 
         private void VendasBalcao_Loaded(object sender, RoutedEventArgs e)
         {
+            search.Focus();
+
             gridSearch.Visibility = Visibility.Hidden;
         }
 

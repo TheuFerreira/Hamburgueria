@@ -126,6 +126,8 @@ namespace Hamburgueria.View
 
         private void VendasDelivery_Loaded(object sender, RoutedEventArgs e)
         {
+            searchName.Focus();
+
             gridSearch.Visibility = Visibility.Hidden;
             gridClient.Visibility = Visibility.Hidden;
         }

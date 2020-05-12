@@ -25,6 +25,8 @@ namespace Hamburgueria.View
             sqlProduct = new Sql.Product();
             gridProduct.DataContext = Items;
 
+            Loaded += VendasRapida_Loaded;
+
             search.PreviewKeyDown += Search_PreviewKeyDown;
             search.PreviewTextInput += Search_PreviewTextInput;
             search.TextChanged += Search_TextChanged;
@@ -44,6 +46,11 @@ namespace Hamburgueria.View
         {
             if (e.Key == Key.Escape)
                 Close();
+        }
+
+        private void VendasRapida_Loaded(object sender, RoutedEventArgs e)
+        {
+            search.Focus();
         }
 
         private void Search_PreviewKeyDown(object sender, KeyEventArgs e)

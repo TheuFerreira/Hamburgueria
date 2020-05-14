@@ -499,7 +499,7 @@ namespace Hamburgueria.View
 
                 if (MessageBox.Show("Venda adicionada com sucesso!!!\nDeseja imprimir o CUPOM NÃO FISCAL??", "", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
-                    TXT.Sale(client, dateSale, tempTotalSale + tempDiscount, tempDiscount, tempTotalSale, payment.Text, tempValuePay, tempChange, Items);
+                    TXT.Sale(client, DateTime.Now, tempTotalSale + tempDiscount, tempDiscount, tempTotalSale, payment.Text, tempValuePay, tempChange, Items);
                     new Impressao().ShowDialog();
                 }
 

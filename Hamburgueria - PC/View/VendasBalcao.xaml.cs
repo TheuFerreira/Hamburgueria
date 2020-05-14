@@ -193,7 +193,7 @@ namespace Hamburgueria.View
                 {
                     if (i.Name == product.Name + " " + observation.Text)
                     {
-                        i.Quantity++;
+                        i.Quantity += q;
 
                         exist = true;
                         break;

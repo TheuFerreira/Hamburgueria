@@ -30,7 +30,7 @@ namespace Hamburgueria.Sql
 
         public bool Exist(int cod)
         {
-            return con.Products.SingleOrDefault(p => p.Cod == cod) == null ? false : true;
+            return con.Products.SingleOrDefault(p => p.Cod == cod && p.Deleted == false) == null ? false : true;
         }
 
         public List<Tables.Product> Select()
